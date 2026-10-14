@@ -1,0 +1,13 @@
+
+The command exited with code 3.
+Output:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import pychromecast; print('pychromecast OK')
+    ^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'pychromecast'
+SIN_PYCHROMECAST
+which: no castnow in (/home/slone/.gemini/antigravity/bin:/home/slone/.config/Antigravity/bin:/home/slone/.local/bin:/home/slone/bin:/home/slone/.nvm/versions/node/v22.0.0/bin:/usr/local/bin:/usr/bin:/bin)
+which: no mkchromecast in (/home/slone/.gemini/antigravity/bin:/home/slone/.config/Antigravity/bin:/home/slone/.local/bin:/home/slone/bin:/home/slone/.nvm/versions/node/v22.0.0/bin:/usr/local/bin:/usr/bin:/bin)
+which: no gnome-network-displays in (/home/slone/.gemini/antigravity/bin:/home/slone/.config/Antigravity/bin:/home/slone/.local/bin:/home/slone/bin:/home/slone/.nvm/versions/node/v22.0.0/bin:/usr/local/bin:/usr/bin:/bin)
+

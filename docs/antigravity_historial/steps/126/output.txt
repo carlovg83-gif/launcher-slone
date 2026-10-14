@@ -1,0 +1,9 @@
+
+The command exited with code 0.
+Output:
+UA [Mozilla/5.0 (Windows NT 1]: ERROR HTTP Error 403: Forbidden
+UA [Mozilla/5.0 (Linux; Andro]: HTTP 200
+UA [IPTVSmartersPro]: HTTP 200
+UA [libmpv]: HTTP 200
+UA [Lavf/61.1.100]: ERROR HTTP Error 403: Forbidden
+

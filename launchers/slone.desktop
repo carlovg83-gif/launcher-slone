@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=SLONE Global Media Engine
+GenericName=Motor Global Multimedia & Streaming
+Comment=SLONE Ultra Engine · Zero-Freeze, Low-Latency & Multi-Audio Engine
+Exec=/home/slone/.local/bin/slone
+Icon=/home/slone/.local/share/icons/slone.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;TV;Network;
+Keywords=slone;slo;media;engine;iptv;stream;cast;relay;tv;sovereign;girona;
+StartupNotify=true
+StartupWMClass=slocast

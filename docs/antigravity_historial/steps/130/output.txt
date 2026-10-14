@@ -1,0 +1,17 @@
+
+The command exited with code 0.
+Output:
+HTTP/1.1 404 Not Found
+Content-Length:0
+
+HTTP/1.1 200 OK
+Content-Length:249
+Content-Type:text/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<service xmlns="urn:dial-multiscreen-org:schemas:dial">
+  <name>Netflix</name>
+  <options allowStop="true"/>
+  <state>stopped</state>
+  <port>9080</port><capabilities>websocket</capabilities>
+

@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+found 1 devices
+Device at /net/reactivated/Fprint/Device/0
+Using device /net/reactivated/Fprint/Device/0
+Fingerprints for user slone on Synaptics Sensors (press):
+ - #0: left-thumb
+ - #1: right-thumb
+ - #2: left-index-finger
+ - #3: right-index-finger
+

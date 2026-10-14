@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import PyQt6; print('PyQt6:', PyQt6.QtCore.qVersion())
+                                  ^^^^^^^^^^^^
+AttributeError: module 'PyQt6' has no attribute 'QtCore'
+Multimedia: OK
+WebEngine: OK
+

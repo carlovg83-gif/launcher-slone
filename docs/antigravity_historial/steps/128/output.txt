@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+Leídos bytes: 65536 Primer byte (0x47 TS sync): 0x47
+

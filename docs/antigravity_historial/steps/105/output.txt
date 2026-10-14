@@ -1,0 +1,6 @@
+
+The command exited with code 0.
+Output:
+DIAL description loaded. Services:
+  urn:dial-multiscreen-org:service:dial:1 -> /ssdp/notfound
+

@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+pip 26.0.1 from /usr/lib/python3.14/site-packages/pip (python 3.14)
+

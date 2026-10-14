@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.bak*
+.DS_Store
+*.log
+.system_generated/
+config/*.env
+config/secrets.env
+config/slone_control.json
+config/security.log
+data/*.json
+data/orders.json
+keystore/
+*.keystore
+*.key
+*.pem
+*.sig
+dist/
+# Proteger listas IPTV privadas de proveedores
+*.m3u
+!playlists/tdt_spain.m3u
+

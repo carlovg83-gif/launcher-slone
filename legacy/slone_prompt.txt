@@ -1,0 +1,87 @@
+Para crear una aplicación IPTV M3U en Fedora desde cero, lo más eficiente es usar Python con GTK4 y GStreamer. Es la combinación nativa de Fedora, garantiza una integración perfecta con el escritorio y es la base de proyectos exitosos como EngPlayer. A continuación, tienes la estructura, las dependencias y el prompt exacto para que una IA lo desarrolle.
+
+📁 Estructura del Proyecto (para que la IA entienda)
+
+Crea esta estructura de carpetas y archivos. La IA necesita contexto claro para no perderse.
+
+```text
+iptv-player/
+├── README.md                 # Descripción, cómo instalar y ejecutar.
+├── AGENTS.md                 # Instrucciones maestras para la IA (¡Clave!).
+├── requirements.txt          # Dependencias de Python (PyGObject, requests...).
+├── setup.py                  # Script de instalación y empaquetado.
+├── .gitignore                # Ignorar archivos temporales.
+├── src/
+│   ├── __init__.py
+│   ├── main.py               # Punto de entrada de la aplicación.
+│   ├── ui/                   # Interfaz gráfica (archivos .ui y lógica GTK).
+│   │   ├── window.py
+│   │   └── player.py
+│   ├── core/                 # Lógica de negocio (independiente de la UI).
+│   │   ├── playlist.py       # Parseo de M3U, gestión de canales.
+│   │   └── epg.py            # Manejo de guía de programas (XMLTV).
+│   └── services/             # Servicios externos.
+│       ├── player_service.py # Integración con GStreamer.
+│       └── xtream.py         # Soporte para API Xtream Codes.
+└── data/
+    └── style.css             # Estilos de la interfaz (opcional).
+```
+
+📦 Dependencias para Fedora
+
+Ejecuta estos comandos en tu terminal antes de empezar. Son los cimientos del sistema.
+
+```bash
+# Dependencias de sistema (GTK4, Libadwaita, GStreamer)
+sudo dnf install python3-devel gtk4-devel libadwaita-devel gobject-introspection-devel \
+cairo-gobject-devel cairo-devel gstreamer1-devel gstreamer1-plugins-base \
+gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free \
+gstreamer1-libav mpv ffmpeg
+```
+
+Estas dependencias cubren todo: desde el motor de reproducción hasta los códecs necesarios.
+
+🤖 El "Prompt" Definitivo para la IA
+
+Copia y pega este texto en Claude, Gemini o DeepSeek. Está diseñado para que entiendan el contexto y generen código funcional.
+
+Rol: Actúa como un desarrollador senior experto en Python, GTK4 y GStreamer para Linux (Fedora).
+
+Tarea: Crea el código base de una aplicación de escritorio para ver listas IPTV M3U.
+
+Contexto del sistema: El entorno es Fedora Linux con las dependencias de desarrollo ya instaladas (GTK4, Libadwaita, GStreamer, PyGObject).
+
+Requisitos funcionales:
+
+1. La aplicación debe poder cargar un archivo .m3u local o una URL.
+2. Debe mostrar los canales en una lista (usando GtkListBox o GtkColumnView).
+3. Al seleccionar un canal, debe reproducirse el stream usando GStreamer (con playbin).
+4. La ventana principal debe usar AdwApplicationWindow para integrarse bien con GNOME.
+
+Estructura del proyecto: Sigue exactamente esta estructura de archivos:
+
+· src/main.py: Punto de entrada que inicializa AdwApplication.
+· src/ui/window.py: La AdwApplicationWindow principal. Contiene la lista de canales y el reproductor.
+· src/core/playlist.py: Una clase M3UParser con un método parse(file_path) que devuelve una lista de diccionarios ({'name': ..., 'url': ..., 'group': ...}).
+· src/services/player_service.py: Una clase que envuelva Gst.ElementFactory.make("playbin", "player") con métodos load(uri) y play().
+
+Instrucciones adicionales:
+
+· Usa PyGObject (gi.repository) para GTK4 y GStreamer.
+· Incluye un archivo README.md con las instrucciones para ejecutar la app (python3 -m src.main).
+· Genera también el archivo AGENTS.md con las reglas del proyecto para futuras iteraciones de IA.
+
+Empieza generando la estructura de carpetas y el código de playlist.py y player_service.py (el núcleo lógico), y luego pasa a la UI.
+
+🛠️ Lo que te falta y cómo integrarlo
+
+Tienes las cuentas de IA y GitHub. Para que todo funcione, te faltan estas piezas:
+
+1. Editor de Código: Necesitas un lugar donde la IA escriba el código. Instala GNOME Builder (nativo para Fedora) o VS Code.
+2. Herramienta de IA en el Editor: En lugar de copiar y pegar en la web, usa GitHub Copilot (tienes cuenta) o Cursor (que integra Claude/Gemini). Así la IA leerá los archivos de tu proyecto directamente.
+3. Git: Debes instalar git (sudo dnf install git) y configurarlo. Luego, crea un repositorio en GitHub y vincula tu carpeta local con git remote add origin <tu-repo>.
+4. Empaquetado (Opcional): Si quieres distribuir la app como un archivo .flatpak (lo estándar en Fedora), necesitarás instalar flatpak y flatpak-builder.
+
+El flujo de trabajo ideal es: pides a la IA que genere el código en tu editor, lo pruebas en Fedora, y cuando funcione, haces git commit y git push a GitHub para guardar el progreso.
+
+¿Necesitas que profundice en cómo configurar el editor con GitHub Copilot o en algún otro paso?

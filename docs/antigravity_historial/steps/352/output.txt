@@ -1,0 +1,14 @@
+
+The command exited with code 0.
+Output:
+Uso:
+  fprintd-verify [OPCIÓN…] [username] Verify a fingerprint
+
+Opciones de ayuda:
+  -h, --help             Mostrar opciones de ayuda
+
+Opciones de la aplicación:
+  -f, --finger           Finger selected to verify (default is automatic)
+  --g-fatal-warnings     Make all warnings fatal
+
+

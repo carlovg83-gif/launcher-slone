@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+Xiaomi TV Status: RTVE Play Volume: 0.5333333611488342
+

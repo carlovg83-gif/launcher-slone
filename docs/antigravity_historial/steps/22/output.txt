@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+gst-inspect-1.0 version 1.28.7
+gstreamer1-plugins-good-1.28.7-1.fc44.x86_64
+gstreamer1-plugins-bad-free-1.28.7-1.fc44.x86_64
+el paquete gstreamer1-libav no está instalado
+

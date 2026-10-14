@@ -1,0 +1,80 @@
+# ══════════════════════════════════════════════════════════════════════════
+# SLÖNE™ SOVEREIGN STREAMING ORIGIN ENGINE — MEDIAMTX CONFIGURATION
+# ══════════════════════════════════════════════════════════════════════════
+# Servidor de origen y distribución de ultra-baja latencia (<1s)
+# Diseñado para desplegarse con coste 0 € en Google Cloud / Hetzner
+# ══════════════════════════════════════════════════════════════════════════
+
+# 1. API & Métricas
+api: yes
+apiAddress: :9997
+metrics: yes
+metricsAddress: :9998
+
+# 2. Control de Puertos de Ingesta
+rtsp: yes
+rtspAddress: :8554
+rtmp: yes
+rtmpAddress: :1935
+hls: yes
+hlsAddress: :8888
+webrtc: yes
+webrtcAddress: :8889
+
+# 3. Configuración LL-HLS (Low Latency HLS) de Máximo Rendimiento
+hlsVariant: lowLatency
+hlsSegmentDuration: 500ms
+hlsPartDuration: 100ms
+hlsSegmentCount: 5
+hlsDirectory: ""
+hlsMuxerCloseAfter: 60s
+hlsAllowOrigin: "*"
+
+# 4. Configuración WebRTC (Cero Retardo / Sub-Segundo)
+webrtcLocalUDPAddress: :8889
+webrtcAllowOrigin: "*"
+webrtcHandshakeTimeout: 10s
+
+# 5. Ingesta y Transmisión de Canales Soberanos en Alta Disponibilidad
+paths:
+  # Canal Deportivo: Teledeporte HD
+  teledeporte:
+    source: https://rtvelivestream.akamaized.net/rtvesec/tdp/tdp_main.m3u8
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 30s
+
+  # Canal Deportivo: Real Madrid TV HD
+  realmadrid:
+    source: https://rmtv.akamaized.net/hls/live/2043153/rmtv-es/master.m3u8
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 30s
+
+  # Canal Deportivo: Esport3 Catalunya
+  esport3:
+    source: https://directes-tv-cat.ccma.cat/live-origin/esport3-hls/master.m3u8
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 30s
+
+  # Canal Generalista: TV3 HD
+  tv3:
+    source: https://directes-tv-cat.ccma.cat/live-origin/tv3-hls/master.m3u8
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 30s
+
+  # Canal Generalista: La 1 RTVE HD
+  la1:
+    source: https://rtvelivestream.akamaized.net/rtvesec/la1/la1_main.m3u8
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 10s
+    sourceOnDemandCloseAfter: 30s
+
+  # Enrutado dinámico para cualquier flujo M3U8 bajo demanda (acelerador proxy)
+  ~^proxy/(.+)$:
+    source: $1
+    sourceOnDemand: yes
+    sourceOnDemandStartTimeout: 15s
+    sourceOnDemandCloseAfter: 45s

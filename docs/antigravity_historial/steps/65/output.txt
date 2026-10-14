@@ -1,0 +1,9 @@
+
+The command exited with code 2.
+Output:
+Session: wayland
+mpv-0.41.0-5.fc44.x86_64
+el paquete python3-mpv no está instalado
+el paquete gstreamer1-libav no está instalado
+gstreamer1-plugins-ugly-1.28.7-1.fc44.x86_64
+

@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+total 2224
+drwxr-xr-x. 1 slone slone     80 sep 25 20:43 .
+drwxr-xr-x. 1 slone slone     12 sep 25 20:43 ..
+-rw-r--r--. 1 slone slone 406983 sep 25 20:43 crown_icon.png
+-rw-r--r--. 1 slone slone 406983 sep 25 20:43 logo.jpg
+-rw-r--r--. 1 slone slone 655988 sep 25 20:43 merch.jpg
+-rw-r--r--. 1 slone slone 794649 sep 25 20:43 store.jpg
+

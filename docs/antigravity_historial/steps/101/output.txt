@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+('192.168.1.135', 'LOCATION: http://192.168.1.135:9080', 'ST: urn:schemas-upnp-org:device:mdxdevice:1')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:9080', 'ST: upnp:rootdevice')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:8008/ssdp/device-desc.xml', 'ST: upnp:rootdevice')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:9080', 'ST: urn:mdx-netflix-com:service:target:3')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:9080', 'ST: uuid:NFANDROID2-PRV-JAWS-XIAOMMITV-AFKR0-24716-0CB530F18DE757F31C29CD23A25601B822B15D90523C1A0B8D9CC79CFAE39834')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:8008/ssdp/device-desc.xml', 'ST: urn:dial-multiscreen-org:service:dial:1')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:8008/ssdp/device-desc.xml', 'ST: urn:dial-multiscreen-org:device:dial:1')
+('192.168.1.135', 'LOCATION: http://192.168.1.135:8008/ssdp/device-desc.xml', 'ST: uuid:f4121f62-fb5c-593a-5627-e208b3a7ab7c')
+

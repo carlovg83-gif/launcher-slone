@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SLONE Vault · Bóveda cifrada
+Name[en]=SLONE Vault · Encrypted Vault
+Comment=Desbloquea la bóveda cifrada de SLOCAST (huella + contraseña + 2FA)
+Comment[en]=Unlock the SLOCAST encrypted vault (fingerprint + password + 2FA)
+Exec=/home/slone/slocast 1.0/scripts/slone_vault.sh unlock
+Icon=/home/slone/slocast 1.0/icons/slone.png
+Terminal=true
+Categories=Utility;Security;Accessibility;
+Keywords=slocast;vault;boveda;cifrado;encrypted;seguridad;security;
+StartupNotify=true

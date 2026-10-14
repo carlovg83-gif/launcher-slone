@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+  File "/home/slone/.local/bin/slone", line 2
+    exec python3 /home/slone/.gemini/antigravity/scratch/slocast/slocast.py "$@"
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: Missing parentheses in call to 'exec'. Did you mean exec(...)?
+

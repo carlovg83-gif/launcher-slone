@@ -1,0 +1,164 @@
+{
+  "theme": {
+    "name": "Barça Blaugrana & Cyber SLÖNE",
+    "primary": "#004D98",
+    "secondary": "#A50044",
+    "accent": "#EDBB00",
+    "background": "#08090D",
+    "card_bg": "#10121A"
+  },
+  "fan_audio_presets": [
+    {
+      "id": "rac1",
+      "name": "🔵🔴 Audio Culer · RAC1 (Joan Maria Pou)",
+      "url": "https://stream.rac1.cat/rac1.mp3",
+      "club": "FC Barcelona",
+      "desc": "El Barça juga a RAC1 en directe i en català"
+    },
+    {
+      "id": "catradio",
+      "name": "🔵🔴 Catalunya Ràdio (La TDT del Barça)",
+      "url": "https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8",
+      "club": "FC Barcelona",
+      "desc": "La transmissió oficial de Catalunya Ràdio"
+    },
+    {
+      "id": "estadio",
+      "name": "🏟️ Sonido Ambiente Puro (Estadio sin comentaristas)",
+      "url": "ambient",
+      "club": "Neutral",
+      "desc": "Solo la afición y el césped, sin narradores pesados"
+    },
+    {
+      "id": "ser",
+      "name": "📻 Cadena SER (Carrusel Deportivo)",
+      "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3",
+      "club": "Nacional",
+      "desc": "Dani Garrido y todo el equipo de Carrusel"
+    },
+    {
+      "id": "cope",
+      "name": "📻 Cadena COPE (Tiempo de Juego)",
+      "url": "https://flive.cope.stream.flumotion.com/cope/net1.mp3",
+      "club": "Nacional",
+      "desc": "Paco González y Manolo Lama"
+    },
+    {
+      "id": "marca",
+      "name": "📻 Radio Marca",
+      "url": "https://radiomarca.streaming-pro.com:8024/radiomarca.mp3",
+      "club": "Nacional",
+      "desc": "Marcador en directo"
+    }
+  ],
+  "installed_tv_apps": [
+    {
+      "id": "playstore",
+      "name": "Google Play Store",
+      "package": "com.android.vending",
+      "icon": "🛍️",
+      "badge": "OFICIAL",
+      "desc": "Tienda oficial de aplicaciones Android TV",
+      "color": "linear-gradient(135deg, #0086F8, #00F0FF)"
+    },
+    {
+      "id": "aptoide",
+      "name": "Aptoide TV",
+      "package": "cm.aptoidetv.pt",
+      "icon": "🏪",
+      "badge": "TIENDA LIBRE",
+      "desc": "Tienda alternativa de apps sin restricciones",
+      "color": "linear-gradient(135deg, #FF6600, #CC3300)"
+    },
+    {
+      "id": "slone",
+      "name": "SLÖNE Engine",
+      "package": "com.slone.media",
+      "icon": "👑",
+      "badge": "SOVEREIGN",
+      "desc": "Reproductor Multiview 4X y Audio-Sync",
+      "color": "linear-gradient(135deg, #E3FF00, #FF6600)"
+    },
+    {
+      "id": "smarttube",
+      "name": "SmartTube",
+      "package": "org.smarttube.stable",
+      "icon": "▶️",
+      "badge": "SIN ANUNCIOS",
+      "desc": "YouTube 4K sin publicidad para Android TV",
+      "color": "linear-gradient(135deg, #FF0000, #880000)"
+    },
+    {
+      "id": "tv3",
+      "name": "3Cat / TV3",
+      "package": "cat.ccma.androidtv.tv3",
+      "icon": "🔴",
+      "badge": "CATALUNYA",
+      "desc": "Esport3, TV3 y retransmisiones en català",
+      "color": "linear-gradient(135deg, #E30613, #004D98)"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "package": "com.netflix.ninja",
+      "icon": "🍿",
+      "badge": "4K HDR",
+      "desc": "Películas, series y documentales",
+      "color": "linear-gradient(135deg, #E50914, #221F1F)"
+    },
+    {
+      "id": "prime",
+      "name": "Prime Video",
+      "package": "com.amazon.amazonvideo.livingroom",
+      "icon": "📦",
+      "badge": "AMAZON",
+      "desc": "Series exclusivas y Champions",
+      "color": "linear-gradient(135deg, #00A8E1, #1A242F)"
+    },
+    {
+      "id": "rtve",
+      "name": "RTVE Play",
+      "package": "com.rtve.androidtv",
+      "icon": "🔵",
+      "badge": "TDT HD",
+      "desc": "Teledeporte, La 1 y directos en abierto",
+      "color": "linear-gradient(135deg, #0055A5, #F58220)"
+    },
+    {
+      "id": "atresplayer",
+      "name": "atresplayer",
+      "package": "com.antena3.atresplayer.tv",
+      "icon": "🎭",
+      "badge": "ATRES",
+      "desc": "Antena 3, laSexta y canales temáticos",
+      "color": "linear-gradient(135deg, #FF6900, #1F1F24)"
+    },
+    {
+      "id": "downloader",
+      "name": "Downloader",
+      "package": "com.esaba.downloader",
+      "icon": "📥",
+      "badge": "UTILIDAD",
+      "desc": "Descarga e instalación de APKs por código",
+      "color": "linear-gradient(135deg, #FF9900, #333333)"
+    },
+    {
+      "id": "browser",
+      "name": "Navegador Web TV",
+      "package": "com.tcl.browser",
+      "icon": "🌐",
+      "badge": "WEB",
+      "desc": "Navegar por Internet desde la Xiaomi TV",
+      "color": "linear-gradient(135deg, #0099FF, #003366)"
+    },
+    {
+      "id": "settings",
+      "name": "Ajustes Xiaomi TV",
+      "package": "com.android.tv.settings",
+      "icon": "⚙️",
+      "badge": "SISTEMA",
+      "desc": "Configuración de pantalla, sonido y red",
+      "color": "linear-gradient(135deg, #555555, #222222)"
+    }
+  ]
+}

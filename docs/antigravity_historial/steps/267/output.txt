@@ -1,0 +1,5 @@
+Using prompt: Luxury streetwear and tech hardware merchandising mockup featuring the SLONE crown logo in fluorescent acid yellow, heavy black cotton hoodie, matte black cap, high-end aluminum streaming remote control, all branded with the minimalist sharp SLONE emblem, studio lighting, hyper-realistic product photoshoot, billion dollar lifestyle brand presentation, Apple meets Balenciaga aesthetic, 8k
+
+Generated image is saved at /home/slone/.gemini/antigravity/brain/5bba4fad-3982-4afd-8d3d-152fe2ea644a/slone_merch_mockup_1790361473091.jpg.
+
+ Do not output the path of this image to show to the user since the user can already see it. However, you can embed this image in artifacts for the USER's review.

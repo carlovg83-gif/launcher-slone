@@ -1,0 +1,77 @@
+The following changes were made by the replace_file_content tool to: /home/slone/.gemini/antigravity/scratch/slocast/slocast.py. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -267,6 +267,71 @@
+     border-radius: 8px;
+     padding: 18px;
+ }
++
++/* ── CINEMATIC HUD & OSD (ESTILO TIVIMATE / INFUSE) ── */
++#PlayerCard {
++    background-color: #040405;
++    border: 1px solid #181820;
++    border-radius: 12px;
++}
++#HudHeader {
++    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #121218, stop:1 #060608);
++    border-bottom: 1px solid #1A1A22;
++    border-top-left-radius: 12px;
++    border-top-right-radius: 12px;
++    min-height: 42px;
++}
++#HudChannelName {
++    color: #FFFFFF;
++    font-size: 14px;
++    font-weight: 900;
++    letter-spacing: 0.5px;
++}
++#BadgeQuality {
++    background-color: #1A1A24;
++    color: #FFFFFF;
++    border: 1px solid #282836;
++    border-radius: 4px;
++    padding: 2px 7px;
++    font-size: 10px;
++    font-weight: 800;
++}
++#BadgeZeroFreeze {
++    background-color: #0A2412;
++    color: #00E676;
++    border: 1px solid #00E676;
++    border-radius: 4px;
++    padding: 2px 8px;
++    font-size: 10px;
++    font-weight: 900;
++    letter-spacing: 0.5px;
++}
++#BadgeLatency {
++    background-color: #242200;
++    color: #E3FF00;
++    border: 1px solid #E3FF00;
++    border-radius: 4px;
++    padding: 2px 7px;
++    font-size: 10px;
++    font-weight: 800;
++}
++#ClockLabel {
++    color: #E3FF00;
++    font-family: 'JetBrains Mono', monospace, monospace;
++    font-size: 12px;
++    font-weight: 800;
++    background: #09090C;
++    border: 1px solid #1E1E24;
++    border-radius: 6px;
++    padding: 2px 8px;
++}
++#HudFooter {
++    background-color: #060608;
++    border-top: 1px solid #141418;
++    border-bottom-left-radius: 12px;
++    border-bottom-right-radius: 12px;
++    min-height: 28px;
++}
+ """
+ 
+ def get_local_ip() -> str:
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,6 @@
+
+The command exited with code 0.
+Output:
+which: no adb in (/home/slone/.gemini/antigravity/bin:/home/slone/.config/Antigravity/bin:/home/slone/.local/bin:/home/slone/bin:/home/slone/.nvm/versions/node/v22.0.0/bin:/usr/local/bin:/usr/bin:/bin)
+SIN_ADB
+

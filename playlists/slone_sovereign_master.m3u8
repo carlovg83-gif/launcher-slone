@@ -1,0 +1,864 @@
+#EXTM3U
+# SLONE™ SOVEREIGN MASTER PLAYLIST · Compilada el 2026-10-14 20:28:49
+# Protocolo de latencia optimizada y multiplexación Multiview 4X
+
+#EXTINF:-1 tvg-id="TDP.TV" tvg-name="Teledeporte" tvg-logo="https://graph.facebook.com/teledeporteRTVE/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Teledeporte GEO
+https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8
+#EXTINF:-1 tvg-id="TDP.TV" tvg-name="Teledeporte" tvg-logo="https://graph.facebook.com/teledeporteRTVE/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Teledeporte
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15601&avod=1&coppa=0&td=6&is_lat=[LMT]&dnt=[DNS]&us_privacy=[US_PRIVACY]&did=[DEVICE_ID]&ip=[IP]&ua=[UA]&ifa_type=[IFA_TYPE]&app_bundle=[APP_BUNDLE]
+#EXTINF:-1 tvg-id="E3.TV" tvg-name="Esport3" tvg-logo="https://graph.facebook.com/Esport3/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Esport3 GEO CAT
+https://directes-tv-cat.3catdirectes.cat/live-origin/esport3-hls/master.m3u8
+#EXTINF:-1 tvg-id="E3.TV" tvg-name="Esport3" tvg-logo="https://graph.facebook.com/Esport3/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Esport3 GEO
+https://directes-tv-es.3catdirectes.cat/live-origin/esport3-hls/master.m3u8
+#EXTINF:-1 tvg-id="ETBD.TV" tvg-name="ETB Deportes (Kirolak 360)" tvg-logo="https://graph.facebook.com/deportes.eitb.kirolak/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",ETB Deportes (Kirolak 360)
+https://multimedia.eitb.eus/live-content/oka1hd-hls/master.m3u8
+#EXTINF:-1 tvg-id="ETBD.TV" tvg-name="ETB Deportes (Kirolak 360)" tvg-logo="https://graph.facebook.com/deportes.eitb.kirolak/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",ETB Deportes (Kirolak 360)
+https://multimedia.eitb.eus/live-content/oka2hd-hls/master.m3u8
+#EXTINF:-1 tvg-id="ETBD.TV" tvg-name="ETB Deportes (Kirolak 360)" tvg-logo="https://graph.facebook.com/deportes.eitb.kirolak/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",ETB Deportes (Kirolak 360)
+https://multimedia.eitb.eus/live-content/oka3hd-hls/master.m3u8
+#EXTINF:-1 tvg-id="RMTV.TV" tvg-name="Real Madrid TV" tvg-logo="https://graph.facebook.com/RealMadrid/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Real Madrid TV
+https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/master.m3u8
+#EXTINF:-1 tvg-id="RMTV.TV" tvg-name="Real Madrid TV" tvg-logo="https://graph.facebook.com/RealMadrid/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",Real Madrid TV EN
+https://rmtv.akamaized.net/hls/live/2043154/rmtv-en-web/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="7TV Sevilla" tvg-logo="https://graph.facebook.com/7TelevisionAndalucia/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",7TV Sevilla
+https://especial7tv.gestec-video.com/hls/7TVSEVILLA.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="101TV Sevilla" tvg-logo="https://graph.facebook.com/101TVSevilla/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",101TV Sevilla
+https://liveingesta318.cdnmedia.tv/101televisionlive/smil:sevillaott.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="101TV Sevilla Cofrade" tvg-logo="https://graph.facebook.com/101TVSevilla/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",101TV Sevilla Cofrade
+https://liveingesta318.cdnmedia.tv/101weblive/smil:CofradeSevilla.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="PTV_Sevilla.TV" tvg-name="PTV Sevilla" tvg-logo="https://graph.facebook.com/SevillaPTV/picture?width=200&height=200" group-title="⚽ SLONE SPORTS & MOTOR",PTV Sevilla
+https://streamer.zapitv.com/PTV_sevilla/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Miami TV Gold" tvg-logo="https://pbs.twimg.com/profile_images/851530148998520833/lnGsJSwt_200x200.jpg" group-title="⚽ SLONE SPORTS & MOTOR",Miami TV Gold
+https://8f4cbe9fa8d44aa3bfd4283527a9effd.mediatailor.us-east-2.amazonaws.com/v1/master/c3d3fd1c31fa281b88eab2cd253e2ca576b6628b/fast_gold/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Red Bull TV" tvg-logo="https://pbs.twimg.com/profile_images/626481857161375748/OeXi9avz_200x200.png" group-title="⚽ SLONE SPORTS & MOTOR",Red Bull TV EN
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
+#EXTINF:-1 tvg-id="TV3.TV" tvg-name="TV3" tvg-logo="https://pbs.twimg.com/profile_images/1269286508625891328/rVes9BS__200x200.png" group-title="🔴 CATALUNYA & GIRONA",TV3 GEO CAT
+https://directes3-tv-cat.3catdirectes.cat/live-content/tv3-hls/master.m3u8
+#EXTINF:-1 tvg-id="BTV.TV" tvg-name="betevé" tvg-logo="https://graph.facebook.com/betevecat/picture?width=200&height=200" group-title="🔴 CATALUNYA & GIRONA",betevé
+https://cdnapisec.kaltura.com/p/2346171/sp/234617100/playManifest/entryId/1_vfibi2fe/protocol/https/format/applehttp/a.m3u8?referrer=aHR0cHM6Ly9iZXRldmUuY2F0
+#EXTINF:-1 tvg-id="C33M.TV" tvg-name="Canal 33 Madrid" tvg-logo="https://yt3.googleusercontent.com/nMLOOCMI7LojDKtlKoYXJEmVin-_lbR4Y-TgAdQ7RvJvuinOI109sFGIl_HwbqlWn3g7qMDH=s200" group-title="🔴 CATALUNYA & GIRONA",Canal 33 Madrid
+https://media2.streambrothers.com:1936/8140/8140/.m3u8
+#EXTINF:-1 tvg-id="TVC.TV" tvg-name="TV3 CAT" tvg-logo="https://pbs.twimg.com/profile_images/1269286508625891328/rVes9BS__200x200.png" group-title="🔴 CATALUNYA & GIRONA",TV3 CAT GEO
+https://directes-tv-es.3catdirectes.cat/live-content/tvc-hls/master.m3u8
+#EXTINF:-1 tvg-id="TVC.TV" tvg-name="TV3 CAT" tvg-logo="https://pbs.twimg.com/profile_images/1269286508625891328/rVes9BS__200x200.png" group-title="🔴 CATALUNYA & GIRONA",TV3 CAT GEO
+https://directes-tv-es.3catdirectes.cat/live-origin/tvc-hls/master.m3u8
+#EXTINF:-1 tvg-id="TVC.TV" tvg-name="TV3 CAT" tvg-logo="https://pbs.twimg.com/profile_images/1269286508625891328/rVes9BS__200x200.png" group-title="🔴 CATALUNYA & GIRONA",TV3 CAT
+https://directes3-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8
+#EXTINF:-1 tvg-id="La1.TV" tvg-name="La 1" tvg-logo="https://graph.facebook.com/la1detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 1
+https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La1.TV" tvg-name="La 1" tvg-logo="https://graph.facebook.com/la1detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 1
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15619&avod=1&coppa=0&td=6&is_lat=[LMT]&dnt=[DNS]&us_privacy=[US_PRIVACY]&did=[DEVICE_ID]&ip=[IP]&ua=[UA]&ifa_type=[IFA_TYPE]&app_bundle=[APP_BUNDLE]
+#EXTINF:-1 tvg-id="La2.TV" tvg-name="La 2" tvg-logo="https://graph.facebook.com/la2detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 2
+https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La2.TV" tvg-name="La 2" tvg-logo="https://graph.facebook.com/la2detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 2
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15618
+#EXTINF:-1 tvg-id="13.TV" tvg-name="TRECE" tvg-logo="https://graph.facebook.com/TRECEtves/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",TRECE
+https://play.cdn.enetres.net/091DB7AFBD77442B9BA2F141DCC182F5021/021/playlist.m3u8
+#EXTINF:-1 tvg-id="Clan.TV" tvg-name="Clan" tvg-logo="https://graph.facebook.com/clantve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",Clan GEO
+https://ztnr.rtve.es/ztnr/5466990.m3u8
+#EXTINF:-1 tvg-id="Clan.TV" tvg-name="Clan" tvg-logo="https://graph.facebook.com/clantve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",Clan GEO
+https://rtvelivestream.rtve.es/rtvesec/clan/clan_main_dvr.m3u8
+#EXTINF:-1 tvg-id="Clan.TV" tvg-name="Clan" tvg-logo="https://graph.facebook.com/clantve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",Clan
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15620
+#EXTINF:-1 tvg-id="" tvg-name="8TV Chiclana" tvg-logo="https://graph.facebook.com/8tvcadiz/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",8TV Chiclana
+https://s.emisoras.tv:8081/chiclana/index.m3u8
+#EXTINF:-1 tvg-id="La1_CAN.TV" tvg-name="La 1 Canarias" tvg-logo="https://graph.facebook.com/la1detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 1 Canarias
+https://rtvelivestream.rtve.es/rtvesec/can/la1_can_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La2_CAN.TV" tvg-name="La 2 Canarias" tvg-logo="https://graph.facebook.com/la2detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 2 Canarias
+https://rtvelivestream.rtve.es/rtvesec/can/la2_can_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La1_CAT.TV" tvg-name="La 1 Catalunya" tvg-logo="https://graph.facebook.com/la1detve/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La 1 Catalunya
+https://rtvelivestream.rtve.es/rtvesec/cat/la1_cat_main_dvr.m3u8
+#EXTINF:-1 tvg-id="La2_CAT.TV" tvg-name="La 2 Cat" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz-PTZCuOfGtshG9A9z2phYEL97ppHhD0cug&s" group-title="📺 GENERALISTAS ESPAÑA HD",La 2 Cat
+https://rtvelivestream.rtve.es/rtvesec/cat/la2_cat_main_dvr.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="La Mega Mundial USA" tvg-logo="https://graph.facebook.com/lamegaworldwide/picture?width=200&height=200" group-title="📺 GENERALISTAS ESPAÑA HD",La Mega Mundial USA
+https://server80.servistreaming.com:3477/stream/play.m3u8
+#EXTINF:-1 tvg-id="24Horas.TV" tvg-name="24h" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h
+https://ztnr.rtve.es/ztnr/1694255.m3u8
+#EXTINF:-1 tvg-id="24Horas.TV" tvg-name="24h" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h
+https://rtvelivestream.rtve.es/rtvesec/24h/24h_main_dvr.m3u8
+#EXTINF:-1 tvg-id="24Horas.TV" tvg-name="24h" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15621
+#EXTINF:-1 tvg-id="Euronews.TV" tvg-name="Euronews" tvg-logo="https://graph.facebook.com/es.euronews/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",Euronews
+https://euronews-live-spa-es.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6571/bitok/eyJzdGlkIjoiMDA0YjY0NTMtYjY2MC00ZTZkLTlkNzEtMTk3YTM3ZDZhZWIxIiwibWt0IjoiZXMiLCJjaCI6NjU3MSwicHRmIjoxfQ==/26034/euronews-es.m3u8
+#EXTINF:-1 tvg-id="Almería_24h.TV" tvg-name="Almería 24h TV" tvg-logo="https://graph.facebook.com/107654981928274/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",Almería 24h TV
+https://broadcast1.radioponiente.org/almeria24h_aac/index.m3u8
+#EXTINF:-1 tvg-id="24H_CAN.TV" tvg-name="24h Canarias" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h Canarias
+https://ztnr.rtve.es/ztnr/5473142.m3u8
+#EXTINF:-1 tvg-id="24H_CAN.TV" tvg-name="24h Canarias" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h Canarias
+https://rtvelivestream.rtve.es/rtvesec/can/24h_can_main_dvr.m3u8
+#EXTINF:-1 tvg-id="24H_CAT.TV" tvg-name="24h Catalunya" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h Catalunya
+https://ztnr.rtve.es/ztnr/4952053.m3u8
+#EXTINF:-1 tvg-id="24H_CAT.TV" tvg-name="24h Catalunya" tvg-logo="https://pbs.twimg.com/profile_images/1634293543987453954/mb1Rzmso_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",24h Catalunya
+https://rtvelivestream.rtve.es/rtvesec/cat/24h_cat_main_dvr.m3u8
+#EXTINF:-1 tvg-id="CNNInt.TV" tvg-name="CNN Internacional" tvg-logo="https://graph.facebook.com/cnninternational/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",CNN Internacional
+https://ds2c506obo7m8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-7zjq3tdqasbg8/index.m3u8
+#EXTINF:-1 tvg-id="Bloom.TV" tvg-name="Bloomberg Europe" tvg-logo="https://pbs.twimg.com/profile_images/991792042094354432/DG1Ruupb_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",Bloomberg Europe EN
+https://www.bloomberg.com/media-manifest/streams/eu.m3u8
+#EXTINF:-1 tvg-id="DW.TV" tvg-name="DW Alemania" tvg-logo="https://graph.facebook.com/dw.espanol/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",DW Alemania
+https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/index.m3u8
+#EXTINF:-1 tvg-id="DW.TV" tvg-name="DW Alemania" tvg-logo="https://graph.facebook.com/dw.espanol/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",DW Alemania EN
+https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Bloomberg USA" tvg-logo="https://pbs.twimg.com/profile_images/991792042094354432/DG1Ruupb_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",Bloomberg USA EN
+https://www.bloomberg.com/media-manifest/streams/us.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Bloomberg USA" tvg-logo="https://pbs.twimg.com/profile_images/991792042094354432/DG1Ruupb_200x200.jpg" group-title="📰 NOTICIAS & INTERNACIONAL",Bloomberg USA EN
+https://www.bloomberg.com/media-manifest/streams/us-event.m3u8
+#EXTINF:-1 tvg-id="AlJQ.TV" tvg-name="Al Jazeera Catar" tvg-logo="https://graph.facebook.com/aljazeera/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",Al Jazeera Catar EN
+https://live-hls-web-aje-gcp.thehlive.com/AJE/index.m3u8
+#EXTINF:-1 tvg-id="AlJQ.TV" tvg-name="Al Jazeera Catar" tvg-logo="https://graph.facebook.com/aljazeera/picture?width=200&height=200" group-title="📰 NOTICIAS & INTERNACIONAL",Al Jazeera Catar AR
+https://live-hls-web-aja.getaj.net/AJA/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Bloomberg Originals" tvg-logo="https://yt3.ggpht.com/fTP5oS376nZhVbS55-OocogCJCDH4UXIyRrirF6keIya4AN4I54TmLkFnnjvE4FRq5UMv8BO=s200" group-title="📰 NOTICIAS & INTERNACIONAL",Bloomberg Originals EN
+https://www.bloomberg.com/media-manifest/streams/qt.m3u8
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASERAAC.aac
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER_ALT1AAC.aac
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER_ALT2AAC.aac
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER_ALT1.mp3
+#EXTINF:-1 tvg-id="CadenaS.Radio" tvg-name="Cadena SER" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Cadena SER
+https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER_ALT2.mp3
+#EXTINF:-1 tvg-id="COPE.Radio" tvg-name="COPE" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE
+https://flucast09-h-cloud.flumotion.com/cope/net1.aac
+#EXTINF:-1 tvg-id="COPE.Radio" tvg-name="COPE" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE
+https://flucast31-h-cloud.flumotion.com/cope/net2.aac
+#EXTINF:-1 tvg-id="COPE.Radio" tvg-name="COPE" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE
+https://flucast09-h-cloud.flumotion.com/cope/net1.mp3
+#EXTINF:-1 tvg-id="COPE.Radio" tvg-name="COPE" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE
+https://flucast31-h-cloud.flumotion.com/cope/net2.mp3
+#EXTINF:-1 tvg-id="OndaCero.Radio" tvg-name="Onda Cero" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OCAAC.aac
+#EXTINF:-1 tvg-id="OndaCero.Radio" tvg-name="Onda Cero" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero
+https://atres-live.ondacero.es/live/ondaceroeventos1/master.m3u8
+#EXTINF:-1 tvg-id="esRadio.Radio" tvg-name="esRadio" tvg-logo="https://graph.facebook.com/esradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio
+https://libertaddigital-radio-live1.flumotion.com/libertaddigital/ld-live1-high.aac
+#EXTINF:-1 tvg-id="esRadio.Radio" tvg-name="esRadio" tvg-logo="https://graph.facebook.com/esradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio
+https://libertaddigital-radio-live1.flumotion.com/libertaddigital/ld-live1-high.mp3
+#EXTINF:-1 tvg-id="Marca.Radio" tvg-name="Radio Marca" tvg-logo="https://graph.facebook.com/RadioMARCA/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca
+https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_NACIONALAAC.aac
+#EXTINF:-1 tvg-id="Marca.Radio" tvg-name="Radio Marca" tvg-logo="https://graph.facebook.com/RadioMARCA/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca
+https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_NACIONAL.mp3
+#EXTINF:-1 tvg-id="RNE5.Radio" tvg-name="Radio 5 RNE" tvg-logo="https://pbs.twimg.com/profile_images/1405097207339028480/H7nP_7Ti_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio 5 RNE
+https://rtvelivestream.rtve.es/rtvesec/rne/rne_r5_madrid_main.m3u8
+#EXTINF:-1 tvg-id="RAC1.Radio" tvg-name="RAC1" tvg-logo="https://graph.facebook.com/rac1oficial/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",RAC1
+https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_1.mp3
+#EXTINF:-1 tvg-id="RAC1.Radio" tvg-name="RAC1" tvg-logo="https://graph.facebook.com/rac1oficial/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",RAC1
+https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_MES_1.mp3
+#EXTINF:-1 tvg-id="CATRadio.Radio" tvg-name="Catalunya Ràdio" tvg-logo="https://graph.facebook.com/catradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Catalunya Ràdio
+https://directes-radio-int.3catdirectes.cat/live-content/catalunya-radio-hls/master.m3u8
+#EXTINF:-1 tvg-id="RNE3.Radio" tvg-name="Radio 3 RNE" tvg-logo="https://graph.facebook.com/radio3/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio 3 RNE
+https://rtvelivestream.rtve.es/rtvesec/rne/rne_r3_main.m3u8
+#EXTINF:-1 tvg-id="RNEClasica.Radio" tvg-name="Radio Clásica RNE" tvg-logo="https://graph.facebook.com/radioclasicartve/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Clásica RNE
+https://rtvelivestream.rtve.es/rtvesec/rne/rne_r2_main.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Marcador Almería" tvg-logo="https://graph.facebook.com/marcadoralmeria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Marcador Almería
+https://streaming.indalteco.net/proxy/radiomarca?mp=/rmarcaalm.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Málaga" tvg-logo="https://graph.facebook.com/radiomarcamalaga/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Málaga
+https://malagafm.streaming-pro.com:8131/malagafmmobile
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Sevilla" tvg-logo="https://pbs.twimg.com/profile_images/830439040218439682/M7-5RkWu_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Sevilla
+https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_SEVILLA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="SER Algeciras" tvg-logo="https://graph.facebook.com/radioalgeciras/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Algeciras
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ALGECIRAS.mp3
+#EXTINF:-1 tvg-id="" tvg-name="SER Almería" tvg-logo="https://graph.facebook.com/SERAlmeria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Almería
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ALMERIA.mp3
+#EXTINF:-1 tvg-id="S_AndaluciaCentro.Radio" tvg-name="SER Andalucía Centro" tvg-logo="https://graph.facebook.com/SerAndaluciaCentro/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Andalucía Centro
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ESTEPA.mp3
+#EXTINF:-1 tvg-id="S_Andujar.Radio" tvg-name="SER Andújar" tvg-logo="https://graph.facebook.com/serandujar/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Andújar
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ANDUJAR.mp3
+#EXTINF:-1 tvg-id="S_Antequera.Radio" tvg-name="SER Antequera" tvg-logo="https://graph.facebook.com/CadenaSERAntequera/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Antequera
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ANTEQUERA.mp3
+#EXTINF:-1 tvg-id="S_Axarquia.Radio" tvg-name="SER Axarquía" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Axarquía
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_AXARQUIA.mp3
+#EXTINF:-1 tvg-id="S_Baza.Radio" tvg-name="SER Baza" tvg-logo="https://pbs.twimg.com/profile_images/1362728539993309185/B2NJDAT0_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Baza
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_BAZA.mp3
+#EXTINF:-1 tvg-id="S_Cadiz.Radio" tvg-name="SER Cádiz" tvg-logo="https://graph.facebook.com/radiocadizcadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Cádiz
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CADIZ.mp3
+#EXTINF:-1 tvg-id="S_CocaSerRonda.Radio" tvg-name="SER Coca SER Ronda" tvg-logo="https://graph.facebook.com/SERRonda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Coca SER Ronda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_RONDA.mp3
+#EXTINF:-1 tvg-id="S_Comarca.Radio" tvg-name="SER Comarca" tvg-logo="https://graph.facebook.com/radiocomarcaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Comarca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_COMARCA.mp3
+#EXTINF:-1 tvg-id="S_Comarca.Radio" tvg-name="SER Comarca" tvg-logo="https://graph.facebook.com/radiocomarcaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Comarca
+https://eu1.lhdserver.es:8075/stream
+#EXTINF:-1 tvg-id="S_Cordoba.Radio" tvg-name="SER Córdoba" tvg-logo="https://graph.facebook.com/radiocordoba/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Córdoba
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CORDOBA.mp3
+#EXTINF:-1 tvg-id="S_CostadelaLuz.Radio" tvg-name="SER Costa de la Luz" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Costa de la Luz
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_COSTA_LUZ.mp3
+#EXTINF:-1 tvg-id="S_Granada.Radio" tvg-name="SER Granada" tvg-logo="https://graph.facebook.com/radiogranada/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Granada
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_GRANADA.mp3
+#EXTINF:-1 tvg-id="S_Guadix.Radio" tvg-name="SER Guadix" tvg-logo="https://pbs.twimg.com/profile_images/844272346492026884/y6i9L3Fl_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Guadix
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_GUADIX.mp3
+#EXTINF:-1 tvg-id="S_Huelva.Radio" tvg-name="SER Huelva" tvg-logo="https://graph.facebook.com/RadioHuelva/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Huelva
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_HUELVA.mp3
+#EXTINF:-1 tvg-id="S_Jaen.Radio" tvg-name="SER Jaén" tvg-logo="https://graph.facebook.com/radiojaenser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Jaén
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_JAEN.mp3
+#EXTINF:-1 tvg-id="S_Jerez.Radio" tvg-name="SER Jerez" tvg-logo="https://graph.facebook.com/radiojerezser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Jerez
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_JEREZ.mp3
+#EXTINF:-1 tvg-id="S_Jodar.Radio" tvg-name="SER Jódar" tvg-logo="https://graph.facebook.com/RadioJodarSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Jódar
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_JODAR.mp3
+#EXTINF:-1 tvg-id="S_LaJanda.Radio" tvg-name="SER La Janda" tvg-logo="https://graph.facebook.com/SERLaJanda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER La Janda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_LA_JANDA.mp3
+#EXTINF:-1 tvg-id="S_Levante.Radio" tvg-name="SER Levante" tvg-logo="https://graph.facebook.com/cadenaSERlevante/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Levante
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_LEVANTE.mp3
+#EXTINF:-1 tvg-id="S_Linares.Radio" tvg-name="SER Linares" tvg-logo="https://graph.facebook.com/radiolinarescadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Linares
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LINARES.mp3
+#EXTINF:-1 tvg-id="S_Lucena.Radio" tvg-name="SER Lucena" tvg-logo="https://graph.facebook.com/cadenaserlucena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Lucena
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_LUCENA.mp3
+#EXTINF:-1 tvg-id="S_Luna.Radio" tvg-name="SER Luna" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Luna
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_LUNA.mp3
+#EXTINF:-1 tvg-id="S_Malaga.Radio" tvg-name="SER Málaga" tvg-logo="https://graph.facebook.com/SERMalaga/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Málaga
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MALAGA.mp3
+#EXTINF:-1 tvg-id="S_MarbellaCostadelSol.Radio" tvg-name="SER Marbella Costa del Sol" tvg-logo="https://pbs.twimg.com/profile_images/1866786104436776960/sby2wtsB_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Marbella Costa del Sol
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MARBELLA_COSTA_SOL.mp3
+#EXTINF:-1 tvg-id="S_Moron.Radio" tvg-name="SER Morón" tvg-logo="https://graph.facebook.com/radiomoron.cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Morón
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MORON.mp3
+#EXTINF:-1 tvg-id="S_Motril.Radio" tvg-name="SER Motril" tvg-logo="https://graph.facebook.com/radiomotril/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Motril
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MOTRIL.mp3
+#EXTINF:-1 tvg-id="S_Palma.Radio" tvg-name="SER Palma" tvg-logo="https://pbs.twimg.com/profile_images/1460395024387129345/XXv3tcKr_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Palma
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_PALMA_DEL_RIO.mp3
+#EXTINF:-1 tvg-id="S_Poniente.Radio" tvg-name="SER Poniente" tvg-logo="https://graph.facebook.com/SERponiente/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Poniente
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_PONIENTE.mp3
+#EXTINF:-1 tvg-id="S_Roquetas.Radio" tvg-name="SER Roquetas" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Roquetas
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ROQUETAS.mp3
+#EXTINF:-1 tvg-id="S_Sevilla.Radio" tvg-name="SER Sevilla" tvg-logo="https://graph.facebook.com/radiosevilla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Sevilla
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_SEVILLA.mp3
+#EXTINF:-1 tvg-id="S_Ubeda.Radio" tvg-name="SER Úbeda" tvg-logo="https://graph.facebook.com/radioubeda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Úbeda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_UBEDAAAC.aac
+#EXTINF:-1 tvg-id="" tvg-name="COPE Almería" tvg-logo="https://pbs.twimg.com/profile_images/1088731982685720577/pd_P8vpq_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Almería
+https://wecast-bl01.flumotion.com/copesedes/almeria.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Axarquía" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Axarquía
+https://online.vibacomunicacion.com:9986/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Cádiz" tvg-logo="https://pbs.twimg.com/profile_images/1889703051465719808/m3WUXVEz_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Cádiz
+https://wecast-bl01.flumotion.com/copesedes/cadiz.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Córdoba" tvg-logo="https://graph.facebook.com/COPECORDOBA/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Córdoba
+https://wecast-bl01.flumotion.com/copesedes/cordoba.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE El Ejido" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE El Ejido
+https://wecast-bl01.flumotion.com/copesedes/ejido.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Granada" tvg-logo="https://pbs.twimg.com/profile_images/1747286899419467776/TXpTfvY1_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Granada
+https://wecast-bl01.flumotion.com/copesedes/granada.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Guadix" tvg-logo="https://pbs.twimg.com/profile_images/1130476314115366913/7dTz2hlC_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Guadix
+https://wecast-bl01.flumotion.com/copesedes/guadix.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Huelva" tvg-logo="https://graph.facebook.com/copehuelva/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Huelva
+https://wecast-bl01.flumotion.com/copesedes/huelva.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Jaén" tvg-logo="https://graph.facebook.com/ccopejaen/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Jaén
+https://wecast-bl01.flumotion.com/copesedes/jaen.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Jerez" tvg-logo="https://pbs.twimg.com/profile_images/1765707903418142720/cnEmWXy0_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Jerez
+https://wecast-bl01.flumotion.com/copesedes/jerez.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Málaga" tvg-logo="https://pbs.twimg.com/profile_images/1763515200110575616/8TKel8u8_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Málaga
+https://wecast-bl01.flumotion.com/copesedes/malaga.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Marbella" tvg-logo="https://graph.facebook.com/copemarbell/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Marbella
+https://sonic.sistemahost.es/8236/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Motril" tvg-logo="https://graph.facebook.com/copemotril/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Motril
+https://wecast-bl01.flumotion.com/copesedes/motril.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Sierra Norte" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Sierra Norte
+https://eu1.lhdserver.es:8011/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Sevilla" tvg-logo="https://pbs.twimg.com/profile_images/1750090837218693120/7l1S4QEx_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Sevilla
+https://wecast-bl01.flumotion.com/copesedes/sevilla.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ronda" tvg-logo="https://graph.facebook.com/coperonda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ronda
+https://wecast10-h-cloud.flumotion.com/copesedes/ronda.mp3
+#EXTINF:-1 tvg-id="OC_Algeciras.Radio" tvg-name="Onda Cero Algeciras" tvg-logo="https://graph.facebook.com/ondaceroalgeciras/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Algeciras
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALGECIRASAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Almeria.Radio" tvg-name="Onda Cero Almería" tvg-logo="https://graph.facebook.com/OndaCeroAlmeria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Almería
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALMERIAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Baza.Radio" tvg-name="Onda Cero Baza" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Baza
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_BAZAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Cadiz.Radio" tvg-name="Onda Cero Cádiz" tvg-logo="https://graph.facebook.com/ondacerocadiz/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cádiz
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CADIZAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Cordoba.Radio" tvg-name="Onda Cero Córdoba" tvg-logo="https://graph.facebook.com/OndaCeroCordoba/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Córdoba
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CORDOBAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_ElEjido.Radio" tvg-name="Onda Cero El Ejido" tvg-logo="https://graph.facebook.com/OndaCeroElEjido/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero El Ejido
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_EL_EJIDOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Granada.Radio" tvg-name="Onda Cero Granada" tvg-logo="https://graph.facebook.com/ondacerogr92.0/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Granada
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_GRANADAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Huelva.Radio" tvg-name="Onda Cero Huelva" tvg-logo="https://graph.facebook.com/ondacerohuelva/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Huelva
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_HUELVAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Jaen.Radio" tvg-name="Onda Cero Jaén" tvg-logo="https://graph.facebook.com/OndaCeroJaenOficial/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Jaén
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_JAENAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Jerez.Radio" tvg-name="Onda Cero Jerez de la Frontera" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Jerez de la Frontera
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_JEREZAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Marbella.Radio" tvg-name="Onda Cero Marbella" tvg-logo="https://graph.facebook.com/onda.ceromarbella/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Marbella
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MARBELLAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Motril.Radio" tvg-name="Onda Cero Motril" tvg-logo="https://pbs.twimg.com/profile_images/805392346254868480/Jqn3SgQp_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Motril
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MOTRILAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Malaga.Radio" tvg-name="Onda Cero Málaga" tvg-logo="https://graph.facebook.com/ondaceromalaga/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Málaga
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MALAGAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Sevilla.Radio" tvg-name="Onda Cero Sevilla" tvg-logo="https://graph.facebook.com/ondacerosevilla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Sevilla
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SEVILLAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Almería" tvg-logo="https://graph.facebook.com/EsRadioAlmeria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Almería
+https://streaming.indalteco.net/proxy/esradioalmeria?mp=/stream
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Granada" tvg-logo="https://graph.facebook.com/EsRadioGranada/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Granada
+https://azura.abcorp.es/listen/esradio_granada/radio.mp3
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Málaga" tvg-logo="https://graph.facebook.com/EsRadioMlg/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Málaga
+https://azura.abcorp.es/listen/esradio_malaga/radio.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Zaragoza" tvg-logo="https://pbs.twimg.com/profile_images/827122534864805888/smEko-V6_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Zaragoza
+https://c6.auracast.net/radio/8020/rmzgz
+#EXTINF:-1 tvg-id="S_Calatayud.Radio" tvg-name="SER Calatayud" tvg-logo="https://graph.facebook.com/SERCALATAYUD/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Calatayud
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CALATAYUD.mp3
+#EXTINF:-1 tvg-id="S_CincoVillas.Radio" tvg-name="SER Cinco Villas" tvg-logo="https://graph.facebook.com/CadenaSERCincoVillas/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Cinco Villas
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CINCO_VILLAS.mp3
+#EXTINF:-1 tvg-id="S_Huesca.Radio" tvg-name="SER Huesca" tvg-logo="https://graph.facebook.com/Radiohuesca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Huesca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_HUESCA.mp3
+#EXTINF:-1 tvg-id="S_Teruel.Radio" tvg-name="SER Teruel" tvg-logo="https://graph.facebook.com/CadenaSERTeruel/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Teruel
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TERUEL.mp3
+#EXTINF:-1 tvg-id="S_Zaragoza.Radio" tvg-name="SER Zaragoza" tvg-logo="https://graph.facebook.com/radiozaragoza/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Zaragoza
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ZARAGOZA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Huesca" tvg-logo="https://pbs.twimg.com/profile_images/1755989162291785728/Mt5p3J7Q_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Huesca
+https://wecast-bl01.flumotion.com/copesedes/huesca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Jaca" tvg-logo="https://graph.facebook.com/CadenaCOPEJaca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Jaca
+https://wecast-bl01.flumotion.com/copesedes/jaca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Pirineos" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Pirineos
+https://s37.derstream.net/cope_pirineos.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Teruel" tvg-logo="https://graph.facebook.com/copeteruel/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Teruel
+https://wecast-bl01.flumotion.com/copesedes/teruel.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Zaragoza" tvg-logo="https://graph.facebook.com/copezaragoza/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Zaragoza
+https://wecast-bl01.flumotion.com/copesedes/zaragoza.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Más Zaragoza" tvg-logo="https://graph.facebook.com/copezaragoza/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Más Zaragoza
+https://wecast-bl01.flumotion.com/copesedes/zaragoza-mas.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Alto Aragón" tvg-logo="https://graph.facebook.com/cope.altoaragon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Alto Aragón
+https://wecast12-h-cloud.flumotion.com/copesedes/barbastro.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Cinca" tvg-logo="https://graph.facebook.com/ondacerocinca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cinca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CINCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Huesca.Radio" tvg-name="Onda Cero Huesca" tvg-logo="https://graph.facebook.com/OCAragon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Huesca
+https://playerservices.streamtheworld.com/api/livestream-redirect/OC_HUESCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Teruel.Radio" tvg-name="Onda Cero Teruel" tvg-logo="https://graph.facebook.com/OCAragon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Teruel
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_TERUELAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Zaragoza.Radio" tvg-name="Onda Cero Zaragoza" tvg-logo="https://graph.facebook.com/OCAragon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Zaragoza
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ZARAGOZAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Aragón" tvg-logo="https://graph.facebook.com/esradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Aragón
+https://securestream.radioshd.info/9508/stream
+#EXTINF:-1 tvg-id="" tvg-name="Radio La Comarca" tvg-logo="https://graph.facebook.com/lacomarcanews/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio La Comarca
+https://radiolacomarca.radioonlinelacomarca.net:8333/ser.mp3
+#EXTINF:-1 tvg-id="S_ClubTenerife.Radio" tvg-name="SER Club Tenerife" tvg-logo="https://graph.facebook.com/radioclubser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Club Tenerife
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TENERIFE.mp3
+#EXTINF:-1 tvg-id="S_LaPalma.Radio" tvg-name="SER La Palma" tvg-logo="https://graph.facebook.com/RadioLaPalmaSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER La Palma
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LA_PALMA.mp3
+#EXTINF:-1 tvg-id="S_Lanzarote.Radio" tvg-name="SER Lanzarote" tvg-logo="https://graph.facebook.com/serlanzarote/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Lanzarote
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LANZAROTE.mp3
+#EXTINF:-1 tvg-id="S_LasPalmas.Radio" tvg-name="SER Las Palmas" tvg-logo="https://graph.facebook.com/SERLasPalmas/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Las Palmas
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LAS_PALMAS.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Gran Canaria" tvg-logo="https://graph.facebook.com/GranCanariaCOPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Gran Canaria
+https://wecast-bl01.flumotion.com/copesedes/laspalmas.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Tenerife" tvg-logo="https://pbs.twimg.com/profile_images/1749497170103840768/x0hOsEm2_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Tenerife
+https://wecast-bl01.flumotion.com/copesedes/tenerife.mp3
+#EXTINF:-1 tvg-id="OC_LasPalmas.Radio" tvg-name="Onda Cero Las Palmas" tvg-logo="https://graph.facebook.com/lapalmaondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Las Palmas
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LAS_PALMASAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Tenerife" tvg-logo="https://graph.facebook.com/RadioMarcaTfe/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Tenerife
+https://cervera.eldialdigital.com:22131/stream
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Lanzarote" tvg-logo="https://graph.facebook.com/RadioMarcaLanzarote/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Lanzarote
+https://5c0956165db0b.streamlock.net/radio/marca.stream_aac/playlist.m3u8
+#EXTINF:-1 tvg-id="S_RadioSantander.Radio" tvg-name="SER Radio Santander" tvg-logo="https://graph.facebook.com/CadenaSerCantabria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Radio Santander
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_SANTANDER.mp3
+#EXTINF:-1 tvg-id="S_Ason.Radio" tvg-name="SER Asón" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Asón
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASON.mp3
+#EXTINF:-1 tvg-id="S_CastroUrdiales.Radio" tvg-name="SER Castro Urdiales" tvg-logo="https://graph.facebook.com/SerCastroUrdiales/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Castro Urdiales
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CASTRO_URDIALES.mp3
+#EXTINF:-1 tvg-id="S_Torrelavega.Radio" tvg-name="SER Torrelavega" tvg-logo="https://graph.facebook.com/SERTorrelavega/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Torrelavega
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TORRELAVEGA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Santander" tvg-logo="https://graph.facebook.com/cope.cantabria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Santander
+https://wecast-bl01.flumotion.com/copesedes/santander.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Santander" tvg-logo="https://graph.facebook.com/cope.cantabria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Santander
+https://wecast27-o-cloud.flumotion.com/copesedes/santander-mas.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Castro Urdiales" tvg-logo="https://graph.facebook.com/ondacerocastrourdiales/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Castro Urdiales
+https://server8.emitironline.com:10854/;
+#EXTINF:-1 tvg-id="OC_Santander.Radio" tvg-name="Onda Cero Santander" tvg-logo="https://graph.facebook.com/ondacerocantabria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Santander
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SANTANDERAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Cantabria" tvg-logo="https://graph.facebook.com/esradiocantabria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Cantabria
+http://ns100.emisionlocal.com:9428/live
+#EXTINF:-1 tvg-id="S_90Motilla.Radio" tvg-name="SER 90 Motilla" tvg-logo="https://graph.facebook.com/SERRadio90/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER 90 Motilla
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MOTILLA.mp3
+#EXTINF:-1 tvg-id="S_Albacete.Radio" tvg-name="SER Albacete" tvg-logo="https://graph.facebook.com/RadioAlbacete/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Albacete
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ALBACETE.mp3
+#EXTINF:-1 tvg-id="S_Alcazar.Radio" tvg-name="SER Alcázar" tvg-logo="https://graph.facebook.com/seralcazar/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Alcázar
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ALCAZAR.mp3
+#EXTINF:-1 tvg-id="S_Azul.Radio" tvg-name="SER Azul" tvg-logo="https://graph.facebook.com/radioazul/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Azul
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_AZUL.mp3
+#EXTINF:-1 tvg-id="S_CiudadReal.Radio" tvg-name="SER Ciudad Real" tvg-logo="https://graph.facebook.com/ser.ciudadreal/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ciudad Real
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CIUDAD_REAL.mp3
+#EXTINF:-1 tvg-id="S_Cuenca.Radio" tvg-name="SER Cuenca" tvg-logo="https://graph.facebook.com/CadenaSERCuenca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Cuenca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_CUENCA.mp3
+#EXTINF:-1 tvg-id="S_Guadalajara.Radio" tvg-name="SER Guadalajara" tvg-logo="https://graph.facebook.com/SerGuadalajara/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Guadalajara
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_GUADALAJARA.mp3
+#EXTINF:-1 tvg-id="S_Puertollano.Radio" tvg-name="SER Puertollano" tvg-logo="https://graph.facebook.com/RadioPuertollano/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Puertollano
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_PUERTOLLANO.mp3
+#EXTINF:-1 tvg-id="S_Talavera.Radio" tvg-name="SER Talavera" tvg-logo="https://graph.facebook.com/sertalavera/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Talavera
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TALAVERA.mp3
+#EXTINF:-1 tvg-id="S_Tarancon.Radio" tvg-name="SER Tarancón" tvg-logo="https://graph.facebook.com/radiotaranconcadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Tarancón
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TARANCON.mp3
+#EXTINF:-1 tvg-id="S_Toledo.Radio" tvg-name="SER Toledo" tvg-logo="https://graph.facebook.com/CadenaSERToledo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Toledo
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TOLEDO.mp3
+#EXTINF:-1 tvg-id="S_Valdepenas.Radio" tvg-name="SER Valdepeñas" tvg-logo="https://graph.facebook.com/cadenaservaldepenas/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Valdepeñas
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VALDEPENAS.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Albacete" tvg-logo="https://graph.facebook.com/copealbacete.cadenacope/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Albacete
+https://wecast-bl01.flumotion.com/copesedes/albacete.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ciudad Real" tvg-logo="https://pbs.twimg.com/profile_images/1747214416926416896/pn-yrsyn_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ciudad Real
+https://wecast-bl01.flumotion.com/copesedes/ciudadreal.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Cuenca" tvg-logo="https://graph.facebook.com/copecuenca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Cuenca
+https://wecast-bl01.flumotion.com/copesedes/cuenca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Guadalajara" tvg-logo="https://graph.facebook.com/cope.guadalajara/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Guadalajara
+https://wecast-bl01.flumotion.com/copesedes/guadalajara.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Toledo" tvg-logo="https://graph.facebook.com/cope.toledo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Toledo
+https://wecast-bl01.flumotion.com/copesedes/toledo.mp3
+#EXTINF:-1 tvg-id="OC_Albacete.Radio" tvg-name="Onda Cero Albacete" tvg-logo="https://graph.facebook.com/ondaceroalbacete/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Albacete
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALBACETEAAC.m3u8
+#EXTINF:-1 tvg-id="OC_AlcazardeSanJuan.Radio" tvg-name="Onda Cero Alcázar de San Juan" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Alcázar de San Juan
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALCAZARAAC.m3u8
+#EXTINF:-1 tvg-id="OC_CiudadReal.Radio" tvg-name="Onda Cero Ciudad Real" tvg-logo="https://graph.facebook.com/ondacerociudadreal/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Ciudad Real
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CIUDAD_REALAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Cuenca.Radio" tvg-name="Onda Cero Cuenca" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cuenca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CUENCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Guadalajara.Radio" tvg-name="Onda Cero Guadalajara" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Guadalajara
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_GUADALAJARAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Puertollano" tvg-logo="https://graph.facebook.com/ondacero.puertollano/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Puertollano
+https://playerservices.streamtheworld.com/api/livestream-redirect/OC_PUERTOLLANOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_TalaveradelaReina.Radio" tvg-name="Onda Cero Talavera de la Reina" tvg-logo="https://graph.facebook.com/ondacero.talavera/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Talavera de la Reina
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_TALAVERAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Toledo.Radio" tvg-name="Onda Cero Toledo" tvg-logo="https://graph.facebook.com/ondacerotoledo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Toledo
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_TOLEDOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Valdepenas.Radio" tvg-name="Onda Cero Valdepeñas" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Valdepeñas
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VALDEPENASAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Albacete" tvg-logo="https://graph.facebook.com/esradioalbacete/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Albacete
+https://servercloudim3dia.im3dia.com:8001/esradioalbacete.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Serranía" tvg-logo="https://play-lh.googleusercontent.com/4QQwgiAxHgttu-Cnz2zlypFKnvevz1v30xYi0qaAzzAhwZnfZ8UszPapSCarQeCEIg=s200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Serranía
+https://stream.zeno.fm/suyydyfgwf9uv
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Valladolid" tvg-logo="https://pbs.twimg.com/profile_images/1686786609943920654/FR7ia-yk_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Valladolid
+https://radiomarcavalladolid.streaming-pro.com:6106/radiomarca.mp3
+#EXTINF:-1 tvg-id="S_Aranda.Radio" tvg-name="SER Aranda" tvg-logo="https://graph.facebook.com/RadioAranda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Aranda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ARANDA.mp3
+#EXTINF:-1 tvg-id="S_Avila.Radio" tvg-name="SER Ávila" tvg-logo="https://graph.facebook.com/CadenaSERavila/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ávila
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_AVILA.mp3
+#EXTINF:-1 tvg-id="S_Bierzo.Radio" tvg-name="SER Bierzo" tvg-logo="https://graph.facebook.com/radiobierzo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Bierzo
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_BIERZO.mp3
+#EXTINF:-1 tvg-id="S_Castilla.Radio" tvg-name="SER Castilla" tvg-logo="https://pbs.twimg.com/profile_images/1363900260154806278/rPcdsPNL_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Castilla
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_BURGOS.mp3
+#EXTINF:-1 tvg-id="S_Leon.Radio" tvg-name="SER León" tvg-logo="https://graph.facebook.com/RadioLeonSer/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER León
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_LEON.mp3
+#EXTINF:-1 tvg-id="S_Medina.Radio" tvg-name="SER Medina" tvg-logo="https://pbs.twimg.com/profile_images/1055506939910778886/b7ll7PXw_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Medina
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MEDINA.mp3
+#EXTINF:-1 tvg-id="S_Miranda.Radio" tvg-name="SER Miranda" tvg-logo="https://pbs.twimg.com/profile_images/1187450972576079872/xFC7Jmm4_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Miranda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MIRANDA_EBRO.mp3
+#EXTINF:-1 tvg-id="S_Palencia.Radio" tvg-name="SER Palencia" tvg-logo="https://graph.facebook.com/cadenaserpalencia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Palencia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_PALENCIA.mp3
+#EXTINF:-1 tvg-id="S_Penafiel.Radio" tvg-name="SER Peñafiel" tvg-logo="https://graph.facebook.com/RadioPenafiel/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Peñafiel
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_PENAFIEL.mp3
+#EXTINF:-1 tvg-id="S_Salamanca.Radio" tvg-name="SER Salamanca" tvg-logo="https://graph.facebook.com/radiosalamanca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Salamanca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_SALAMANCA.mp3
+#EXTINF:-1 tvg-id="S_Segovia.Radio" tvg-name="SER Segovia" tvg-logo="https://graph.facebook.com/radiosegoviacadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Segovia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_SEGOVIA.mp3
+#EXTINF:-1 tvg-id="S_Soria.Radio" tvg-name="SER Soria" tvg-logo="https://pbs.twimg.com/profile_images/1363826416853352453/KXT1w0Ub_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Soria
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_SORIA.mp3
+#EXTINF:-1 tvg-id="S_Valladolid.Radio" tvg-name="SER Valladolid" tvg-logo="https://graph.facebook.com/CadenaSERValladolid/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Valladolid
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VALLADOLID.mp3
+#EXTINF:-1 tvg-id="S_Zamora.Radio" tvg-name="SER Zamora" tvg-logo="https://graph.facebook.com/RadioZamoraSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Zamora
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ZAMORA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ávila" tvg-logo="https://graph.facebook.com/CopeAv/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ávila
+https://wecast-bl01.flumotion.com/copesedes/avila.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Burgos" tvg-logo="https://graph.facebook.com/COPEBurgos/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Burgos
+https://wecast-bl01.flumotion.com/copesedes/burgos.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Salamanca" tvg-logo="https://graph.facebook.com/EmisoraCOPESALAMANCA/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Salamanca
+https://wecast-bl01.flumotion.com/copesedes/salamanca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE León" tvg-logo="https://graph.facebook.com/cope.leon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE León
+https://wecast-bl01.flumotion.com/copesedes/leon.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Palencia" tvg-logo="https://graph.facebook.com/COPE/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Palencia
+https://wecast-bl01.flumotion.com/copesedes/palencia.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Segovia" tvg-logo="https://graph.facebook.com/copesegovia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Segovia
+https://wecast-bl01.flumotion.com/copesedes/segovia.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Soria" tvg-logo="https://graph.facebook.com/COPESoria88.9/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Soria
+https://wecast-bl01.flumotion.com/copesedes/soria.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Valladolid" tvg-logo="https://graph.facebook.com/CopeValladolid/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Valladolid
+https://wecast-bl01.flumotion.com/copesedes/valladolid.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Zamora" tvg-logo="https://pbs.twimg.com/profile_images/1749707523051958272/WLMH9EMM_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Zamora
+https://wecast-bl01.flumotion.com/copesedes/zamora.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Burgos" tvg-logo="https://graph.facebook.com/ondacerobu/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Burgos
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_BURGOSAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Leon.Radio" tvg-name="Onda Cero León" tvg-logo="https://graph.facebook.com/ondaceroleon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero León
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LEONAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Medina" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Medina
+https://server10.emitironline.com:8100/;
+#EXTINF:-1 tvg-id="OC_Palencia.Radio" tvg-name="Onda Cero Palencia" tvg-logo="https://pbs.twimg.com/profile_images/2011044308514717697/R8U33jrB_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Palencia
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_PALENCIAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Salamanca.Radio" tvg-name="Onda Cero Salamanca" tvg-logo="https://graph.facebook.com/OndaCeroSalamanca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Salamanca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SALAMANCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Segovia.Radio" tvg-name="Onda Cero Segovia" tvg-logo="https://graph.facebook.com/OCSegovia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Segovia
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SEGOVIAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Valladolid.Radio" tvg-name="Onda Cero Valladolid" tvg-logo="https://graph.facebook.com/ondacerovalladolid/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Valladolid
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VALLADOLIDAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Zamora.Radio" tvg-name="Onda Cero Zamora" tvg-logo="https://pbs.twimg.com/profile_images/920193024524718080/9FICP92__200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Zamora
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ZAMORAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Castilla y León" tvg-logo="https://graph.facebook.com/CyLesRadio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Castilla y León
+https://libertaddigital-radio-live4.flumotion.com/libertaddigital/ld-live4-med.aac
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Soria" tvg-logo="https://graph.facebook.com/CyLesRadio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Soria
+https://srv6021.dns-lcinternet.com:10256/stream
+#EXTINF:-1 tvg-id="" tvg-name="Catalunya Ràdio Exclusiu" tvg-logo="https://graph.facebook.com/catradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Catalunya Ràdio Exclusiu
+https://directes-radio-int.3catdirectes.cat/live-content/radio-oca-hls/master.m3u8
+#EXTINF:-1 tvg-id="Radio4RNE.Radio" tvg-name="Ràdio 4 RNE" tvg-logo="https://pbs.twimg.com/profile_images/1849411372498530304/xy9er_VU_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Ràdio 4 RNE
+https://rtvelivestream.rtve.es/rtvesec/rne/rne_r4_main.m3u8
+#EXTINF:-1 tvg-id="S_Catalunya.Radio" tvg-name="SER Catalunya" tvg-logo="https://graph.facebook.com/SERCatalunya/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Catalunya
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CAT.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Barcelona" tvg-logo="https://pbs.twimg.com/profile_images/1857005275724529666/_Rre40qw_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Barcelona
+https://radiomarcabcnmedia.dns-lcinternet.com:9000/stream
+#EXTINF:-1 tvg-id="S_Barcelona.Radio" tvg-name="SER Barcelona" tvg-logo="https://graph.facebook.com/radiobarcelona.cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Barcelona
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_BARCELONA.mp3
+#EXTINF:-1 tvg-id="S_Ebre.Radio" tvg-name="SER Ebre" tvg-logo="https://pbs.twimg.com/profile_images/915289769206255616/0skFjiH5_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ebre
+https://cadenaserebre.streaming-pro.com:6021/stream
+#EXTINF:-1 tvg-id="S_Girona.Radio" tvg-name="SER Girona" tvg-logo="https://pbs.twimg.com/profile_images/1759632128197742592/pUT2JgnH_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Girona
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_GIRONA.mp3
+#EXTINF:-1 tvg-id="S_Lleida.Radio" tvg-name="SER Lleida" tvg-logo="https://pbs.twimg.com/profile_images/1580591130114129920/qxG_HwQP_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Lleida
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LLEIDA.mp3
+#EXTINF:-1 tvg-id="S_Manresa.Radio" tvg-name="SER Manresa" tvg-logo="https://pbs.twimg.com/profile_images/1303589357287284737/fwjkMA69_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Manresa
+https://streaming.enacast.com:8000/taronjadigital-bages56.mp3
+#EXTINF:-1 tvg-id="S_Penedes.Radio" tvg-name="SER Penedès-Garraf" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Penedès-Garraf
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_PENEDES_GARRAF.mp3
+#EXTINF:-1 tvg-id="S_Reus.Radio" tvg-name="SER Reus" tvg-logo="https://graph.facebook.com/CadenaSERTarragonaReus/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Reus
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_REUS.mp3
+#EXTINF:-1 tvg-id="S_Tarragona.Radio" tvg-name="SER Tarragona" tvg-logo="https://graph.facebook.com/CadenaSERTarragonaReus/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Tarragona
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TARRAGONA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Barcelona Miramar" tvg-logo="https://pbs.twimg.com/profile_images/1713945389668155392/9yDD807W_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Barcelona Miramar
+https://wecast-bl01.flumotion.com/copesedes/barcelona.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Girona" tvg-logo="https://pbs.twimg.com/profile_images/1713945389668155392/9yDD807W_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Girona
+https://wecast-bl01.flumotion.com/copesedes/gerona.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Lleida" tvg-logo="https://graph.facebook.com/copelleida/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Lleida
+https://wecast-bl01.flumotion.com/copesedes/lleida.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Tarragona" tvg-logo="https://pbs.twimg.com/profile_images/1098535682862182400/GXp5lhxo_200x200.png" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Tarragona
+https://wecast-bl01.flumotion.com/copesedes/tarragona.mp3
+#EXTINF:-1 tvg-id="OC_Barcelona.Radio" tvg-name="Onda Cero Barcelona i Girona" tvg-logo="https://graph.facebook.com/ondacerocatalunya/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Barcelona i Girona
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_BARCELONAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Lleida.Radio" tvg-name="Onda Cero Lleida" tvg-logo="https://graph.facebook.com/ondacerocatalunya/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Lleida
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LLEIDAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Tarragona.Radio" tvg-name="Onda Cero Tarragona" tvg-logo="https://graph.facebook.com/ondacerocatalunya/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Tarragona
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_TARRAGONAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Vilanova.Radio" tvg-name="Onda Cero Vilanova" tvg-logo="https://pbs.twimg.com/profile_images/994837026754252800/mezfhfdN_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Vilanova
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VILANOVAAAC.m3u8
+#EXTINF:-1 tvg-id="S_Ceuta.Radio" tvg-name="SER Ceuta" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ceuta
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CEUTA.mp3
+#EXTINF:-1 tvg-id="OC_Ceuta.Radio" tvg-name="Onda Cero Ceuta" tvg-logo="https://graph.facebook.com/ondaceroceuta/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Ceuta
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CEUTAAAC.m3u8
+#EXTINF:-1 tvg-id="S_Henares.Radio" tvg-name="SER Henares" tvg-logo="https://graph.facebook.com/serhenares/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Henares
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_HENARES.mp3
+#EXTINF:-1 tvg-id="S_Madrid.Radio" tvg-name="SER Madrid" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Madrid
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MADRID.mp3
+#EXTINF:-1 tvg-id="S_MadridNorte.Radio" tvg-name="SER Madrid Norte" tvg-logo="https://graph.facebook.com/SerMadridNorte/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Madrid Norte
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MADRID_NORTE.mp3
+#EXTINF:-1 tvg-id="S_MadridOeste.Radio" tvg-name="SER Madrid Oeste" tvg-logo="https://graph.facebook.com/CadenaSerMadridOeste/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Madrid Oeste
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MADRID_OESTE.mp3
+#EXTINF:-1 tvg-id="S_MadridSierra.Radio" tvg-name="SER Madrid Sierra" tvg-logo="https://graph.facebook.com/sermadridsierra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Madrid Sierra
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MADSIERRA.mp3
+#EXTINF:-1 tvg-id="S_MadridSur.Radio" tvg-name="SER Madrid Sur" tvg-logo="https://graph.facebook.com/SERMadridSur/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Madrid Sur
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MADRID_SUR.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Madrid" tvg-logo="https://graph.facebook.com/copemadrid/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Madrid
+https://flucast09-h-cloud.flumotion.com/cope/madrid.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Más Madrid" tvg-logo="https://graph.facebook.com/COPEMasMadrid/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Más Madrid
+https://flucast06-o-cloud.flumotion.com/cope/net4.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Villalba" tvg-logo="https://pbs.twimg.com/profile_images/1803004569896493056/_SEBEq9X_200x200.png" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Villalba
+https://wecast-bl01.flumotion.com/copesedes/villalba.mp3
+#EXTINF:-1 tvg-id="OC_AlcaladeHenares.Radio" tvg-name="Onda Cero Alcalá de Henares" tvg-logo="https://graph.facebook.com/ondaceroalcalasierrasur/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Alcalá de Henares
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALCALAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Madrid.Radio" tvg-name="Onda Cero Madrid" tvg-logo="https://graph.facebook.com/ondaceromn/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Madrid
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OCAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Madrid Sur" tvg-logo="https://graph.facebook.com/ondaceromadridsur/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Madrid Sur
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MADRID_SURAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Sierra.Radio" tvg-name="Onda Cero Sierra" tvg-logo="https://graph.facebook.com/ondacerosierra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Sierra
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MADRIDSIERRAAAC.m3u8
+#EXTINF:-1 tvg-id="S_Pamplona.Radio" tvg-name="SER Pamplona" tvg-logo="https://graph.facebook.com/SERNavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Pamplona
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_PAMPLONA.mp3
+#EXTINF:-1 tvg-id="S_Tafalla.Radio" tvg-name="SER Tafalla" tvg-logo="https://graph.facebook.com/SERNavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Tafalla
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TAFALLA.mp3
+#EXTINF:-1 tvg-id="S_Tudela.Radio" tvg-name="SER Tudela" tvg-logo="https://graph.facebook.com/SERNavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Tudela
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_TUDELA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Estella" tvg-logo="https://pbs.twimg.com/profile_images/3722393260/a28c650e8db40bef24f20a2a184d2b8e_200x200.png" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Estella
+https://server8.emitironline.com:9866/radio
+#EXTINF:-1 tvg-id="" tvg-name="COPE Pamplona" tvg-logo="https://graph.facebook.com/lacopeennavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Pamplona
+https://wecast-bl01.flumotion.com/copesedes/pamplona.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Tudela" tvg-logo="https://graph.facebook.com/lacopeennavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Tudela
+https://wecast-bl01.flumotion.com/copesedes/tudela.mp3
+#EXTINF:-1 tvg-id="OC_Pamplona.Radio" tvg-name="Onda Cero Pamplona" tvg-logo="https://graph.facebook.com/ocrnavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Pamplona
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_PAMPLONAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Pamplona.Radio" tvg-name="Onda Cero Pamplona" tvg-logo="https://graph.facebook.com/ocrnavarra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Pamplona
+https://atres-live.ondacero.es/live/delegaciones/oc/pamplonaeventos/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Tudela" tvg-logo="https://graph.facebook.com/esradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Tudela
+https://azura.abcorp.es/radio/8110/stream
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Valencia" tvg-logo="https://pbs.twimg.com/profile_images/1762418471361482752/einJVrWq_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Valencia
+https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_VALENCIA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Elche" tvg-logo="https://pbs.twimg.com/profile_images/1804122856005021696/IyLrAIpK_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Elche
+https://directo.teleelx.es:8000/radio.mp3
+#EXTINF:-1 tvg-id="S_Alcoy.Radio" tvg-name="SER Alcoy" tvg-logo="https://graph.facebook.com/radioalcoy/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Alcoy
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ALCOY.mp3
+#EXTINF:-1 tvg-id="S_Alicante.Radio" tvg-name="SER Alicante" tvg-logo="https://graph.facebook.com/radioalicante/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Alicante
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ALICANTE.mp3
+#EXTINF:-1 tvg-id="S_Castellon.Radio" tvg-name="SER Castellón" tvg-logo="https://graph.facebook.com/radiocastellon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Castellón
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_CASTELLON.mp3
+#EXTINF:-1 tvg-id="S_Denia.Radio" tvg-name="SER Dénia" tvg-logo="https://pbs.twimg.com/profile_images/1734493871503978496/XXeaJj2C_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Dénia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_DENIA.mp3
+#EXTINF:-1 tvg-id="S_Elche.Radio" tvg-name="SER Elche" tvg-logo="https://graph.facebook.com/RadioElcheCadenaSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Elche
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ELCHE.mp3
+#EXTINF:-1 tvg-id="S_Elda.Radio" tvg-name="SER Elda" tvg-logo="https://graph.facebook.com/RadioElda/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Elda
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ELDA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="SER Radio Benidorm" tvg-logo="https://graph.facebook.com/RadioBenidorm/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Radio Benidorm
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_BENIDORM.mp3
+#EXTINF:-1 tvg-id="S_Gandia.Radio" tvg-name="SER Gandia" tvg-logo="https://graph.facebook.com/RadioGandia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Gandia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_GANDIA.mp3
+#EXTINF:-1 tvg-id="S_LaValldUixo.Radio" tvg-name="SER La Vall d'Uixó" tvg-logo="https://graph.facebook.com/ser.duixo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER La Vall d'Uixó
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_VALLDUIXO.mp3
+#EXTINF:-1 tvg-id="S_Ontinyent.Radio" tvg-name="SER Ontinyent" tvg-logo="https://graph.facebook.com/serontinyent/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ontinyent
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ONTIYENT.mp3
+#EXTINF:-1 tvg-id="S_Orihuela.Radio" tvg-name="SER Orihuela" tvg-logo="https://graph.facebook.com/radioorihuelaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Orihuela
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ORIHUELA.mp3
+#EXTINF:-1 tvg-id="S_Valencia.Radio" tvg-name="SER Valencia" tvg-logo="https://graph.facebook.com/radiovalenciaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Valencia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VALENCIA.mp3
+#EXTINF:-1 tvg-id="S_Villena.Radio" tvg-name="SER Villena" tvg-logo="https://graph.facebook.com/radiovillena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Villena
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VILLENA.mp3
+#EXTINF:-1 tvg-id="S_Xativa.Radio" tvg-name="SER Xàtiva" tvg-logo="https://pbs.twimg.com/profile_images/1387448561521070081/M25seM2N_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Xàtiva
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_XATIVA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Alcoy" tvg-logo="https://graph.facebook.com/copealcoy/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Alcoy
+https://server8.emitironline.com:10876/;
+#EXTINF:-1 tvg-id="" tvg-name="COPE Alicante" tvg-logo="https://graph.facebook.com/CadenaCopeAlicante/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Alicante
+https://wecast-bl01.flumotion.com/copesedes/alicante.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Castellón" tvg-logo="https://graph.facebook.com/cope.castellon.101.6FM.1053OM/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Castellón
+https://wecast-bl01.flumotion.com/copesedes/castellon.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Vinaròs" tvg-logo="https://graph.facebook.com/cope.vinaros/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Vinaròs
+https://wecast-bl01.flumotion.com/copesedes/vinaroz.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Denia" tvg-logo="https://graph.facebook.com/copedeniamarinaalta/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Denia
+https://wecast-bl01.flumotion.com/copesedes/denia.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Elche" tvg-logo="https://graph.facebook.com/CopeElche/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Elche
+https://stream-159.zeno.fm/fh1dewq8pxduv
+#EXTINF:-1 tvg-id="" tvg-name="COPE Onda Naranja" tvg-logo="https://graph.facebook.com/ondanaranjacope/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Onda Naranja
+https://str1.mediatelekom.net:8100/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Valencia" tvg-logo="https://graph.facebook.com/copevalencia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Valencia
+https://wecast-bl01.flumotion.com/copesedes/valencia.mp3
+#EXTINF:-1 tvg-id="OC_Alicante.Radio" tvg-name="Onda Cero Alicante" tvg-logo="https://pbs.twimg.com/profile_images/1524669276958904322/Wllerdy7_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Alicante
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALICANTEAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Alzira.Radio" tvg-name="Onda Cero Alzira" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Alzira
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ALZIRAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Castellon.Radio" tvg-name="Onda Cero Castellón" tvg-logo="https://graph.facebook.com/ondacerocastellon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Castellón
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CASTELLONAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Elche.Radio" tvg-name="Onda Cero Elche" tvg-logo="https://graph.facebook.com/OCRElche/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Elche
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_ELCHEAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Onda Cero Gandia" tvg-logo="https://graph.facebook.com/ondacerogandia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Gandia
+https://one.cloudstreaming.eu/proxy/ondacero/stream
+#EXTINF:-1 tvg-id="OC_MarinaBaixa.Radio" tvg-name="Onda Cero Marina Baixa" tvg-logo="https://graph.facebook.com/ondaceromarinabaixa/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Marina Baixa
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VILLAJOYOSAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Sagunto.Radio" tvg-name="Onda Cero Sagunto" tvg-logo="https://graph.facebook.com/onda.cerosagunto/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Sagunto
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SAGUNTOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Valencia.Radio" tvg-name="Onda Cero Valencia" tvg-logo="https://pbs.twimg.com/profile_images/1511646785965637636/yzPzQC43_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Valencia
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VALENCIAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_VegaBaja.Radio" tvg-name="Onda Cero Vega Baja" tvg-logo="https://graph.facebook.com/ondacerovegabaja/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Vega Baja
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_TORREVIEJAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Elche" tvg-logo="https://graph.facebook.com/esradioelche103.7/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Elche
+https://ns6.emisionlocal.com/proxy/esradioelche?mp=/stream
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Valencia" tvg-logo="https://pbs.twimg.com/profile_images/1661689536294932481/JHLV1vi0_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Valencia
+https://aequum821.dns-lcinternet.com:8200/stream
+#EXTINF:-1 tvg-id="" tvg-name="Radio Sirena COPE Benidorm" tvg-logo="https://graph.facebook.com/radiosirena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Sirena COPE Benidorm
+https://str1.mediatelekom.net/proxy/radiosirena/stream
+#EXTINF:-1 tvg-id="S_Caceres.Radio" tvg-name="SER Cáceres" tvg-logo="https://graph.facebook.com/SERExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Cáceres
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CACERES.mp3
+#EXTINF:-1 tvg-id="S_Extremadura.Radio" tvg-name="SER Extremadura" tvg-logo="https://graph.facebook.com/SERExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Extremadura
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_EXTREMADURA.mp3
+#EXTINF:-1 tvg-id="S_Merida.Radio" tvg-name="SER Mérida" tvg-logo="https://graph.facebook.com/SERExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Mérida
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MERIDA.mp3
+#EXTINF:-1 tvg-id="S_NortedeExtremadura.Radio" tvg-name="SER Norte de Extremadura" tvg-logo="https://graph.facebook.com/SERExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Norte de Extremadura
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_NORTE_EXTREMADURA.mp3
+#EXTINF:-1 tvg-id="S_TierradeBarros.Radio" tvg-name="SER Tierra de Barros" tvg-logo="https://graph.facebook.com/SERTierraDeBarros/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Tierra de Barros
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ALMENDRALEJO.mp3
+#EXTINF:-1 tvg-id="S_VegasAltas.Radio" tvg-name="SER Vegas Altas" tvg-logo="https://graph.facebook.com/SERExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Vegas Altas
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VEGAS_ALTAS.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Badajoz" tvg-logo="https://graph.facebook.com/copebadajoz/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Badajoz
+https://wecast-bl01.flumotion.com/copesedes/badajoz.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Cáceres" tvg-logo="https://graph.facebook.com/CopeCaceres/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Cáceres
+https://wecast-bl01.flumotion.com/copesedes/caceres.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Mérida" tvg-logo="https://graph.facebook.com/COPEMERIDA/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Mérida
+https://wecast-bl01.flumotion.com/copesedes/merida.mp3
+#EXTINF:-1 tvg-id="OC_Badajoz.Radio" tvg-name="Onda Cero Badajoz" tvg-logo="https://graph.facebook.com/OndaCeroBadajoz/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Badajoz
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_BADAJOZAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Caceres.Radio" tvg-name="Onda Cero Cáceres" tvg-logo="https://pbs.twimg.com/profile_images/1623012615449464833/jFvpzBiW_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cáceres
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CACERESAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Merida.Radio" tvg-name="Onda Cero Mérida" tvg-logo="https://graph.facebook.com/ondaceromerida/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Mérida
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MERIDAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Extremadura" tvg-logo="https://graph.facebook.com/esRadioExtremadura/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Extremadura
+https://radio.esradioextremadura.com/;stream.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Vigo" tvg-logo="https://pbs.twimg.com/profile_images/2016095581370765312/RnTun6kd_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Vigo
+https://streaming.enacast.com/radiomarcavigoHD.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Coruña" tvg-logo="https://pbs.twimg.com/profile_images/827222477432582144/c8U_fpD-_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Coruña
+https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_CORUNA.mp3
+#EXTINF:-1 tvg-id="S_Arosa.Radio" tvg-name="SER Arosa" tvg-logo="https://graph.facebook.com/RadioArosa/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Arosa
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_AROSA.mp3
+#EXTINF:-1 tvg-id="S_BaixoMino.Radio" tvg-name="SER Baixo Miño" tvg-logo="https://pbs.twimg.com/profile_images/933259827672944640/Rc50GN3h_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Baixo Miño
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_BAIXOMINO.mp3
+#EXTINF:-1 tvg-id="S_Coruna.Radio" tvg-name="SER Coruña" tvg-logo="https://graph.facebook.com/radiocoruna/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Coruña
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_CORUNA.mp3
+#EXTINF:-1 tvg-id="S_Ferrol.Radio" tvg-name="SER Ferrol" tvg-logo="https://graph.facebook.com/RadioFerrol/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ferrol
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_FERROL.mp3
+#EXTINF:-1 tvg-id="S_Galicia.Radio" tvg-name="SER Galicia" tvg-logo="https://graph.facebook.com/CadenaSERGalicia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Galicia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_GALICIA.mp3
+#EXTINF:-1 tvg-id="S_Lugo.Radio" tvg-name="SER Lugo" tvg-logo="https://graph.facebook.com/radiolugoser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Lugo
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LUGOAAC.aac
+#EXTINF:-1 tvg-id="S_Nordes.Radio" tvg-name="SER Nordés" tvg-logo="https://pbs.twimg.com/profile_images/2009212931422953472/kFqLSc-X_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Nordés
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_CEE.mp3
+#EXTINF:-1 tvg-id="S_Ourense.Radio" tvg-name="SER Ourense" tvg-logo="https://pbs.twimg.com/profile_images/1364161558713143296/dlIRMFq1_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ourense
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_OURENSE.mp3
+#EXTINF:-1 tvg-id="S_Pontevedra.Radio" tvg-name="SER Pontevedra" tvg-logo="https://graph.facebook.com/RadioPontevedra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Pontevedra
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_PONTEVEDRA.mp3
+#EXTINF:-1 tvg-id="S_PrincipalMonforte.Radio" tvg-name="SER Principal Monforte" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Principal Monforte
+http://srv0510.lcinternet.com:8007/stream
+#EXTINF:-1 tvg-id="S_PrincipalVilalba.Radio" tvg-name="SER Principal Vilalba" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Principal Vilalba
+http://srv0510.lcinternet.com:8006/stream
+#EXTINF:-1 tvg-id="S_Vigo.Radio" tvg-name="SER Vigo" tvg-logo="https://graph.facebook.com/Radiovigo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Vigo
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_VIGO.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Coruña" tvg-logo="https://graph.facebook.com/copecoruna/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Coruña
+https://wecast-bl01.flumotion.com/copesedes/lacoruna.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Lugo" tvg-logo="https://graph.facebook.com/informativoscopelugo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Lugo
+https://wecast-bl01.flumotion.com/copesedes/lugo.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Pontevedra" tvg-logo="https://graph.facebook.com/CadenaCOPEPontevedra/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Pontevedra
+https://wecast-bl01.flumotion.com/copesedes/pontevedra.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ferrol" tvg-logo="https://graph.facebook.com/COPEferrol/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ferrol
+https://wecast-bl01.flumotion.com/copesedes/ferrol.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ourense" tvg-logo="https://graph.facebook.com/copeourense/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ourense
+https://wecast-bl01.flumotion.com/copesedes/orense.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Ribadeo" tvg-logo="https://graph.facebook.com/COPERibadeo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Ribadeo
+https://wecast-bl01.flumotion.com/copesedes/ribadeo.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Santiago" tvg-logo="https://graph.facebook.com/copesantiago/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Santiago
+https://wecast-bl01.flumotion.com/copesedes/santiago.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Vigo" tvg-logo="https://graph.facebook.com/copevigo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Vigo
+https://wecast-bl01.flumotion.com/copesedes/vigo.mp3
+#EXTINF:-1 tvg-id="OC_ACoruna.Radio" tvg-name="Onda Cero A Coruña" tvg-logo="https://graph.facebook.com/ondaceroacoruna/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero A Coruña
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_A_CORUNAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Lugo.Radio" tvg-name="Onda Cero Lugo" tvg-logo="https://graph.facebook.com/ondacero.lugo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Lugo
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LUGOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_MonfortedeLemos.Radio" tvg-name="Onda Cero Monforte de Lemos" tvg-logo="https://pbs.twimg.com/profile_images/899538043014656000/9MlQs3n4_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Monforte de Lemos
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MONFORTEAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Ourense.Radio" tvg-name="Onda Cero Ourense" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Ourense
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_OURENSEAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Pontevedra.Radio" tvg-name="Onda Cero Pontevedra" tvg-logo="https://graph.facebook.com/ondacero.pontevedrasalnes/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Pontevedra
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_PONTEVEDRAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Santiago.Radio" tvg-name="Onda Cero Santiago" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Santiago
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SANTIAGOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Vigo.Radio" tvg-name="Onda Cero Vigo" tvg-logo="https://pbs.twimg.com/profile_images/1646466792766750722/WPojduFX_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Vigo
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VIGOAAC.m3u8
+#EXTINF:-1 tvg-id="IbizaGlobalRadio.Radio" tvg-name="Ibiza Global Radio" tvg-logo="https://graph.facebook.com/ibiza.radio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Ibiza Global Radio
+https://listenssl.ibizaglobalradio.com:8024/stream
+#EXTINF:-1 tvg-id="" tvg-name="Ibiza Sonica Radio" tvg-logo="https://graph.facebook.com/ibizasonicaradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Ibiza Sonica Radio
+https://n0b.radiojar.com/st0wc9kut72vv
+#EXTINF:-1 tvg-id="S_Ibiza.Radio" tvg-name="SER Ibiza" tvg-logo="https://graph.facebook.com/RADIOIBIZASER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Ibiza
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_IBIZA.mp3
+#EXTINF:-1 tvg-id="S_Mallorca.Radio" tvg-name="SER Mallorca" tvg-logo="https://pbs.twimg.com/profile_images/1837028979070349313/cjWAxS6b_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Mallorca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MALLORCA.mp3
+#EXTINF:-1 tvg-id="S_Menorca.Radio" tvg-name="SER Menorca" tvg-logo="https://graph.facebook.com/radiomenorca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Menorca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_MENORCA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Mallorca" tvg-logo="https://graph.facebook.com/CopeBaleares/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Mallorca
+https://wecast-bl01.flumotion.com/copesedes/mallorca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Menorca" tvg-logo="https://graph.facebook.com/copemenorca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Menorca
+https://wecast-bl01.flumotion.com/copesedes/menorca.mp3
+#EXTINF:-1 tvg-id="OC_Ibiza.Radio" tvg-name="Onda Cero Ibiza" tvg-logo="https://graph.facebook.com/ocribiza/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Ibiza
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_IBIZAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Mallorca.Radio" tvg-name="Onda Cero Mallorca" tvg-logo="https://graph.facebook.com/ondacero/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Mallorca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MALLORCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Menorca.Radio" tvg-name="Onda Cero Menorca" tvg-logo="https://graph.facebook.com/ocrmenorca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Menorca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MENORCAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="06AM Ibiza Underground Radio" tvg-logo="https://graph.facebook.com/06AmIbizaUndergroundRadio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",06AM Ibiza Underground Radio
+https://streams.radio.co/sd1bcd1376/listen
+#EXTINF:-1 tvg-id="" tvg-name="SAM Ibiza" tvg-logo="https://graph.facebook.com/SAMibizaradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SAM Ibiza
+https://hls1.eu.peppermindmedia.com/samibiza/audio/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Pure Ibiza Radio" tvg-logo="https://graph.facebook.com/pureradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Pure Ibiza Radio
+https://pureibizaradio.streaming-pro.com:8028/stream.mp3
+#EXTINF:-1 tvg-id="" tvg-name="SER Calahorra" tvg-logo="https://graph.facebook.com/cadenaser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Calahorra
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CALAHORRA.mp3
+#EXTINF:-1 tvg-id="S_Rioja.Radio" tvg-name="SER Rioja" tvg-logo="https://graph.facebook.com/RadioRiojaCadenaSer/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Rioja
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_RIOJA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="SER Radio Haro" tvg-logo="https://graph.facebook.com/radioharo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Radio Haro
+https://streaming.radioharo.com/radioharo.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Logroño" tvg-logo="https://graph.facebook.com/coperioja/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Logroño
+https://wecast-bl01.flumotion.com/copesedes/logrono.mp3
+#EXTINF:-1 tvg-id="OC_Logrono.Radio" tvg-name="Onda Cero Logroño" tvg-logo="https://graph.facebook.com/ondacerolarioja/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Logroño
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LOGRONOAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Arnedo" tvg-logo="https://graph.facebook.com/ondarioja.radioarnedo/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Arnedo
+https://stream20.usastreams.com/8154/stream
+#EXTINF:-1 tvg-id="S_Melilla.Radio" tvg-name="SER Melilla" tvg-logo="https://graph.facebook.com/CadenaSerMelilla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Melilla
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MELILLA.mp3
+#EXTINF:-1 tvg-id="OC_Melilla.Radio" tvg-name="Onda Cero Melilla" tvg-logo="https://graph.facebook.com/onda.ceromelilla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Melilla
+http://radioserver4.profesionalhosting.com:8146/;.mp3
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Bilbao" tvg-logo="https://pbs.twimg.com/profile_images/1784935605413027840/1f0320Jw_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Bilbao
+https://server8.emitironline.com:18475/stream
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Donostia" tvg-logo="https://pbs.twimg.com/profile_images/1178964439988613120/b0rC6DhO_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Donostia
+https://marca-sansebastian.streaming-pro.com:6101/live
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Vitoria" tvg-logo="https://pbs.twimg.com/profile_images/1190210041707671552/zL-oAHnv_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Vitoria
+https://control.streaming-pro.com:6014/marcavitoria.mp3
+#EXTINF:-1 tvg-id="S_Bilbao.Radio" tvg-name="SER Bilbao" tvg-logo="https://pbs.twimg.com/profile_images/1750470298590130176/J20cy4WE_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Bilbao
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_BILBAO.mp3
+#EXTINF:-1 tvg-id="S_Eibar.Radio" tvg-name="SER Eibar" tvg-logo="https://graph.facebook.com/RadioEibar/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Eibar
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_EIBAR.mp3
+#EXTINF:-1 tvg-id="S_Irun.Radio" tvg-name="SER Irun" tvg-logo="https://graph.facebook.com/RadioIrunCadenaSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Irun
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_IRUN.mp3
+#EXTINF:-1 tvg-id="S_SanSebastian.Radio" tvg-name="SER San Sebastián" tvg-logo="https://graph.facebook.com/RadioSanSebastianCadenaSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER San Sebastián
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_SAN_SEBASTIAN.mp3
+#EXTINF:-1 tvg-id="S_Vitoria.Radio" tvg-name="SER Vitoria" tvg-logo="https://graph.facebook.com/servitoria/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Vitoria
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_VITORIA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Bilbao" tvg-logo="https://graph.facebook.com/CopeEuskadi/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Bilbao
+https://wecast-bl01.flumotion.com/copesedes/bilbao.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE San Sebastián" tvg-logo="https://graph.facebook.com/CopeEuskadi/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE San Sebastián
+https://wecast-bl01.flumotion.com/copesedes/ssebastian.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Vitoria" tvg-logo="https://graph.facebook.com/CopeEuskadi/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Vitoria
+https://wecast-bl01.flumotion.com/copesedes/vitoria.mp3
+#EXTINF:-1 tvg-id="OC_Bilbao.Radio" tvg-name="Onda Cero Bilbao" tvg-logo="https://pbs.twimg.com/profile_images/1524665769690345475/ROKO5z-k_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Bilbao
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_BILBAOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_SanSebastian.Radio" tvg-name="Onda Cero San Sebastián" tvg-logo="https://pbs.twimg.com/profile_images/1524656163933065216/5GVX9A8E_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero San Sebastián
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_SSEBASTIANAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Vitoria.Radio" tvg-name="Onda Cero Vitoria" tvg-logo="https://pbs.twimg.com/profile_images/1996158212043612160/BSP3fI2G_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Vitoria
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_VITORIAAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Radio Marca Asturias" tvg-logo="https://pbs.twimg.com/profile_images/828980561226113024/_x0pfq1L_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Radio Marca Asturias
+https://streaming.enacast.com/radiomarcaasturiasHD.mp3
+#EXTINF:-1 tvg-id="S_Asturias.Radio" tvg-name="SER Asturias" tvg-logo="https://graph.facebook.com/radioasturiasser/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Asturias
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ASO_ASTURIAS.mp3
+#EXTINF:-1 tvg-id="S_Aviles.Radio" tvg-name="SER Avilés" tvg-logo="https://pbs.twimg.com/profile_images/1371891109039906829/9liJWuHy_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Avilés
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_AVILES.mp3
+#EXTINF:-1 tvg-id="S_Gijon.Radio" tvg-name="SER Gijón" tvg-logo="https://graph.facebook.com/CadenaSerGijon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Gijón
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_GIJON.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Avilés" tvg-logo="https://graph.facebook.com/CadenaCOPEAsturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Avilés
+https://wecast-bl01.flumotion.com/copesedes/aviles.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Gijón" tvg-logo="https://graph.facebook.com/CadenaCOPEAsturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Gijón
+https://wecast-bl01.flumotion.com/copesedes/gijon.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Oviedo" tvg-logo="https://graph.facebook.com/CadenaCOPEAsturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Oviedo
+https://wecast-bl01.flumotion.com/copesedes/asturias.mp3
+#EXTINF:-1 tvg-id="OC_CangasdelNarcea.Radio" tvg-name="Onda Cero Cangas del Narcea" tvg-logo="https://graph.facebook.com/ondaceroasturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cangas del Narcea
+https://atres-live.ondacero.es/live/delegaciones/oc/cangasdenarcea/master.m3u8
+#EXTINF:-1 tvg-id="OC_Gijon.Radio" tvg-name="Onda Cero Gijón" tvg-logo="https://graph.facebook.com/ondacero.gijon/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Gijón
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_GIJONAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Infiesto.Radio" tvg-name="Onda Cero Infiesto" tvg-logo="https://graph.facebook.com/ondaceroasturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Infiesto
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_INFIESTOAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Luarca.Radio" tvg-name="Onda Cero Luarca" tvg-logo="https://pbs.twimg.com/profile_images/2373496653/6l41qpdjju3ma1a62nyh_200x200.jpeg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Luarca
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_LUARCAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Oviedo.Radio" tvg-name="Onda Cero Oviedo" tvg-logo="https://graph.facebook.com/ondacero.asturias/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Oviedo
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_OVIEDOAAC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Asturias" tvg-logo="https://graph.facebook.com/esradio/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Asturias
+https://server9.emitironline.com:8822/radio
+#EXTINF:-1 tvg-id="S_ArcoNorte.Radio" tvg-name="SER Arco Norte" tvg-logo="https://graph.facebook.com/SerArcoNorte/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Arco Norte
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ARCO_NORTE.mp3
+#EXTINF:-1 tvg-id="S_Cartagena.Radio" tvg-name="SER Cartagena" tvg-logo="https://graph.facebook.com/RadioCartagena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Cartagena
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_CARTAGENA.mp3
+#EXTINF:-1 tvg-id="S_Lorca.Radio" tvg-name="SER Lorca" tvg-logo="https://graph.facebook.com/serlorca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Lorca
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_LORCA.mp3
+#EXTINF:-1 tvg-id="S_Murcia.Radio" tvg-name="SER Murcia" tvg-logo="https://graph.facebook.com/RadioMurciaSER/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Murcia
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MURCIA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Cartagena" tvg-logo="https://graph.facebook.com/cope.cartagena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Cartagena
+https://wecast09-h-cloud.flumotion.com/copesedes/cartagena.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Espuña" tvg-logo="https://pbs.twimg.com/profile_images/438394397499985920/0yp4xu1g_200x200.png" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Espuña
+https://eu1.lhdserver.es:3197/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Lorca" tvg-logo="https://graph.facebook.com/mananas.copelorca/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Lorca
+https://wecast-bl01.flumotion.com/copesedes/lorca.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Murcia" tvg-logo="https://graph.facebook.com/COPEMurcia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Murcia
+https://wecast-bl01.flumotion.com/copesedes/murcia.mp3
+#EXTINF:-1 tvg-id="" tvg-name="COPE Radio Sureste" tvg-logo="https://graph.facebook.com/radiosureste.cope/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Radio Sureste
+https://sonic.mediatelekom.net/8538/live
+#EXTINF:-1 tvg-id="" tvg-name="COPE Jumilla" tvg-logo="https://graph.facebook.com/COPEJumilla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Jumilla
+https://eu1.lhdserver.es:9055/stream
+#EXTINF:-1 tvg-id="" tvg-name="COPE Yecla" tvg-logo="https://graph.facebook.com/copeyecla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",COPE Yecla
+https://eu1.lhdserver.es:9169/stream
+#EXTINF:-1 tvg-id="OC_Cartagena.Radio" tvg-name="Onda Cero Cartagena" tvg-logo="https://graph.facebook.com/ondacerocartagena/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Cartagena
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_CARTAGENAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Murcia.Radio" tvg-name="Onda Cero Murcia" tvg-logo="https://graph.facebook.com/ondaceromurcia/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Murcia
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_MURCIAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Yecla.Radio" tvg-name="Onda Cero Yecla" tvg-logo="https://graph.facebook.com/Radioyecla/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Yecla
+https://radio-atres-live.ondacero.es/api/livestream-redirect/OC_YECLAAAC.m3u8
+#EXTINF:-1 tvg-id="OC_Noroeste.Radio" tvg-name="Onda Cero Noroeste" tvg-logo="https://graph.facebook.com/ondaceronoroeste/picture?width=200&height=200" group-title="📻 RADIO DEPORTES AUDIO-SYNC",Onda Cero Noroeste
+https://sonic.mediatelekom.net/8572/stream
+#EXTINF:-1 tvg-id="" tvg-name="esRadio Murcia" tvg-logo="https://pbs.twimg.com/profile_images/705511311405420544/tpOaTsmx_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",esRadio Murcia
+https://sonic.mediatelekom.net/8274/stream
+#EXTINF:-1 tvg-id="S_Andorra.Radio" tvg-name="SER Andorra" tvg-logo="https://pbs.twimg.com/profile_images/1573296068359585794/w5ceuwaR_200x200.jpg" group-title="📻 RADIO DEPORTES AUDIO-SYNC",SER Andorra
+https://playerservices.streamtheworld.com/api/livestream-redirect/SER_ANDORRA.mp3

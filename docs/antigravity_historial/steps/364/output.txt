@@ -1,0 +1,28 @@
+The following changes were made by the replace_file_content tool to: /home/slone/.gemini/antigravity/scratch/slocast/slocast.py. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1501,7 +1501,7 @@
+         super().closeEvent(event)
+ 
+ # ──────────────────────────────────────────────────────────────
+-#  PUNTO DE ENTRADA SLONE OS
++#  PUNTO DE ENTRADA SLONE OS (ENCLAVE BIOMÉTRICO THINKPAD X390)
+ # ──────────────────────────────────────────────────────────────
+ if __name__ == "__main__":
+     app = QApplication(sys.argv)
+@@ -1508,3 +1508,13 @@
++
++    # Guardián de Acceso Biométrico Nativo
++    try:
++        from slone_auth import require_biometric_auth
++        if not require_biometric_auth():
++            print("\n[SLONE SECURITY] Acceso denegado: Huella dactilar no autenticada.")
++            sys.exit(13)
++    except Exception as e:
++        print(f"[SLONE SECURITY WARNING] Fallo al iniciar enclave biométrico: {e}")
++
+     win = SLONEMainWindow()
+     win.show()
+     sys.exit(app.exec())
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

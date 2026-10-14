@@ -1,0 +1,10 @@
+
+The command exited with code 0.
+Output:
+Index size: 30621 bytes
+Assets found: 4
+ - store.jpg 794649 bytes
+ - merch.jpg 655988 bytes
+ - logo.jpg 406983 bytes
+ - crown_icon.png 406983 bytes
+

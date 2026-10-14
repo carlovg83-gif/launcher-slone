@@ -1,0 +1,15 @@
+
+The command exited with code 0.
+Output:
+HTTP/1.1 200 OK
+Date: Fri, 25 Sep 2026 16:45:40 GMT
+Content-Type: video/mp2t
+Content-Length: 0
+Connection: keep-alive
+Server: cloudflare
+cf-cache-status: DYNAMIC
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=S3%2Bh7G%2FQ5t%2FerwnbkwfDD%2B4skwMSc92bPxm4Tj1AeoHrRVjPae5FEIrL1Jk9zt7Z1NtB7eCXJTf1Yac3CxJalAFPp2kThu%2Flwv9rw%2BF81og34MRf4wCmN7vYiUAVO3TPTncDhEkKfA%3D%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+CF-RAY: a40b8024cb904ad8-MAD
+
+

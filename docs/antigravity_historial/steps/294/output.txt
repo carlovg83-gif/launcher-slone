@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+drwxr-xr-x. 1 slone slone 458 sep 25 19:48 .
+drwxr-xr-x. 1 slone slone 904 sep 25 20:35 ..
+-rw-r--r--. 1 slone slone 366 sep 18 16:27 antigravity.desktop
+-rw-r--r--. 1 slone slone 366 sep 18 16:27 antigravity.desktop.bak
+-rw-r--r--. 1 slone slone 143 sep 11 22:26 claude-ai.desktop
+-rw-r--r--. 1 slone slone 155 sep 11 22:26 deepseek-ai.desktop
+-rw-r--r--. 1 slone slone 148 sep 11 22:26 gemini-ai.desktop
+-rw-r--r--. 1 slone slone   0 sep 11 23:58 mimeapps.list
+-rw-r--r--. 1 slone slone  13 sep 25 19:48 mimeinfo.cache
+-rw-r--r--. 1 slone slone 407 sep 10 21:26 org.mozilla.firefox.webapp-1a8f4160-d5b9-4478-894f-e1c6d36b0a14.desktop
+-rw-r--r--. 1 slone slone 363 sep 25 19:48 slocast.desktop
+-rwxr-xr-x. 1 slone slone 241 sep 19 20:28 winamax-poker.desktop
+

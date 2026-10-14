@@ -1,0 +1,11 @@
+{
+  "last_m3u": "/home/slone/Descargas/TV-76173252_playlist.m3u",
+  "engine": "mpv",
+  "order_mode": "original",
+  "deepseek": {
+    "api_key": "sk-b05475740f814ee79c5469f5d4fd1485",
+    "model": "deepseek-flash"
+  },
+  "ui_font": "Inter",
+  "ui_logo": "classic"
+}

@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+790:        btn_more.clicked.connect(lambda: self.stack.setCurrentIndex(6))
+839:        self.drawer_group.idClicked.connect(self.stack.setCurrentIndex)
+849:            ("Launch Server Cast", lambda: self.stack.setCurrentIndex(7)),
+

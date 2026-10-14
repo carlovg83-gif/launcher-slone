@@ -1,0 +1,1 @@
+{"File":"/home/slone/.gemini/antigravity/scratch/slocast/slocast.py","LineNumber":1299,"LineContent":"    def _setup_shortcuts(self):"}

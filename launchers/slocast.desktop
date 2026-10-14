@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SLOCAST
+GenericName=IPTV & Multi-Screen Engine
+Comment=SLOCAST Pro VR46 Edition - Streaming y Relay para Xiaomi TV
+Exec=/home/slone/.local/bin/slocast
+Icon=/home/slone/.local/share/icons/slocast.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;TV;
+Keywords=slocast;iptv;m3u;stream;cast;relay;tv;vr46;
+StartupNotify=true
