@@ -41,6 +41,16 @@
       background-attachment: fixed;
     }
 
+    /* ── SISTEMA DE ENFOQUE D-PAD ULTRA-REACTIVO PARA MANDO TV ── */
+    :focus, :focus-visible, .dpad-focus {
+      outline: 3px solid var(--accent) !important;
+      outline-offset: 4px !important;
+      box-shadow: 0 0 25px var(--accent-glow), 0 0 45px rgba(227, 255, 0, 0.4) !important;
+      transform: scale(1.05) !important;
+      z-index: 100 !important;
+      transition: all 0.12s cubic-bezier(0.2, 0, 0, 1) !important;
+    }
+
     /* ── 1. CABECERA SOBERANA SLÖNE OS ── */
     #SovereignHeader {
       position: sticky;
@@ -1320,12 +1330,68 @@
       }
     }
 
-    // ── RELOJ ──
+    // ── RELOJ EN TIEMPO REAL ──
     setInterval(() => {
       const now = new Date();
-      document.getElementById('liveClock').innerText = 
-        now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      const clk = document.getElementById('liveClock');
+      if (clk) {
+        clk.innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      }
     }, 1000);
+
+    // ── MOTOR DE NAVEGACIÓN D-PAD PARA MANDO SMART TV ──
+    const radioStations = [
+      { id: 'tv', name: 'Audio TV Original' },
+      { id: 'https://stream.rac1.cat/rac1.mp3', name: 'RAC1 (Pou)' },
+      { id: 'https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8', name: 'CatRàdio' },
+      { id: 'ambient', name: 'Estadio Puro' },
+      { id: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', name: 'Cadena SER' },
+      { id: 'https://flive.cope.stream.flumotion.com/cope/net1.mp3', name: 'COPE' }
+    ];
+    let currentRadioIdx = 0;
+
+    window.addEventListener('keydown', (e) => {
+      const key = e.key;
+      const code = e.keyCode;
+
+      // Atajo numérico directo para conmutar pantalla / audio: 1, 2, 3, 4
+      if (key >= '1' && key <= '4') {
+        const targetIdx = parseInt(key, 10) - 1;
+        setScreenAudio(targetIdx);
+        return;
+      }
+
+      // Atajo 'F' para Pantalla Completa
+      if (key === 'f' || key === 'F' || code === 186) {
+        toggleFullscreen();
+        return;
+      }
+
+      // Atajo 'R' para ciclar radios deportivas (RAC1, CatRàdio, SER...)
+      if (key === 'r' || key === 'R') {
+        currentRadioIdx = (currentRadioIdx + 1) % radioStations.length;
+        const st = radioStations[currentRadioIdx];
+        setRadioTrack(st.id, st.name, null);
+        return;
+      }
+
+      // Atajo 'M' para Silencio / Mute
+      if (key === 'm' || key === 'M') {
+        const v = document.getElementById(`v${activeScreenIdx}`);
+        if (v) v.muted = !v.muted;
+        return;
+      }
+
+      // D-Pad Scroll suave al elemento enfocado
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
+        setTimeout(() => {
+          const act = document.activeElement;
+          if (act && act !== document.body) {
+            act.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          }
+        }, 50);
+      }
+    });
 
     window.onload = () => {
       initPlayers();
