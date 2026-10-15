@@ -11,6 +11,7 @@ import os
 import socket
 import sys
 import urllib.parse
+import urllib.request
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -291,6 +292,73 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             else:
                 os.system(f"{adb_bin} -s 192.168.1.135:5555 shell monkey -p org.smarttube.stable -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 &")
             resp = json.dumps({"status": "youtube_search_launched", "query": q}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(resp)))
+            self.end_headers()
+            self.wfile.write(resp)
+            return
+
+        # 7d. SLÖNE Ultra-Fast Streaming Proxy (Anti-Bloqueo, Inyección IPTVSmartersPro & CORS)
+        if path.startswith("/api/stream/proxy"):
+            params = urllib.parse.parse_qs(parsed.query)
+            target_url = params.get("url", [""])[0]
+            if not target_url:
+                self.send_error(400, "URL requerida")
+                return
+
+            try:
+                # Spoofing de User-Agent oficial de IPTV para saltar bloqueos 403
+                headers = {
+                    "User-Agent": "IPTVSmartersPro",
+                    "Accept": "*/*",
+                    "Connection": "keep-alive"
+                }
+                req = urllib.request.Request(target_url, headers=headers)
+                upstream = urllib.request.urlopen(req, timeout=8)
+
+                content_type = upstream.headers.get("Content-Type", "video/mp2t")
+                self.send_response(200)
+                self.send_header("Content-Type", content_type)
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+                self.end_headers()
+
+                # Si es una lista HLS m3u8, reescribir URLs para pasar por el proxy
+                if "mpegurl" in content_type or target_url.endswith(".m3u8"):
+                    body = upstream.read().decode("utf-8", errors="ignore")
+                    lines = []
+                    base_url = target_url.rsplit("/", 1)[0]
+                    for l in body.splitlines():
+                        if l and not l.startswith("#"):
+                            full_chunk = l if l.startswith("http") else f"{base_url}/{l}"
+                            lines.append(f"/api/stream/proxy?url={urllib.parse.quote(full_chunk)}")
+                        else:
+                            lines.append(l)
+                    self.wfile.write("\n".join(lines).encode("utf-8"))
+                    return
+
+                # Flujo continuo para MPEG-TS (.ts)
+                while True:
+                    chunk = upstream.read(64 * 1024)
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+            except Exception:
+                pass
+            return
+
+        # 7e. Lanzar stream en reproductor nativo de la Xiaomi TV (TiviMate / Xiaomi Video)
+        if path.startswith("/api/tv/play_external"):
+            params = urllib.parse.parse_qs(parsed.query)
+            stream_url = params.get("url", [""])[0]
+            pkg = params.get("package", ["ar.tvplayer.tv"])[0]
+            if stream_url:
+                adb_bin = "/home/slone/.local/bin/adb"
+                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{stream_url}' -t 'video/*' {pkg} >/dev/null 2>&1 &")
+                resp = json.dumps({"status": "external_play_started", "url": stream_url, "package": pkg}).encode()
+            else:
+                resp = b'{"status": "error", "message": "Falta URL del stream"}'
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(resp)))

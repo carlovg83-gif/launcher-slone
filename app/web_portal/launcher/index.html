@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>SLÖNE™ SOVEREIGN TV OS · Xiaomi & Smart TV Flagship</title>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.js"></script>
   <style>
     :root {
       --bg: #030407;
@@ -992,6 +993,7 @@
       { url: 'https://directes-tv-cat.3catdirectes.cat/live-origin/tv3-hls/master.m3u8', name: 'TV3 HD' }
     ];
     let hlsPlayers = [null, null, null, null];
+    let tsPlayers = [null, null, null, null];
 
     // ── SLÖNE TUBE: CONTENIDO DESTACADO SIN ANUNCIOS ──
     const tubeData = {
@@ -1107,23 +1109,79 @@
       radio.pause();
     }
 
+    function stopStream(idx) {
+      if (hlsPlayers[idx]) {
+        try { hlsPlayers[idx].destroy(); } catch(e) {}
+        hlsPlayers[idx] = null;
+      }
+      if (tsPlayers[idx]) {
+        try {
+          tsPlayers[idx].pause();
+          tsPlayers[idx].unload();
+          tsPlayers[idx].detachMediaElement();
+          tsPlayers[idx].destroy();
+        } catch(e) {}
+        tsPlayers[idx] = null;
+      }
+      const v = document.getElementById(`v${idx}`);
+      if (v) {
+        v.pause();
+        v.removeAttribute('src');
+        v.load();
+      }
+    }
+
+    function playStreamOnElement(idx, streamUrl) {
+      stopStream(idx);
+      const v = document.getElementById(`v${idx}`);
+      if (!v) return;
+
+      const isTs = streamUrl.includes('.ts') || streamUrl.includes('/live/');
+      const isPublicCdn = streamUrl.includes('rtve.es') || streamUrl.includes('akamaized.net') || streamUrl.includes('3catdirectes.cat');
+
+      // Enrutar por el Proxy Soberano si es stream IPTV privado para inyectar IPTVSmartersPro y CORS
+      const effectiveUrl = (!isPublicCdn && streamUrl.startsWith('http'))
+        ? `/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`
+        : streamUrl;
+
+      if (isTs && window.mpegts && mpegts.isSupported()) {
+        try {
+          const player = mpegts.createPlayer({
+            type: 'mse',
+            isLive: true,
+            url: effectiveUrl
+          }, {
+            enableWorker: true,
+            lazyLoad: false,
+            liveBufferLatencyChasing: true
+          });
+          player.attachMediaElement(v);
+          player.load();
+          player.play();
+          tsPlayers[idx] = player;
+          return;
+        } catch (err) {
+          console.warn("Fallo mpegts, usando fallback HLS:", err);
+        }
+      }
+
+      if (Hls.isSupported()) {
+        const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
+        hls.loadSource(effectiveUrl);
+        hls.attachMedia(v);
+        hlsPlayers[idx] = hls;
+      } else {
+        v.src = effectiveUrl;
+      }
+      v.play().catch(() => {});
+    }
+
     function playInActiveScreen(channel) {
       const idx = activeScreenIdx;
       currentStreams[idx] = { url: channel.url, name: channel.name };
       document.getElementById(`qname${idx}`).innerText = `[${idx+1}] ${channel.name}`;
       document.getElementById('lblActiveScreenName').innerText = `[${idx+1}] ${channel.name}`;
-
-      const v = document.getElementById(`v${idx}`);
-      if (hlsPlayers[idx]) hlsPlayers[idx].destroy();
-      if (Hls.isSupported()) {
-        const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-        hls.loadSource(channel.url);
-        hls.attachMedia(v);
-        hlsPlayers[idx] = hls;
-      } else {
-        v.src = channel.url;
-      }
-      v.play().catch(() => {});
+      playStreamOnElement(idx, channel.url);
       window.scrollTo({ top: 380, behavior: 'smooth' });
     }
 
@@ -1137,17 +1195,7 @@
 
     function playIndex(idx, streamObj) {
       document.getElementById(`qname${idx}`).innerText = `[${idx+1}] ${streamObj.name}`;
-      const v = document.getElementById(`v${idx}`);
-      if (hlsPlayers[idx]) hlsPlayers[idx].destroy();
-      if (Hls.isSupported()) {
-        const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-        hls.loadSource(streamObj.url);
-        hls.attachMedia(v);
-        hlsPlayers[idx] = hls;
-      } else {
-        v.src = streamObj.url;
-      }
-      v.play().catch(() => {});
+      playStreamOnElement(idx, streamObj.url);
     }
 
     function setStadiumMode(mode) {
@@ -1198,6 +1246,7 @@
         card.className = 'channel-card';
         card.tabIndex = 0;
         const logoUrl = ch.logo || 'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>';
+        const safeName = (ch.name || 'Canal').replace(/'/g, "\\'");
         card.innerHTML = `
           <div class="card-thumb-box">
             <img src="${logoUrl}" class="card-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>'">
@@ -1205,11 +1254,20 @@
           <div class="card-body">
             <div class="card-title">${ch.name}</div>
             <div class="card-group">${ch.group}</div>
+            <div style="display:flex; gap:6px; margin-top:8px;">
+              <button style="flex:1; background:var(--accent); color:#000; border:none; padding:5px 6px; font-weight:900; font-size:0.68rem; border-radius:6px; cursor:pointer;" onclick="event.stopPropagation(); playInActiveScreen({url: '${ch.url}', name: '${safeName}'})">▶️ MATRIZ</button>
+              <button style="flex:1; background:rgba(0,229,255,0.15); border:1px solid var(--cyan-shield); color:var(--cyan-shield); padding:5px 6px; font-weight:800; font-size:0.68rem; border-radius:6px; cursor:pointer;" onclick="event.stopPropagation(); launchExternalStream('${ch.url}', '${safeName}')">⚡ TIVIMATE</button>
+            </div>
           </div>
         `;
         card.onclick = () => playInActiveScreen(ch);
         row.appendChild(card);
       });
+    }
+
+    function launchExternalStream(url, name) {
+      fetch(`/api/tv/play_external?url=${encodeURIComponent(url)}&package=ar.tvplayer.tv`)
+        .catch(() => {});
     }
 
     // ── LANZAMIENTO DE APPS EN LA TELE VÍA ADB ──
