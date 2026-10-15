@@ -700,7 +700,153 @@
       margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
+    /* ── BARRA DE PESTAÑAS XIAOMI PATCHWALL ── */
+    .patchwall-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #9DA8C3;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .nav-tab:hover, .nav-tab:focus, .nav-tab.active {
+      background: var(--accent);
+      color: #030407;
+      border-color: var(--accent);
+      transform: scale(1.04);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* ── HERO BILLBOARD ESTILO XIAOMI PATCHWALL (0% PUBLICIDAD, 100% SOBERANO) ── */
+    .patchwall-billboard {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: 22px;
+      margin: 1rem 0 2rem 0;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 2.2rem 3rem;
+      background: #070B14 url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
+      border: 1px solid rgba(227, 255, 0, 0.3);
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.85);
+    }
+    .billboard-backdrop {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(3,4,7,0.95) 0%, rgba(3,4,7,0.85) 45%, rgba(3,4,7,0.2) 100%),
+                  linear-gradient(0deg, rgba(3,4,7,1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .billboard-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+    .billboard-tags {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bb-tag {
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .bb-live { background: #FF0033; color: #FFF; animation: pulse 1.8s infinite; }
+    .bb-res { background: rgba(255, 255, 255, 0.12); color: #FFF; border: 1px solid rgba(255,255,255,0.2); }
+    .bb-shield { background: rgba(0, 229, 255, 0.15); color: var(--cyan-shield); border: 1px solid var(--cyan-shield); }
+    .bb-noads { background: rgba(227, 255, 0, 0.18); color: var(--accent); border: 1px solid var(--accent); }
+    .billboard-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+    }
+    .billboard-desc {
+      font-size: 0.95rem;
+      color: #C5CEE0;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      max-width: 680px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+    }
+    .billboard-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .bb-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+      border: none;
+    }
+    .bb-btn-primary {
+      background: var(--accent);
+      color: #030407;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .bb-btn-primary:hover, .bb-btn-primary:focus {
+      background: #EDFF4D;
+      transform: scale(1.05);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .bb-btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFF;
+      border: 1px solid var(--border);
+    }
+    .bb-btn-secondary:hover, .bb-btn-secondary:focus {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+      border-color: #FFF;
+    }
+    .bb-btn-audio {
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cyan-shield);
+      border: 1px solid var(--cyan-shield);
+    }
+    .bb-btn-audio:hover, .bb-btn-audio:focus {
+      background: var(--cyan-shield);
+      color: #030407;
+      transform: scale(1.05);
+    }
+    .bb-btn-tivimate {
+      background: rgba(255, 170, 0, 0.15);
+      color: #FFAA00;
+      border: 1px solid #FFAA00;
+    }
+    .bb-btn-tivimate:hover, .bb-btn-tivimate:focus {
+      background: #FFAA00;
+      color: #030407;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -715,50 +861,61 @@
         <div class="brand-sub">Sistema Operativo de Serie · Flagship TV</div>
       </div>
     </div>
+    <nav class="patchwall-nav">
+      <div class="nav-tab active" tabindex="0" onclick="scrollToSection('heroBillboard')">🏠 Inicio</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('dockSection')">🛍️ Mis Apps</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('stadiumSection')">🏟️ Matriz 4X</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('tubeSection')">▶️ Slöne Tube</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secFutbol')">⚽ Fútbol VIP</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secMotor')">🏎️ Motor F1</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secTdt')">🇪🇸 TDT Directo</div>
+      <div class="nav-tab" tabindex="0" onclick="scrollToSection('shieldBrowser')">🔍 Buscador</div>
+    </nav>
     <div class="header-badges">
       <div class="badge-ceo">👑 CEO MASTER · 39.737 CANALES</div>
       <div class="badge-telemetry">
         <span class="pulse-dot"></span>
         <span>XIAOMI MiTV · ESCUDO ACTIVO</span>
       </div>
-      <div class="clock-widget" id="liveClock">22:15</div>
+      <div class="clock-widget" id="liveClock">13:45</div>
     </div>
   </header>
 
   <div class="viewport">
 
-    <!-- 2. SLÖNE SHIELD WEB BROWSER & BUSCADOR SOBERANO (ESTILO BRAVE / FIREFOX) -->
-    <section class="shield-browser-bar">
-      <div class="shield-header">
-        <div class="shield-status">
-          <span>🛡️ SLÖNE SHIELD WEB BROWSER™</span>
-          <span class="shield-tag">ANTI-RASTREO ACTIVO</span>
-          <span class="shield-tag">SIN ANUNCIOS</span>
-          <span class="shield-tag">DNS PRIVADO</span>
+    <!-- HERO BILLBOARD ESTILO XIAOMI PATCHWALL (0% PUBLICIDAD, 100% CONTENIDO SOBERANO) -->
+    <section class="patchwall-billboard" id="heroBillboard">
+      <div class="billboard-backdrop"></div>
+      <div class="billboard-content">
+        <div class="billboard-tags">
+          <span class="bb-tag bb-live">🔴 EN DIRECTO</span>
+          <span class="bb-tag bb-res">4K UHD HDR</span>
+          <span class="bb-tag bb-shield">ESCUDO SLÖNE ACTIVO</span>
+          <span class="bb-tag bb-noads">0% PUBLICIDAD</span>
         </div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">
-          Motor Soberano Brave & Firefox · Navegación 100% Blindada
+        <h1 class="billboard-title">FC BARCELONA vs CHAMPIONS LEAGUE</h1>
+        <p class="billboard-desc">
+          M+ Liga de Campeones UHD · Pista de Audio: RAC1 (Joan Maria Pou · Culer) · Señal Local Blindada sin Bloqueos de Operadora.
+        </p>
+        <div class="billboard-btn-group">
+          <button class="bb-btn bb-btn-primary" tabindex="0" onclick="playInActiveScreen({url: 'https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8', name: 'Champions League Directo'})">
+            <span>▶️ VER EN DIRECTO</span>
+          </button>
+          <button class="bb-btn bb-btn-secondary" tabindex="0" onclick="scrollToSection('stadiumSection'); setStadiumMode(4);">
+            <span>🏟️ ABRIR MATRIZ 4X</span>
+          </button>
+          <button class="bb-btn bb-btn-audio" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', null)">
+            <span>🎙️ AUDIO: RAC1 (CULER)</span>
+          </button>
+          <button class="bb-btn bb-btn-tivimate" tabindex="0" onclick="launchExternalStream('http://398607.solanaflix.com/live/TV-76173252/624816943106/112675.ts', 'Champions League 4K')">
+            <span>⚡ TIVIMATE 4K</span>
+          </button>
         </div>
-      </div>
-      <form class="omnibox-form" onsubmit="event.preventDefault(); executeSearch();">
-        <input type="text" id="omniboxInput" class="omnibox-input" placeholder="🔍 Buscar en la Web privada (Brave / DuckDuckGo) o introducir URL directa..." autocomplete="off">
-        <button type="submit" class="omnibox-btn">
-          <span>🚀 NAVEGAR EN LA TV</span>
-        </button>
-      </form>
-      <div class="shield-quick-links">
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://search.brave.com', 'Brave Search Privado')">🦁 Brave Search</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://duckduckgo.com', 'DuckDuckGo Privado')">🦆 DuckDuckGo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.flashscore.es', 'Flashscore / Resultados en Directo')">📊 Flashscore Directo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.sport.es', 'Diario SPORT · Barça')">🔵🔴 Diario SPORT</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.mundodeportivo.com', 'Mundo Deportivo')">📰 Mundo Deportivo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.marca.com', 'Marca')">⚡ Marca</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://es.wikipedia.org', 'Wikipedia')">📚 Wikipedia</div>
       </div>
     </section>
 
-    <!-- 3. SLÖNE DOCK: APLICACIONES DE FÁBRICA & TIENDAS OFICIALES -->
-    <section style="margin-bottom: 1.8rem;">
+    <!-- 3. SLÖNE DOCK: APLICACIONES DE FÁBRICA & TIENDAS OFICIALES ("Mis Aplicaciones" de Xiaomi) -->
+    <section id="dockSection" style="margin-bottom: 2rem;">
       <div class="section-title">
         <span>🛍️ SLÖNE ECOSYSTEM DOCK · APPS Y TIENDAS DE SERIE</span>
         <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(Lanzamiento nativo directo en tu Xiaomi TV)</span>
@@ -840,7 +997,7 @@
     </section>
 
     <!-- 4. SLÖNE TUBE™ (YOUTUBE 4K SIN ANUNCIOS INTEGRADO) -->
-    <section class="tube-section">
+    <section class="tube-section" id="tubeSection">
       <div class="tube-header">
         <div class="tube-title">
           <span>▶️ SLÖNE TUBE™ · YOUTUBE 4K SIN ANUNCIOS</span>
@@ -861,7 +1018,7 @@
     </section>
 
     <!-- 5. SLÖNE STADIUM MATRIX™ 4X & PANTALLA COMPLETA -->
-    <section class="hero-stage">
+    <section class="hero-stage" id="stadiumSection">
       <div class="stage-top-bar">
         <div class="stage-title">
           <span>🏟️ MULTIVIEW STADIUM™ 4X</span>
@@ -938,7 +1095,7 @@
     </section>
 
     <!-- 7. CARRUSEL: FÚTBOL & CHAMPIONS LEAGUE (DE TU LISTA DE CEO) -->
-    <section class="carousel-section">
+    <section class="carousel-section" id="secFutbol">
       <div class="carousel-header">
         <div class="section-title">
           <span>⚽ FÚTBOL & CHAMPIONS LEAGUE</span>
@@ -951,7 +1108,7 @@
     </section>
 
     <!-- 8. CARRUSEL: MOTOR, F1 & MOTOGP (DE TU LISTA DE CEO) -->
-    <section class="carousel-section">
+    <section class="carousel-section" id="secMotor">
       <div class="carousel-header">
         <div class="section-title">
           <span>🏍️ MOTOR, FÓRMULA 1 & MOTOGP</span>
@@ -964,7 +1121,7 @@
     </section>
 
     <!-- 9. CARRUSEL: TDT & AUTONÓMICOS -->
-    <section class="carousel-section">
+    <section class="carousel-section" id="secTdt">
       <div class="carousel-header">
         <div class="section-title">
           <span>🇪🇸 TELEVISIÓN GENERALISTA & AUTONÓMICAS</span>
@@ -977,7 +1134,7 @@
     </section>
 
     <!-- 10. CARRUSEL: CINE & ESTRENOS (DE TU LISTA DE CEO) -->
-    <section class="carousel-section">
+    <section class="carousel-section" id="secCine">
       <div class="carousel-header">
         <div class="section-title">
           <span>🎬 CINE, ESTRENOS & SERIES</span>
@@ -986,6 +1143,36 @@
       </div>
       <div class="carousel-row" id="rowCine">
         <!-- Generado dinámicamente -->
+      </div>
+    </section>
+
+    <!-- 11. SLÖNE SHIELD WEB BROWSER & BUSCADOR SOBERANO (ESTILO BRAVE / FIREFOX) -->
+    <section class="shield-browser-bar" id="shieldBrowser" style="margin-top: 2.5rem;">
+      <div class="shield-header">
+        <div class="shield-status">
+          <span>🛡️ SLÖNE SHIELD WEB BROWSER™</span>
+          <span class="shield-tag">ANTI-RASTREO ACTIVO</span>
+          <span class="shield-tag">SIN ANUNCIOS</span>
+          <span class="shield-tag">DNS PRIVADO</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">
+          Motor Soberano Brave & Firefox · Navegación 100% Blindada en tu Xiaomi TV
+        </div>
+      </div>
+      <form class="omnibox-form" onsubmit="event.preventDefault(); executeSearch();">
+        <input type="text" id="omniboxInput" class="omnibox-input" placeholder="🔍 Buscar en la Web privada (Brave / DuckDuckGo) o introducir URL directa..." autocomplete="off">
+        <button type="submit" class="omnibox-btn">
+          <span>🚀 NAVEGAR EN LA TV</span>
+        </button>
+      </form>
+      <div class="shield-quick-links">
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://search.brave.com', 'Brave Search Privado')">🦁 Brave Search</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://duckduckgo.com', 'DuckDuckGo Privado')">🦆 DuckDuckGo</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.flashscore.es', 'Flashscore / Resultados en Directo')">📊 Flashscore Directo</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.sport.es', 'Diario SPORT · Barça')">🔵🔴 Diario SPORT</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.mundodeportivo.com', 'Mundo Deportivo')">📰 Mundo Deportivo</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.marca.com', 'Marca')">⚡ Marca</div>
+        <div class="quick-link-pill" onclick="launchWebShortcut('https://es.wikipedia.org', 'Wikipedia')">📚 Wikipedia</div>
       </div>
     </section>
 
@@ -1054,6 +1241,22 @@
       document.querySelectorAll('.tube-category-pill').forEach(p => p.classList.remove('active'));
       if (pill) pill.classList.add('active');
       renderTube(cat);
+    }
+
+    // ── NAVEGACIÓN ENTRE SECCIONES PATCHWALL ──
+    function scrollToSection(id) {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      const activeTab = Array.from(document.querySelectorAll('.nav-tab')).find(t => t.getAttribute('onclick')?.includes(id));
+      if (activeTab) activeTab.classList.add('active');
+
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          const firstFocusable = el.querySelector('[tabindex="0"], button, input');
+          if (firstFocusable) firstFocusable.focus();
+        }, 150);
+      }
     }
 
     // ── SLÖNE SHIELD BROWSER: EJECUCIÓN DE BÚSQUEDA PRIVADA O URL ──
