@@ -8,11 +8,10 @@
   <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.js"></script>
   <style>
     :root {
-      --bg: #06080C;
-      --bg-surface: rgba(22, 28, 42, 0.7);
-      --bg-surface-hover: rgba(36, 46, 68, 0.95);
+      --bg: #05070B;
+      --bg-surface: rgba(18, 24, 36, 0.75);
       --accent: #E3FF00;
-      --accent-glow: rgba(227, 255, 0, 0.4);
+      --accent-glow: rgba(227, 255, 0, 0.35);
       --text: #FFFFFF;
       --text-muted: rgba(255, 255, 255, 0.65);
       --text-sub: rgba(255, 255, 255, 0.45);
@@ -35,7 +34,6 @@
       scroll-behavior: smooth;
     }
 
-    /* ── SCROLLBAR MINIMALISTA ── */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -48,62 +46,80 @@
       border-radius: 9999px;
     }
 
-    /* ── ENTORNO HERO BILLBOARD (FONDO CINEMATOGRÁFICO DE PANTALLA COMPLETA) ── */
+    /* ── BILLBOARD CINEMATOGRÁFICO CON VÍDEO EN DIRECTO ── */
     .hero-viewport {
       position: relative;
       width: 100%;
-      height: 67vh;
-      min-height: 440px;
+      height: 68vh;
+      min-height: 460px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 22px 44px 0 44px;
+      padding: 24px 48px 0 48px;
+      overflow: hidden;
+      background: #05070B;
+    }
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      filter: contrast(1.15) brightness(0.9);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-vignette-overlay {
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(180deg, rgba(6, 8, 12, 0.4) 0%, rgba(6, 8, 12, 0.1) 35%, rgba(6, 8, 12, 0.85) 75%, #06080C 100%),
-        radial-gradient(circle at 75% 30%, rgba(0, 77, 152, 0.5) 0%, rgba(165, 0, 68, 0.35) 45%, rgba(6, 8, 12, 0.9) 80%),
-        linear-gradient(135deg, #07101E 0%, #110815 50%, #04060A 100%);
-      background-size: cover;
-      background-position: center;
+        linear-gradient(180deg, rgba(5,7,11,0.6) 0%, rgba(5,7,11,0.15) 35%, rgba(5,7,11,0.85) 75%, #05070B 100%),
+        radial-gradient(circle at 75% 35%, rgba(0, 77, 152, 0.45) 0%, rgba(165, 0, 68, 0.35) 45%, rgba(5, 7, 11, 0.95) 85%);
+      z-index: 2;
+      pointer-events: none;
     }
 
-    /* ── BARRA SUPERIOR IDÉNTICA A XIAOMI / GOOGLE TV ── */
+    /* ── BARRA SUPERIOR SLÖNE (COUTURE SILICON VALLEY) ── */
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       z-index: 100;
+      position: relative;
     }
     .top-left-cluster {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
     .profile-avatar {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: #181F2D;
+      background: linear-gradient(145deg, #1C2334 0%, #0E131E 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #FFFFFF;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
       outline: none;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
     .profile-avatar:focus {
       outline: 3px solid #FFFFFF;
       transform: scale(1.1);
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.4);
     }
     .nav-capsule {
       display: flex;
       align-items: center;
-      background: rgba(28, 34, 48, 0.65);
+      background: rgba(22, 28, 42, 0.68);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-radius: 9999px;
@@ -128,7 +144,7 @@
       background: #FFFFFF;
       color: #000000;
       font-weight: 700;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
     }
     .nav-item:focus {
       outline: none;
@@ -139,12 +155,12 @@
     .nav-item.active:focus {
       background: #FFFFFF;
       color: #000000;
-      box-shadow: 0 0 16px rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.6);
     }
     .nav-tools {
       display: flex;
       align-items: center;
-      background: rgba(28, 34, 48, 0.65);
+      background: rgba(22, 28, 42, 0.68);
       backdrop-filter: blur(24px);
       border-radius: 9999px;
       padding: 4px 10px;
@@ -185,15 +201,16 @@
     }
     .meta-brand {
       letter-spacing: 2px;
-      font-weight: 700;
+      font-weight: 800;
       color: #FFFFFF;
     }
 
-    /* ── CONTENIDO DEL HERO (ENFOQUE DIRECTO EN EL CONTENIDO DE VALOR) ── */
+    /* ── CONTENIDO DEL HERO (PRODUCTO & RECLAMO SLÖNE) ── */
     .hero-content {
-      max-width: 720px;
-      margin-bottom: 20px;
+      max-width: 760px;
+      margin-bottom: 24px;
       z-index: 10;
+      position: relative;
     }
     .hero-provider {
       display: inline-flex;
@@ -202,21 +219,22 @@
       font-size: 0.88rem;
       font-weight: 700;
       color: #FFFFFF;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       margin-bottom: 8px;
       opacity: 0.95;
+      text-transform: uppercase;
     }
     .hero-title {
-      font-size: 2.7rem;
+      font-size: 2.9rem;
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.08;
       color: #FFFFFF;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
       margin-bottom: 8px;
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
     }
     .hero-subtitle {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 600;
       color: var(--accent);
       margin-bottom: 10px;
@@ -225,12 +243,12 @@
       gap: 8px;
     }
     .hero-synopsis {
-      font-size: 0.95rem;
-      line-height: 1.45;
+      font-size: 0.98rem;
+      line-height: 1.48;
       color: var(--text-muted);
-      margin-bottom: 18px;
-      max-width: 580px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
+      max-width: 620px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
     .hero-actions {
       display: flex;
@@ -240,9 +258,9 @@
     .btn-pill-primary {
       background: #FFFFFF;
       color: #000000;
-      font-size: 0.98rem;
+      font-size: 1.0rem;
       font-weight: 700;
-      padding: 10px 24px;
+      padding: 12px 28px;
       border-radius: 9999px;
       border: none;
       cursor: pointer;
@@ -250,26 +268,26 @@
       align-items: center;
       gap: 8px;
       outline: none;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
     }
     .btn-pill-primary:focus {
       background: var(--accent);
       color: #000000;
       transform: scale(1.08);
-      box-shadow: 0 0 24px var(--accent-glow);
+      box-shadow: 0 0 28px var(--accent-glow);
       outline: 3.5px solid #FFFFFF;
     }
     .btn-pill-secondary {
-      background: rgba(36, 44, 62, 0.65);
+      background: rgba(30, 38, 56, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       color: #FFFFFF;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 600;
-      padding: 10px 20px;
+      padding: 12px 22px;
       border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -282,10 +300,9 @@
       color: #FFFFFF;
       transform: scale(1.08);
       outline: 3px solid #FFFFFF;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.35);
     }
 
-    /* Puntos indicadores del carrusel */
     .hero-dots {
       position: absolute;
       right: 48px;
@@ -300,6 +317,8 @@
       height: 8px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: all 0.2s;
     }
     .hero-dot.active {
       width: 24px;
@@ -307,19 +326,19 @@
       background: #FFFFFF;
     }
 
-    /* ── SECCIÓN «TUS APLICACIONES» (IDÉNTICA A LA FOTO DEL USUARIO) ── */
+    /* ── SECCIÓN «TUS APLICACIONES» UNIFICADAS SLÖNE (LUJO SOBERANO) ── */
     .apps-section {
       position: relative;
       width: 100%;
-      padding: 0 44px 28px 44px;
+      padding: 0 48px 32px 48px;
       margin-top: -15px;
       z-index: 20;
     }
     .section-label {
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       letter-spacing: 0.2px;
       display: flex;
       align-items: center;
@@ -328,100 +347,93 @@
     .apps-carousel {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       overflow-x: auto;
       scrollbar-width: none;
-      padding: 8px 4px 20px 4px;
+      padding: 10px 4px 24px 4px;
     }
+
+    /* Tarjeta maestra SLÖNE: Vidrio de titanio ahumado unificado */
     .app-card {
-      flex: 0 0 180px;
-      height: 102px;
-      border-radius: 16px;
+      flex: 0 0 190px;
+      height: 114px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(22, 28, 42, 0.8) 0%, rgba(12, 16, 26, 0.92) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
       cursor: pointer;
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+      justify-content: space-between;
+      padding: 16px 18px;
       outline: none;
-      transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.22s, outline 0.15s;
+      transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.22s, border-color 0.2s, background 0.2s;
       overflow: hidden;
     }
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+      border-radius: 20px 20px 0 0;
+      pointer-events: none;
+    }
     .app-card:focus {
-      transform: scale(1.09);
-      outline: 3.5px solid #FFFFFF;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 255, 255, 0.45);
+      transform: scale(1.09) translateY(-4px);
+      outline: 3px solid #FFFFFF;
+      border-color: #FFFFFF;
+      background: linear-gradient(145deg, rgba(32, 42, 64, 0.95) 0%, rgba(18, 24, 38, 0.98) 100%);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.9), 0 0 32px rgba(255, 255, 255, 0.35);
       z-index: 15;
     }
 
-    /* Estilos auténticos de cada aplicación como en la Xiaomi TV */
-    .card-smarttube {
-      background: linear-gradient(135deg, #E52D27 0%, #B31217 100%);
-      color: #FFFFFF;
-    }
-    .card-tivimate {
-      background: #FFFFFF;
-      color: #0B1E2D;
-    }
-    .card-3cat {
-      background: #C2185B;
-      color: #FFFFFF;
-    }
-    .card-netflix {
-      background: #000000;
-      color: #E50914;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .card-prime {
-      background: #00A8E1;
-      color: #FFFFFF;
-    }
-    .card-rtve {
-      background: #111111;
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .card-atresplayer {
-      background: #1A1A1E;
-      color: #00E5FF;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .card-downloader {
-      background: #FF6F00;
-      color: #FFFFFF;
-    }
-    .card-aptoide {
-      background: #242426;
-      color: #FF5A00;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .card-tvbro {
-      background: linear-gradient(180deg, #1976D2 50%, #FFEB3B 50%);
-      color: #FFFFFF;
-    }
-    .card-playstore {
-      background: #1C2333;
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .app-brand-title {
-      font-size: 1.18rem;
-      font-weight: 800;
-      letter-spacing: -0.3px;
+    .app-card-top {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
+      width: 100%;
     }
-    .app-sub-label {
-      font-size: 0.76rem;
+    .app-badge-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .app-pill-status {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+    }
+    .app-card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+      margin-bottom: 2px;
+    }
+    .app-card-sub {
+      font-size: 0.72rem;
       font-weight: 600;
-      opacity: 0.8;
-      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.48);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
     }
 
-    /* ── SECCIONES SECUNDARIAS (SCROLL HACIA ABAJO) ── */
+    /* ── SECCIONES SECUNDARIAS (SCROLL) ── */
     .content-area {
       padding: 0 48px 60px 48px;
     }
@@ -704,9 +716,15 @@
 </head>
 <body>
 
-  <!-- 1. HERO VIEWPORT (FONDO COMPLETO CINEMATOGRÁFICO) -->
+  <!-- 1. HERO VIEWPORT CON VÍDEO CINEMATOGRÁFICO DE FONDO -->
   <header class="hero-viewport" id="heroViewport">
     
+    <!-- VÍDEO CINEMATOGRÁFICO DE FONDO (AUTO-PLAYING LOOP SIN ANUNCIOS) -->
+    <video class="hero-bg-video" autoplay muted loop playsinline id="heroBgVideo">
+      <source src="/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8" type="application/x-mpegURL">
+    </video>
+    <div class="hero-vignette-overlay"></div>
+
     <!-- BARRA SUPERIOR SLÖNE IDÉNTICA A XIAOMI GOOGLE TV -->
     <div class="top-bar">
       <div class="top-left-cluster">
@@ -728,32 +746,28 @@
       </div>
 
       <div class="top-right-meta">
-        <span id="liveClock">14:25</span>
+        <span id="liveClock">15:45</span>
         <span style="opacity: 0.35;">|</span>
         <span class="meta-brand">SLÖNE TV</span>
       </div>
     </div>
 
-    <!-- CARTELERA DESTACADA: FC BARCELONA vs CHAMPIONS LEAGUE -->
+    <!-- CARTELERA DE PRODUCTO CINEMATOGRÁFICO SLÖNE -->
     <div class="hero-content">
-      <div class="hero-provider">
-        <span>🔵🔴 M+ LIGA DE CAMPEONES</span>
-        <span style="opacity:0.4;">·</span>
-        <span>4K UHD</span>
-        <span style="opacity:0.4;">·</span>
-        <span>EN DIRECTO</span>
+      <div class="hero-provider" id="heroBadge">
+        <span>✦ SLÖNE EXCLUSIVE · 4K DIRECT STREAM</span>
       </div>
 
-      <h1 class="hero-title">FC BARCELONA vs CHAMPIONS LEAGUE</h1>
-      <div class="hero-subtitle">
+      <h1 class="hero-title" id="heroTitle">FC BARCELONA vs CHAMPIONS LEAGUE</h1>
+      <div class="hero-subtitle" id="heroSubtitle">
         <span>Fútbol Club Barcelona · Narración en català con Joan Maria Pou (RAC1)</span>
       </div>
-      <p class="hero-synopsis">
+      <p class="hero-synopsis" id="heroSynopsis">
         Disfruta del partido sin censura ni cortes publicitarios, con señal deportiva en máxima definición 4K UHD y el audio de la radio sincronizado al milisegundo.
       </p>
 
       <div class="hero-actions">
-        <button class="btn-pill-primary" tabindex="0" onclick="playInActiveScreen({url: 'http://127.0.0.1:8765/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona vs Champions'})">
+        <button class="btn-pill-primary" id="mainActionButton" tabindex="0" onclick="playInActiveScreen({url: 'http://127.0.0.1:8765/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona vs Champions'})">
           ▶ Ver Partido
         </button>
         <button class="btn-pill-secondary" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', null)">
@@ -765,106 +779,149 @@
       </div>
     </div>
 
-    <!-- INDICADORES DEL CARRUSEL -->
+    <!-- PUNTOS DEL SHOWCASE DE PRODUCTOS -->
     <div class="hero-dots">
-      <div class="hero-dot active"></div>
-      <div class="hero-dot"></div>
-      <div class="hero-dot"></div>
+      <div class="hero-dot active" onclick="setHeroSlide(0)"></div>
+      <div class="hero-dot" onclick="setHeroSlide(1)"></div>
+      <div class="hero-dot" onclick="setHeroSlide(2)"></div>
     </div>
   </header>
 
-  <!-- 2. SECCIÓN «TUS APLICACIONES» (CLON LIMPIO DE XIAOMI TV SIN PUBLICIDAD) -->
+  <!-- 2. SECCIÓN «TUS APLICACIONES» (UNIFICACIÓN DE LUJO SLÖNE · TITANIUM GLASS) -->
   <section class="apps-section" id="secApps">
     <div class="section-label">Tus aplicaciones</div>
     <div class="apps-carousel">
       
       <!-- SmartTube 4K (Sin Anuncios) -->
-      <div class="app-card card-smarttube" tabindex="0" onclick="launchApp('org.smarttube.stable', 'SmartTube')">
-        <div class="app-brand-title">
-          <span style="background:#FFF; color:#E52D27; border-radius:6px; padding:2px 6px; font-weight:900;">S</span>
-          <span>SmartTube</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('org.smarttube.stable', 'SmartTube')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#C4121A; color:#FFF;">S</div>
+          <span class="app-pill-status">4K VIP</span>
         </div>
-        <div class="app-sub-label">4K Sin Anuncios</div>
+        <div>
+          <div class="app-card-title">SmartTube</div>
+          <div class="app-card-sub">Sin Anuncios</div>
+        </div>
       </div>
 
       <!-- TiviMate -->
-      <div class="app-card card-tivimate" tabindex="0" onclick="launchApp('ar.tvplayer.tv', 'TiviMate')">
-        <div class="app-brand-title" style="color:#00B4D8; font-family:sans-serif; letter-spacing:-0.5px;">
-          <span>tivi</span><span style="color:#03045E;">mate</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('ar.tvplayer.tv', 'TiviMate')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#00B4D8; color:#03045E;">⚡</div>
+          <span class="app-pill-status">PRO</span>
         </div>
-        <div class="app-sub-label" style="color:#555;">IPTV Player</div>
+        <div>
+          <div class="app-card-title">TiviMate</div>
+          <div class="app-card-sub">IPTV Engine</div>
+        </div>
       </div>
 
       <!-- 3Cat / TV3 -->
-      <div class="app-card card-3cat" tabindex="0" onclick="launchApp('cat.ccma.androidtv.tv3', '3Cat')">
-        <div class="app-brand-title">
-          <span style="letter-spacing:-1px;">3cat</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('cat.ccma.androidtv.tv3', '3Cat')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#C2185B; color:#FFF;">3</div>
+          <span class="app-pill-status">HD</span>
         </div>
-        <div class="app-sub-label">TV3 & Directes</div>
+        <div>
+          <div class="app-card-title">3Cat Directes</div>
+          <div class="app-card-sub">TV3 Catalunya</div>
+        </div>
       </div>
 
       <!-- Netflix -->
-      <div class="app-card card-netflix" tabindex="0" onclick="launchApp('com.netflix.ninja', 'Netflix')">
-        <div class="app-brand-title" style="letter-spacing:1px; font-weight:900;">
-          NETFLIX
+      <div class="app-card" tabindex="0" onclick="launchApp('com.netflix.ninja', 'Netflix')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#141414; color:#E50914; border-color:#E50914;">N</div>
+          <span class="app-pill-status">UHD</span>
         </div>
-        <div class="app-sub-label" style="color:#AAA;">Series & Cine</div>
+        <div>
+          <div class="app-card-title">Netflix</div>
+          <div class="app-card-sub">Series & Cine</div>
+        </div>
       </div>
 
       <!-- Prime Video -->
-      <div class="app-card card-prime" tabindex="0" onclick="launchApp('com.amazon.amazonvideo.livingroom', 'Prime Video')">
-        <div class="app-brand-title" style="font-weight:700;">
-          prime video
+      <div class="app-card" tabindex="0" onclick="launchApp('com.amazon.amazonvideo.livingroom', 'Prime Video')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#00A8E1; color:#FFF;">P</div>
+          <span class="app-pill-status">HDR</span>
         </div>
-        <div class="app-sub-label">Amazon Originals</div>
+        <div>
+          <div class="app-card-title">Prime Video</div>
+          <div class="app-card-sub">Amazon Originals</div>
+        </div>
       </div>
 
       <!-- RTVE Play -->
-      <div class="app-card card-rtve" tabindex="0" onclick="launchApp('com.rtve.androidtv', 'RTVE Play')">
-        <div class="app-brand-title">
-          <span style="color:#FF9100; font-weight:900;">rtve</span><span style="color:#FFF;"> play</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('com.rtve.androidtv', 'RTVE Play')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#FF9800; color:#000;">1</div>
+          <span class="app-pill-status">TDT</span>
         </div>
-        <div class="app-sub-label">Teledeporte & La 1</div>
+        <div>
+          <div class="app-card-title">RTVE Play</div>
+          <div class="app-card-sub">Teledeporte & La 1</div>
+        </div>
       </div>
 
       <!-- Atresplayer -->
-      <div class="app-card card-atresplayer" tabindex="0" onclick="launchApp('com.antena3.atresplayer.tv', 'Atresplayer')">
-        <div class="app-brand-title">
-          atresplayer <span style="font-weight:900;">›</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('com.antena3.atresplayer.tv', 'Atresplayer')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#181A24; color:#00E5FF;">›</div>
+          <span class="app-pill-status">PLUS</span>
         </div>
-        <div class="app-sub-label">Antena 3 & Series</div>
+        <div>
+          <div class="app-card-title">Atresplayer</div>
+          <div class="app-card-sub">Antena 3 & Cine</div>
+        </div>
       </div>
 
       <!-- Downloader -->
-      <div class="app-card card-downloader" tabindex="0" onclick="launchApp('com.esaba.downloader', 'Downloader')">
-        <div class="app-brand-title">
-          <span>⬇️ Downloader</span>
+      <div class="app-card" tabindex="0" onclick="launchApp('com.esaba.downloader', 'Downloader')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#D85A00; color:#FFF;">⬇</div>
+          <span class="app-pill-status">APK</span>
         </div>
-        <div class="app-sub-label">Instalador APK</div>
+        <div>
+          <div class="app-card-title">Downloader</div>
+          <div class="app-card-sub">Instalador</div>
+        </div>
       </div>
 
       <!-- Aptoide TV -->
-      <div class="app-card card-aptoide" tabindex="0" onclick="launchApp('cm.aptoidetv.pt', 'Aptoide TV')">
-        <div class="app-brand-title">
-          <span style="color:#FF5A00;">▶ Aptoide</span> TV
+      <div class="app-card" tabindex="0" onclick="launchApp('cm.aptoidetv.pt', 'Aptoide TV')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#20222A; color:#FF6A00;">▶</div>
+          <span class="app-pill-status">APP</span>
         </div>
-        <div class="app-sub-label">Tienda Libre</div>
+        <div>
+          <div class="app-card-title">Aptoide TV</div>
+          <div class="app-card-sub">Tienda Libre</div>
+        </div>
       </div>
 
       <!-- TV Bro (Navegador) -->
-      <div class="app-card card-tvbro" tabindex="0" onclick="launchApp('com.phlox.tvwebbrowser', 'TV Bro')">
-        <div class="app-brand-title" style="color:#FFF; text-shadow:0 1px 4px rgba(0,0,0,0.8);">
-          TV BRO 🌐
+      <div class="app-card" tabindex="0" onclick="launchApp('com.phlox.tvwebbrowser', 'TV Bro')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#10243C; color:#64B5F6;">🌐</div>
+          <span class="app-pill-status">WEB</span>
         </div>
-        <div class="app-sub-label" style="color:#000; font-weight:800;">Navegador Web</div>
+        <div>
+          <div class="app-card-title">Navegador</div>
+          <div class="app-card-sub">TV Bro Engine</div>
+        </div>
       </div>
 
       <!-- Google Play Store -->
-      <div class="app-card card-playstore" tabindex="0" onclick="launchApp('com.android.vending', 'Play Store')">
-        <div class="app-brand-title">
-          <span style="color:#34A853;">▶</span> Google Play
+      <div class="app-card" tabindex="0" onclick="launchApp('com.android.vending', 'Play Store')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background:#1A2234; color:#4ADE80;">▶</div>
+          <span class="app-pill-status">STORE</span>
         </div>
-        <div class="app-sub-label">Tienda Oficial</div>
+        <div>
+          <div class="app-card-title">Google Play</div>
+          <div class="app-card-sub">Tienda Oficial</div>
+        </div>
       </div>
 
     </div>
@@ -975,6 +1032,58 @@
   </main>
 
   <script>
+    // ── SHOWCASE DE PRODUCTOS CORPORATIVOS SLÖNE ──
+    const heroSlides = [
+      {
+        badge: "✦ SLÖNE EXCLUSIVE · 4K DIRECT STREAM",
+        title: "FC BARCELONA vs CHAMPIONS LEAGUE",
+        subtitle: "Fútbol Club Barcelona · Narración en català con Joan Maria Pou (RAC1)",
+        synopsis: "Disfruta del partido sin censura ni cortes publicitarios, con señal deportiva en máxima definición 4K UHD y el audio de la radio sincronizado al milisegundo.",
+        actionText: "▶ Ver Partido",
+        actionFn: () => playInActiveScreen({url: 'http://127.0.0.1:8765/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona Live'})
+      },
+      {
+        badge: "✦ SLÖNE HARDWARE · FOUNDERS LIMITED EDITION",
+        title: "SLÖNE TITANIUM ECOSYSTEM",
+        subtitle: "Tarjeta física de acero inoxidable cepillado · Numeración VIP 001-500",
+        synopsis: "Acceso ilimitado y vitalicio al ecosistema privado de entretenimiento y red mallada de ultra-baja latencia sin cuotas ni intermediarios.",
+        actionText: "⚡ Ver Colección Founders",
+        actionFn: () => scrollToSection('secApps')
+      },
+      {
+        badge: "✦ SLÖNE ENGINE · MULTIVIEW 4X ARENA",
+        title: "MULTIVIEW CUÁDRUPLE EN DIRECTO",
+        subtitle: "4 Pantallas simultáneas a 60 FPS con sincronización de audio independiente",
+        synopsis: "El control absoluto del fin de semana deportivo: sigue la Champions, LaLiga, Fórmula 1 y MotoGP al mismo tiempo en tu Smart TV.",
+        actionText: "🏟️ Abrir Multiview 4X",
+        actionFn: () => scrollToSection('stadiumSection')
+      }
+    ];
+
+    let currentHeroSlide = 0;
+
+    function setHeroSlide(idx) {
+      currentHeroSlide = idx;
+      const s = heroSlides[idx];
+      document.getElementById('heroBadge').innerHTML = `<span>${s.badge}</span>`;
+      document.getElementById('heroTitle').innerText = s.title;
+      document.getElementById('heroSubtitle').innerHTML = `<span>${s.subtitle}</span>`;
+      document.getElementById('heroSynopsis').innerText = s.synopsis;
+      
+      const btn = document.getElementById('mainActionButton');
+      btn.innerText = s.actionText;
+      btn.onclick = s.actionFn;
+
+      document.querySelectorAll('.hero-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    // Rotación automática sutil cada 12 segundos
+    setInterval(() => {
+      setHeroSlide((currentHeroSlide + 1) % heroSlides.length);
+    }, 12000);
+
     // ── GESTIÓN DE FLUIDOS Y MULTIVIEW ──
     const currentStreams = [
       { id: 0, name: "Teledeporte HD", url: "/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8" },
@@ -1012,6 +1121,19 @@
       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
         video.src = streamUrl;
         video.play().catch(() => {});
+      }
+    }
+
+    // Inicializar vídeo de fondo del hero
+    function initHeroVideo() {
+      const heroVid = document.getElementById('heroBgVideo');
+      if (heroVid && Hls.isSupported()) {
+        const hlsHero = new Hls({ enableWorker: true, lowLatencyMode: true });
+        hlsHero.loadSource("https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8");
+        hlsHero.attachMedia(heroVid);
+        hlsHero.on(Hls.Events.MANIFEST_PARSED, () => {
+          heroVid.play().catch(() => {});
+        });
       }
     }
 
@@ -1211,7 +1333,7 @@
       if (isDown) {
         if (act && (act.classList.contains('nav-item') || act.classList.contains('profile-avatar') || act.classList.contains('tool-btn'))) {
           e.preventDefault();
-          document.querySelector('.btn-pill-primary')?.focus();
+          document.getElementById('mainActionButton')?.focus();
           return;
         }
         if (act && (act.classList.contains('btn-pill-primary') || act.classList.contains('btn-pill-secondary'))) {
@@ -1230,7 +1352,7 @@
       if (isUp) {
         if (act && act.classList.contains('app-card')) {
           e.preventDefault();
-          document.querySelector('.btn-pill-primary')?.focus();
+          document.getElementById('mainActionButton')?.focus();
           return;
         }
         if (act && (act.classList.contains('btn-pill-primary') || act.classList.contains('btn-pill-secondary'))) {
@@ -1287,6 +1409,7 @@
     }, 1000);
 
     window.onload = () => {
+      initHeroVideo();
       for (let i = 0; i < 4; i++) {
         playStreamOnElement(i, currentStreams[i].url);
       }
@@ -1295,7 +1418,7 @@
 
       // Auto-enfoque inicial en el botón de ver partido
       setTimeout(() => {
-        document.querySelector('.btn-pill-primary')?.focus();
+        document.getElementById('mainActionButton')?.focus();
       }, 200);
     };
   </script>
