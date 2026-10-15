@@ -240,7 +240,7 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             my_ip = get_local_ip()
             target_url = f"http://{my_ip}:{PORT}/launcher/"
             os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am force-stop com.phlox.tvwebbrowser >/dev/null 2>&1")
-            os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{target_url}' com.phlox.tvwebbrowser >/dev/null 2>&1 &")
+            os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -n com.phlox.tvwebbrowser/.activity.main.MainActivity -a android.intent.action.VIEW -d '{target_url}' >/dev/null 2>&1 &")
             resp = json.dumps({"status": "opened_on_tv", "url": target_url}).encode()
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
