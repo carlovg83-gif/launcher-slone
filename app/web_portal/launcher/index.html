@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>SLÖNE™ SOVEREIGN TV OS · Xiaomi & Smart TV Flagship</title>
+  <title>SLÖNE</title>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.js"></script>
   <style>
     :root {
-      --bg: #030407;
-      --bg-card: rgba(11, 15, 25, 0.88);
-      --bg-card-hover: rgba(22, 28, 46, 0.96);
-      --border: rgba(255, 255, 255, 0.09);
-      --border-accent: rgba(227, 255, 0, 0.4);
+      --bg: #05070B;
+      --bg-surface: rgba(18, 24, 38, 0.7);
+      --bg-surface-hover: rgba(28, 36, 56, 0.95);
+      --border: rgba(255, 255, 255, 0.08);
       --accent: #E3FF00;
       --accent-glow: rgba(227, 255, 0, 0.35);
-      --cyan-shield: #00E5FF;
-      --cyan-glow: rgba(0, 229, 255, 0.35);
+      --cyan: #00E5FF;
       --text: #FFFFFF;
-      --text-muted: #8E95AA;
-      --danger: #FF3366;
+      --text-muted: #8E98B0;
     }
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
       user-select: none;
     }
     body {
@@ -33,1172 +30,737 @@
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
-      padding-bottom: 5rem;
+      padding-bottom: 6rem;
       background-image: 
-        radial-gradient(circle at 12% 8%, rgba(227, 255, 0, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 88% 15%, rgba(0, 229, 255, 0.07) 0%, transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(14, 20, 35, 0.8) 0%, transparent 70%);
+        radial-gradient(circle at 10% 5%, rgba(227, 255, 0, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 12%, rgba(0, 229, 255, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(12, 17, 28, 0.9) 0%, transparent 70%);
       background-attachment: fixed;
     }
 
-    /* ── SISTEMA DE ENFOQUE D-PAD ULTRA-REACTIVO PARA MANDO TV ── */
-    :focus, :focus-visible, .dpad-focus {
+    /* ── ENFOQUE D-PAD ULTRA-VISUAL PARA MANDO SMART TV ── */
+    :focus, :focus-visible, .focused {
       outline: 3px solid var(--accent) !important;
-      outline-offset: 4px !important;
-      box-shadow: 0 0 25px var(--accent-glow), 0 0 45px rgba(227, 255, 0, 0.4) !important;
-      transform: scale(1.05) !important;
+      outline-offset: 3px !important;
+      box-shadow: 0 0 25px var(--accent-glow), 0 0 45px rgba(227, 255, 0, 0.35) !important;
+      transform: scale(1.04) !important;
       z-index: 100 !important;
-      transition: all 0.12s cubic-bezier(0.2, 0, 0, 1) !important;
+      transition: all 0.14s cubic-bezier(0.2, 0, 0, 1) !important;
     }
 
-    /* ── 1. CABECERA SOBERANA SLÖNE OS ── */
-    #SovereignHeader {
+    /* ── 1. CABECERA LIMPIA Y MINIMALISTA ── */
+    #MainHeader {
       position: sticky;
       top: 0;
       z-index: 300;
-      background: rgba(3, 4, 7, 0.96);
-      backdrop-filter: blur(20px);
-      border-bottom: 2px solid var(--accent);
-      padding: 10px 2.2rem 8px 2.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.85);
-    }
-    .header-top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .brand-section {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .brand-logo-img {
-      height: 38px;
-      width: auto;
-      filter: drop-shadow(0 0 12px var(--accent-glow));
-    }
-    .brand-titles {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-main {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      line-height: 1.1;
-    }
-    .brand-main span { color: var(--accent); }
-    .brand-sub {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      color: var(--cyan-shield);
-      text-transform: uppercase;
-    }
-    .header-badges {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .badge-ceo {
-      background: linear-gradient(135deg, #1C1900, #363000);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      box-shadow: 0 0 10px rgba(227, 255, 0, 0.2);
-    }
-    .badge-telemetry {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #0B0E16;
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #00E676;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #00E676;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    .clock-widget {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      color: #FFF;
-      min-width: 65px;
-      text-align: right;
-    }
-
-    /* ── CONTENEDOR GENERAL ── */
-    .viewport {
-      padding: 1.5rem 2.2rem;
-      max-width: 1740px;
-      margin: 0 auto;
-    }
-
-    /* ── 2. SLÖNE SHIELD BROWSER & BUSCADOR SOBERANO ── */
-    .shield-browser-bar {
-      background: linear-gradient(135deg, rgba(8, 12, 22, 0.95), rgba(14, 20, 36, 0.95));
-      border: 1.5px solid var(--cyan-shield);
-      border-radius: 16px;
-      padding: 14px 18px;
-      margin-bottom: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 8px 30px rgba(0, 229, 255, 0.12);
-    }
-    .shield-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .shield-status {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--cyan-shield);
-      letter-spacing: 1px;
-    }
-    .shield-tag {
-      background: rgba(0, 229, 255, 0.12);
-      border: 1px solid var(--cyan-shield);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      color: #FFF;
-    }
-    .omnibox-form {
-      display: flex;
-      gap: 10px;
-      width: 100%;
-    }
-    .omnibox-input {
-      flex: 1;
-      background: rgba(2, 4, 8, 0.85);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 18px;
-      font-size: 0.95rem;
-      color: #FFF;
-      outline: none;
-      transition: all 0.2s;
-    }
-    .omnibox-input:focus {
-      border-color: var(--cyan-shield);
-      box-shadow: 0 0 15px var(--cyan-glow);
-    }
-    .omnibox-btn {
-      background: var(--cyan-shield);
-      border: none;
-      color: #030407;
-      font-weight: 900;
-      font-size: 0.85rem;
-      padding: 0 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-    }
-    .omnibox-btn:hover, .omnibox-btn:focus {
-      background: #4DEBFF;
-      transform: scale(1.02);
-      box-shadow: 0 0 15px var(--cyan-glow);
-    }
-    .shield-quick-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .quick-link-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: #DDE2F0;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .quick-link-pill:hover, .quick-link-pill:focus {
-      background: rgba(0, 229, 255, 0.2);
-      border-color: var(--cyan-shield);
-      color: #FFF;
-      transform: translateY(-2px);
-    }
-
-    /* ── 3. SLÖNE APPS & HARDWARE DOCK (GAMA DE SERIE) ── */
-    .section-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title span.accent { color: var(--accent); }
-    .dock-row {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      scrollbar-width: none;
-    }
-    .dock-card {
-      min-width: 140px;
-      max-width: 140px;
-      height: 115px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-      outline: none;
-    }
-    .dock-card:hover, .dock-card:focus {
-      background: var(--bg-card-hover);
-      border-color: var(--accent);
-      transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
-    }
-    .dock-icon {
-      font-size: 2rem;
-      margin-bottom: 6px;
-    }
-    .dock-name {
-      font-size: 0.82rem;
-      font-weight: 800;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 100%;
-    }
-    .dock-badge {
-      font-size: 0.65rem;
-      font-weight: 900;
-      color: var(--accent);
-      margin-top: 4px;
-    }
-
-    /* ── 4. SLÖNE TUBE™ (SMARTTUBE SIN ANUNCIOS INTEGRADO) ── */
-    .tube-section {
-      background: linear-gradient(135deg, rgba(16, 6, 8, 0.95), rgba(24, 10, 14, 0.95));
-      border: 1.5px solid #FF334B;
-      border-radius: 16px;
-      padding: 16px 20px;
-      margin: 1.8rem 0;
-      box-shadow: 0 10px 35px rgba(255, 51, 75, 0.15);
-    }
-    .tube-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .tube-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: #FF334B;
-      letter-spacing: 1px;
-    }
-    .tube-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .tube-category-pill {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 51, 75, 0.3);
-      color: #FFF;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tube-category-pill.active, .tube-category-pill:hover {
-      background: #FF334B;
-      border-color: #FF334B;
-      color: #FFF;
-      box-shadow: 0 0 12px rgba(255, 51, 75, 0.4);
-    }
-    .tube-btn-launch {
-      background: linear-gradient(135deg, #FF1744, #D50000);
-      border: none;
-      color: #FFF;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 900;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 0 15px rgba(255, 23, 68, 0.4);
-    }
-    .tube-row {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .tube-card {
-      min-width: 260px;
-      max-width: 260px;
-      background: #0A0406;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tube-card:hover, .tube-card:focus {
-      border-color: #FF334B;
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 51, 75, 0.4);
-    }
-    .tube-thumb-box {
-      height: 145px;
-      background: #000;
-      position: relative;
-      overflow: hidden;
-    }
-    .tube-thumb-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .tube-duration {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.85);
-      color: #FFF;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-    .tube-no-ads-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #FF334B;
-      color: #FFF;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.65rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-    }
-    .tube-card-body {
-      padding: 10px 12px;
-    }
-    .tube-card-title {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #FFF;
-      line-height: 1.3;
-      height: 38px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-    .tube-card-channel {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      font-weight: 700;
-    }
-
-    /* ── 5. HERO STAGE: REPRODUCTOR SLONE & MULTIVIEW STADIUM 4X ── */
-    .hero-stage {
-      background: #000;
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin: 1.8rem 0;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-      transition: border-color 0.3s;
-    }
-    .stage-top-bar {
-      height: 44px;
-      background: #080A10;
+      background: rgba(5, 7, 11, 0.92);
+      backdrop-filter: blur(25px);
       border-bottom: 1px solid var(--border);
+      padding: 0 3rem;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.2rem;
+      gap: 20px;
     }
-    .stage-title {
-      font-size: 0.85rem;
+    .brand-logo {
+      font-size: 1.6rem;
       font-weight: 900;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      letter-spacing: 1px;
-    }
-    .stage-btn-group {
-      display: flex;
-      gap: 8px;
-    }
-    .stage-btn {
-      background: #121622;
-      border: 1px solid var(--border);
+      letter-spacing: 4px;
       color: #FFF;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .stage-btn.active, .stage-btn:hover {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    /* GRID 4X / 1X */
-    .stadium-container {
-      display: grid;
-      gap: 4px;
-      background: #000;
-      transition: all 0.2s ease;
-    }
-    .stadium-container.grid-4x {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 275px 275px;
-    }
-    .stadium-container.grid-1x {
-      grid-template-columns: 1fr;
-      grid-template-rows: 550px;
-    }
-    .quadrant-box {
-      background: #050608;
-      border: 1px solid #1A2030;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .quadrant-box.active-box {
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-    .quad-header {
-      height: 30px;
-      background: rgba(8, 11, 18, 0.92);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10px;
-      z-index: 10;
-    }
-    .quad-name {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: #FFF;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .quad-audio-tag {
-      background: #1A2030;
-      color: var(--text-muted);
-      border: none;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.68rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
-    .quad-audio-tag.active {
-      background: var(--accent);
-      color: #000;
-    }
-    .quad-video {
-      flex: 1;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #000;
-    }
-
-    /* ── 6. FAN AUDIO MATRIX & DECALAJE CULER ── */
-    .fan-audio-bar {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 18px;
-      margin-bottom: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .fan-pills {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .fan-pill {
-      background: #000;
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.2s;
     }
-    .fan-pill:hover, .fan-pill.active {
+    .brand-logo::after {
+      content: "";
+      width: 6px;
+      height: 6px;
       background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
     }
-    .delay-controls {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: #000;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 4px 10px;
+      gap: 8px;
     }
-    .delay-btn {
+    .nav-item {
       background: transparent;
-      border: none;
-      color: #FFF;
-      font-size: 0.85rem;
-      font-weight: 800;
-      padding: 4px 6px;
-      cursor: pointer;
-    }
-    .delay-btn:hover { color: var(--accent); }
-    .delay-val {
-      font-size: 0.85rem;
-      font-weight: 900;
-      color: var(--accent);
-      min-width: 50px;
-      text-align: center;
-    }
-
-    /* ── 7. CARRUSELES DE CONTENIDO DEL CEO (39.737 CANALES) ── */
-    .carousel-section {
-      margin-bottom: 2.4rem;
-    }
-    .carousel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .carousel-row {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      padding: 6px 2px 14px 2px;
-      scrollbar-width: none;
-    }
-    .channel-card {
-      min-width: 220px;
-      max-width: 220px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .channel-card:hover, .channel-card:focus {
-      background: var(--bg-card-hover);
-      border-color: var(--accent);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 15px var(--accent-glow);
-    }
-    .card-thumb-box {
-      height: 110px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      position: relative;
-    }
-    .card-logo {
-      max-height: 80px;
-      max-width: 140px;
-      object-fit: contain;
-    }
-    .card-body {
-      padding: 10px 12px;
-      background: #080A10;
-      border-top: 1px solid var(--border);
-    }
-    .card-title {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #FFF;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card-group {
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 700;
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ── BARRA DE PESTAÑAS XIAOMI PATCHWALL ── */
-    .patchwall-nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      overflow-x: auto;
-      width: 100%;
-      padding: 4px 0 2px 0;
-    }
-    .nav-tab {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #9DA8C3;
-      padding: 6px 14px;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 8px 18px;
       border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 800;
+      font-size: 0.92rem;
+      font-weight: 700;
       letter-spacing: 0.5px;
       cursor: pointer;
       transition: all 0.15s ease;
-      white-space: nowrap;
-      flex-shrink: 0;
+      outline: none;
     }
-    .nav-tab:hover, .nav-tab:focus, .nav-tab.active {
-      background: var(--accent);
-      color: #030407;
-      border-color: var(--accent);
-      transform: scale(1.04);
-      box-shadow: 0 0 15px var(--accent-glow);
+    .nav-item:hover, .nav-item:focus, .nav-item.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFF;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    .nav-item.active {
+      background: #FFF;
+      color: #05070B;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    .clock-display {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFF;
+      letter-spacing: 1px;
     }
 
-    /* ── HERO BILLBOARD ESTILO XIAOMI PATCHWALL (0% PUBLICIDAD, 100% SOBERANO) ── */
-    .patchwall-billboard {
+    /* ── CONTENEDOR PRINCIPAL ── */
+    .viewport {
+      padding: 1.5rem 3rem;
+      max-width: 1780px;
+      margin: 0 auto;
+    }
+
+    /* ── 2. HERO BILLBOARD CINEMATOGRÁFICO (SIN PUBLICIDAD) ── */
+    .hero-billboard {
       position: relative;
       width: 100%;
-      min-height: 360px;
-      border-radius: 22px;
-      margin: 1rem 0 2rem 0;
+      min-height: 420px;
+      border-radius: 24px;
+      margin-bottom: 2.5rem;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 2.2rem 3rem;
-      background: radial-gradient(circle at 80% 25%, rgba(0, 229, 255, 0.25) 0%, transparent 60%),
-                  radial-gradient(circle at 20% 70%, rgba(227, 255, 0, 0.18) 0%, transparent 65%),
-                  linear-gradient(135deg, #070B14 0%, #030407 100%);
-      border: 1px solid rgba(227, 255, 0, 0.35);
-      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.9);
+      padding: 3rem 3.5rem;
+      background: 
+        linear-gradient(180deg, rgba(5,7,11,0.2) 0%, rgba(5,7,11,0.85) 65%, rgba(5,7,11,1) 100%),
+        radial-gradient(circle at 80% 30%, rgba(227, 255, 0, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 20% 40%, rgba(0, 110, 255, 0.15) 0%, transparent 60%),
+        #090D18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     }
-    .billboard-backdrop {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(3,4,7,0.95) 0%, rgba(3,4,7,0.85) 45%, rgba(3,4,7,0.2) 100%),
-                  linear-gradient(0deg, rgba(3,4,7,1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .billboard-content {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-    }
-    .billboard-tags {
+    .hero-badge-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
     }
-    .bb-tag {
-      font-size: 0.7rem;
+    .badge-live {
+      background: #FF0033;
+      color: #FFF;
+      font-size: 0.72rem;
       font-weight: 900;
       padding: 4px 10px;
-      border-radius: 8px;
+      border-radius: 6px;
       letter-spacing: 1px;
-      text-transform: uppercase;
+      animation: pulse 2s infinite;
     }
-    .bb-live { background: #FF0033; color: #FFF; animation: pulse 1.8s infinite; }
-    .bb-res { background: rgba(255, 255, 255, 0.12); color: #FFF; border: 1px solid rgba(255,255,255,0.2); }
-    .bb-shield { background: rgba(0, 229, 255, 0.15); color: var(--cyan-shield); border: 1px solid var(--cyan-shield); }
-    .bb-noads { background: rgba(227, 255, 0, 0.18); color: var(--accent); border: 1px solid var(--accent); }
-    .billboard-title {
-      font-size: 2.2rem;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .badge-quality {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .hero-title {
+      font-size: 3rem;
       font-weight: 900;
-      letter-spacing: 1px;
-      line-height: 1.15;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
     }
-    .billboard-desc {
+    .hero-subtitle {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .hero-desc {
       font-size: 0.95rem;
-      color: #C5CEE0;
-      line-height: 1.4;
-      margin-bottom: 20px;
+      color: var(--text-muted);
+      line-height: 1.5;
       max-width: 680px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 24px;
     }
-    .billboard-btn-group {
+    .hero-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
-    .bb-btn {
-      padding: 10px 20px;
+    .btn-main {
+      background: var(--accent);
+      color: #05070B;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 12px 26px;
       border-radius: 12px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 25px var(--accent-glow);
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .btn-main:hover, .btn-main:focus {
+      background: #EEFF44;
+      transform: scale(1.05);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFF;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
       transition: all 0.15s ease;
-      border: none;
+      outline: none;
     }
-    .bb-btn-primary {
-      background: var(--accent);
-      color: #030407;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-    .bb-btn-primary:hover, .bb-btn-primary:focus {
-      background: #EDFF4D;
+    .btn-outline:hover, .btn-outline:focus {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: #FFF;
       transform: scale(1.05);
-      box-shadow: 0 0 30px var(--accent-glow);
     }
-    .bb-btn-secondary {
+
+    /* ── 3. MIS APLICACIONES (CASILLAS ESTILO APPLE TV / XIAOMI) ── */
+    .section-header {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .app-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 8px 4px 20px 4px;
+      scrollbar-width: none;
+    }
+    .app-card {
+      min-width: 145px;
+      max-width: 145px;
+      height: 135px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      outline: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .app-card:hover, .app-card:focus {
+      background: var(--bg-surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+    }
+    .app-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+    .app-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFF;
+      text-align: center;
+      width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── 4. MULTIVIEW STADIUM 4X ── */
+    .stadium-wrap {
+      background: rgba(10, 14, 22, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .stadium-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .stadium-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stadium-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stadium-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      min-height: 480px;
+    }
+    .stadium-grid.grid-1x {
+      grid-template-columns: 1fr;
+    }
+    .screen-box {
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid transparent;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .screen-box.active-box {
+      border-color: var(--accent);
+      box-shadow: 0 0 25px var(--accent-glow);
+    }
+    .screen-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 10px 14px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .screen-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+    .screen-audio-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
       background: rgba(255, 255, 255, 0.1);
+      color: #AAA;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .screen-audio-tag.active {
+      background: var(--accent);
+      color: #05070B;
+      border-color: var(--accent);
+    }
+    .screen-video {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      object-fit: cover;
+      background: #000;
+    }
+
+    /* ── FAN AUDIO BAR ── */
+    .fan-audio-bar {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .radio-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .radio-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .radio-pill:hover, .radio-pill:focus, .radio-pill.active {
+      background: var(--accent);
+      color: #05070B;
+      border-color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* ── 5. CARRUSELES DE CANALES DE TV (CASILLAS 16:9) ── */
+    .carousel-section {
+      margin-bottom: 2.8rem;
+    }
+    .carousel-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 8px 4px 18px 4px;
+      scrollbar-width: none;
+    }
+    .channel-card {
+      min-width: 250px;
+      max-width: 250px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      outline: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .channel-card:hover, .channel-card:focus {
+      background: var(--bg-surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+    }
+    .card-thumb {
+      height: 125px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04) 0%, #000 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .card-logo {
+      max-height: 85px;
+      max-width: 150px;
+      object-fit: contain;
+    }
+    .card-info {
+      padding: 12px 14px;
+      background: rgba(10, 14, 22, 0.85);
+      border-top: 1px solid var(--border);
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+    .card-cat {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .card-buttons {
+      display: flex;
+      gap: 6px;
+    }
+    .card-btn {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    .card-btn-play {
+      background: var(--accent);
+      color: #05070B;
+    }
+    .card-btn-tv {
+      background: rgba(255, 255, 255, 0.08);
       color: #FFF;
       border: 1px solid var(--border);
     }
-    .bb-btn-secondary:hover, .bb-btn-secondary:focus {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-      border-color: #FFF;
+
+    /* ── 6. BUSCADOR SHIELD (LIMPIO Y PRIVADO) ── */
+    .search-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 2rem;
     }
-    .bb-btn-audio {
-      background: rgba(0, 229, 255, 0.15);
-      color: var(--cyan-shield);
-      border: 1px solid var(--cyan-shield);
+    .search-box {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .bb-btn-audio:hover, .bb-btn-audio:focus {
-      background: var(--cyan-shield);
-      color: #030407;
-      transform: scale(1.05);
+    .search-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      color: #FFF;
+      outline: none;
     }
-    .bb-btn-tivimate {
-      background: rgba(255, 170, 0, 0.15);
-      color: #FFAA00;
-      border: 1px solid #FFAA00;
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
-    .bb-btn-tivimate:hover, .bb-btn-tivimate:focus {
-      background: #FFAA00;
-      color: #030407;
-      transform: scale(1.05);
+    .search-btn {
+      background: var(--accent);
+      color: #05070B;
+      border: none;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. CABECERA OFICIAL SLÖNE SOVEREIGN TV OS -->
-  <header id="SovereignHeader">
-    <div class="header-top-row">
-      <div class="brand-section">
-        <img src="/assets/slone_logo.png" alt="SLÖNE" class="brand-logo-img" onerror="this.src='/assets/crown_icon.png'">
-        <div class="brand-titles">
-          <div class="brand-main">SLÖNE <span>SOVEREIGN OS</span></div>
-          <div class="brand-sub">Sistema Operativo de Serie · Flagship TV</div>
-        </div>
-      </div>
-      <div class="header-badges">
-        <div class="badge-ceo">👑 CEO MASTER · 39.737 CANALES</div>
-        <div class="badge-telemetry">
-          <span class="pulse-dot"></span>
-          <span>XIAOMI MiTV · ESCUDO ACTIVO</span>
-        </div>
-        <div class="clock-widget" id="liveClock">13:51</div>
-      </div>
-    </div>
-    <nav class="patchwall-nav">
-      <div class="nav-tab active" tabindex="0" onclick="scrollToSection('heroBillboard')">🏠 Inicio</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('dockSection')">🛍️ Mis Apps</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('stadiumSection')">🏟️ Matriz 4X</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('tubeSection')">▶️ Slöne Tube</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secFutbol')">⚽ Fútbol VIP</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secMotor')">🏎️ Motor F1</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secTdt')">🇪🇸 TDT Directo</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('secCine')">🎬 Cine & Series</div>
-      <div class="nav-tab" tabindex="0" onclick="scrollToSection('shieldBrowser')">🔍 Buscador Shield</div>
+  <!-- 1. CABECERA LIMPIA Y MINIMALISTA -->
+  <header id="MainHeader">
+    <div class="brand-logo">SLÖNE</div>
+    <nav class="nav-links">
+      <button class="nav-item active" tabindex="0" onclick="scrollToSection('heroBillboard')">Inicio</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('dockSection')">Apps</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('secFutbol')">Fútbol</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('stadiumSection')">Multiview 4X</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('secMotor')">Motor</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('secTdt')">Canales</button>
+      <button class="nav-item" tabindex="0" onclick="scrollToSection('shieldBrowser')">Buscar</button>
     </nav>
+    <div class="clock-display" id="liveClock">14:15</div>
   </header>
 
   <div class="viewport">
 
-    <!-- HERO BILLBOARD ESTILO XIAOMI PATCHWALL (0% PUBLICIDAD, 100% CONTENIDO SOBERANO) -->
-    <section class="patchwall-billboard" id="heroBillboard">
-      <div class="billboard-backdrop"></div>
-      <div class="billboard-content">
-        <div class="billboard-tags">
-          <span class="bb-tag bb-live">🔴 EN DIRECTO</span>
-          <span class="bb-tag bb-res">4K UHD HDR</span>
-          <span class="bb-tag bb-shield">ESCUDO SLÖNE ACTIVO</span>
-          <span class="bb-tag bb-noads">0% PUBLICIDAD</span>
+    <!-- 2. HERO BILLBOARD CINEMATOGRÁFICO DE ALTO IMPACTO (0% PUBLICIDAD) -->
+    <section class="hero-billboard" id="heroBillboard">
+      <div class="hero-badge-row">
+        <span class="badge-live">🔴 EN DIRECTO</span>
+        <span class="badge-quality">4K UHD</span>
+        <span class="badge-quality">M+ LIGA DE CAMPEONES</span>
+      </div>
+      <h1 class="hero-title">FC BARCELONA vs CHAMPIONS LEAGUE</h1>
+      <div class="hero-subtitle">Fútbol Club Barcelona · Narración en català con Joan Maria Pou (RAC1)</div>
+      <p class="hero-desc">
+        Disfruta del partido sin comentaristas madridistas, con señal limpia y el audio de la radio sincronizado al milisegundo.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-main" tabindex="0" onclick="playInActiveScreen({url: 'https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8', name: 'Barça en Directo'})">
+          <span>▶️ Ver Partido</span>
+        </button>
+        <button class="btn-outline" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', null)">
+          <span>🎙️ Radio RAC1</span>
+        </button>
+        <button class="btn-outline" tabindex="0" onclick="scrollToSection('stadiumSection'); setStadiumMode(4);">
+          <span>🏟️ Modo 4 Pantallas</span>
+        </button>
+        <button class="btn-outline" tabindex="0" onclick="launchExternalStream('http://398607.solanaflix.com/live/TV-76173252/624816943106/112675.ts', 'Barça 4K')">
+          <span>⚡ TiviMate</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. MIS APLICACIONES (CASILLAS ESTILO APPLE TV / XIAOMI LIMPIAS) -->
+    <section id="dockSection" style="margin-bottom: 2.5rem;">
+      <div class="section-header">
+        <span>Aplicaciones</span>
+      </div>
+      <div class="app-row">
+        <div class="app-card" tabindex="0" onclick="launchApp('com.android.vending', 'Play Store')">
+          <div class="app-icon">🛍️</div>
+          <div class="app-label">Play Store</div>
         </div>
-        <h1 class="billboard-title">FC BARCELONA vs CHAMPIONS LEAGUE</h1>
-        <p class="billboard-desc">
-          M+ Liga de Campeones UHD · Pista de Audio: RAC1 (Joan Maria Pou · Culer) · Señal Local Blindada sin Bloqueos de Operadora.
-        </p>
-        <div class="billboard-btn-group">
-          <button class="bb-btn bb-btn-primary" tabindex="0" onclick="playInActiveScreen({url: 'https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8', name: 'Champions League Directo'})">
-            <span>▶️ VER EN DIRECTO</span>
-          </button>
-          <button class="bb-btn bb-btn-secondary" tabindex="0" onclick="scrollToSection('stadiumSection'); setStadiumMode(4);">
-            <span>🏟️ ABRIR MATRIZ 4X</span>
-          </button>
-          <button class="bb-btn bb-btn-audio" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', null)">
-            <span>🎙️ AUDIO: RAC1 (CULER)</span>
-          </button>
-          <button class="bb-btn bb-btn-tivimate" tabindex="0" onclick="launchExternalStream('http://398607.solanaflix.com/live/TV-76173252/624816943106/112675.ts', 'Champions League 4K')">
-            <span>⚡ TIVIMATE 4K</span>
-          </button>
+        <div class="app-card" tabindex="0" onclick="launchApp('org.smarttube.stable', 'SmartTube 4K')">
+          <div class="app-icon">▶️</div>
+          <div class="app-label">SmartTube 4K</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('ar.tvplayer.tv', 'TiviMate VIP')">
+          <div class="app-icon">⚡</div>
+          <div class="app-label">TiviMate</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.phlox.tvwebbrowser', 'Navegador Web')">
+          <div class="app-icon">🌐</div>
+          <div class="app-label">Navegador</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.netflix.ninja', 'Netflix')">
+          <div class="app-icon">🍿</div>
+          <div class="app-label">Netflix</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.amazon.amazonvideo.livingroom', 'Prime Video')">
+          <div class="app-icon">📦</div>
+          <div class="app-label">Prime Video</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('cat.ccma.androidtv.tv3', '3Cat / TV3')">
+          <div class="app-icon">🔴</div>
+          <div class="app-label">3Cat / TV3</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.rtve.androidtv', 'RTVE Play')">
+          <div class="app-icon">🔵</div>
+          <div class="app-label">RTVE Play</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.esaba.downloader', 'Downloader')">
+          <div class="app-icon">📥</div>
+          <div class="app-label">Downloader</div>
+        </div>
+        <div class="app-card" tabindex="0" onclick="launchApp('com.android.tv.settings', 'Ajustes TV')">
+          <div class="app-icon">⚙️</div>
+          <div class="app-label">Ajustes</div>
         </div>
       </div>
     </section>
 
-    <!-- 3. SLÖNE DOCK: APLICACIONES DE FÁBRICA & TIENDAS OFICIALES ("Mis Aplicaciones" de Xiaomi) -->
-    <section id="dockSection" style="margin-bottom: 2rem;">
-      <div class="section-title">
-        <span>🛍️ SLÖNE ECOSYSTEM DOCK · APPS Y TIENDAS DE SERIE</span>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">(Lanzamiento nativo directo en tu Xiaomi TV)</span>
-      </div>
-      <div class="dock-row">
-        <!-- Google Play Store -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.android.vending', 'Google Play Store')">
-          <div class="dock-icon">🛍️</div>
-          <div class="dock-name">Play Store</div>
-          <div class="dock-badge">OFICIAL</div>
+    <!-- 4. MULTIVIEW STADIUM 4X & FAN AUDIO -->
+    <section class="stadium-wrap" id="stadiumSection">
+      <div class="stadium-top">
+        <div class="stadium-title">
+          <span>🏟️ Multiview 4X</span>
+          <span style="color:var(--text-muted); font-size:0.85rem; font-weight:600;">· Audio Activo: <strong id="lblActiveScreenName" style="color:var(--accent);">[1] Teledeporte HD</strong></span>
         </div>
-        <!-- SmartTube 4K -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('org.smarttube.stable', 'SmartTube 4K')">
-          <div class="dock-icon">▶️</div>
-          <div class="dock-name">SmartTube 4K</div>
-          <div class="dock-badge">SIN ANUNCIOS</div>
-        </div>
-        <!-- TiviMate VIP -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('ar.tvplayer.tv', 'TiviMate VIP')">
-          <div class="dock-icon">⚡</div>
-          <div class="dock-name">TiviMate</div>
-          <div class="dock-badge">IPTV VIP</div>
-        </div>
-        <!-- Aptoide TV -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('cm.aptoidetv.pt', 'Aptoide TV')">
-          <div class="dock-icon">🏪</div>
-          <div class="dock-name">Aptoide TV</div>
-          <div class="dock-badge">TIENDA LIBRE</div>
-        </div>
-        <!-- SLÖNE Shield Web Browser -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.phlox.tvwebbrowser', 'SLÖNE Shield Browser')">
-          <div class="dock-icon">🛡️</div>
-          <div class="dock-name">Shield Web</div>
-          <div class="dock-badge">BRAVE/FIREFOX</div>
-        </div>
-        <!-- Netflix 4K -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.netflix.ninja', 'Netflix 4K')">
-          <div class="dock-icon">🍿</div>
-          <div class="dock-name">Netflix</div>
-          <div class="dock-badge">4K HDR</div>
-        </div>
-        <!-- Prime Video -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.amazon.amazonvideo.livingroom', 'Prime Video')">
-          <div class="dock-icon">📦</div>
-          <div class="dock-name">Prime Video</div>
-          <div class="dock-badge">CHAMPIONS</div>
-        </div>
-        <!-- 3Cat / TV3 Catalunya -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('cat.ccma.androidtv.tv3', '3Cat / TV3')">
-          <div class="dock-icon">🔴</div>
-          <div class="dock-name">3Cat / TV3</div>
-          <div class="dock-badge">CATALUNYA</div>
-        </div>
-        <!-- RTVE Play -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.rtve.androidtv', 'RTVE Play')">
-          <div class="dock-icon">🔵</div>
-          <div class="dock-name">RTVE Play</div>
-          <div class="dock-badge">TDT DIRECTO</div>
-        </div>
-        <!-- atresplayer -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.antena3.atresplayer.tv', 'atresplayer')">
-          <div class="dock-icon">🎭</div>
-          <div class="dock-name">atresplayer</div>
-          <div class="dock-badge">ATRESMEDIA</div>
-        </div>
-        <!-- Downloader -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.esaba.downloader', 'Downloader')">
-          <div class="dock-icon">📥</div>
-          <div class="dock-name">Downloader</div>
-          <div class="dock-badge">UTILIDAD</div>
-        </div>
-        <!-- Ajustes Xiaomi TV -->
-        <div class="dock-card" tabindex="0" onclick="launchApp('com.android.tv.settings', 'Ajustes Xiaomi TV')">
-          <div class="dock-icon">⚙️</div>
-          <div class="dock-name">Ajustes TV</div>
-          <div class="dock-badge">SISTEMA</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. SLÖNE TUBE™ (YOUTUBE 4K SIN ANUNCIOS INTEGRADO) -->
-    <section class="tube-section" id="tubeSection">
-      <div class="tube-header">
-        <div class="tube-title">
-          <span>▶️ SLÖNE TUBE™ · YOUTUBE 4K SIN ANUNCIOS</span>
-          <span style="font-size:0.75rem; color:#FFF; font-weight:700; background:rgba(255,255,255,0.12); padding:3px 10px; border-radius:12px;">SponsorBlock & AdFree Activo</span>
-        </div>
-        <div class="tube-controls">
-          <div class="tube-category-pill active" onclick="switchTubeCategory('barca', this)">⚽ Resúmenes Barça & Champions</div>
-          <div class="tube-category-pill" onclick="switchTubeCategory('motor', this)">🏎️ F1 & MotoGP Highlights</div>
-          <div class="tube-category-pill" onclick="switchTubeCategory('tertulias', this)">🎙️ Jijantes & Tertulias</div>
-          <button class="tube-btn-launch" onclick="launchApp('org.smarttube.stable', 'SmartTube 4K Nativo')">
-            <span>🚀 ABRIR EN SMARTUBE 4K</span>
-          </button>
-        </div>
-      </div>
-      <div class="tube-row" id="tubeRow">
-        <!-- Generado dinámicamente -->
-      </div>
-    </section>
-
-    <!-- 5. SLÖNE STADIUM MATRIX™ 4X & PANTALLA COMPLETA -->
-    <section class="hero-stage" id="stadiumSection">
-      <div class="stage-top-bar">
-        <div class="stage-title">
-          <span>🏟️ MULTIVIEW STADIUM™ 4X</span>
-          <span style="color:var(--text-muted); font-size:0.75rem;">· Pantalla Activa: <strong id="lblActiveScreenName" style="color:var(--accent);">[1] Teledeporte HD</strong></span>
-        </div>
-        <div class="stage-btn-group">
-          <button class="stage-btn active" id="btn4x" onclick="setStadiumMode(4)">Cuadrícula 4X</button>
-          <button class="stage-btn" id="btn1x" onclick="setStadiumMode(1)">1 Pantalla Completa</button>
-          <button class="stage-btn" onclick="swapScreens(0, 1)">🔀 Intercambiar [1 ⇄ 2]</button>
-          <button class="stage-btn" onclick="toggleFullscreen()">⛶ Maximizar</button>
+        <div class="stadium-controls">
+          <button class="btn-outline" style="padding:6px 14px; font-size:0.82rem;" id="btn4x" onclick="setStadiumMode(4)">4 Pantallas</button>
+          <button class="btn-outline" style="padding:6px 14px; font-size:0.82rem;" id="btn1x" onclick="setStadiumMode(1)">1 Pantalla</button>
+          <button class="btn-outline" style="padding:6px 14px; font-size:0.82rem;" onclick="swapScreens(0, 1)">🔀 Cambiar [1 ⇄ 2]</button>
+          <button class="btn-outline" style="padding:6px 14px; font-size:0.82rem;" onclick="toggleFullscreen()">⛶ Maximizar</button>
         </div>
       </div>
 
-      <div class="stadium-container grid-4x" id="stadiumGrid">
-        <!-- CUADRANTE 0 -->
-        <div class="quadrant-box active-box" id="box0" onclick="focusScreen(0)">
-          <div class="quad-header">
-            <span class="quad-name" id="qname0">[1] Teledeporte HD</span>
-            <button class="quad-audio-tag active" id="qaud0" onclick="event.stopPropagation(); setScreenAudio(0)">🔊 AUDIO 1</button>
+      <div class="stadium-grid" id="stadiumGrid">
+        <div class="screen-box active-box" id="box0" onclick="focusScreen(0)">
+          <div class="screen-header">
+            <span class="screen-name" id="qname0">[1] Teledeporte HD</span>
+            <button class="screen-audio-tag active" id="qaud0" onclick="event.stopPropagation(); setScreenAudio(0)">🔊 AUDIO 1</button>
           </div>
-          <video class="quad-video" id="v0" autoplay muted playsinline></video>
+          <video class="screen-video" id="v0" autoplay muted playsinline></video>
         </div>
-        <!-- CUADRANTE 1 -->
-        <div class="quadrant-box" id="box1" onclick="focusScreen(1)">
-          <div class="quad-header">
-            <span class="quad-name" id="qname1">[2] Real Madrid TV HD</span>
-            <button class="quad-audio-tag" id="qaud1" onclick="event.stopPropagation(); setScreenAudio(1)">🔇 MUTE</button>
+        <div class="screen-box" id="box1" onclick="focusScreen(1)">
+          <div class="screen-header">
+            <span class="screen-name" id="qname1">[2] Real Madrid TV</span>
+            <button class="screen-audio-tag" id="qaud1" onclick="event.stopPropagation(); setScreenAudio(1)">🔇 MUTE</button>
           </div>
-          <video class="quad-video" id="v1" autoplay muted playsinline></video>
+          <video class="screen-video" id="v1" autoplay muted playsinline></video>
         </div>
-        <!-- CUADRANTE 2 -->
-        <div class="quadrant-box" id="box2" onclick="focusScreen(2)">
-          <div class="quad-header">
-            <span class="quad-name" id="qname2">[3] Esport3 Catalunya</span>
-            <button class="quad-audio-tag" id="qaud2" onclick="event.stopPropagation(); setScreenAudio(2)">🔇 MUTE</button>
+        <div class="screen-box" id="box2" onclick="focusScreen(2)">
+          <div class="screen-header">
+            <span class="screen-name" id="qname2">[3] Esport3</span>
+            <button class="screen-audio-tag" id="qaud2" onclick="event.stopPropagation(); setScreenAudio(2)">🔇 MUTE</button>
           </div>
-          <video class="quad-video" id="v2" autoplay muted playsinline></video>
+          <video class="screen-video" id="v2" autoplay muted playsinline></video>
         </div>
-        <!-- CUADRANTE 3 -->
-        <div class="quadrant-box" id="box3" onclick="focusScreen(3)">
-          <div class="quad-header">
-            <span class="quad-name" id="qname3">[4] TV3 HD Catalunya</span>
-            <button class="quad-audio-tag" id="qaud3" onclick="event.stopPropagation(); setScreenAudio(3)">🔇 MUTE</button>
+        <div class="screen-box" id="box3" onclick="focusScreen(3)">
+          <div class="screen-header">
+            <span class="screen-name" id="qname3">[4] TV3 HD</span>
+            <button class="screen-audio-tag" id="qaud3" onclick="event.stopPropagation(); setScreenAudio(3)">🔇 MUTE</button>
           </div>
-          <video class="quad-video" id="v3" autoplay muted playsinline></video>
+          <video class="screen-video" id="v3" autoplay muted playsinline></video>
         </div>
       </div>
-    </section>
 
-    <!-- 6. FAN AUDIO MATRIX & DECALAJE CULER -->
-    <section class="fan-audio-bar">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <span style="font-size:0.9rem; font-weight:900; color:var(--accent);">🎙️ FAN AUDIO™ CULER & RADIOS:</span>
-        <div class="fan-pills">
-          <div class="fan-pill active" onclick="setRadioTrack('tv', 'Audio TV Original', this)">📺 Audio TV</div>
-          <div class="fan-pill" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Joan Maria Pou · Culer)', this)">🔵🔴 RAC1 (Pou)</div>
-          <div class="fan-pill" onclick="setRadioTrack('https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8', 'Catalunya Ràdio (La TDT del Barça)', this)">🔵🔴 CatRàdio</div>
-          <div class="fan-pill" onclick="setRadioTrack('ambient', 'Sonido Estadio Puro (Sin narradores)', this)">🏟️ Estadio Puro</div>
-          <div class="fan-pill" onclick="setRadioTrack('https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', 'Cadena SER (Carrusel)', this)">📻 Cadena SER</div>
-          <div class="fan-pill" onclick="setRadioTrack('https://flive.cope.stream.flumotion.com/cope/net1.mp3', 'Cadena COPE (Tiempo de Juego)', this)">📻 COPE</div>
-          <div class="fan-pill" onclick="setRadioTrack('https://radiomarca.streaming-pro.com:8024/radiomarca.mp3', 'Radio Marca (Marcador)', this)">📻 Radio Marca</div>
+      <!-- FAN AUDIO RADIOS -->
+      <div class="fan-audio-bar">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:0.85rem; font-weight:800; color:var(--accent);">🎙️ AUDIO EN DIRECTO:</span>
+          <div class="radio-pills">
+            <button class="radio-pill active" onclick="setRadioTrack('tv', 'Audio TV Original', this)">📺 Audio TV</button>
+            <button class="radio-pill" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', this)">🔵🔴 RAC1</button>
+            <button class="radio-pill" onclick="setRadioTrack('https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8', 'CatRàdio', this)">🔵🔴 CatRàdio</button>
+            <button class="radio-pill" onclick="setRadioTrack('ambient', 'Estadio Puro', this)">🏟️ Estadio</button>
+            <button class="radio-pill" onclick="setRadioTrack('https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', 'Cadena SER', this)">📻 Cadena SER</button>
+            <button class="radio-pill" onclick="setRadioTrack('https://flive.cope.stream.flumotion.com/cope/net1.mp3', 'COPE', this)">📻 COPE</button>
+          </div>
         </div>
-      </div>
-      <div class="delay-controls">
-        <span style="font-size:0.75rem; font-weight:800; color:var(--text-muted);">DECALAJE:</span>
-        <button class="delay-btn" onclick="adjustAudioDelay(-0.5)">-0.5s</button>
-        <button class="delay-btn" onclick="adjustAudioDelay(-0.1)">-0.1s</button>
-        <span class="delay-val" id="lblDelayVal">0.0s</span>
-        <button class="delay-btn" onclick="adjustAudioDelay(+0.1)">+0.1s</button>
-        <button class="delay-btn" onclick="adjustAudioDelay(+0.5)">+0.5s</button>
-        <button class="delay-btn" style="color:var(--accent);" onclick="resetAudioDelay()">RESET</button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">Sincronizar Audio:</span>
+          <button class="radio-pill" onclick="adjustAudioDelay(-0.2)">-0.2s</button>
+          <span style="font-size:0.85rem; font-weight:800; color:var(--accent);" id="lblDelayVal">0.0s</span>
+          <button class="radio-pill" onclick="adjustAudioDelay(+0.2)">+0.2s</button>
+        </div>
       </div>
       <audio id="radioPlayer" preload="none"></audio>
     </section>
 
-    <!-- 7. CARRUSEL: FÚTBOL & CHAMPIONS LEAGUE (DE TU LISTA DE CEO) -->
+    <!-- 5. CARRUSELES DE CANALES DE TV (CASILLAS 16:9 ELEGANTES) -->
     <section class="carousel-section" id="secFutbol">
-      <div class="carousel-header">
-        <div class="section-title">
-          <span>⚽ FÚTBOL & CHAMPIONS LEAGUE</span>
-          <span class="accent">· Tu Lista IPTV Personal (39.737 canales)</span>
-        </div>
+      <div class="section-header">
+        <span>Fútbol & Champions League</span>
       </div>
-      <div class="carousel-row" id="rowFutbol">
-        <!-- Generado dinámicamente -->
-      </div>
+      <div class="carousel-row" id="rowFutbol"></div>
     </section>
 
-    <!-- 8. CARRUSEL: MOTOR, F1 & MOTOGP (DE TU LISTA DE CEO) -->
     <section class="carousel-section" id="secMotor">
-      <div class="carousel-header">
-        <div class="section-title">
-          <span>🏍️ MOTOR, FÓRMULA 1 & MOTOGP</span>
-          <span class="accent">· DAZN & Replay Oficial</span>
-        </div>
+      <div class="section-header">
+        <span>Motor, F1 & MotoGP</span>
       </div>
-      <div class="carousel-row" id="rowMotor">
-        <!-- Generado dinámicamente -->
-      </div>
+      <div class="carousel-row" id="rowMotor"></div>
     </section>
 
-    <!-- 9. CARRUSEL: TDT & AUTONÓMICOS -->
     <section class="carousel-section" id="secTdt">
-      <div class="carousel-header">
-        <div class="section-title">
-          <span>🇪🇸 TELEVISIÓN GENERALISTA & AUTONÓMICAS</span>
-          <span class="accent">· Alta Definición</span>
-        </div>
+      <div class="section-header">
+        <span>Televisión en Directo & TDT</span>
       </div>
-      <div class="carousel-row" id="rowTdt">
-        <!-- Generado dinámicamente -->
-      </div>
+      <div class="carousel-row" id="rowTdt"></div>
     </section>
 
-    <!-- 10. CARRUSEL: CINE & ESTRENOS (DE TU LISTA DE CEO) -->
     <section class="carousel-section" id="secCine">
-      <div class="carousel-header">
-        <div class="section-title">
-          <span>🎬 CINE, ESTRENOS & SERIES</span>
-          <span class="accent">· Taquillas y Canales Premium</span>
-        </div>
+      <div class="section-header">
+        <span>Cine & Series</span>
       </div>
-      <div class="carousel-row" id="rowCine">
-        <!-- Generado dinámicamente -->
-      </div>
+      <div class="carousel-row" id="rowCine"></div>
     </section>
 
-    <!-- 11. SLÖNE SHIELD WEB BROWSER & BUSCADOR SOBERANO (ESTILO BRAVE / FIREFOX) -->
-    <section class="shield-browser-bar" id="shieldBrowser" style="margin-top: 2.5rem;">
-      <div class="shield-header">
-        <div class="shield-status">
-          <span>🛡️ SLÖNE SHIELD WEB BROWSER™</span>
-          <span class="shield-tag">ANTI-RASTREO ACTIVO</span>
-          <span class="shield-tag">SIN ANUNCIOS</span>
-          <span class="shield-tag">DNS PRIVADO</span>
-        </div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">
-          Motor Soberano Brave & Firefox · Navegación 100% Blindada en tu Xiaomi TV
-        </div>
+    <!-- 6. BUSCADOR WEB (MINIMALISTA Y DIRECTO) -->
+    <section class="search-section" id="shieldBrowser">
+      <div class="section-header">
+        <span>Buscador Web</span>
       </div>
-      <form class="omnibox-form" onsubmit="event.preventDefault(); executeSearch();">
-        <input type="text" id="omniboxInput" class="omnibox-input" placeholder="🔍 Buscar en la Web privada (Brave / DuckDuckGo) o introducir URL directa..." autocomplete="off">
-        <button type="submit" class="omnibox-btn">
-          <span>🚀 NAVEGAR EN LA TV</span>
-        </button>
+      <form class="search-box" onsubmit="event.preventDefault(); executeSearch();">
+        <input type="text" id="omniboxInput" class="search-input" placeholder="Buscar en la web privada o escribir dirección..." autocomplete="off">
+        <button type="submit" class="search-btn">Buscar</button>
       </form>
-      <div class="shield-quick-links">
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://search.brave.com', 'Brave Search Privado')">🦁 Brave Search</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://duckduckgo.com', 'DuckDuckGo Privado')">🦆 DuckDuckGo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.flashscore.es', 'Flashscore / Resultados en Directo')">📊 Flashscore Directo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.sport.es', 'Diario SPORT · Barça')">🔵🔴 Diario SPORT</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.mundodeportivo.com', 'Mundo Deportivo')">📰 Mundo Deportivo</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://www.marca.com', 'Marca')">⚡ Marca</div>
-        <div class="quick-link-pill" onclick="launchWebShortcut('https://es.wikipedia.org', 'Wikipedia')">📚 Wikipedia</div>
-      </div>
     </section>
 
   </div>
 
   <script>
-    // ── ESTADO GLOBAL DEL LAUNCHER ──
+    // ── ESTADO GLOBAL ──
     let activeScreenIdx = 0;
     let is4x = true;
     let audioDelay = 0.0;
@@ -1210,136 +772,6 @@
     ];
     let hlsPlayers = [null, null, null, null];
     let tsPlayers = [null, null, null, null];
-
-    // ── SLÖNE TUBE: CONTENIDO DESTACADO SIN ANUNCIOS ──
-    const tubeData = {
-      barca: [
-        { id: 'video_b1', title: 'RESUMEN FC BARCELONA vs CHAMPIONS LEAGUE · GOLES & MEJORES MOMENTOS', channel: 'FC Barcelona Oficial', duration: '10:14', thumb: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=400&q=80' },
-        { id: 'video_b2', title: 'Lamine Yamal · Toda la magia de la temporada al detalle', channel: 'Jijantes FC · Gerard Romero', duration: '14:22', thumb: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80' },
-        { id: 'video_b3', title: 'Hansi Flick Rueda de Prensa Previa Champions League', channel: 'Barça TV Highlights', duration: '18:40', thumb: 'https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=400&q=80' }
-      ],
-      motor: [
-        { id: 'video_m1', title: 'Resumen Gran Premio F1 · Batalla por la Pole & Adelantamientos', channel: 'F1 Official Channel', duration: '08:45', thumb: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=400&q=80' },
-        { id: 'video_m2', title: 'MotoGP Highlights · Última vuelta de infarto en Jerez', channel: 'DAZN España', duration: '09:12', thumb: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=400&q=80' }
-      ],
-      tertulias: [
-        { id: 'video_t1', title: 'JIJANTES FC DIRECTO · Última Hora de Fichajes y Análisis del Barça', channel: 'Gerard Romero · Jijantes', duration: 'DIRECTO', thumb: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=400&q=80' },
-        { id: 'video_t2', title: 'El Chiringuito Especial Champions League · Debate Caliente', channel: 'El Chiringuito de Jugones', duration: '45:30', thumb: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=400&q=80' }
-      ]
-    };
-
-    function renderTube(category) {
-      const row = document.getElementById('tubeRow');
-      if (!row) return;
-      row.innerHTML = '';
-      const items = tubeData[category] || tubeData.barca;
-      items.forEach(v => {
-        const card = document.createElement('div');
-        card.className = 'tube-card';
-        card.tabIndex = 0;
-        card.innerHTML = `
-          <div class="tube-thumb-box">
-            <img src="${v.thumb}" class="tube-thumb-img" alt="${v.title}">
-            <span class="tube-no-ads-badge">SIN ANUNCIOS</span>
-            <span class="tube-duration">${v.duration}</span>
-          </div>
-          <div class="tube-card-body">
-            <div class="tube-card-title">${v.title}</div>
-            <div class="tube-card-channel">${v.channel}</div>
-          </div>
-        `;
-        card.onclick = () => {
-          fetch(`/api/tv/open_smarttube?v=${encodeURIComponent(v.id)}`)
-            .catch(() => {});
-        };
-        row.appendChild(card);
-      });
-    }
-
-    function switchTubeCategory(cat, pill) {
-      document.querySelectorAll('.tube-category-pill').forEach(p => p.classList.remove('active'));
-      if (pill) pill.classList.add('active');
-      renderTube(cat);
-    }
-
-    // ── NAVEGACIÓN ENTRE SECCIONES PATCHWALL ──
-    function scrollToSection(id) {
-      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-      const activeTab = Array.from(document.querySelectorAll('.nav-tab')).find(t => t.getAttribute('onclick')?.includes(id));
-      if (activeTab) activeTab.classList.add('active');
-
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => {
-          const firstFocusable = el.querySelector('[tabindex="0"], button, input');
-          if (firstFocusable) firstFocusable.focus();
-        }, 150);
-      }
-    }
-
-    // ── SLÖNE SHIELD BROWSER: EJECUCIÓN DE BÚSQUEDA PRIVADA O URL ──
-    function executeSearch() {
-      const q = document.getElementById('omniboxInput').value.trim();
-      if (!q) return;
-
-      let targetUrl = q;
-      if (q.startsWith('http://') || q.startsWith('https://')) {
-        targetUrl = q;
-      } else if (q.includes('.') && !q.includes(' ')) {
-        targetUrl = 'https://' + q;
-      } else {
-        targetUrl = 'https://search.brave.com/search?q=' + encodeURIComponent(q);
-      }
-
-      fetch(`/api/tv/open_url?url=${encodeURIComponent(targetUrl)}`)
-        .catch(() => {});
-    }
-
-    function launchWebShortcut(url, name) {
-      fetch(`/api/tv/open_url?url=${encodeURIComponent(url)}`)
-        .catch(() => {});
-    }
-
-    // ── INICIALIZACIÓN REPRODUCTORES MULTIVIEW ──
-    function initPlayers() {
-      for (let i = 0; i < 4; i++) {
-        const v = document.getElementById(`v${i}`);
-        if (!v) continue;
-        if (Hls.isSupported()) {
-          const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-          hls.loadSource(currentStreams[i].url);
-          hls.attachMedia(v);
-          hlsPlayers[i] = hls;
-        } else if (v.canPlayType('application/vnd.apple.mpegurl')) {
-          v.src = currentStreams[i].url;
-        }
-      }
-    }
-
-    function focusScreen(idx) {
-      activeScreenIdx = idx;
-      for (let i = 0; i < 4; i++) {
-        const box = document.getElementById(`box${i}`);
-        if (box) box.classList.toggle('active-box', i === idx);
-      }
-      document.getElementById('lblActiveScreenName').innerText = `[${idx+1}] ${currentStreams[idx].name}`;
-    }
-
-    function setScreenAudio(idx) {
-      focusScreen(idx);
-      for (let i = 0; i < 4; i++) {
-        const v = document.getElementById(`v${i}`);
-        const tag = document.getElementById(`qaud${i}`);
-        if (v) v.muted = (i !== idx);
-        if (tag) {
-          tag.innerText = (i === idx) ? `🔊 AUDIO ${i+1}` : "🔇 MUTE";
-          tag.classList.toggle('active', i === idx);
-        }
-      }
-      const radio = document.getElementById('radioPlayer');
-      radio.pause();
-    }
 
     function stopStream(idx) {
       if (hlsPlayers[idx]) {
@@ -1371,7 +803,6 @@
       const isTs = streamUrl.includes('.ts') || streamUrl.includes('/live/');
       const isPublicCdn = streamUrl.includes('rtve.es') || streamUrl.includes('akamaized.net') || streamUrl.includes('3catdirectes.cat');
 
-      // Enrutar por el Proxy Soberano si es stream IPTV privado para inyectar IPTVSmartersPro y CORS
       const effectiveUrl = (!isPublicCdn && streamUrl.startsWith('http'))
         ? `/api/stream/proxy?url=${encodeURIComponent(streamUrl)}`
         : streamUrl;
@@ -1414,7 +845,7 @@
       document.getElementById(`qname${idx}`).innerText = `[${idx+1}] ${channel.name}`;
       document.getElementById('lblActiveScreenName').innerText = `[${idx+1}] ${channel.name}`;
       playStreamOnElement(idx, channel.url);
-      window.scrollTo({ top: 380, behavior: 'smooth' });
+      scrollToSection('stadiumSection');
     }
 
     function swapScreens(a, b) {
@@ -1430,88 +861,52 @@
       playStreamOnElement(idx, streamObj.url);
     }
 
+    function focusScreen(idx) {
+      activeScreenIdx = idx;
+      for (let i = 0; i < 4; i++) {
+        const box = document.getElementById(`box${i}`);
+        if (box) box.classList.toggle('active-box', i === idx);
+      }
+      document.getElementById('lblActiveScreenName').innerText = `[${idx+1}] ${currentStreams[idx].name}`;
+    }
+
+    function setScreenAudio(idx) {
+      focusScreen(idx);
+      for (let i = 0; i < 4; i++) {
+        const v = document.getElementById(`v${i}`);
+        const tag = document.getElementById(`qaud${i}`);
+        if (v) v.muted = (i !== idx);
+        if (tag) {
+          tag.innerText = (i === idx) ? `🔊 AUDIO ${i+1}` : "🔇 MUTE";
+          tag.classList.toggle('active', i === idx);
+        }
+      }
+      const radio = document.getElementById('radioPlayer');
+      radio.pause();
+    }
+
     function setStadiumMode(mode) {
       const grid = document.getElementById('stadiumGrid');
       const b4 = document.getElementById('btn4x');
       const b1 = document.getElementById('btn1x');
       if (mode === 1) {
-        grid.className = 'stadium-container grid-1x';
+        grid.className = 'stadium-grid grid-1x';
         for (let i = 0; i < 4; i++) {
           const b = document.getElementById(`box${i}`);
           b.style.display = (i === activeScreenIdx) ? 'flex' : 'none';
         }
-        b1.classList.add('active');
-        b4.classList.remove('active');
       } else {
-        grid.className = 'stadium-container grid-4x';
+        grid.className = 'stadium-grid';
         for (let i = 0; i < 4; i++) {
           const b = document.getElementById(`box${i}`);
           b.style.display = 'flex';
         }
-        b4.classList.add('active');
-        b1.classList.remove('active');
       }
     }
 
-    // ── CARGA DEL CATÁLOGO DEL CEO (39.737 CANALES) ──
-    async function loadCeoCatalog() {
-      try {
-        const res = await fetch('/api/tv/ceo_catalog');
-        const data = await res.json();
-        const cat = data.catalog || {};
-
-        renderCarousel('rowFutbol', cat.futbol || []);
-        renderCarousel('rowMotor', cat.motor || []);
-        renderCarousel('rowTdt', cat.tdt || []);
-        renderCarousel('rowCine', cat.cine || []);
-      } catch (e) {
-        console.error("Error cargando catálogo del CEO:", e);
-      }
-    }
-
-    function renderCarousel(containerId, list) {
-      const row = document.getElementById(containerId);
-      if (!row) return;
-      row.innerHTML = '';
-      list.forEach(ch => {
-        const card = document.createElement('div');
-        card.className = 'channel-card';
-        card.tabIndex = 0;
-        const logoUrl = ch.logo || 'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>';
-        const safeName = (ch.name || 'Canal').replace(/'/g, "\\'");
-        card.innerHTML = `
-          <div class="card-thumb-box">
-            <img src="${logoUrl}" class="card-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>'">
-          </div>
-          <div class="card-body">
-            <div class="card-title">${ch.name}</div>
-            <div class="card-group">${ch.group}</div>
-            <div style="display:flex; gap:6px; margin-top:8px;">
-              <button style="flex:1; background:var(--accent); color:#000; border:none; padding:5px 6px; font-weight:900; font-size:0.68rem; border-radius:6px; cursor:pointer;" onclick="event.stopPropagation(); playInActiveScreen({url: '${ch.url}', name: '${safeName}'})">▶️ MATRIZ</button>
-              <button style="flex:1; background:rgba(0,229,255,0.15); border:1px solid var(--cyan-shield); color:var(--cyan-shield); padding:5px 6px; font-weight:800; font-size:0.68rem; border-radius:6px; cursor:pointer;" onclick="event.stopPropagation(); launchExternalStream('${ch.url}', '${safeName}')">⚡ TIVIMATE</button>
-            </div>
-          </div>
-        `;
-        card.onclick = () => playInActiveScreen(ch);
-        row.appendChild(card);
-      });
-    }
-
-    function launchExternalStream(url, name) {
-      fetch(`/api/tv/play_external?url=${encodeURIComponent(url)}&package=ar.tvplayer.tv`)
-        .catch(() => {});
-    }
-
-    // ── LANZAMIENTO DE APPS EN LA TELE VÍA ADB ──
-    function launchApp(pkg, name) {
-      fetch(`/api/tv/launch?package=${encodeURIComponent(pkg)}`)
-        .catch(() => {});
-    }
-
-    // ── FAN AUDIO MATRIX ──
-    function setRadioTrack(url, name, pill) {
-      document.querySelectorAll('.fan-pill').forEach(p => p.classList.remove('active'));
-      if (pill) pill.classList.add('active');
+    function setRadioTrack(url, name, btn) {
+      document.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
 
       const radio = document.getElementById('radioPlayer');
       for (let i = 0; i < 4; i++) {
@@ -1539,11 +934,6 @@
       document.getElementById('lblDelayVal').innerText = `${audioDelay > 0 ? '+' : ''}${audioDelay.toFixed(1)}s`;
     }
 
-    function resetAudioDelay() {
-      audioDelay = 0.0;
-      document.getElementById('lblDelayVal').innerText = "0.0s";
-    }
-
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(() => {});
@@ -1552,22 +942,94 @@
       }
     }
 
-    // ── RELOJ EN TIEMPO REAL ──
-    setInterval(() => {
-      const now = new Date();
-      const clk = document.getElementById('liveClock');
-      if (clk) {
-        clk.innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-      }
-    }, 1000);
+    function scrollToSection(id) {
+      document.querySelectorAll('.nav-item').forEach(t => t.classList.remove('active'));
+      const activeTab = Array.from(document.querySelectorAll('.nav-item')).find(t => t.getAttribute('onclick')?.includes(id));
+      if (activeTab) activeTab.classList.add('active');
 
-    // ── MOTOR DE NAVEGACIÓN D-PAD PARA MANDO SMART TV ──
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          const firstFocusable = el.querySelector('[tabindex="0"], button, input');
+          if (firstFocusable) firstFocusable.focus();
+        }, 150);
+      }
+    }
+
+    function executeSearch() {
+      const q = document.getElementById('omniboxInput').value.trim();
+      if (!q) return;
+      let targetUrl = q;
+      if (q.startsWith('http://') || q.startsWith('https://')) {
+        targetUrl = q;
+      } else if (q.includes('.') && !q.includes(' ')) {
+        targetUrl = 'https://' + q;
+      } else {
+        targetUrl = 'https://search.brave.com/search?q=' + encodeURIComponent(q);
+      }
+      fetch(`/api/tv/open_url?url=${encodeURIComponent(targetUrl)}`).catch(() => {});
+    }
+
+    function launchApp(pkg, name) {
+      fetch(`/api/tv/launch?package=${encodeURIComponent(pkg)}`).catch(() => {});
+    }
+
+    function launchExternalStream(url, name) {
+      fetch(`/api/tv/play_external?url=${encodeURIComponent(url)}&package=ar.tvplayer.tv`).catch(() => {});
+    }
+
+    // ── CARGA DEL CATÁLOGO DE CANALES ──
+    async function loadCeoCatalog() {
+      try {
+        const res = await fetch('/api/tv/ceo_catalog');
+        const data = await res.json();
+        const cat = data.catalog || {};
+
+        renderCarousel('rowFutbol', cat.futbol || []);
+        renderCarousel('rowMotor', cat.motor || []);
+        renderCarousel('rowTdt', cat.tdt || []);
+        renderCarousel('rowCine', cat.cine || []);
+      } catch (e) {
+        console.error("Error cargando canales:", e);
+      }
+    }
+
+    function renderCarousel(containerId, list) {
+      const row = document.getElementById(containerId);
+      if (!row) return;
+      row.innerHTML = '';
+      list.forEach(ch => {
+        const card = document.createElement('div');
+        card.className = 'channel-card';
+        card.tabIndex = 0;
+        const logoUrl = ch.logo || 'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>';
+        const safeName = (ch.name || 'Canal').replace(/'/g, "\\'");
+        card.innerHTML = `
+          <div class="card-thumb">
+            <img src="${logoUrl}" class="card-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' fill=\'%23E3FF00\' viewBox=\'0 0 24 24\'><path d=\'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z\'/></svg>'">
+          </div>
+          <div class="card-info">
+            <div class="card-title">${ch.name}</div>
+            <div class="card-cat">${ch.group || 'GENERAL'}</div>
+            <div class="card-buttons">
+              <button class="card-btn card-btn-play" onclick="event.stopPropagation(); playInActiveScreen({url: '${ch.url}', name: '${safeName}'})">▶ Ver</button>
+              <button class="card-btn card-btn-tv" onclick="event.stopPropagation(); launchExternalStream('${ch.url}', '${safeName}')">⚡ TiviMate</button>
+            </div>
+          </div>
+        `;
+        card.onclick = () => playInActiveScreen(ch);
+        row.appendChild(card);
+      });
+    }
+
+    // ── CONTROLADOR DE MANDO D-PAD ──
     const radioStations = [
-      { id: 'tv', name: 'Audio TV Original' },
-      { id: 'https://stream.rac1.cat/rac1.mp3', name: 'RAC1 (Pou)' },
+      { id: 'tv', name: 'Audio TV' },
+      { id: 'https://stream.rac1.cat/rac1.mp3', name: 'RAC1' },
       { id: 'https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8', name: 'CatRàdio' },
-      { id: 'ambient', name: 'Estadio Puro' },
-      { id: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', name: 'Cadena SER' },
+      { id: 'ambient', name: 'Estadio' },
+      { id: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', name: 'SER' },
       { id: 'https://flive.cope.stream.flumotion.com/cope/net1.mp3', name: 'COPE' }
     ];
     let currentRadioIdx = 0;
@@ -1576,35 +1038,26 @@
       const key = e.key;
       const code = e.keyCode;
 
-      // Atajo numérico directo para conmutar pantalla / audio: 1, 2, 3, 4
       if (key >= '1' && key <= '4') {
         const targetIdx = parseInt(key, 10) - 1;
         setScreenAudio(targetIdx);
         return;
       }
-
-      // Atajo 'F' para Pantalla Completa
       if (key === 'f' || key === 'F' || code === 186) {
         toggleFullscreen();
         return;
       }
-
-      // Atajo 'R' para ciclar radios deportivas (RAC1, CatRàdio, SER...)
       if (key === 'r' || key === 'R') {
         currentRadioIdx = (currentRadioIdx + 1) % radioStations.length;
         const st = radioStations[currentRadioIdx];
         setRadioTrack(st.id, st.name, null);
         return;
       }
-
-      // Atajo 'M' para Silencio / Mute
       if (key === 'm' || key === 'M') {
         const v = document.getElementById(`v${activeScreenIdx}`);
         if (v) v.muted = !v.muted;
         return;
       }
-
-      // D-Pad Scroll suave al elemento enfocado
       if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
         setTimeout(() => {
           const act = document.activeElement;
@@ -1615,9 +1068,19 @@
       }
     });
 
+    // ── RELOJ ──
+    setInterval(() => {
+      const now = new Date();
+      const clk = document.getElementById('liveClock');
+      if (clk) {
+        clk.innerText = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      }
+    }, 1000);
+
     window.onload = () => {
-      initPlayers();
-      renderTube('barca');
+      for (let i = 0; i < 4; i++) {
+        playStreamOnElement(i, currentStreams[i].url);
+      }
       loadCeoCatalog();
       setScreenAudio(0);
     };
