@@ -1,0 +1,20 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Dark Background -->
+    <path
+        android:fillColor="#141414"
+        android:pathData="M8,6 L40,6 A4,4 0 0,1 44,10 L44,38 A4,4 0 0,1 40,42 L8,42 A4,4 0 0,1 4,38 L4,10 A4,4 0 0,1 8,6 Z" />
+    <!-- Iconic Netflix 'N' -->
+    <path
+        android:fillColor="#E50914"
+        android:pathData="M15,10 L21,10 L21,38 L15,38 Z" />
+    <path
+        android:fillColor="#B81D24"
+        android:pathData="M15,10 L33,38 L27,38 L15,18 Z" />
+    <path
+        android:fillColor="#E50914"
+        android:pathData="M27,10 L33,10 L33,38 L27,38 Z" />
+</vector>

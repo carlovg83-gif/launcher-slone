@@ -31,6 +31,12 @@ Este archivo define las directrices maestras de arquitectura, desarrollo y segur
   - *Carruseles del CEO*: 39.737 canales clasificados en Fútbol, Champions, DAZN, Motor, TDT y Cine.
 - **`scripts/servidor_tv_hub.py`**: Servidor daemon autónomo de alta velocidad (puerto 8765):
   - Sirve el launcher PWA, el catálogo de canales en JSON (`/api/tv/ceo_catalog`), listas M3U, control remoto ADB de apps (`/api/tv/launch`, `/api/tv/open_url`, `/api/tv/open_smarttube`).
+- **`platforms/android/slone-tv-launcher`**: Motor nativo Android TV (Kotlin + Jetpack Compose for TV):
+  - Navegación por hardware D-Pad (control remoto físico de Xiaomi TV).
+  - Tema Obsidian & Golden Sovereignty (`#D4AF37`) con foco dinámico de 4dp.
+  - Lanzamiento nativo Leanback de SmartTube, TiviMate, 3Cat, Netflix, Prime Video, etc.
+- **`dist/slone-tv-launcher-debug.apk`**: Binario compilado listo para instalar.
+- **`scripts/gestionar_tv_launcher.zsh`**: Script para compilar, instalar vía ADB y conmutar el launcher de la Xiaomi TV (`./scripts/gestionar_tv_launcher.zsh build | deploy | slone | normal`).
 - **`stitch.json` & `DESIGN_SYSTEM.md`**: Manifiesto y especificación de tokens para Google Stitch y herramientas de diseño UI.
 - **`app/slocast.py`**: Aplicación de escritorio nativa PyQt6 con reproductor dual MPV IPC y VLC.
 

@@ -20,3 +20,12 @@ dist/
 *.m3u
 !playlists/tdt_spain.m3u
 
+
+# Reglas Android / Kotlin / Gradle para platforms/android
+.gradle/
+**/build/
+*.apk
+local.properties
+.kotlin/
+.idea/
+*.iml

@@ -51,6 +51,16 @@ SLOCAST/
 │   ├── slone_player/main.py · prototipo GTK4/GStreamer
 │   ├── desbloquear_slone.py · desbloqueo biométrico PAM
 │   └── slone_prompt.txt     · guía/prompt original (texto)
+├── platforms/
+│   ├── android/
+│   │   └── slone-tv-launcher/  ← MOTOR NATIVO ANDROID TV (Kotlin + Compose for TV)
+│   │       ├── app/src/main/   · MainActivity, Theme obsidian/gold, Leanback intents
+│   │       └── build.gradle.kts· Configuración de build con Gradle
+│   └── windows/
+├── dist/                        ← BINARIOS Y DISTRIBUCIONES
+│   └── slone-tv-launcher-debug.apk · APK nativo listo para Smart TV
+├── scripts/                     ← UTILIDADES Y DESPLIEGUE
+│   └── gestionar_tv_launcher.zsh   · Compilación, instalación ADB y alternador de launcher
 ├── keystore/
 │   └── slone.keystore       · keystore de firma (binario)
 └── INFORME_PRUEBAS.md       · resultado de todas las pruebas
