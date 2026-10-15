@@ -706,11 +706,17 @@
       margin-top: 2px;
       white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     /* ── BARRA DE PESTAÑAS XIAOMI PATCHWALL ── */
     .patchwall-nav {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      overflow-x: auto;
+      width: 100%;
+      padding: 4px 0 2px 0;
     }
     .nav-tab {
       background: rgba(255, 255, 255, 0.05);
