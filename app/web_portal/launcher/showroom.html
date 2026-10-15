@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE · Showroom de Diseños Silicon Valley</title>
+  <style>
+    :root {
+      --bg: #07090E;
+      --text: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.65);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      user-select: none;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* ── BARRA SUPERIOR DE CONTROL DEL SHOWROOM ── */
+    .showroom-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 14, 22, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo-pill {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 900;
+      font-size: 0.95rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1.5px;
+    }
+    .brand-tagline {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .theme-tabs {
+      display: flex;
+      align-items: center;
+      background: rgba(22, 28, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .tab-btn.active {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 800;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ── MARCO DE PRESENTACIÓN TV (16:9 4K SIMULATION) ── */
+    .tv-stage {
+      flex: 1;
+      padding: 24px 32px 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .screen-container {
+      width: 100%;
+      max-width: 1400px;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    /* ── PALETA DE DISEÑO EN PIE DE PÁGINA ── */
+    .specs-panel {
+      width: 100%;
+      max-width: 1400px;
+      margin-top: 24px;
+      background: rgba(18, 22, 34, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 24px;
+    }
+    .spec-block-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .spec-desc {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .swatches {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .swatch-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* ══════════════════════════════════════════════════════════════ */
+    /* ESTILOS DE CADA TEMA INDIVIDUAL (LOS 5 PROYECTOS)              */
+    /* ══════════════════════════════════════════════════════════════ */
+
+    /* ── TEMA 1: STEALTH OBSIDIAN (Ultra-Lujo Minimalista) ── */
+    .theme-obsidian {
+      background: radial-gradient(circle at 70% 30%, #151820 0%, #08090C 60%, #030405 100%);
+      color: #F0F2F5;
+    }
+    .theme-obsidian .tv-nav-capsule {
+      background: rgba(20, 24, 34, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      padding: 4px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    .theme-obsidian .tv-nav-item.active {
+      background: #E6E8ED;
+      color: #0A0D14;
+      font-weight: 800;
+      border-radius: 9999px;
+    }
+    .theme-obsidian .btn-primary {
+      background: #FFFFFF;
+      color: #08090C;
+      font-weight: 700;
+      border-radius: 9999px;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+    }
+    .theme-obsidian .app-box {
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+    }
+
+    /* ── TEMA 2: SILICON PURE AIR (VisionOS / Apple TV+ Glass) ── */
+    .theme-pureair {
+      background:
+        radial-gradient(circle at 65% 25%, rgba(0, 114, 255, 0.35) 0%, rgba(20, 30, 55, 0.6) 50%, #050811 100%),
+        linear-gradient(180deg, #070D1B 0%, #030509 100%);
+      color: #FFFFFF;
+    }
+    .theme-pureair .tv-nav-capsule {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 4px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    .theme-pureair .tv-nav-item.active {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 700;
+      border-radius: 9999px;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    }
+    .theme-pureair .btn-primary {
+      background: rgba(255, 255, 255, 0.95);
+      color: #000000;
+      font-weight: 700;
+      border-radius: 9999px;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── TEMA 3: APEX ARENA (Hiperdeportivo · Acento Lima Neón) ── */
+    .theme-apex {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(227, 255, 0, 0.25) 0%, rgba(10, 18, 30, 0.7) 45%, #05070B 90%),
+        radial-gradient(circle at 20% 80%, rgba(0, 77, 152, 0.3) 0%, transparent 60%),
+        #05070B;
+      color: #FFFFFF;
+    }
+    .theme-apex .tv-nav-capsule {
+      background: rgba(18, 24, 38, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(227, 255, 0, 0.2);
+      border-radius: 9999px;
+      padding: 4px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    .theme-apex .tv-nav-item.active {
+      background: #E3FF00;
+      color: #000000;
+      font-weight: 900;
+      border-radius: 9999px;
+      box-shadow: 0 0 16px rgba(227, 255, 0, 0.5);
+    }
+    .theme-apex .btn-primary {
+      background: #E3FF00;
+      color: #000000;
+      font-weight: 800;
+      border-radius: 9999px;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(227, 255, 0, 0.4);
+    }
+
+    /* ── TEMA 4: MONOLITH STUDIO (Neo-Brutalismo Suizo) ── */
+    .theme-monolith {
+      background: #090A0D;
+      color: #FFFFFF;
+    }
+    .theme-monolith .tv-nav-capsule {
+      background: #141720;
+      border: 1px solid #2B3042;
+      border-radius: 6px;
+      padding: 4px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    .theme-monolith .tv-nav-item.active {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 900;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .theme-monolith .btn-primary {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 900;
+      border-radius: 4px;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .theme-monolith .app-box {
+      border-radius: 6px !important;
+    }
+
+    /* ── TEMA 5: CYBER HAUTE COUTURE (Instrumento de Lujo Futurista) ── */
+    .theme-cyber {
+      background:
+        radial-gradient(circle at 75% 30%, rgba(0, 229, 255, 0.25) 0%, rgba(15, 10, 30, 0.8) 50%, #030408 95%),
+        linear-gradient(135deg, #0A0C18 0%, #030408 100%);
+      color: #FFFFFF;
+    }
+    .theme-cyber .tv-nav-capsule {
+      background: rgba(14, 20, 36, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 9999px;
+      padding: 4px;
+      display: inline-flex;
+      gap: 4px;
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.15);
+    }
+    .theme-cyber .tv-nav-item.active {
+      background: #00E5FF;
+      color: #000000;
+      font-weight: 800;
+      border-radius: 9999px;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    }
+    .theme-cyber .btn-primary {
+      background: #00E5FF;
+      color: #000000;
+      font-weight: 800;
+      border-radius: 9999px;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(0, 229, 255, 0.45);
+    }
+
+    /* ── COMPONENTES INTERNOS DE LA PANTALLA TV SIMULADA ── */
+    .tv-content {
+      position: absolute;
+      inset: 0;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tv-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tv-nav-item {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      padding: 8px 18px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .tv-hero {
+      max-width: 680px;
+      margin-top: auto;
+      margin-bottom: 24px;
+    }
+    .tv-provider {
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      opacity: 0.95;
+    }
+    .tv-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .tv-sub {
+      font-size: 1.05rem;
+      font-weight: 600;
+      opacity: 0.85;
+      margin-bottom: 14px;
+    }
+    .tv-desc {
+      font-size: 0.95rem;
+      line-height: 1.45;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+    .tv-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-sec {
+      background: rgba(30, 36, 50, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 9999px;
+      cursor: pointer;
+    }
+
+    /* Fila de apps */
+    .tv-apps-label {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+    .tv-apps-row {
+      display: flex;
+      gap: 16px;
+    }
+    .app-box {
+      flex: 0 0 170px;
+      height: 98px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .app-box:hover {
+      transform: scale(1.06);
+    }
+    .app-focused {
+      outline: 3px solid #FFFFFF;
+      transform: scale(1.08);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE CONTROL DEL SHOWROOM -->
+  <header class="showroom-bar">
+    <div class="brand-meta">
+      <div class="brand-logo-pill">SLÖNE</div>
+      <div class="brand-tagline">Silicon Valley Design Suite · 5 Propuestas Exclusivas</div>
+    </div>
+
+    <!-- PESTAÑAS PARA CAMBIAR DE PROYECTO CON 1 CLIC -->
+    <nav class="theme-tabs">
+      <button class="tab-btn active" onclick="setTheme(1)">✦ 1. Stealth Obsidian</button>
+      <button class="tab-btn" onclick="setTheme(2)">✦ 2. Silicon Pure Air</button>
+      <button class="tab-btn" onclick="setTheme(3)">✦ 3. Apex Arena</button>
+      <button class="tab-btn" onclick="setTheme(4)">✦ 4. Monolith Studio</button>
+      <button class="tab-btn" onclick="setTheme(5)">✦ 5. Cyber Haute</button>
+    </nav>
+  </header>
+
+  <!-- ESCENARIO PRINCIPAL TV (16:9) -->
+  <main class="tv-stage">
+    <div class="screen-container theme-obsidian" id="tvScreen">
+      
+      <div class="tv-content">
+        <!-- Cabecera -->
+        <div class="tv-header">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <div id="uiAvatar" style="width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-weight:800; border:2px solid rgba(255,255,255,0.2);">S</div>
+            <div class="tv-nav-capsule">
+              <button class="tv-nav-item active">Inicio</button>
+              <button class="tv-nav-item">Apps</button>
+              <button class="tv-nav-item">Fútbol</button>
+              <button class="tv-nav-item">Multiview 4X</button>
+              <button class="tv-nav-item">Canales</button>
+            </div>
+          </div>
+          <div style="font-size:1.05rem; font-weight:600; opacity:0.85;">
+            <span>15:30</span> <span style="opacity:0.35; margin:0 8px;">|</span> <strong id="lblBrandMeta">SLÖNE TV</strong>
+          </div>
+        </div>
+
+        <!-- Billboard Central -->
+        <div class="tv-hero">
+          <div class="tv-provider" id="uiProvider">🔵🔴 M+ LIGA DE CAMPEONES · 4K UHD · EN DIRECTO</div>
+          <div class="tv-title" id="uiTitle">FC BARCELONA vs CHAMPIONS LEAGUE</div>
+          <div class="tv-sub" id="uiSub">Fútbol Club Barcelona · Narración en català con Joan Maria Pou (RAC1)</div>
+          <div class="tv-desc">Disfruta del partido sin censura ni cortes publicitarios, con señal deportiva en ultra alta definición 4K y audio de radio sincronizado al milisegundo.</div>
+          
+          <div class="tv-actions">
+            <button class="btn-primary" id="uiBtnPrimary">▶ Ver Partido</button>
+            <button class="btn-sec">🎙️ Radio RAC1</button>
+            <button class="btn-sec">⚡ TiviMate</button>
+          </div>
+        </div>
+
+        <!-- Fila de Apps -->
+        <div class="tv-apps-section">
+          <div class="tv-apps-label">Tus aplicaciones</div>
+          <div class="tv-apps-row">
+            
+            <div class="app-box app-focused" style="background:linear-gradient(135deg, #E52D27, #B31217); color:#FFF;">
+              <span style="font-weight:900; font-size:1.1rem;">S SmartTube</span>
+              <span style="font-size:0.75rem; opacity:0.8;">4K Sin Anuncios</span>
+            </div>
+
+            <div class="app-box" style="background:#FFFFFF; color:#03045E;">
+              <span style="font-weight:800; font-size:1.1rem; color:#00B4D8;">tivi<strong style="color:#03045E;">mate</strong></span>
+              <span style="font-size:0.75rem; color:#666;">IPTV Player</span>
+            </div>
+
+            <div class="app-box" style="background:#C2185B; color:#FFF;">
+              <span style="font-weight:900; font-size:1.1rem;">3cat</span>
+              <span style="font-size:0.75rem; opacity:0.8;">TV3 & Directes</span>
+            </div>
+
+            <div class="app-box" style="background:#000000; color:#E50914; border:1px solid rgba(255,255,255,0.1);">
+              <span style="font-weight:900; font-size:1.1rem;">NETFLIX</span>
+              <span style="font-size:0.75rem; color:#AAA;">Series & Cine</span>
+            </div>
+
+            <div class="app-box" style="background:#00A8E1; color:#FFF;">
+              <span style="font-weight:800; font-size:1.1rem;">prime video</span>
+              <span style="font-size:0.75rem; opacity:0.8;">Amazon</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FICHA TÉCNICA DEL DISEÑO SELECCIONADO -->
+    <div class="specs-panel">
+      <div>
+        <div class="spec-block-title">Dirección de Arte & Filosofía</div>
+        <div class="spec-desc" id="specDesc">
+          <strong>Stealth Obsidian</strong>: Diseñado para entornos oscuros de salón de cine. Se basa en contrastes profundos, titanio pulido y elegancia sin adornos superficiales.
+        </div>
+      </div>
+      <div>
+        <div class="spec-block-title">Paleta Cromática & Acento</div>
+        <div class="swatches" id="specSwatches"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const themes = {
+      1: {
+        name: "Stealth Obsidian",
+        className: "theme-obsidian",
+        desc: "Lujo extremo sin distracciones. Negro obsidiana profundo (#050507), grafito ahumado y blanco marfil. Inspirado en la alta relojería suiza y fibra de carbono.",
+        swatches: [
+          { name: "Obsidian", color: "#050507" },
+          { name: "Graphite", color: "#14171F" },
+          { name: "Titanium", color: "#8E98A8" },
+          { name: "Pure White", color: "#FFFFFF" }
+        ],
+        brandText: "SLÖNE TV"
+      },
+      2: {
+        name: "Silicon Pure Air",
+        className: "theme-pureair",
+        desc: "La visión de Cupertino llevada al salón. Vidrio esmerilado translúcido (*frosted glass*), tipografía con suavizado perfecto y gradientes azules etéreos.",
+        swatches: [
+          { name: "Midnight Glass", color: "#0A101C" },
+          { name: "Deep Cobalt", color: "#0072FF" },
+          { name: "Frost White", color: "#EBF1F8" },
+          { name: "Glow Accent", color: "#38A1FF" }
+        ],
+        brandText: "SLÖNE TV"
+      },
+      3: {
+        name: "Apex Arena",
+        className: "theme-apex",
+        desc: "Energía deportiva pura. Inspirado en noches de Champions League y Fórmula 1. Fondo de máxima absorción de luz con acento lima neón de alta reactividad.",
+        swatches: [
+          { name: "Pure Asphault", color: "#05070B" },
+          { name: "Electric Lime", color: "#E3FF00" },
+          { name: "Barça Blue", color: "#004D98" },
+          { name: "Stadium White", color: "#FFFFFF" }
+        ],
+        brandText: "SLÖNE SPORT TV"
+      },
+      4: {
+        name: "Monolith Studio",
+        className: "theme-monolith",
+        desc: "Neo-brutalismo suizo y rigor arquitectónico. Tipografía pesada monumental, formas geométricas ortogonales de 90° y ausencia total de florituras.",
+        swatches: [
+          { name: "Pure Black", color: "#08090C" },
+          { name: "Concrete Grey", color: "#222530" },
+          { name: "Architect White", color: "#FFFFFF" },
+          { name: "Red Lead Accent", color: "#FF3B30" }
+        ],
+        brandText: "SLÖNE // STUDIO"
+      },
+      5: {
+        name: "Cyber Haute Couture",
+        className: "theme-cyber",
+        desc: "Fusión de estética aeroespacial y producto de lujo del año 2049. Contrastes en cian glacial frío, heráldica digitalizada y halos de energía precisa.",
+        swatches: [
+          { name: "Space Void", color: "#030408" },
+          { name: "Glacial Cyan", color: "#00E5FF" },
+          { name: "Deep Violet", color: "#2A183D" },
+          { name: "Silver Metal", color: "#D1D5DB" }
+        ],
+        brandText: "SLÖNE CYBER"
+      }
+    };
+
+    function setTheme(id) {
+      document.querySelectorAll('.tab-btn').forEach((b, idx) => {
+        b.classList.toggle('active', idx === id - 1);
+      });
+
+      const t = themes[id];
+      const screen = document.getElementById('tvScreen');
+      screen.className = `screen-container ${t.className}`;
+
+      document.getElementById('specDesc').innerHTML = `<strong>${t.name}</strong>: ${t.desc}`;
+      document.getElementById('lblBrandMeta').innerText = t.brandText;
+
+      const swatchBox = document.getElementById('specSwatches');
+      swatchBox.innerHTML = '';
+      t.swatches.forEach(s => {
+        const item = document.createElement('div');
+        item.className = 'swatch';
+        item.innerHTML = `
+          <div class="swatch-circle" style="background:${s.color};"></div>
+          <span>${s.name} (${s.color})</span>
+        `;
+        swatchBox.appendChild(item);
+      });
+    }
+
+    // Inicializar con el tema 1
+    setTheme(1);
+  </script>
+</body>
+</html>
