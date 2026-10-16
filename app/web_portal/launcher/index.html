@@ -712,6 +712,70 @@
       outline: 2px solid #FFFFFF;
       transform: scale(1.05);
     }
+
+    /* ── BANNER SOBERANO DE CASTERS SLÖNE VOICES ── */
+    .launcher-caster-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: linear-gradient(90deg, rgba(227, 255, 0, 0.16) 0%, rgba(18, 24, 36, 0.9) 60%, rgba(0, 240, 255, 0.14) 100%);
+      border: 1px solid rgba(227, 255, 0, 0.45);
+      border-radius: 14px;
+      padding: 10px 22px;
+      margin: 14px 0 6px 0;
+      backdrop-filter: blur(20px);
+      z-index: 20;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .launcher-caster-banner:hover, .launcher-caster-banner:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(227, 255, 0, 0.5);
+      transform: translateY(-2px);
+      outline: 2px solid var(--accent);
+    }
+    .caster-banner-tag {
+      background: #FF3366;
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 4px 9px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(255, 51, 102, 0.6);
+    }
+    .caster-banner-text {
+      font-size: 0.90rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      flex: 1;
+      letter-spacing: 0.2px;
+    }
+    .caster-banner-text strong {
+      color: var(--accent);
+    }
+    .caster-banner-btn {
+      background: var(--accent);
+      color: #000;
+      font-size: 0.80rem;
+      font-weight: 900;
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 0 16px rgba(227, 255, 0, 0.35);
+      transition: all 0.2s ease;
+    }
+    .caster-banner-btn:hover {
+      background: #FFFFFF;
+    }
   </style>
 </head>
 <body>
@@ -720,8 +784,8 @@
   <header class="hero-viewport" id="heroViewport">
     
     <!-- VÍDEO CINEMATOGRÁFICO DE FONDO (AUTO-PLAYING LOOP SIN ANUNCIOS) -->
-    <video class="hero-bg-video" autoplay muted loop playsinline id="heroBgVideo">
-      <source src="/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8" type="application/x-mpegURL">
+    <video class="hero-bg-video" autoplay muted loop playsinline id="heroBgVideo" poster="assets/titanium_store.jpg">
+      <source src="assets/slone_cinematic_loop.mp4" type="video/mp4">
     </video>
     <div class="hero-vignette-overlay"></div>
 
@@ -738,6 +802,7 @@
           <button class="nav-item" tabindex="0" onclick="scrollToSection('stadiumSection')">Multiview 4X</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secMotor')">Motor</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secTdt')">Canales</button>
+          <button class="nav-item" tabindex="0" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank')" style="color: var(--accent); font-weight: 800;">🔒 Proyecto Sigilo</button>
         </nav>
         <div class="nav-tools">
           <button class="tool-btn" tabindex="0" title="Buscar" onclick="scrollToSection('shieldBrowser')">🔍</button>
@@ -750,6 +815,15 @@
         <span style="opacity: 0.35;">|</span>
         <span class="meta-brand">SLÖNE TV</span>
       </div>
+    </div>
+
+    <!-- BANNER SOBERANO EN SIGILO SLÖNE -->
+    <div class="launcher-caster-banner" tabindex="0" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank')" title="Iniciativa en sigilo SLÖNE">
+      <div class="caster-banner-tag" style="background: var(--accent); color: #000;">🔒 CONFIDENCIAL</div>
+      <div class="caster-banner-text">
+        <strong>Buscamos voces deportivas en sigilo.</strong> ¡1 MES GRATIS de SLÖNE (1 sem Básico + 3 semanas A FULL) para los 10 primeros seleccionados!
+      </div>
+      <button class="caster-banner-btn" tabindex="0">POSTULARSE</button>
     </div>
 
     <!-- CARTELERA DE PRODUCTO CINEMATOGRÁFICO SLÖNE -->
@@ -767,10 +841,10 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn-pill-primary" id="mainActionButton" tabindex="0" onclick="playInActiveScreen({url: 'http://127.0.0.1:8765/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona vs Champions'})">
+        <button class="btn-pill-primary" id="mainActionButton" tabindex="0" onclick="playInActiveScreen({url: '/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona vs Champions'})">
           ▶ Ver Partido
         </button>
-        <button class="btn-pill-secondary" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', null)">
+        <button class="btn-pill-secondary" tabindex="0" onclick="setRadioTrack('https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_1.mp3', 'RAC1 (Pou)', null)">
           🎙️ Radio RAC1
         </button>
         <button class="btn-pill-secondary" tabindex="0" onclick="launchExternalStream('https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', 'FC Barcelona Live')">
@@ -792,6 +866,18 @@
     <div class="section-label">Tus aplicaciones</div>
     <div class="apps-carousel">
       
+      <!-- SLÖNE Titanium Hub (Insignia) -->
+      <div class="app-card" tabindex="0" onclick="scrollToSection('heroViewport')">
+        <div class="app-card-top">
+          <div class="app-badge-icon" style="background: linear-gradient(135deg, #2A313D 0%, #11151C 100%); color:#E2E8F0; border: 1.5px solid rgba(226,232,240,0.4); box-shadow: 0 0 15px rgba(255,255,255,0.15);">Ö</div>
+          <span class="app-pill-status" style="background: rgba(226,232,240,0.15); color: #E2E8F0; border-color: rgba(226,232,240,0.3);">TI-6AL-4V</span>
+        </div>
+        <div>
+          <div class="app-card-title">SLÖNE Hub</div>
+          <div class="app-card-sub">Founders #001</div>
+        </div>
+      </div>
+
       <!-- SmartTube 4K (Sin Anuncios) -->
       <div class="app-card" tabindex="0" onclick="launchApp('org.smarttube.stable', 'SmartTube')">
         <div class="app-card-top">
@@ -1040,7 +1126,7 @@
         subtitle: "Fútbol Club Barcelona · Narración en català con Joan Maria Pou (RAC1)",
         synopsis: "Disfruta del partido sin censura ni cortes publicitarios, con señal deportiva en máxima definición 4K UHD y el audio de la radio sincronizado al milisegundo.",
         actionText: "▶ Ver Partido",
-        actionFn: () => playInActiveScreen({url: 'http://127.0.0.1:8765/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona Live'})
+        actionFn: () => playInActiveScreen({url: '/api/stream/proxy?url=https://rtvelivestream.akamaized.net/tve_tpd_main.m3u8', name: 'FC Barcelona Live'})
       },
       {
         badge: "✦ SLÖNE HARDWARE · FOUNDERS LIMITED EDITION",

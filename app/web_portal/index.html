@@ -946,11 +946,21 @@
       <a href="#packs">Packs & Regalos</a>
       <a href="#tienda">Tienda Merchandising</a>
       <a href="#encuesta" style="color: var(--accent); font-weight: 800;">🏛️ Encuesta Nombre</a>
+      <a href="#" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank'); return false;" style="color: var(--accent); font-weight: 800;">🔒 Proyecto Sigilo</a>
     </nav>
     <div class="header-actions">
       <a href="#packs" class="btn-vip-header">👑 ÁREA VIP</a>
     </div>
   </header>
+
+  <!-- ANUNCIO GLOBAL EN SIGILO (CERO DETALLES PÚBLICOS) -->
+  <div class="global-caster-announcement" style="background: linear-gradient(90deg, rgba(227,255,0,0.15) 0%, rgba(16,17,23,0.96) 50%, rgba(0,240,255,0.15) 100%); border-bottom: 1px solid rgba(227,255,0,0.35); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.88rem; position: sticky; top: 69px; z-index: 999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <span style="background: var(--accent); color: #000; font-size: 10px; font-weight: 900; padding: 4px 8px; border-radius: 4px; letter-spacing: 1px;">🔒 CONFIDENCIAL</span>
+      <span style="color: #FFF; font-weight: 600;"><strong>Buscamos voces deportivas en sigilo.</strong> ¡1 MES GRATIS de SLÖNE (1 sem Básico + 3 semanas A FULL) para los 10 primeros seleccionados!</span>
+    </div>
+    <a href="#" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank'); return false;" style="background: var(--accent); color: #000; font-weight: 900; font-size: 11px; padding: 8px 18px; border-radius: 20px; text-decoration: none; white-space: nowrap; letter-spacing: 0.5px; box-shadow: 0 0 16px rgba(227,255,0,0.4);">POSTULARSE</a>
+  </div>
 
   <!-- HERO SECTION -->
   <section class="hero">
@@ -959,7 +969,7 @@
       EL MOTOR GLOBAL DE MEDIOS <span>DEFINITIVO.</span>
     </h1>
     <p class="hero-desc">
-      El único motor multimedia en el mundo con <strong>Multiview Stadium 4X</strong>, TDT abierta integrada, sincronizador milimétrico de radio en directo, estación musical de YouTube/Spotify y emisión instantánea a Smart TV mediante <strong>SLONE TV Connect™</strong>.
+      El único motor multimedia en el mundo con <strong>Multiview Soberano 4X</strong>, TDT abierta integrada, sincronizador milimétrico de radio en directo, estación musical de YouTube/Spotify y emisión instantánea a Smart TV mediante <strong>SLONE TV Connect™</strong>.
     </p>
     <div class="hero-buttons">
       <a href="#packs" class="btn-primary">⚡ OBTENER SLONE ENGINE</a>
@@ -1002,10 +1012,10 @@
       </div>
     </div>
 
-    <!-- MOCKUP MULTIVIEW STADIUM 4X QUE RESPONDE AL TEMA -->
+    <!-- MOCKUP MULTIVIEW GLOBAL 4X QUE RESPONDE AL TEMA -->
     <div id="multiview" class="multiview-showcase">
       <div class="multiview-top">
-        <div style="font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 1px;">⎚ SLONE MULTIVIEW STADIUM ENGINE · 4 PANTALLAS SIMULTÁNEAS</div>
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 1px;">⎚ SLONE MULTIVIEW GLOBAL ENGINE · 4 PANTALLAS SIMULTÁNEAS</div>
         <div style="font-size: 0.75rem; color: #8E92A4; font-weight: 600;">Audio Activo: Cuadrante 1 [Champions League Directo]</div>
       </div>
       <div class="multiview-grid">
@@ -1224,11 +1234,11 @@
         </div>
       </div>
 
-      <!-- 03: QUAD-STADIUM PRO (BEST SELLER) -->
+      <!-- 03: QUAD-GLOBAL PRO (BEST SELLER) -->
       <div class="price-card popular">
         <div class="popular-tag">MÁS ELEGIDO · 80% VENTAS</div>
         <div class="tier-header">
-          <div class="tier-name" style="color: var(--accent);">QUAD-STADIUM PRO</div>
+          <div class="tier-name" style="color: var(--accent);">QUAD-GLOBAL PRO</div>
           <div class="tier-desc">La experiencia definitiva de 4 directos simultáneos con estabilidad soberana.</div>
         </div>
         <div class="tier-amount">
@@ -1251,7 +1261,7 @@
         </div>
 
         <ul class="tier-features">
-          <li><span class="check-icon">✔</span> <strong>Multiview Stadium™ 4X</strong> (4 partidos o eventos a la vez)</li>
+          <li><span class="check-icon">✔</span> <strong>Multiview Soberano™ 4X</strong> (4 partidos o eventos a la vez)</li>
           <li><span class="check-icon">✔</span> <strong>Turbo Shield Anti-Cortes</strong> (Enrutamiento VIP prioritario)</li>
           <li><span class="check-icon">✔</span> <strong>Instant Replay de 30s</strong> y Pausa en directo en cualquier señal</li>
           <li><span class="check-icon">✔</span> <strong>5 Pantallas simultáneas</strong> para todo el hogar y Smart TVs</li>
@@ -1259,8 +1269,8 @@
           <li><span class="check-icon">✔</span> <strong>50% de Descuento</strong> en toda la Tienda de Merch oficial</li>
         </ul>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button onclick="openCheckout('quad_year', 'Quad-Stadium Pro Anual (Welcome Pack Pro Incluido)', '59,99 €/año', true)" class="btn-pack btn-pack-solid">📦 ACTIVAR ANUAL CON WELCOME PACK (59,99 €)</button>
-          <button onclick="openCheckout('quad_month', 'Quad-Stadium Pro Mensual (Digital)', '7,99 €/mes', false)" class="btn-pack btn-pack-outline" style="font-size:0.75rem; padding: 8px; border-color:#2A2D3A; color:#8E92A4;">O Mensual Digital (7,99 €/mes)</button>
+          <button onclick="openCheckout('quad_year', 'Quad-Global Pro Anual (Welcome Pack Pro Incluido)', '59,99 €/año', true)" class="btn-pack btn-pack-solid">📦 ACTIVAR ANUAL CON WELCOME PACK (59,99 €)</button>
+          <button onclick="openCheckout('quad_month', 'Quad-Global Pro Mensual (Digital)', '7,99 €/mes', false)" class="btn-pack btn-pack-outline" style="font-size:0.75rem; padding: 8px; border-color:#2A2D3A; color:#8E92A4;">O Mensual Digital (7,99 €/mes)</button>
         </div>
       </div>
 
@@ -1306,7 +1316,7 @@
     <div class="shop-banner">
       <div class="shop-banner-info">
         <h4>💡 ¿Por qué pagar más? Hazte socio y ahorra de inmediato.</h4>
-        <p>Los suscriptores de los planes Passion Sports, Quad-Stadium y Royale Founders compran a precio especial de socio.</p>
+        <p>Los suscriptores de los planes Passion Sports, Quad-Global y Royale Founders compran a precio especial de socio.</p>
       </div>
       <div>
         <span class="badge-discount">HASTA -30% DESCUENTO SOCIOS</span>
@@ -1578,7 +1588,7 @@
       <div id="checkoutFormBox">
         <div class="modal-header">
           <span class="modal-badge">ACTIVACIÓN DIRECTA & SOBERANA</span>
-          <div id="modalPlanTitle" class="modal-title">QUAD-STADIUM PRO ANUAL</div>
+          <div id="modalPlanTitle" class="modal-title">QUAD-GLOBAL PRO ANUAL</div>
           <div id="modalPlanPrice" class="modal-price">59,99 €</div>
         </div>
 
