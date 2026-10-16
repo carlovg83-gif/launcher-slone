@@ -23,8 +23,8 @@
       "desc": "La transmissió oficial de Catalunya Ràdio"
     },
     {
-      "id": "estadio",
-      "name": "🏟️ Sonido Ambiente Puro (Estadio sin comentaristas)",
+      "id": "ambiente",
+      "name": "🏟️ Sonido Ambiente Puro (Grada y Césped sin narradores)",
       "url": "ambient",
       "club": "Neutral",
       "desc": "Solo la afición y el césped, sin narradores pesados"

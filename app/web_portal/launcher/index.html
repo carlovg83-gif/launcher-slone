@@ -439,27 +439,27 @@
     }
 
     /* Multiview 4X */
-    .stadium-wrap {
+    .slone-multiview-wrap {
       background: rgba(14, 18, 28, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       padding: 24px;
       margin-bottom: 40px;
     }
-    .stadium-top {
+    .slone-multiview-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 16px;
     }
-    .stadium-title {
+    .slone-multiview-title {
       font-size: 1.35rem;
       font-weight: 800;
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .stadium-controls {
+    .slone-multiview-controls {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -482,13 +482,13 @@
       outline: 2px solid #FFFFFF;
       transform: scale(1.06);
     }
-    .stadium-grid {
+    .slone-multiview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin-bottom: 18px;
     }
-    .stadium-grid.grid-1x {
+    .slone-multiview-grid.grid-1x {
       grid-template-columns: 1fr;
     }
     .screen-box {
@@ -799,7 +799,7 @@
           <button class="nav-item active" tabindex="0" onclick="scrollToSection('heroViewport')">Inicio</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secApps')">Apps</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secFutbol')">Fútbol</button>
-          <button class="nav-item" tabindex="0" onclick="scrollToSection('stadiumSection')">Multiview 4X</button>
+          <button class="nav-item" tabindex="0" onclick="scrollToSection('multiviewSection')">Multiview 4X</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secMotor')">Motor</button>
           <button class="nav-item" tabindex="0" onclick="scrollToSection('secTdt')">Canales</button>
           <button class="nav-item" tabindex="0" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank')" style="color: var(--accent); font-weight: 800;">🔒 Proyecto Sigilo</button>
@@ -1017,21 +1017,21 @@
   <main class="content-area">
 
     <!-- MULTIVIEW 4X & FAN AUDIO -->
-    <section class="stadium-wrap" id="stadiumSection">
-      <div class="stadium-top">
-        <div class="stadium-title">
+    <section class="slone-multiview-wrap" id="multiviewSection">
+      <div class="slone-multiview-top">
+        <div class="slone-multiview-title">
           <span>🏟️ Multiview 4X</span>
           <span style="color:var(--text-muted); font-size:0.9rem; font-weight:500;">· Audio Activo: <strong id="lblActiveScreenName" style="color:var(--accent);">[1] Teledeporte HD</strong></span>
         </div>
-        <div class="stadium-controls">
-          <button class="btn-ctrl" id="btn4x" tabindex="0" onclick="setStadiumMode(4)">4 Pantallas</button>
-          <button class="btn-ctrl" id="btn1x" tabindex="0" onclick="setStadiumMode(1)">1 Pantalla</button>
+        <div class="slone-multiview-controls">
+          <button class="btn-ctrl" id="btn4x" tabindex="0" onclick="setMultiviewMode(4)">4 Pantallas</button>
+          <button class="btn-ctrl" id="btn1x" tabindex="0" onclick="setMultiviewMode(1)">1 Pantalla</button>
           <button class="btn-ctrl" tabindex="0" onclick="swapScreens(0, 1)">🔀 Cambiar [1 ⇄ 2]</button>
           <button class="btn-ctrl" tabindex="0" onclick="toggleFullscreen()">⛶ Pantalla Completa</button>
         </div>
       </div>
 
-      <div class="stadium-grid" id="stadiumGrid">
+      <div class="slone-multiview-grid" id="multiviewGrid">
         <div class="screen-box active-box" id="box0" tabindex="0" onclick="focusScreen(0)">
           <div class="screen-header">
             <span class="screen-name" id="qname0">[1] Teledeporte HD</span>
@@ -1070,7 +1070,7 @@
             <button class="radio-pill active" tabindex="0" onclick="setRadioTrack('tv', 'Audio TV Original', this)">📺 Audio TV</button>
             <button class="radio-pill" tabindex="0" onclick="setRadioTrack('https://stream.rac1.cat/rac1.mp3', 'RAC1 (Pou)', this)">🔵🔴 RAC1</button>
             <button class="radio-pill" tabindex="0" onclick="setRadioTrack('https://directes-radio-cat.3catdirectes.cat/live-origin/catradio-hls/master.m3u8', 'CatRàdio', this)">🔵🔴 CatRàdio</button>
-            <button class="radio-pill" tabindex="0" onclick="setRadioTrack('ambient', 'Estadio Puro', this)">🏟️ Estadio</button>
+            <button class="radio-pill" tabindex="0" onclick="setRadioTrack('ambient', 'Ambiente Puro', this)">🏟️ Grada en Vivo</button>
             <button class="radio-pill" tabindex="0" onclick="setRadioTrack('https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3', 'Cadena SER', this)">📻 Cadena SER</button>
             <button class="radio-pill" tabindex="0" onclick="setRadioTrack('https://flive.cope.stream.flumotion.com/cope/net1.mp3', 'COPE', this)">📻 COPE</button>
           </div>
@@ -1142,7 +1142,7 @@
         subtitle: "4 Pantallas simultáneas a 60 FPS con sincronización de audio independiente",
         synopsis: "El control absoluto del fin de semana deportivo: sigue la Champions, LaLiga, Fórmula 1 y MotoGP al mismo tiempo en tu Smart TV.",
         actionText: "🏟️ Abrir Multiview 4X",
-        actionFn: () => scrollToSection('stadiumSection')
+        actionFn: () => scrollToSection('multiviewSection')
       }
     ];
 
@@ -1231,7 +1231,7 @@
       playStreamOnElement(activeScreenIdx, ch.url);
       setScreenAudio(activeScreenIdx);
       
-      const stSec = document.getElementById('stadiumSection');
+      const stSec = document.getElementById('multiviewSection');
       if (stSec) stSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1272,16 +1272,16 @@
       setScreenAudio(a);
     }
 
-    function setStadiumMode(mode) {
-      const grid = document.getElementById('stadiumGrid');
+    function setMultiviewMode(mode) {
+      const grid = document.getElementById('multiviewGrid');
       if (mode === 1) {
-        grid.className = 'stadium-grid grid-1x';
+        grid.className = 'slone-multiview-grid grid-1x';
         for (let i = 0; i < 4; i++) {
           const b = document.getElementById(`box${i}`);
           b.style.display = (i === activeScreenIdx) ? 'block' : 'none';
         }
       } else {
-        grid.className = 'stadium-grid';
+        grid.className = 'slone-multiview-grid';
         for (let i = 0; i < 4; i++) {
           const b = document.getElementById(`box${i}`);
           b.style.display = 'block';
@@ -1296,7 +1296,10 @@
       const radio = document.getElementById('radioPlayer');
       for (let i = 0; i < 4; i++) {
         const v = document.getElementById(`v${i}`);
-        if (v) v.muted = true;
+        if (v) {
+          v.muted = true;
+          v.volume = 0.0;
+        }
       }
 
       if (url === 'tv') {
