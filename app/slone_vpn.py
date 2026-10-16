@@ -68,8 +68,8 @@ class VPNShield(QObject):
         """Consulta la IP pública y geolocalización de salida en servidores seguros."""
         endpoints = [
             ("https://ipwho.is/", self._parse_ipwhois),
-            ("https://api.ipify.org?format=json", self._parse_ipify),
-            ("http://ip-api.com/json/", self._parse_ipapi)
+            ("https://ipapi.co/json/", self._parse_ipapico),
+            ("https://api.ipify.org?format=json", self._parse_ipify)
         ]
         
         headers = {"User-Agent": "Mozilla/5.0 (SLONE Sovereign Shield)"}
@@ -95,13 +95,13 @@ class VPNShield(QObject):
             "is_vpn": data.get("security", {}).get("vpn", False) or data.get("security", {}).get("proxy", False)
         }
 
-    def _parse_ipapi(self, data: dict) -> dict:
+    def _parse_ipapico(self, data: dict) -> dict:
         return {
-            "ip": data.get("query", "Desconocida"),
-            "country": data.get("country", "Desconocido"),
-            "country_code": data.get("countryCode", "XX"),
+            "ip": data.get("ip", "Desconocida"),
+            "country": data.get("country_name", "Desconocido"),
+            "country_code": data.get("country_code", "XX"),
             "city": data.get("city", ""),
-            "isp": data.get("isp", "Privado"),
+            "isp": data.get("org", "Privado"),
             "is_vpn": False
         }
 

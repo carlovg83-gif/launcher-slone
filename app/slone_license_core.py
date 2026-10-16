@@ -89,13 +89,13 @@ def sign_payload(tag, exp, hwid=None):
                     hashlib.sha256).hexdigest()[:16].upper()
 
 
-def generate_license_key(plan_id, user_id="slone", lock_to_hwid: bool = False):
-    """Genera una clave firmada vinculada opcionalmente al HWID del equipo."""
+def generate_license_key(plan_id, user_id="slone", lock_to_hwid: bool = True):
+    """Genera una clave firmada vinculada obligatoriamente al HWID del equipo (Zero-Piracy)."""
     tag = PLAN_TAG.get(plan_id, "YEAR")
     exp = _expiry_stamp(DURATION_DAYS.get(plan_id, 365))
-    hwid = get_hardware_fingerprint() if lock_to_hwid else None
+    hwid = get_hardware_fingerprint() if lock_to_hwid else "NODE"
     sig = sign_payload(tag, exp, hwid)
-    if lock_to_hwid and hwid:
+    if hwid:
         return f"SLONE-{tag}-{exp}-{hwid}-{sig}"
     return f"SLONE-{tag}-{exp}-{sig}"
 
@@ -169,16 +169,11 @@ def verify_key(key):
         if not hmac.compare_digest(sign_payload(tag, exp, key_hwid), sig):
             return False
 
-    # 3. Licencia legacy v1 / global: SLONE-<PLAN>-<AAMMDD>-<HMAC16>
+    # 3. Licencia node-locked local v2: SLONE-<PLAN>-<AAMMDD>-<HMAC16>
     elif prefix == "SLONE" and len(parts) == 4:
         _, tag, exp, sig = parts
         valid_local = hmac.compare_digest(sign_payload(tag, exp, current_hwid), sig)
-        valid_global = hmac.compare_digest(sign_payload(tag, exp, "GLOBAL"), sig)
-        valid_legacy = hmac.compare_digest(
-            hmac.new(LICENSE_SECRET, f"{tag}:{exp}:SLONE_SOVEREIGN".encode("utf-8"), hashlib.sha256).hexdigest()[:16].upper(),
-            sig
-        )
-        if not (valid_local or valid_global or valid_legacy):
+        if not valid_local:
             return False
     else:
         return False

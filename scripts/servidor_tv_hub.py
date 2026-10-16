@@ -8,7 +8,9 @@
 import http.server
 import json
 import os
+import re
 import socket
+import subprocess
 import sys
 import urllib.parse
 import urllib.request
@@ -18,6 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PLAYLIST_FILE = BASE_DIR / "playlists" / "slone_sovereign_master.m3u8"
 WEB_PORTAL_DIR = BASE_DIR / "app" / "web_portal"
 PORT = 8765
+
+ADB_DEVICE = "192.168.1.135:5555"
+ADB_BIN = "/home/slone/.local/bin/adb" if os.path.exists("/home/slone/.local/bin/adb") else "adb"
+
+def safe_run_adb(*adb_args):
+    """Ejecuta comandos ADB de forma segura con subprocess y lista fija, sin invocar bash shell."""
+    cmd = [ADB_BIN, "-s", ADB_DEVICE] + list(adb_args)
+    try:
+        subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return True
+    except Exception:
+        return False
 
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -221,12 +235,11 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         if path.startswith("/api/tv/launch"):
             params = urllib.parse.parse_qs(parsed.query)
             pkg = params.get("package", [""])[0]
-            if pkg:
-                adb_bin = "/home/slone/.local/bin/adb"
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell monkey -p {pkg} -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 &")
+            if pkg and re.match(r"^[a-zA-Z0-9_\.]+$", pkg):
+                safe_run_adb("shell", "monkey", "-p", pkg, "-c", "android.intent.category.LAUNCHER", "1")
                 resp = json.dumps({"status": "launched", "package": pkg}).encode()
             else:
-                resp = b'{"status": "error", "message": "Falta el paquete"}'
+                resp = b'{"status": "error", "message": "Paquete invalido o ausente"}'
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(resp)))
@@ -236,11 +249,10 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
 
         # 7. Proyectar el Launcher directamente en la pantalla de la Xiaomi TV
         if path.startswith("/api/tv/open_launcher"):
-            adb_bin = "/home/slone/.local/bin/adb"
             my_ip = get_local_ip()
             target_url = f"http://{my_ip}:{PORT}/launcher/"
-            os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am force-stop com.phlox.tvwebbrowser >/dev/null 2>&1")
-            os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -n com.phlox.tvwebbrowser/.activity.main.MainActivity -a android.intent.action.VIEW -d '{target_url}' >/dev/null 2>&1 &")
+            safe_run_adb("shell", "am", "force-stop", "com.phlox.tvwebbrowser")
+            safe_run_adb("shell", "am", "start", "-n", "com.phlox.tvwebbrowser/.activity.main.MainActivity", "-a", "android.intent.action.VIEW", "-d", target_url)
             resp = json.dumps({"status": "opened_on_tv", "url": target_url}).encode()
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -253,9 +265,12 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         if path.startswith("/api/tv/open_url"):
             params = urllib.parse.parse_qs(parsed.query)
             target_url = params.get("url", ["https://search.brave.com"])[0]
-            adb_bin = "/home/slone/.local/bin/adb"
-            os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{target_url}' com.phlox.tvwebbrowser >/dev/null 2>&1 &")
-            resp = json.dumps({"status": "opened_url", "url": target_url}).encode()
+            parsed_u = urllib.parse.urlparse(target_url)
+            if parsed_u.scheme in ("http", "https"):
+                safe_run_adb("shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", target_url, "com.phlox.tvwebbrowser")
+                resp = json.dumps({"status": "opened_url", "url": target_url}).encode()
+            else:
+                resp = b'{"status": "error", "message": "Esquema de URL no permitido"}'
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(resp)))
@@ -267,12 +282,11 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         if path.startswith("/api/tv/open_smarttube"):
             params = urllib.parse.parse_qs(parsed.query)
             vid = params.get("v", [""])[0]
-            adb_bin = "/home/slone/.local/bin/adb"
-            if vid:
+            if vid and re.match(r"^[a-zA-Z0-9_-]+$", vid):
                 yt_url = f"https://www.youtube.com/watch?v={vid}"
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{yt_url}' org.smarttube.stable >/dev/null 2>&1 &")
+                safe_run_adb("shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", yt_url, "org.smarttube.stable")
             else:
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell monkey -p org.smarttube.stable -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 &")
+                safe_run_adb("shell", "monkey", "-p", "org.smarttube.stable", "-c", "android.intent.category.LAUNCHER", "1")
             resp = json.dumps({"status": "smarttube_opened", "video": vid}).encode()
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -284,13 +298,12 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         if path.startswith("/api/tv/search_youtube"):
             params = urllib.parse.parse_qs(parsed.query)
             q = params.get("q", [""])[0]
-            adb_bin = "/home/slone/.local/bin/adb"
             if q:
                 # Lanzar búsqueda en SmartTube
                 search_url = f"https://www.youtube.com/results?search_query={urllib.parse.quote(q)}"
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{search_url}' org.smarttube.stable >/dev/null 2>&1 &")
+                safe_run_adb("shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", search_url, "org.smarttube.stable")
             else:
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell monkey -p org.smarttube.stable -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1 &")
+                safe_run_adb("shell", "monkey", "-p", "org.smarttube.stable", "-c", "android.intent.category.LAUNCHER", "1")
             resp = json.dumps({"status": "youtube_search_launched", "query": q}).encode()
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -353,12 +366,12 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             params = urllib.parse.parse_qs(parsed.query)
             stream_url = params.get("url", [""])[0]
             pkg = params.get("package", ["ar.tvplayer.tv"])[0]
-            if stream_url:
-                adb_bin = "/home/slone/.local/bin/adb"
-                os.system(f"{adb_bin} -s 192.168.1.135:5555 shell am start -a android.intent.action.VIEW -d '{stream_url}' -t 'video/*' {pkg} >/dev/null 2>&1 &")
+            parsed_stream = urllib.parse.urlparse(stream_url)
+            if stream_url and parsed_stream.scheme in ("http", "https") and re.match(r"^[a-zA-Z0-9_\.]+$", pkg):
+                safe_run_adb("shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", stream_url, "-t", "video/*", pkg)
                 resp = json.dumps({"status": "external_play_started", "url": stream_url, "package": pkg}).encode()
             else:
-                resp = b'{"status": "error", "message": "Falta URL del stream"}'
+                resp = b'{"status": "error", "message": "Parametros de stream invalidos"}'
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(resp)))
@@ -425,6 +438,12 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         pass
 
 def run():
+    # Conexión proactiva no bloqueante con la Smart TV Xiaomi
+    try:
+        subprocess.Popen([ADB_BIN, "connect", ADB_DEVICE], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
+
     server = http.server.ThreadingHTTPServer(("0.0.0.0", PORT), SmartTVHandler)
     ip = get_local_ip()
     print(f"👑 [SLÖNE TV HUB] Activo en http://{ip}:{PORT}")

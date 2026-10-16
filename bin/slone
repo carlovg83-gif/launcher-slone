@@ -1,26 +1,11 @@
-#!/usr/bin/env zsh
-# ==============================================================================
-# SLONE GLOBAL MEDIA ENGINE · LANZADOR OFICIAL SOBERANO v2.0
-# Sistema: Fedora 44 Linux · KDE Plasma 6 · Shell ZSH
-# ==============================================================================
+#!/home/slone/slone_2.0/venv/bin/python3
+import sys
+import os
 
-# Directorio raíz del proyecto
-SLONE_DIR="/home/slone/slocast 1.0"
-APP_ENTRY="${SLONE_DIR}/app/slocast.py"
+# Add package root to sys.path
+sys.path.insert(0, "/home/slone/slone_2.0")
 
-# Asegurar entorno gráfico Wayland / XCB para MPV y PyQt6
-export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-xcb}"
+from slone_core.cli.main import cli
 
-# Comprobar si existe el binario nativo compilado ultra-protegido
-NATIVE_BIN="${SLONE_DIR}/dist/bin/slone"
-if [[ -x "${NATIVE_BIN}" ]]; then
-    exec "${NATIVE_BIN}" "$@"
-fi
-
-# Fallback al intérprete de desarrollo
-if ! command -v python3 >/dev/null 2>&1; then
-    echo "❌ Error: Python 3 no está instalado en el sistema." >&2
-    exit 1
-fi
-
-exec python3 "${APP_ENTRY}" "$@"
+if __name__ == "__main__":
+    cli()
