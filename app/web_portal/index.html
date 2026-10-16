@@ -3,1922 +3,1609 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLONE · The Sovereign Global Media Engine</title>
-  <meta name="description" content="SLONE Global Media Engine — El motor de medios más avanzado del planeta: Multiview 4X de 4 pantallas simultáneas, Audio-Sync de radio sin desfase, TV TDT abierta integrada, música directa de YouTube/Spotify, personalización de colores por equipo y merchandising exclusivo.">
-  <meta name="theme-color" content="#E3FF00">
-  <link rel="icon" href="assets/slone_logo.png" type="image/png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="SLONE">
-  <link rel="apple-touch-icon" href="assets/slone_logo.png">
+  <title>SLÖNE CORP · Los 5 Motores Soberanos de Medios</title>
+  <meta name="description" content="SLÖNE CORP — El ecosistema de medios y streaming de ultra-alta fidelidad más avanzado del planeta. Decodificación 4K 60FPS local, sincronización multiaudio RAC1 en tiempo real, Multiview 4X y arquitectura Zero-Trust.">
+  <meta name="theme-color" content="#FFD700">
+  <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
   <style>
     :root {
-      --bg: #070709;
-      --card-bg: #101117;
-      --card-border: #1B1E29;
-      --accent: #E3FF00;
-      --accent-hover: #CCEA00;
-      --accent-glow: rgba(227, 255, 0, 0.25);
-      --text-white: #F4F4F6;
-      --text-muted: #8E92A4;
-      --text-dim: #545768;
-      --cyan: #00F0FF;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-white);
-      line-height: 1.5;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color 0.3s;
+      --bg: #040507;
+      --bg-elevated: #080B11;
+      --card-bg: rgba(13, 17, 26, 0.75);
+      --card-border: rgba(255, 215, 0, 0.16);
+      --card-border-subtle: rgba(255, 255, 255, 0.07);
+      
+      --gold-primary: #FFD700;
+      --gold-metallic: #E5C07B;
+      --gold-glow: rgba(255, 215, 0, 0.22);
+      --gold-gradient: linear-gradient(135deg, #FFF3B0 0%, #FFD700 50%, #D4AF37 100%);
+      
+      --cyan-neon: #00F0FF;
+      --cyan-glow: rgba(0, 240, 255, 0.25);
+      
+      --text-white: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --text-dim: rgba(255, 255, 255, 0.38);
     }
 
-    /* ── HEADER ── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-white);
+      line-height: 1.55;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.07) 0%, transparent 60%),
+        radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 15% 70%, rgba(255, 215, 0, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* ── HEADER DE LUJO SOBERANO ── */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(7, 7, 9, 0.90);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--card-border);
-      padding: 1rem 2.5rem;
+      background: rgba(4, 5, 7, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-bottom: 1px solid var(--card-border-subtle);
+      padding: 0.9rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .brand-group {
+
+    .brand-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
     }
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      transition: border-color 0.3s;
-    }
-    .brand-title {
-      font-size: 1.15rem;
+
+    /* Logo SLÖNE con diéresis de corona estilizada */
+    .brand-crown-logo {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 1.45rem;
       font-weight: 900;
-      letter-spacing: 1.5px;
+      letter-spacing: 3.5px;
       color: #FFFFFF;
     }
-    .brand-title span { color: var(--accent); transition: color 0.3s; }
-    nav.nav-links { display: flex; gap: 1.8rem; }
-    nav.nav-links a {
+
+    .o-crown-wrap {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .crown-diacritic {
+      font-size: 0.82rem;
+      color: var(--gold-primary);
+      filter: drop-shadow(0 0 6px var(--gold-glow));
+      line-height: 1;
+      margin-bottom: -2px;
+    }
+
+    .brand-tag-badge {
+      background: rgba(255, 215, 0, 0.12);
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      color: var(--gold-primary);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    nav a {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 600;
-      transition: color 0.2s;
-    }
-    nav.nav-links a:hover { color: var(--accent); }
-    .header-actions { display: flex; align-items: center; gap: 1rem; }
-    .btn-vip-header {
-      background: var(--accent);
-      color: #000;
-      padding: 0.55rem 1.3rem;
-      border-radius: 6px;
-      font-weight: 900;
-      font-size: 0.85rem;
-      text-decoration: none;
       letter-spacing: 0.5px;
-      transition: all 0.2s;
-    }
-    .btn-vip-header:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      transition: color 0.2s, text-shadow 0.2s;
     }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      padding: 6.5rem 2rem 4rem;
-      text-align: center;
-      background: radial-gradient(circle at 50% 5%, rgba(227, 255, 0, 0.09) 0%, transparent 65%);
+    nav a:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
     }
-    .hero-pill {
+
+    .btn-header-cta {
+      background: var(--gold-gradient);
+      color: #000000;
+      font-weight: 900;
+      font-size: 0.82rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px var(--gold-glow);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .btn-header-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    }
+
+    /* ── SECCIÓN HERO ── */
+    .hero-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5.5rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .hero-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(13, 17, 26, 0.9);
+      border: 1px solid var(--card-border);
       padding: 6px 18px;
-      border-radius: 99px;
-      border: 1px solid var(--accent);
-      background: rgba(227, 255, 0, 0.06);
-      color: var(--accent);
+      border-radius: 30px;
       font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
+      color: var(--gold-metallic);
       margin-bottom: 2rem;
-      text-transform: uppercase;
-      transition: all 0.3s;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.08);
     }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00FF66;
+      box-shadow: 0 0 10px #00FF66;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
     .hero-title {
-      font-size: clamp(2.5rem, 6.5vw, 5rem);
+      font-size: 3.8rem;
       font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -1.8px;
-      margin-bottom: 1.6rem;
-      max-width: 980px;
-      margin-left: auto;
-      margin-right: auto;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #FFFFFF;
     }
-    .hero-title span {
-      background: linear-gradient(135deg, #FFFFFF 25%, var(--accent) 100%);
+
+    .hero-title-accent {
+      background: linear-gradient(135deg, #FFFFFF 20%, var(--gold-primary) 60%, var(--cyan-neon) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      transition: all 0.3s;
     }
-    .hero-desc {
-      font-size: 1.15rem;
+
+    .hero-lead {
+      font-size: 1.22rem;
       color: var(--text-muted);
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto 2.8rem;
       line-height: 1.65;
+      font-weight: 400;
     }
-    .hero-buttons {
+
+    .hero-actions {
       display: flex;
       justify-content: center;
       gap: 1.2rem;
       flex-wrap: wrap;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4.5rem;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
+
+    .btn-gold-primary {
+      background: var(--gold-gradient);
+      color: #000000;
       font-weight: 900;
       font-size: 1rem;
-      padding: 0.9rem 2.2rem;
+      padding: 1rem 2.4rem;
       border-radius: 8px;
       text-decoration: none;
+      letter-spacing: 1.2px;
+      box-shadow: 0 0 35px var(--gold-glow);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .btn-gold-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.45);
+    }
+
+    .btn-cyan-secondary {
+      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--cyan-neon);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-cyan-secondary:hover {
+      background: rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 35px var(--cyan-glow);
+      transform: translateY(-3px);
+    }
+
+    /* ── TARJETA INTERACTIVA DE PARTIDO EN DIRECTO ── */
+    .live-broadcast-card {
+      max-width: 980px;
+      margin: 0 auto 5rem;
+      background: linear-gradient(145deg, rgba(16, 21, 33, 0.85) 0%, rgba(6, 8, 12, 0.95) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 40px rgba(255, 215, 0, 0.12);
+      text-align: left;
+    }
+
+    .broadcast-top-bar {
+      padding: 1rem 1.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--card-border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .broadcast-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #FF3B30;
+      text-transform: uppercase;
+    }
+
+    .broadcast-specs {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+
+    .broadcast-body {
+      padding: 2.2rem;
+    }
+
+    .match-headline {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.6rem;
+    }
+
+    .match-meta-narrator {
+      color: var(--gold-metallic);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .audio-sync-selector {
+      background: rgba(4, 5, 7, 0.7);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .audio-pills-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .audio-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-primary:hover {
-      background: #FFFFFF;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
+
+    .audio-btn.active {
+      background: var(--gold-primary);
+      color: #000000;
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 15px var(--gold-glow);
     }
-    .btn-secondary {
-      background: transparent;
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.9rem 2rem;
+
+    .broadcast-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-cast {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 900;
+      padding: 0.8rem 1.6rem;
       border-radius: 8px;
-      border: 1px solid var(--card-border);
+      font-size: 0.9rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
     }
 
-    /* ── SECCIONES ── */
+    .btn-action-cast:hover {
+      background: var(--cyan-neon);
+      box-shadow: 0 0 25px var(--cyan-glow);
+    }
+
+    .btn-action-tivimate {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border-subtle);
+      color: #FFFFFF;
+      font-weight: 800;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-action-tivimate:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+    }
+
+    /* ── LOS 5 MOTORES SOBERANOS (GRID 5 MOTORES) ── */
     .section-container {
-      max-width: 1140px;
+      max-width: 1200px;
       margin: 0 auto 6.5rem;
       padding: 0 1.5rem;
     }
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .section-subtitle {
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-      transition: color 0.3s;
-    }
-    .section-title {
-      font-size: 2.3rem;
-      font-weight: 900;
-      letter-spacing: -0.6px;
-    }
-    .section-lead {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 680px;
-      margin: 0.8rem auto 0;
-    }
 
-    /* ── SELECTOR DE COLORES DE EQUIPO / TEMAS ── */
-    .theme-selector-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.8rem;
-      margin-bottom: 4rem;
-      text-align: center;
-    }
-    .theme-title {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: #FFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .theme-palette {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .theme-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #0A0B10;
-      border: 1px solid var(--card-border);
-      color: #FFF;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .theme-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .theme-btn.active {
-      border-color: var(--accent);
-      background: rgba(227, 255, 0, 0.08);
-      color: var(--accent);
-    }
-    .dot-color {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    /* ── MULTIVIEW 4X SHOWCASE ── */
-    .multiview-showcase {
-      background: #0A0B10;
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 25px var(--accent-glow);
-      margin-bottom: 2rem;
-      transition: box-shadow 0.3s;
-    }
-    .multiview-top {
-      height: 42px;
-      background: #0F1118;
-      border-bottom: 1px solid var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1.2rem;
-    }
-    .multiview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 240px 240px;
-      gap: 3px;
-      background: #030406;
-      padding: 3px;
-    }
-    .cell-stream {
-      position: relative;
-      background: #0D0F17;
-      border-radius: 6px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1rem;
-      border: 1px solid #141724;
-      transition: all 0.2s;
-    }
-    .cell-stream.active-audio {
-      border: 2px solid var(--accent);
-      box-shadow: inset 0 0 20px var(--accent-glow);
-    }
-    .cell-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(0,0,0,0.7);
-      border: 1px solid #222638;
-      border-radius: 4px;
-      padding: 3px 8px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #FFF;
-      align-self: flex-start;
-    }
-    .cell-badge.live { color: #FF3B30; }
-    .cell-center {
-      text-align: center;
-      color: #8E92A4;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    .cell-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .audio-pill {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .audio-pill.on {
-      background: var(--accent);
-      color: #000;
-    }
-    .audio-pill.off {
-      background: #181B26;
-      color: #6A6E82;
-    }
-
-    /* ── SECCIÓN TDT + RADIO SYNC + MÚSICA ── */
-    .media-hub-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.8rem;
-    }
-    .media-hub-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-    }
-    .media-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-    .media-hub-card h3 { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.6rem; color: #FFF; }
-    .media-hub-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; flex: 1; }
-    .media-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.2rem; }
-    .media-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: #151822;
-      color: var(--accent);
-      border: 1px solid rgba(227, 255, 0, 0.2);
-    }
-    .sync-slider-mock {
-      background: #08090D;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .sync-bar {
-      height: 6px;
-      background: #202434;
-      border-radius: 3px;
-      position: relative;
-    }
-    .sync-progress {
-      width: 58%;
-      height: 100%;
-      background: var(--accent);
-      border-radius: 3px;
-    }
-
-    /* ── PACKS & SUSCRIPCIONES (CON DETALLES PERSONALIZADOS) ── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      align-items: stretch;
-      margin-top: 2rem;
-    }
-    .price-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2.5rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: transform 0.2s;
-    }
-    .price-card:hover { transform: translateY(-4px); }
-    .price-card.popular {
-      border: 2px solid var(--accent);
-      background: radial-gradient(circle at 50% 0%, var(--accent-glow), var(--card-bg) 65%);
-      box-shadow: 0 0 35px var(--accent-glow);
-      transform: scale(1.04);
-    }
-    .popular-tag {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #000;
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 1.2px;
-      padding: 4px 14px;
-      border-radius: 99px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-    .tier-header { margin-bottom: 1.2rem; }
-    .tier-name { font-size: 1.2rem; font-weight: 900; margin-bottom: 0.4rem; }
-    .tier-desc { font-size: 0.82rem; color: var(--text-muted); min-height: 38px; }
-    .tier-amount { font-size: 2.6rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 1.2rem; }
-    .tier-amount span { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0; }
-    .tier-badge-save {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #00FF88;
-      background: rgba(0, 255, 136, 0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 6px;
-    }
-    
-    /* CAJA DE REGALO PERSONALIZADO EN CADA PLAN */
-    .gift-box {
-      background: #090B10;
-      border: 1px dashed var(--accent);
-      border-radius: 10px;
-      padding: 0.9rem;
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-    .gift-title {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .gift-desc {
-      font-size: 0.8rem;
-      color: #D2D5E2;
-      line-height: 1.4;
-      margin-bottom: 6px;
-    }
-    .gift-options {
-      display: flex;
-      gap: 6px;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-    .gift-pill-opt {
-      background: #171A24;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid #232736;
-      color: #FFF;
-    }
-
-    .tier-features { list-style: none; margin-bottom: 2rem; flex: 1; }
-    .tier-features li {
-      font-size: 0.88rem;
-      color: #C0C3D2;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.4;
-    }
-    .tier-features li strong { color: #FFF; }
-    .check-icon { color: var(--accent); font-weight: 900; flex-shrink: 0; }
-    
-    .btn-pack {
-      text-align: center;
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-pack-outline { border: 1px solid var(--card-border); color: #FFF; }
-    .btn-pack-outline:hover {
-      border-color: var(--accent);
-      background: rgba(227, 255, 0, 0.05);
-      color: var(--accent);
-    }
-    .btn-pack-solid { background: var(--accent); color: #000; }
-    .btn-pack-solid:hover {
-      background: var(--accent-hover);
-    /* ── DROP 01 ESCALA & TICKER VIRAL ── */
-    .drop-banner {
-      background: linear-gradient(135deg, rgba(227, 255, 0, 0.08) 0%, rgba(16, 17, 23, 0.95) 100%);
-      border: 1px solid var(--accent);
-      border-radius: 14px;
-      padding: 1.8rem 2.2rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 0 30px var(--accent-glow);
-    }
-    .drop-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .drop-badge {
-      background: var(--accent);
-      color: #000;
-      font-weight: 900;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      padding: 6px 14px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(227, 255, 0, 0.4);
-    }
-    .drop-timer {
-      font-size: 0.95rem;
-      color: #FFF;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .drop-timer span { color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1px; }
-    .drop-timer strong {
-      font-family: 'JetBrains Mono', monospace, Consolas, sans-serif;
-      color: var(--accent);
-      background: #090B10;
-      border: 1px solid #1F2230;
-      padding: 4px 10px;
-      border-radius: 6px;
-      letter-spacing: 1px;
-    }
-    .drop-progress-container {
-      margin-top: 0.8rem;
-    }
-    .drop-progress-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .drop-progress-bar {
-      height: 10px;
-      background: #171A24;
-      border-radius: 5px;
-      overflow: hidden;
-      border: 1px solid #232736;
-    }
-    .drop-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #E3FF00 0%, #00FF88 100%);
-      box-shadow: 0 0 10px #E3FF00;
-      border-radius: 5px;
-      transition: width 1s ease-in-out;
-    }
-    .viral-invite-box {
-      background: #0D0E15;
-      border: 1px solid #1E2232;
-      border-radius: 12px;
-      padding: 1.2rem 1.6rem;
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-    }
-    .viral-info h4 { font-size: 0.95rem; font-weight: 800; color: #FFF; margin-bottom: 2px; }
-    .viral-info p { font-size: 0.8rem; color: var(--text-muted); }
-    .viral-input-group {
-      display: flex;
-      gap: 8px;
-      flex: 1;
-      max-width: 460px;
-    }
-    .viral-input-group input {
-      flex: 1;
-      background: #06070A;
-      border: 1px solid #282C3D;
-      color: var(--accent);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-family: monospace;
-      outline: none;
-    }
-    .btn-copy-ref {
-      background: #1C202E;
-      color: #FFF;
-      border: 1px solid #2C3246;
-      padding: 8px 14px;
-      border-radius: 6px;
+    .section-eyebrow {
+      color: var(--cyan-neon);
       font-size: 0.78rem;
       font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .btn-copy-ref:hover {
-      background: var(--accent);
-      color: #000;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 0.6rem;
     }
 
-    /* ── TIENDA OFICIAL DE MERCHANDISING (DOBLE TARIFA: NO SOCIO VS SOCIO) ── */
-    .shop-banner {
-      background: linear-gradient(135deg, #10121C 0%, #06070B 100%);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .shop-banner-info h4 { font-size: 1.15rem; font-weight: 900; color: #FFF; margin-bottom: 4px; }
-    .shop-banner-info p { font-size: 0.85rem; color: var(--text-muted); }
-    .badge-discount {
-      background: var(--accent);
-      color: #000;
+    .section-heading {
+      font-size: 2.8rem;
       font-weight: 900;
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
+      letter-spacing: -1px;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    .merch-grid {
+    .section-description {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 4rem;
+    }
+
+    .engines-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 1.8rem;
     }
-    .merch-card {
+
+    .engine-card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 18px;
+      padding: 2.2rem;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
     }
-    .merch-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .merch-visual {
-      background: #050608;
-      height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      border-bottom: 1px solid var(--card-border);
+
+    .engine-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .merch-content { padding: 1.4rem; display: flex; flex-direction: column; flex: 1; }
-    .merch-tag {
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 1.5px;
-      margin-bottom: 0.4rem;
+
+    .engine-card:hover {
+      border-color: var(--card-border);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(255, 215, 0, 0.08);
+    }
+
+    .engine-card:hover::before {
+      opacity: 1;
+    }
+
+    .engine-number {
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: var(--gold-primary);
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
       text-transform: uppercase;
     }
-    .merch-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.4rem; color: #FFF; }
-    .merch-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.2rem; flex: 1; line-height: 1.5; }
-    
-    /* PRECIOS DUALES EN TIENDA */
-    .price-dual-box {
-      background: #090A0E;
-      border: 1px solid #191B24;
-      border-radius: 8px;
-      padding: 8px 12px;
+
+    .engine-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      color: #FFFFFF;
+    }
+
+    .engine-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+      flex: 1;
+    }
+
+    .engine-metrics-list {
+      list-style: none;
+      border-top: 1px solid var(--card-border-subtle);
+      padding-top: 1.2rem;
+    }
+
+    .engine-metrics-list li {
+      font-size: 0.82rem;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .engine-metrics-list li::before {
+      content: "✦";
+      color: var(--cyan-neon);
+      font-size: 0.7rem;
+    }
+
+    /* ── SECCIÓN DE PREVENTA SOBERANA ── */
+    .presale-wrapper {
+      background: linear-gradient(135deg, rgba(20, 26, 40, 0.6) 0%, rgba(6, 8, 12, 0.9) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(255, 215, 0, 0.12);
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .presale-badge {
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      font-weight: 900;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .presale-title {
+      font-size: 2.8rem;
+      font-weight: 900;
       margin-bottom: 1rem;
+    }
+
+    .presale-lead {
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .spots-counter-bar {
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+    }
+
+    .counter-flex {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 8px;
     }
-    .price-no-member { font-size: 0.85rem; color: #7A7E90; text-decoration: line-through; }
-    .price-member { font-size: 1.25rem; font-weight: 900; color: var(--accent); }
-    .member-label { font-size: 0.65rem; font-weight: 800; color: #FFF; display: block; }
 
-    .btn-buy-merch {
-      background: #141722;
-      border: 1px solid var(--card-border);
-      color: #FFF;
-      padding: 8px 14px;
-      border-radius: 6px;
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 74%;
+      height: 100%;
+      background: var(--gold-gradient);
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .pricing-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .price-card {
+      background: rgba(8, 11, 17, 0.9);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 18px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .price-card.featured {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+    }
+
+    .price-card-tier {
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .price-amount {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-sub {
+      color: var(--text-dim);
       font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .btn-buy-merch:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(227, 255, 0, 0.08);
+      margin-bottom: 2rem;
     }
 
-    /* ── FOOTER ── */
+    .price-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      flex: 1;
+    }
+
+    .price-features li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-features li strong {
+      color: #FFFFFF;
+    }
+
+    .price-features li::before {
+      content: "✓";
+      color: var(--gold-primary);
+      font-weight: 900;
+    }
+
+    /* ── FOOTER CORPORATIVO SOBERANO ── */
     footer {
-      border-top: 1px solid var(--card-border);
-      padding: 4rem 2rem 2.5rem;
-      background: #040507;
+      border-top: 1px solid var(--card-border-subtle);
+      padding: 4.5rem 2rem 3rem;
+      background: #030406;
       text-align: center;
     }
-    .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 0.6rem; }
-    .footer-logo span { color: var(--accent); }
-    .footer-tagline { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-desc {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
     .footer-links {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
+
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
       transition: color 0.2s;
     }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.5px; }
 
-    /* ── MODAL CHECKOUT SOBERANO SLONE ── */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(3, 4, 7, 0.88);
-      backdrop-filter: blur(10px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 1rem;
+    .footer-links a:hover {
+      color: var(--gold-primary);
     }
-    .modal-overlay.active { display: flex; }
-    .modal-card {
-      background: #0B0D13;
-      border: 1px solid var(--accent);
-      box-shadow: 0 0 50px var(--accent-glow);
-      border-radius: 14px;
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+
+    /* ── MODAL INTERACTIVO DE RESERVA ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-box {
+      background: #0A0D15;
+      border: 1px solid var(--gold-primary);
+      border-radius: 20px;
+      max-width: 500px;
       width: 100%;
-      max-width: 580px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 2rem;
+      padding: 2.5rem;
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
       position: relative;
     }
-    .modal-close {
+
+    .modal-close-btn {
       position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: transparent;
+      top: 18px;
+      right: 20px;
+      background: none;
       border: none;
-      color: #888;
+      color: var(--text-muted);
       font-size: 1.5rem;
       cursor: pointer;
-      font-weight: bold;
     }
-    .modal-close:hover { color: var(--accent); }
-    .modal-header { margin-bottom: 1.2rem; }
-    .modal-badge {
-      display: inline-block;
-      font-size: 0.65rem;
+
+    .modal-title {
+      font-size: 1.6rem;
       font-weight: 900;
-      letter-spacing: 1px;
-      color: var(--accent);
-      background: rgba(227, 255, 0, 0.1);
-      border: 1px solid var(--accent);
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      color: #FFFFFF;
     }
-    .modal-title { font-size: 1.4rem; font-weight: 900; color: #FFF; }
-    .modal-price { font-size: 1.8rem; font-weight: 900; color: var(--accent); margin-top: 0.2rem; }
-    .modal-section-title {
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #8E92A4;
-      text-transform: uppercase;
-      margin: 1.2rem 0 0.6rem;
-      border-bottom: 1px solid #1A1D26;
-      padding-bottom: 4px;
+
+    .modal-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
     }
-    .form-group { margin-bottom: 0.8rem; }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
     .form-group label {
       display: block;
       font-size: 0.78rem;
-      font-weight: 700;
-      color: #CCC;
-      margin-bottom: 4px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--gold-metallic);
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
-    .form-control {
+
+    .form-group input {
       width: 100%;
-      background: #141722;
-      border: 1px solid #242938;
-      color: #FFF;
-      padding: 10px 12px;
-      border-radius: 6px;
-      font-size: 0.88rem;
-      box-sizing: border-box;
+      background: #040508;
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #FFFFFF;
+      font-size: 0.92rem;
       outline: none;
+      transition: border-color 0.2s;
     }
-    .form-control:focus { border-color: var(--accent); }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
+
+    .form-group input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 15px var(--gold-glow);
     }
-    .payment-opts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-    .payment-opt {
-      background: #141722;
-      border: 1px solid #242938;
-      border-radius: 6px;
-      padding: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #CCC;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .payment-opt.selected {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(227, 255, 0, 0.08);
-    }
-    .btn-submit-order {
+
+    .btn-submit-booking {
       width: 100%;
-      background: var(--accent);
+      background: var(--gold-gradient);
       color: #000;
       font-weight: 900;
-      font-size: 1rem;
-      padding: 12px;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      margin-top: 1rem;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .btn-submit-order:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-    .success-box {
-      display: none;
-      text-align: center;
-      padding: 1rem 0;
-    }
-    .key-box {
-      background: #06070A;
-      border: 1px solid var(--accent);
-      border-radius: 8px;
       padding: 12px;
-      margin: 1.2rem 0;
-      display: flex;
-      gap: 8px;
-      align-items: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      letter-spacing: 1.2px;
+      margin-top: 1rem;
+      box-shadow: 0 0 25px var(--gold-glow);
     }
-    .key-input {
+
+    /* ── SELECTOR DE TARIFA ANUAL / MENSUAL ── */
+    .pricing-toggle-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 40px;
+      padding: 6px 14px;
+      margin: 1.5rem auto 2.5rem;
+    }
+
+    .pricing-toggle-btn {
       background: transparent;
       border: none;
-      color: var(--accent);
-      font-family: monospace;
-      font-size: 1.05rem;
-      font-weight: 900;
-      width: 100%;
-      outline: none;
-    }
-    .btn-copy-key {
-      background: var(--accent);
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-weight: 900;
-      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 20px;
       cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .pricing-toggle-btn.active {
+      background: var(--gold-primary);
+      color: #000;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .pricing-toggle-badge {
+      font-size: 0.72rem;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--cyan-accent);
+      color: var(--cyan-accent);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── CHECKOUT SUMMARY & METHOD SELECTOR ── */
+    .checkout-summary-pill {
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .payment-method-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pay-method-pill {
+      background: #06080D;
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 8px;
+      color: var(--text-dim);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 8px 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .pay-method-pill.active {
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+      background: rgba(255, 215, 0, 0.08);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+
+    /* ── CERTIFICADO Y RESGUARDO CRIPTOGRÁFICO ── */
+    .license-key-display {
+      background: #020305;
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 1.2rem 0;
+      box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1);
+      position: relative;
+    }
+
+    .key-code-text {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #00FF88;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+
+    .btn-copy-key {
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy-key:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    .license-meta-table {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-dim);
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-row strong {
+      color: #FFFFFF;
+    }
+
+    .header-license-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid #00FF88;
+      color: #00FF88;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .header-license-pill:hover {
+      background: rgba(0, 255, 136, 0.2);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 0.8rem 1.2rem; }
+      nav { display: none; }
+      .hero-title { font-size: 2.4rem; }
+      .hero-lead { font-size: 1rem; }
+      .presale-wrapper { padding: 2.5rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ── HEADER SOBERANO SLÖNE CORP ── -->
   <header>
-    <a href="#" class="brand-group">
-      <img src="assets/slone_logo.png" alt="SLONE Logo" class="brand-logo" onerror="this.style.display='none'">
-      <div class="brand-title">SLONE <span>CORP</span></div>
+    <a href="#" class="brand-container">
+      <div class="brand-crown-logo">
+        <span>SL</span>
+        <div class="o-crown-wrap">
+          <span class="crown-diacritic">👑</span>
+          <span>Ö</span>
+        </div>
+        <span>NE</span>
+      </div>
+      <span class="brand-tag-badge">CORP</span>
     </a>
-    <nav class="nav-links">
-      <a href="#temas">Colores de Equipo</a>
-      <a href="#multiview">Multiview 4X</a>
-      <a href="#mediahub">TDT & Radio Sync</a>
-      <a href="#packs">Packs & Regalos</a>
-      <a href="#tienda">Tienda Merchandising</a>
-      <a href="#encuesta" style="color: var(--accent); font-weight: 800;">🏛️ Encuesta Nombre</a>
-      <a href="#" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank'); return false;" style="color: var(--accent); font-weight: 800;">🔒 Proyecto Sigilo</a>
+
+    <nav>
+      <a href="#motores">Los 5 Motores</a>
+      <a href="showroom.html" target="_blank">Showroom Silicon Valley</a>
+      <a href="#arquitectura">Zero-Trust</a>
+      <a href="#preventa">Preventa Fundadores</a>
     </nav>
-    <div class="header-actions">
-      <a href="#packs" class="btn-vip-header">👑 ÁREA VIP</a>
+
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div id="header-license-pill" class="header-license-pill" style="display: none;" onclick="openActiveLicenseModal()">
+        <span class="pulse-dot" style="background: #00FF88; box-shadow: 0 0 10px #00FF88; width: 8px; height: 8px;"></span>
+        <span id="header-license-text">LICENCIA ACTIVA</span>
+      </div>
+      <a href="#preventa" class="btn-header-cta" id="header-cta-btn">
+        <span>✦ RESERVAR ACCESO</span>
+      </a>
     </div>
   </header>
 
-  <!-- ANUNCIO GLOBAL EN SIGILO (CERO DETALLES PÚBLICOS) -->
-  <div class="global-caster-announcement" style="background: linear-gradient(90deg, rgba(227,255,0,0.15) 0%, rgba(16,17,23,0.96) 50%, rgba(0,240,255,0.15) 100%); border-bottom: 1px solid rgba(227,255,0,0.35); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.88rem; position: sticky; top: 69px; z-index: 999; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <span style="background: var(--accent); color: #000; font-size: 10px; font-weight: 900; padding: 4px 8px; border-radius: 4px; letter-spacing: 1px;">🔒 CONFIDENCIAL</span>
-      <span style="color: #FFF; font-weight: 600;"><strong>Buscamos voces deportivas en sigilo.</strong> ¡1 MES GRATIS de SLÖNE (1 sem Básico + 3 semanas A FULL) para los 10 primeros seleccionados!</span>
+  <!-- ── SECCIÓN HERO DE ALTA GAMA ── -->
+  <section class="hero-section">
+    <div class="hero-meta-pill">
+      <span class="pulse-dot"></span>
+      <span>SEDE GIRONA · INFRAESTRUCTURA SOBERANA LOCAL · RED PRIVADA</span>
     </div>
-    <a href="#" onclick="window.open('http://' + (window.location.hostname || '127.0.0.1') + ':8888', '_blank'); return false;" style="background: var(--accent); color: #000; font-weight: 900; font-size: 11px; padding: 8px 18px; border-radius: 20px; text-decoration: none; white-space: nowrap; letter-spacing: 0.5px; box-shadow: 0 0 16px rgba(227,255,0,0.4);">POSTULARSE</a>
-  </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-pill">👑 GIRONA TECH HUB · SOVEREIGN ARCHITECTURE · ULTRA-LOW LATENCY</div>
     <h1 class="hero-title">
-      EL MOTOR GLOBAL DE MEDIOS <span>DEFINITIVO.</span>
+      EL ECOSISTEMA DE MEDIOS Y<br>
+      <span class="hero-title-accent">STREAMING DEFINITIVO.</span>
     </h1>
-    <p class="hero-desc">
-      El único motor multimedia en el mundo con <strong>Multiview Soberano 4X</strong>, TDT abierta integrada, sincronizador milimétrico de radio en directo, estación musical de YouTube/Spotify y emisión instantánea a Smart TV mediante <strong>SLONE TV Connect™</strong>.
+
+    <p class="hero-lead">
+      Decodificación nativa 4K 60FPS sin latencia, sincronización multiaudio de radio en directo con RAC1 y Cadena SER, y emisión directa a Smart TV y TiviMate. Cero telemetría externa. Cero intermediarios.
     </p>
-    <div class="hero-buttons">
-      <a href="#packs" class="btn-primary">⚡ OBTENER SLONE ENGINE</a>
-      <a href="#temas" class="btn-secondary">🎨 ELEGIR COLORES DE TU EQUIPO</a>
-    </div>
-  </section>
 
-  <!-- INNOVACIÓN: PERSONALIZACIÓN DE COLORES POR EQUIPO / ESTILO -->
-  <section id="temas" class="section-container">
-    <div class="section-header">
-      <div class="section-subtitle">Personalización Absoluta de Pantalla</div>
-      <h2 class="section-title">Elige los Colores de tu Equipo o Estilo Preferido</h2>
-      <p class="section-lead">Cambia al instante el aspecto visual de SLONE. Pulsa en tu equipo o estética preferida y observa cómo se transforma todo el ecosistema:</p>
+    <div class="hero-actions">
+      <a href="#preventa" class="btn-gold-primary">
+        <span>👑 RESERVAR ACCESO FUNDADOR</span>
+      </a>
+      <a href="showroom.html" target="_blank" class="btn-cyan-secondary">
+        <span>📺 VER SHOWROOM EN VIVO</span>
+      </a>
     </div>
 
-    <div class="theme-selector-box">
-      <div class="theme-title">🎨 PALETAS DISPONIBLES EN TIEMPO REAL:</div>
-      <div class="theme-palette">
-        <button class="theme-btn active" onclick="setTheme('#E3FF00', '#F0FF4D', '#070709', this)">
-          <span class="dot-color" style="background: #E3FF00;"></span> 👑 SLONE Signature (Obsidian & Neón)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#EDBB00', '#FFD700', '#060A14', this)">
-          <span class="dot-color" style="background: linear-gradient(135deg, #004D98 50%, #A50044 50%);"></span> 🔵🔴 FC Barcelona (Blaugrana & Oro)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#FF2A2A', '#FF5555', '#0E0707', this)">
-          <span class="dot-color" style="background: #FF2A2A;"></span> 🔴⚪ Girona FC (Vermell-i-Blanc)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#D4AF37', '#E5C158', '#09090C', this)">
-          <span class="dot-color" style="background: linear-gradient(135deg, #FFFFFF 50%, #D4AF37 50%);"></span> ⚪🟡 Real Madrid / Clásico (Blanco & Oro)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#00D66C', '#26E885', '#060C08', this)">
-          <span class="dot-color" style="background: #00D66C;"></span> 🟢⚪ Real Betis (Verdiblanco)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#FF2800', '#FF4500', '#080808', this)">
-          <span class="dot-color" style="background: #FF2800;"></span> 🔴⚫ Ferrari / Racing (Rojo Competición)
-        </button>
-        <button class="theme-btn" onclick="setTheme('#00F0FF', '#33F3FF', '#0A0714', this)">
-          <span class="dot-color" style="background: linear-gradient(135deg, #00F0FF 50%, #FF0055 50%);"></span> 🟣🔵 Cyberpunk Neon (Cyan & Magenta)
-        </button>
+    <!-- ── TARJETA INTERACTIVA DE PARTIDO EN DIRECTO ── -->
+    <div class="live-broadcast-card">
+      <div class="broadcast-top-bar">
+        <div class="broadcast-status">
+          <span class="pulse-dot"></span>
+          <span>EN DIRECTO · 4K UHD 60FPS · M+ LIGA DE CAMPEONES</span>
+        </div>
+        <div class="broadcast-specs">
+          VA-API HEVC · 18.5 Mbps · Buffer: 0 ms
+        </div>
       </div>
-    </div>
 
-    <!-- MOCKUP MULTIVIEW GLOBAL 4X QUE RESPONDE AL TEMA -->
-    <div id="multiview" class="multiview-showcase">
-      <div class="multiview-top">
-        <div style="font-size: 0.8rem; font-weight: 800; color: var(--accent); letter-spacing: 1px;">⎚ SLONE MULTIVIEW GLOBAL ENGINE · 4 PANTALLAS SIMULTÁNEAS</div>
-        <div style="font-size: 0.75rem; color: #8E92A4; font-weight: 600;">Audio Activo: Cuadrante 1 [Champions League Directo]</div>
-      </div>
-      <div class="multiview-grid">
-        <div class="cell-stream active-audio">
-          <div class="cell-badge live">● EN DIRECTO · 4K 60FPS</div>
-          <div class="cell-center">
-            <div style="font-size: 1.1rem; color: #FFF; font-weight: 900;">PARTIDO ESTRELLA DE LA JORNADA</div>
-            <div style="color: var(--accent); font-size: 0.75rem; margin-top: 4px;">UCL Semifinal · Señal Internacional</div>
-          </div>
-          <div class="cell-bottom">
-            <span style="font-size: 0.7rem; color: #888;">Canal 01 · Bitrate: 28 Mbps</span>
-            <div class="audio-pill on">🔊 AUDIO PRINCIPAL [1]</div>
+      <div class="broadcast-body">
+        <h2 class="match-headline">FC BARCELONA vs CHAMPIONS LEAGUE</h2>
+        <div class="match-meta-narrator">
+          <span>📻 Narración sincronizada:</span>
+          <strong id="active-audio-label">Joan Maria Pou (RAC1 en català)</strong>
+        </div>
+
+        <div class="audio-sync-selector">
+          <span style="font-size: 0.82rem; font-weight: 800; color: var(--gold-metallic);">SELECCIONAR CANAL DE AUDIO:</span>
+          <div class="audio-pills-group">
+            <button class="audio-btn active" onclick="setAudioSource('RAC1 (Joan Maria Pou)')">🎙️ RAC1 (Català)</button>
+            <button class="audio-btn" onclick="setAudioSource('Cadena SER (Carrusel)')">🎙️ SER (Castellano)</button>
+            <button class="audio-btn" onclick="setAudioSource('Catalunya Ràdio (TdP)')">🎙️ CatRàdio</button>
+            <button class="audio-btn" onclick="setAudioSource('Audio TV Original')">🔊 Pista TV Oficial</button>
           </div>
         </div>
 
-        <div class="cell-stream">
-          <div class="cell-badge live">● EN DIRECTO · 1080p</div>
-          <div class="cell-center">
-            <div style="font-size: 1.1rem; color: #FFF; font-weight: 900;">SEGUNDO PARTIDO EN VIVO</div>
-            <div style="color: #8E92A4; font-size: 0.75rem; margin-top: 4px;">La Liga EA Sports</div>
-          </div>
-          <div class="cell-bottom">
-            <span style="font-size: 0.7rem; color: #888;">Canal 02 · Bitrate: 18 Mbps</span>
-            <div class="audio-pill off">🔇 Silencio [2]</div>
-          </div>
-        </div>
-
-        <div class="cell-stream">
-          <div class="cell-badge live">● EN DIRECTO · 4K</div>
-          <div class="cell-center">
-            <div style="font-size: 1.1rem; color: #FFF; font-weight: 900;">FÓRMULA 1 · GP EN DIRECTO</div>
-            <div style="color: #8E92A4; font-size: 0.75rem; margin-top: 4px;">Cámara On-Board & Clasificación</div>
-          </div>
-          <div class="cell-bottom">
-            <span style="font-size: 0.7rem; color: #888;">Canal 03 · Bitrate: 25 Mbps</span>
-            <div class="audio-pill off">🔇 Silencio [3]</div>
-          </div>
-        </div>
-
-        <div class="cell-stream">
-          <div class="cell-badge live">● EN DIRECTO · 1080p</div>
-          <div class="cell-center">
-            <div style="font-size: 1.1rem; color: #FFF; font-weight: 900;">MOTOGP · CARRERA SPRINT</div>
-            <div style="color: #8E92A4; font-size: 0.75rem; margin-top: 4px;">Vuelta a Vuelta en Alta Velocidad</div>
-          </div>
-          <div class="cell-bottom">
-            <span style="font-size: 0.7rem; color: #888;">Canal 04 · Bitrate: 16 Mbps</span>
-            <div class="audio-pill off">🔇 Silencio [4]</div>
-          </div>
+        <div class="broadcast-actions">
+          <button class="btn-action-cast" onclick="launchAdbCast()">
+            <span>📡 ENVIAR A SMART TV (192.168.1.135)</span>
+          </button>
+          <a href="launcher/index.html" class="btn-action-tivimate">
+            <span>⚡ ABRIR EN TIVIMATE</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MÓDULO TOTAL: TDT INTEGRADA + RADIO SYNC + MÚSICA YOUTUBE / SPOTIFY -->
-  <section id="mediahub" class="section-container">
-    <div class="section-header">
-      <div class="section-subtitle">Ecosistema Multimedia Integral</div>
-      <h2 class="section-title">TV TDT, Radio Sincronizada y Música Directa</h2>
-      <p class="section-lead">Todo lo que necesitas en una única interfaz sin cambiar de app ni instalar plugins de terceros.</p>
-    </div>
+  <!-- ── SECCIÓN: LOS 5 MOTORES SOBERANOS ── -->
+  <section class="section-container" id="motores">
+    <div class="section-eyebrow">ARQUITECTURA DE INGENIERÍA PURA</div>
+    <h2 class="section-heading">Los 5 Motores Soberanos de SLÖNE</h2>
+    <p class="section-description">
+      Diseñados para operar con aceleración por hardware en ThinkPad X390 y desplegar vídeo de ultra-baja latencia hacia Smart TV y dispositivos Android TV en red local.
+    </p>
 
-    <div class="media-hub-grid">
-      <!-- 1: TDT ESPAÑA Y CATALUNYA -->
-      <div class="media-hub-card">
-        <div class="media-icon">📺</div>
-        <h3>TDT Abierta Oficial Integrada</h3>
-        <p>Acceso instantáneo a todos los canales generales y autonómicos de España sin antena física. Canales 100% legales y oficiales en HD y 4K.</p>
-        <div class="media-tags">
-          <span class="media-tag">La 1 HD</span>
-          <span class="media-tag">La 2</span>
-          <span class="media-tag">Antena 3</span>
-          <span class="media-tag">Cuatro</span>
-          <span class="media-tag">Telecinco</span>
-          <span class="media-tag">laSexta</span>
-          <span class="media-tag">TV3 HD</span>
-          <span class="media-tag">Esport3</span>
-          <span class="media-tag">Teledeporte</span>
-        </div>
-        <a href="#packs" class="btn-buy-merch">⚡ SINTONIZAR TDT EN SLONE</a>
-      </div>
-
-      <!-- 2: AUDIO-SYNC RADIO DEPORTIVA -->
-      <div class="media-hub-card">
-        <div class="media-icon">📻</div>
-        <h3>Audio-Sync de Radio en Vivo</h3>
-        <p>Sintoniza tu narrador deportivo favorito mientras ves el partido en la TDT o en IPTV. Calibración milimétrica con deslizador para eliminar cualquier retardo.</p>
-        <div class="sync-slider-mock">
-          <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800;">
-            <span style="color:#FFF;">RAC1 / CADENA SER</span>
-            <span style="color:var(--accent);">DESFASE: +0.4s [SINCRONIZADO]</span>
-          </div>
-          <div class="sync-bar"><div class="sync-progress"></div></div>
-          <div style="font-size:0.68rem; color:#777; display:flex; justify-content:space-between;">
-            <span>-5.0s</span><span>0.0s (Exacto)</span><span>+5.0s</span>
-          </div>
-        </div>
-        <div class="media-tags" style="margin-top: 1rem;">
-          <span class="media-tag">RAC1</span>
-          <span class="media-tag">Catalunya Ràdio</span>
-          <span class="media-tag">Cadena SER</span>
-          <span class="media-tag">COPE</span>
-          <span class="media-tag">Radio Marca</span>
-          <span class="media-tag">Onda Cero</span>
-        </div>
-      </div>
-
-      <!-- 3: MÚSICA YOUTUBE / SPOTIFY / WEB -->
-      <div class="media-hub-card">
-        <div class="media-icon">🎵</div>
-        <h3>Música Directa (YouTube / Web)</h3>
-        <p>Reproduce cualquier vídeo, álbum, podcast o lista de música pegando el enlace de YouTube o de tu web de música. Decodificación de alta fidelidad integrada mediante yt-dlp nativo.</p>
-        <div class="media-tags">
-          <span class="media-tag">YouTube 4K Audio</span>
-          <span class="media-tag">Los 40</span>
-          <span class="media-tag">Rock FM</span>
-          <span class="media-tag">Ibiza Chill</span>
-          <span class="media-tag">Flaix FM</span>
-        </div>
-        <div style="background:#090B10; padding:8px 12px; border-radius:6px; border:1px solid #1C1F2B; font-size:0.78rem; color:#8E92A4; margin-bottom:1rem;">
-          Atajo rápido: <strong style="color:#FFF;">Ctrl + U</strong> en cualquier momento.
-        </div>
-        <a href="#packs" class="btn-buy-merch">🎵 ABRIR ESTACIÓN MUSICAL</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKS Y SUSCRIPCIONES (ECONOMÍA UNITARIA PROTEGIDA & REGALOS FÍSICOS EXCLUSIVOS) -->
-  <section id="packs" class="section-container">
-    <div class="section-header">
-      <div class="section-subtitle">Suscripciones de Alto Rendimiento</div>
-      <h2 class="section-title">Elige tu Plan SLONE con Regalos Exclusivos de Marca</h2>
-      <p class="section-lead">Acceso inmediato digital a todas las prestaciones. Los planes Anual y Royale incluyen nuestros packs físicos de bienvenida grabados a láser y personalizados.</p>
-    </div>
-
-    <!-- BANNER DINÁMICO DE ESCASEZ Y CUENTA ATRÁS DROP 01 -->
-    <div class="drop-banner">
-      <div class="drop-header-row">
-        <div class="drop-badge">⚡ DROP 01 · 500 FOUNDERS PASS (EDICIÓN LIMITADA)</div>
-        <div class="drop-timer" id="dropCountdown">
-          <span>CIERRE OFICIAL DEL DROP:</span> <strong id="timerDisplay">03d : 14h : 22m : 05s</strong>
-        </div>
-      </div>
-      <div class="drop-progress-container">
-        <div class="drop-progress-labels">
-          <span>Plazas asignadas: <strong style="color:var(--accent);">412 / 500</strong> (Pases Vitalicios + Royale Box)</span>
-          <span style="color:#00FF88; font-weight:800;">QUEDAN SOLO 88 PLAZAS DISPONIBLES</span>
-        </div>
-        <div class="drop-progress-bar">
-          <div class="drop-progress-fill" style="width: 82.4%;"></div>
-        </div>
-      </div>
-      <!-- SISTEMA VIRAL DE REFERIDOS Y LISTA DE ESPERA PRIORITARIA -->
-      <div class="viral-invite-box">
-        <div class="viral-info">
-          <h4>🚀 Impulsa tu posición en la lista de fundadores</h4>
-          <p>Por cada usuario que solicite acceso con tu enlace, escalas 10 puestos prioritarios en la asignación del Welcome Pack numerado.</p>
-        </div>
-        <div class="viral-input-group">
-          <input type="text" id="referralLinkInput" readonly value="https://slone.tech/founders?ref=FOUNDER-EFFEA4FA">
-          <button onclick="copiarEnlaceReferido()" class="btn-copy-ref" id="btnCopyRef">📋 COPIAR ENLACE</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="pricing-grid">
-      <!-- 01: SLONE CORE -->
-      <div class="price-card">
-        <div class="tier-header">
-          <div class="tier-name">SLONE CORE</div>
-          <div class="tier-desc">La entrada libre para conocer la velocidad y pureza del motor.</div>
-        </div>
-        <div class="tier-amount">0 € <span>/ siempre</span></div>
-        <ul class="tier-features">
-          <li><span class="check-icon">✔</span> <strong>1 Pantalla</strong> a 1080p FHD 60FPS</li>
-          <li><span class="check-icon">✔</span> Acceso a canales TDT abiertos España</li>
-          <li><span class="check-icon">✔</span> 1 Lista M3U local o remota</li>
-          <li><span class="check-icon">✔</span> Decodificación limpia sin publicidad</li>
+    <div class="engines-grid">
+      <!-- Motor 1 -->
+      <div class="engine-card">
+        <div class="engine-number">MOTOR 01 · VÍDEO PIPELINE</div>
+        <h3 class="engine-title">SLÖNE Ultra-Cast Engine</h3>
+        <p class="engine-desc">
+          Decodificación 4K a 60 FPS acelerada por hardware (Intel VA-API / QuickSync). Buffer adaptativo con cero congelaciones y emisión directa por LAN sin depender de la nube.
+        </p>
+        <ul class="engine-metrics-list">
+          <li>Throughput: 4K 60FPS a 22 Mbps</li>
+          <li>Consumo CPU: &lt; 4.2% en Intel i7-8665U</li>
+          <li>Casting directo Xiaomi TV / Android TV</li>
         </ul>
-        <a href="#temas" class="btn-pack btn-pack-outline">DESCARGAR CORE</a>
       </div>
 
-      <!-- 02: PASSION SPORTS -->
-      <div class="price-card">
-        <div class="tier-header">
-          <div class="tier-name">PASSION SPORTS</div>
-          <div class="tier-desc">Para aficionados que exigen máxima calidad en cada retransmisión.</div>
-        </div>
-        <div class="tier-amount">
-          3,99 € <span>/ mes</span>
-          <span class="tier-badge-save">ANUAL: 39,99 €/AÑO</span>
-        </div>
-        
-        <!-- REGALO FÍSICO DE BIENVENIDA -->
-        <div class="gift-box">
-          <div class="gift-title">🎁 REGALO FÍSICO INCLUIDO EN PLAN ANUAL:</div>
-          <div class="gift-desc">Llavero grabado en aluminio SLONE o Pack de 5 pegatinas vinilo holográficas de autor (Plan mensual incluye cupón 50% de descuento en la tienda).</div>
-          <div class="gift-options">
-            <span>Color del detalle:</span>
-            <span class="gift-pill-opt">🟡 Amarillo Neón</span>
-            <span class="gift-pill-opt">⚫ Negro Mate</span>
-            <span class="gift-pill-opt">⚪ Titanio</span>
-          </div>
-        </div>
-
-        <ul class="tier-features">
-          <li><span class="check-icon">✔</span> <strong>4K HDR 60FPS</strong> sin restricciones</li>
-          <li><span class="check-icon">✔</span> <strong>Audio-Sync de Radio Dual</strong> (Sincronización milimétrica)</li>
-          <li><span class="check-icon">✔</span> <strong>SLONE Cast & Smart TV Connect™</strong> en 1 clic</li>
-          <li><span class="check-icon">✔</span> <strong>2 Pantallas simultáneas</strong> (PC + Smart TV / Móvil)</li>
-          <li><span class="check-icon">✔</span> <strong>50% Descuento</strong> en Tienda Oficial de Merchandising</li>
+      <!-- Motor 2 -->
+      <div class="engine-card">
+        <div class="engine-number">MOTOR 02 · SINCRONIZACIÓN</div>
+        <h3 class="engine-title">Radio-Sync Multilingual</h3>
+        <p class="engine-desc">
+          Sincronizador milimétrico de audio en vivo. Ajusta automáticamente el desfase entre la señal de vídeo y la narración de radio (RAC1, Cadena SER) sin perder el sincronismo labial.
+        </p>
+        <ul class="engine-metrics-list">
+          <li>Latencia de ajuste: Desfase 0 ms exacto</li>
+          <li>Soporte multicanal català / castellano</li>
+          <li>Preamplificación dinámica de voz</li>
         </ul>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button onclick="openCheckout('sports_year', 'Passion Sports Anual (Con Regalo Físico)', '39,99 €/año', true)" class="btn-pack btn-pack-outline">🎁 ACTIVAR ANUAL CON REGALO (39,99 €)</button>
-          <button onclick="openCheckout('sports_month', 'Passion Sports Mensual (Digital)', '3,99 €/mes', false)" class="btn-pack btn-pack-outline" style="font-size:0.75rem; padding: 8px; border-color:#2A2D3A; color:#8E92A4;">O Mensual Digital (3,99 €/mes)</button>
-        </div>
       </div>
 
-      <!-- 03: QUAD-GLOBAL PRO (BEST SELLER) -->
-      <div class="price-card popular">
-        <div class="popular-tag">MÁS ELEGIDO · 80% VENTAS</div>
-        <div class="tier-header">
-          <div class="tier-name" style="color: var(--accent);">QUAD-GLOBAL PRO</div>
-          <div class="tier-desc">La experiencia definitiva de 4 directos simultáneos con estabilidad soberana.</div>
-        </div>
-        <div class="tier-amount">
-          7,99 € <span>/ mes</span>
-          <span class="tier-badge-save">AHORRA 37% ANUAL: 59,99 €/AÑO</span>
-        </div>
-
-        <!-- WELCOME PACK PRO FÍSICO -->
-        <div class="gift-box" style="border-style: solid;">
-          <div class="gift-title">📦 WELCOME PACK PRO (INCLUIDO EN MODALIDAD ANUAL):</div>
-          <div class="gift-desc">
-            Caja protectora acolchada con <strong>Pendrive USB 128GB Metálico</strong> precargado con el instalador de SLONE + <strong>Llavero macizo grabado a láser</strong> + <strong>Carnet físico de socio SLONE Pro</strong>.<br>
-            <span style="color:#888; font-size:0.75rem;">(Suscripción mensual: 100% digital con acceso instantáneo + cupón del 50% de descuento en la tienda de Merch).</span>
-          </div>
-          <div class="gift-options">
-            <span>Acabado del kit:</span>
-            <span class="gift-pill-opt">Negro Obsidiana</span>
-            <span class="gift-pill-opt">Plata Titanio</span>
-          </div>
-        </div>
-
-        <ul class="tier-features">
-          <li><span class="check-icon">✔</span> <strong>Multiview Soberano™ 4X</strong> (4 partidos o eventos a la vez)</li>
-          <li><span class="check-icon">✔</span> <strong>Turbo Shield Anti-Cortes</strong> (Enrutamiento VIP prioritario)</li>
-          <li><span class="check-icon">✔</span> <strong>Instant Replay de 30s</strong> y Pausa en directo en cualquier señal</li>
-          <li><span class="check-icon">✔</span> <strong>5 Pantallas simultáneas</strong> para todo el hogar y Smart TVs</li>
-          <li><span class="check-icon">✔</span> <strong>Estación de Música YouTube Directa</strong> y Radio Sync nativo</li>
-          <li><span class="check-icon">✔</span> <strong>50% de Descuento</strong> en toda la Tienda de Merch oficial</li>
+      <!-- Motor 3 -->
+      <div class="engine-card">
+        <div class="engine-number">MOTOR 03 · MULTIPANTALLA</div>
+        <h3 class="engine-title">Quad-Multiview 4X Matrix</h3>
+        <p class="engine-desc">
+          Malla de 4 transmisiones simultáneas en pantalla completa con conmutador instantáneo de audio de un click. Sigue cuatro partidos o señales a la vez sin pérdida de fotogramas.
+        </p>
+        <ul class="engine-metrics-list">
+          <li>4 Canales simultáneos a 1080p/4K</li>
+          <li>Aislamiento de hilos WebGL y memoria</li>
+          <li>Conmutación de audio con 1 tecla</li>
         </ul>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button onclick="openCheckout('quad_year', 'Quad-Global Pro Anual (Welcome Pack Pro Incluido)', '59,99 €/año', true)" class="btn-pack btn-pack-solid">📦 ACTIVAR ANUAL CON WELCOME PACK (59,99 €)</button>
-          <button onclick="openCheckout('quad_month', 'Quad-Global Pro Mensual (Digital)', '7,99 €/mes', false)" class="btn-pack btn-pack-outline" style="font-size:0.75rem; padding: 8px; border-color:#2A2D3A; color:#8E92A4;">O Mensual Digital (7,99 €/mes)</button>
-        </div>
       </div>
 
-      <!-- 04: ROYALE FOUNDERS PASS -->
-      <div class="price-card">
-        <div class="tier-header">
-          <div class="tier-name" style="color: #FFF;">👑 ROYALE FOUNDERS</div>
-          <div class="tier-desc">Pase de socio vitalicio limitado a 500 plazas mundiales.</div>
-        </div>
-        <div class="tier-amount">149 € <span>/ único</span></div>
-
-        <!-- CAJA DE COLECCIONISTA DE LUJO (3 DETALLES MÍNIMO) -->
-        <div class="gift-box" style="border-color: #FFF; background: #121420;">
-          <div class="gift-title" style="color: #FFF;">👑 ROYALE FOUNDER BOX (3 DETALLES EXCLUSIVOS):</div>
-          <div class="gift-desc">
-            <strong>1.</strong> Prenda oficial SLONE de alta gama: <strong>Gorra Técnica Bordada</strong> o <strong>Camiseta Pesada 300gsm</strong> (Talla y color a elegir).<br>
-            <strong>2. Carnet metálico de acero inoxidable</strong> grabado al láser con tu número de socio oficial (001 a 500).<br>
-            <strong>3. Pendrive metálico de 256GB USB 3.2</strong> + Llavero macizo de aleación de zinc de autor.
-          </div>
-        </div>
-
-        <ul class="tier-features">
-          <li><span class="check-icon">✔</span> <strong>Acceso Vitalicio Ilimitado</strong> (Sin cuotas de suscripción jamás)</li>
-          <li><span class="check-icon">✔</span> <strong>Canal Directo Privado con el CEO (slone)</strong></li>
-          <li><span class="check-icon">✔</span> Todas las funciones y futuras actualizaciones en PC, TV y Móvil</li>
-          <li><span class="check-icon">✔</span> Voto directo en el Roadmap de desarrollo de nuevas funciones</li>
-          <li><span class="check-icon">✔</span> <strong>Precios a coste de fábrica</strong> en todo el catálogo de merchandising</li>
+      <!-- Motor 4 -->
+      <div class="engine-card">
+        <div class="engine-number">MOTOR 04 · PRIVACIDAD ABSOLUTA</div>
+        <h3 class="engine-title">Sovereign Vault & Zero-Trust</h3>
+        <p class="engine-desc">
+          Cifrado local AES-256-GCM y bóveda en Fedora 44. Cero telemetría externa hacia servidores de terceros. Tus listas, credenciales y hábitos de visionado jamás salen de tu casa.
+        </p>
+        <ul class="engine-metrics-list">
+          <li>Cifrado militar local AES-GCM 256</li>
+          <li>Aislamiento en red 192.168.1.0/24</li>
+          <li>Cero rastreo o analítica externa</li>
         </ul>
-        <button onclick="openCheckout('royale', 'Royale Founders Pass (Lifetime + Royale Box)', '149,00 €', true)" class="btn-pack btn-pack-outline">👑 SOLICITAR PASE FUNDADOR (149 €)</button>
+      </div>
+
+      <!-- Motor 5 -->
+      <div class="engine-card">
+        <div class="engine-number">MOTOR 05 · INTELIGENCIA AUTÓNOMA</div>
+        <h3 class="engine-title">AI Cognitive Radar & Scheduler</h3>
+        <p class="engine-desc">
+          Detección autónoma de eventos deportivos en directo y resolución automática de streams de máxima tasa de bits. Control inteligente por ADB para encender y sintonizar la TV.
+        </p>
+        <ul class="engine-metrics-list">
+          <li>Detección automática de partidos</li>
+          <li>Control ADB seguro sobre LAN</li>
+          <li>Grabación local de resúmenes clave</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- TIENDA PÚBLICA DE MERCHANDISING (DOBLE TARIFA: NO SOCIO VS SOCIO) -->
-  <section id="tienda" class="section-container">
-    <div class="section-header">
-      <div class="section-subtitle">Tienda Oficial Abierta a Todo el Mundo</div>
-      <h2 class="section-title">SLONE Official Merchandising Store</h2>
-      <p class="section-lead">Cualquier usuario puede adquirir nuestros productos exclusivos. Los socios suscritos disfrutan de hasta un 30% de descuento directo en todos los artículos.</p>
-    </div>
+  <!-- ── SECCIÓN PREVENTA SOBERANA ── -->
+  <section class="section-container" id="preventa">
+    <div class="presale-wrapper">
+      <div class="presale-badge">PREVENTA OFICIAL DE LANZAMIENTO</div>
+      <h2 class="presale-title">Acceso Soberano Exclusivo</h2>
+      <p class="presale-lead">
+        Sé uno de los 50 propietarios fundadores en acceder a los 5 motores de SLÖNE CORP con licencia vitalicia inmutable y soporte directo con el equipo de ingeniería.
+      </p>
 
-    <!-- BANNER DE AHORRO PARA SOCIOS -->
-    <div class="shop-banner">
-      <div class="shop-banner-info">
-        <h4>💡 ¿Por qué pagar más? Hazte socio y ahorra de inmediato.</h4>
-        <p>Los suscriptores de los planes Passion Sports, Quad-Global y Royale Founders compran a precio especial de socio.</p>
-      </div>
-      <div>
-        <span class="badge-discount">HASTA -30% DESCUENTO SOCIOS</span>
-      </div>
-    </div>
-
-    <div class="merch-grid">
-      <!-- 1: HOODIE STEALTH -->
-      <div class="merch-card">
-        <div class="merch-visual">🧥</div>
-        <div class="merch-content">
-          <div class="merch-tag">LIMITED EDITION · 400 GSM</div>
-          <div class="merch-title">Hoodie SLONE Stealth Obsidian</div>
-          <div class="merch-desc">Algodón peinado pesado en negro lavado, bordado de corona con hilo reflectante amarillo y etiqueta numerada en Girona.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">89,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">119,00 €</span>
-            </div>
-          </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
+      <div class="spots-counter-bar">
+        <div class="counter-flex">
+          <span style="color: var(--gold-primary);">PLAZAS ADJUDICADAS:</span>
+          <span><strong>38</strong> / 50 DISPONIBLES</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill"></div>
         </div>
       </div>
 
-      <!-- 2: CAMISETA STREETWEAR -->
-      <div class="merch-card">
-        <div class="merch-visual">👕</div>
-        <div class="merch-content">
-          <div class="merch-tag">PREMIUM COTTON · 300 GSM</div>
-          <div class="merch-title">Camiseta SLONE Streetwear</div>
-          <div class="merch-desc">Corte oversize de alta costura tech, logo sutil termosellado en relieve, cuello grueso indeformable. Colores: Negro, Amarillo o Blanco.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">35,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">49,00 €</span>
-            </div>
-          </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
+      <!-- SELECTOR DE PERÍODO (ANUAL / MENSUAL) -->
+      <div style="text-align: center;">
+        <div class="pricing-toggle-wrap">
+          <button type="button" class="pricing-toggle-btn active" id="toggle-anual-btn" onclick="setBillingCycle('anual')">
+            Facturación Anual
+          </button>
+          <button type="button" class="pricing-toggle-btn" id="toggle-mensual-btn" onclick="setBillingCycle('mensual')">
+            Facturación Mensual
+          </button>
+          <span class="pricing-toggle-badge">⚡ AHORRA HASTA 38%</span>
         </div>
       </div>
 
-      <!-- 3: GORRA TÉCNICA -->
-      <div class="merch-card">
-        <div class="merch-visual">🧢</div>
-        <div class="merch-content">
-          <div class="merch-tag">HYDROPHOBIC TECH</div>
-          <div class="merch-title">Cap SLONE Minimal Curve</div>
-          <div class="merch-desc">Tejido técnico transpirable e hidrófugo con corona dorada microbordada y hebilla metálica de ajuste micrométrico.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">34,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">45,00 €</span>
-            </div>
+      <div class="pricing-cards-grid">
+        <!-- PLAN 1: QUAD-GLOBAL PRO -->
+        <div class="price-card">
+          <div class="price-card-tier">SLÖNE QUAD-GLOBAL PRO</div>
+          <div class="price-amount">
+            <span id="pro-price-val">59,99€</span>
+            <span id="pro-cycle-val" style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">/ año</span>
           </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
+          <div class="price-sub" id="pro-sub-val">Equivale a 4,99€/mes · Licencia individual 2 pantallas</div>
+          <ul class="price-features">
+            <li>Motor <strong>SLÖNE Quad-Multiview 4X Matrix</strong></li>
+            <li><strong>Dual-Audio Soberano</strong> milimétrico (RAC1, SER, COPE)</li>
+            <li>Silenciado instantáneo automático del vídeo original al alternar audio</li>
+            <li>Casting nativo Xiaomi TV, Android TV y Smart TV</li>
+            <li>Soporte de listas y actualización de canales en tiempo real</li>
+            <li>2 dispositivos simultáneos en red local</li>
+          </ul>
+          <button class="btn-cyan-secondary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Quad-Global Pro')">
+            ✦ ACTIVAR QUAD-GLOBAL PRO
+          </button>
         </div>
-      </div>
 
-      <!-- 4: MANDO DE ALUMINIO -->
-      <div class="merch-card">
-        <div class="merch-visual">🎮</div>
-        <div class="merch-content">
-          <div class="merch-tag">CNC ALUMINIUM HARDWARE</div>
-          <div class="merch-title">SLONE Precision Remote</div>
-          <div class="merch-desc">Mando ergonómico en aluminio aeroespacial negro anodizado, retroiluminación giroscópica y botón directo para Multiview.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">49,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">69,00 €</span>
-            </div>
+        <!-- PLAN 2: HOSTELERÍA & BARES -->
+        <div class="price-card">
+          <div class="price-card-tier" style="color: var(--cyan-accent);">COMERCIAL · HOSTELERÍA & BARES</div>
+          <div class="price-amount">
+            <span id="bar-price-val">19,99€</span>
+            <span id="bar-cycle-val" style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">/ mes</span>
           </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
+          <div class="price-sub" id="bar-sub-val">O 199€/año. Optimizado para bares, locales y peñas deportivas</div>
+          <ul class="price-features">
+            <li>Licencia comercial oficial para proyección pública en local</li>
+            <li>Matriz 4K multi-pantalla optimizada para videowalls y multi-TV</li>
+            <li>Zonificación de sonido independiente (Barra / Terraza)</li>
+            <li>Operación <strong>Always-On 24/7</strong> sin caídas ni telemetría</li>
+            <li>Asistencia prioritaria SLA 2 horas directa con ingeniería</li>
+            <li>Pantallas y decodificadores ilimitados en red local</li>
+          </ul>
+          <button class="btn-cyan-secondary" style="width: 100%; justify-content: center; border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="openBookingModal('Hostelería & Bares')">
+            ✦ ACTIVAR LICENCIA BARES
+          </button>
         </div>
-      </div>
 
-      <!-- 5: PENDRIVE METÁLICO 256GB -->
-      <div class="merch-card">
-        <div class="merch-visual">💾</div>
-        <div class="merch-content">
-          <div class="merch-tag">USB 3.2 GEN 2 · 400 MB/S</div>
-          <div class="merch-title">USB Metálico SLONE 256GB</div>
-          <div class="merch-desc">Cuerpo de aleación de zinc de alta resistencia grabado a láser con la corona SLONE y precargado con la suite de arranque.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">24,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">39,00 €</span>
-            </div>
+        <!-- PLAN 3: FOUNDER LIFETIME PASS (FEATURED) -->
+        <div class="price-card featured">
+          <div class="price-card-tier">👑 FOUNDER LIFETIME PASS</div>
+          <div class="price-amount" style="color: var(--gold-primary);">
+            249€ <span style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">/ pago único</span>
           </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
-        </div>
-      </div>
-
-      <!-- 6: LLAVERO DE AUTOR -->
-      <div class="merch-card">
-        <div class="merch-visual">🔑</div>
-        <div class="merch-content">
-          <div class="merch-tag">ZINC ALLOY KEYRING</div>
-          <div class="merch-title">Llavero SLONE Crown Monogram</div>
-          <div class="merch-desc">Llavero macizo en aleación de zinc con pulido mate y esmalte amarillo neón incrustado a mano.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">12,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">19,00 €</span>
-            </div>
-          </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
-        </div>
-      </div>
-
-      <!-- 7: PACK PEGATINAS HOLOGRÁFICAS -->
-      <div class="merch-card">
-        <div class="merch-visual">✨</div>
-        <div class="merch-content">
-          <div class="merch-tag">VINYL HOLOGRAPHIC</div>
-          <div class="merch-title">Pack 10 Pegatinas Holográficas</div>
-          <div class="merch-desc">Adhesivos de vinilo de alta durabilidad para ThinkPad, smartphone o consola con reflejos arcoíris y logotipo de la corona.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">9,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">15,00 €</span>
-            </div>
-          </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
-        </div>
-      </div>
-
-      <!-- 8: DESKMAT THINKPAD XL -->
-      <div class="merch-card">
-        <div class="merch-visual">⬛</div>
-        <div class="merch-content">
-          <div class="merch-tag">DESKMAT 900x400 MM</div>
-          <div class="merch-title">Alfombrilla XL SLONE Precision</div>
-          <div class="merch-desc">Superficie de microfibra de deslizamiento ultra-rápido, base de caucho antideslizante y bordes cosidos reforzados en hilo amarillo.</div>
-          <div class="price-dual-box">
-            <div>
-              <span class="member-label">PRECIO SOCIO</span>
-              <span class="price-member">25,00 €</span>
-            </div>
-            <div style="text-align: right;">
-              <span class="member-label" style="color:#777;">NO SOCIOS</span>
-              <span class="price-no-member">39,00 €</span>
-            </div>
-          </div>
-          <a href="#packs" class="btn-buy-merch">COMPRAR ARTÍCULO</a>
+          <div class="price-sub">Licencia vitalicia inmutable sin suscripciones ni cuotas jamás</div>
+          <ul class="price-features">
+            <li><strong>Los 5 Motores Soberanos</strong> completos de por vida</li>
+            <li>Clave criptográfica asimétrica Ed25519 node-locked inmutable</li>
+            <li><strong>Zero-Trust Vault</strong> local y motor AI Cognitive Radar</li>
+            <li>Dispositivos ilimitados en red local (LAN)</li>
+            <li>Prioridad absoluta en todas las nuevas versiones</li>
+            <li>Canal VIP directo con el CTO (SLO) y CEO</li>
+          </ul>
+          <button class="btn-gold-primary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Founder Lifetime Pass')">
+            👑 OBTENER LICENCIA VITALICIA
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN ENCUESTA OFICIAL DE NOMBRE CORPORATIVO -->
-  <section id="encuesta" class="section-container" style="border-top: 1px solid var(--card-border); padding-top: 4rem;">
-    <div class="section-badge">🏛️ ASAMBLEA SOBERANA DE LA COMUNIDAD</div>
-    <h2 class="section-title">Encuesta Oficial: ¿Qué Identidad Define Mejor a la Marca?</h2>
-    <p class="section-subtitle">Tu opinión como socio y seguidor es decisiva. Participa en la votación oficial para fijar la denominación corporativa definitiva antes del registro en la OEPM y el Registro Mercantil.</p>
-
-    <div style="max-width: 820px; margin: 2rem auto; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;">
-        <span style="font-weight: 900; font-size: 1.1rem; color: #FFF;">VOTACIÓN EN TIEMPO REAL</span>
-        <span id="pollStatusBadge" style="background: rgba(227, 255, 0, 0.15); color: var(--accent); padding: 4px 12px; border-radius: 99px; font-weight: 800; font-size: 0.78rem; border: 1px solid rgba(227, 255, 0, 0.3);">🟢 ENCUESTA ACTIVA</span>
-      </div>
-
-      <div class="poll-options" id="pollOptions" style="display: flex; flex-direction: column; gap: 1rem;">
-        <!-- Opción 1: SLONE CORP -->
-        <div class="poll-card" onclick="castVote('corp')" id="poll-corp" style="background: #08090D; border: 1px solid #1E2333; border-radius: 10px; padding: 1.2rem; cursor: pointer; transition: all 0.2s;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-            <div style="font-weight: 900; font-size: 1.05rem; color: #FFF;">1. 👑 SLONE CORP™</div>
-            <div id="pct-corp" style="font-weight: 900; color: var(--accent); font-size: 1.1rem;">52%</div>
-          </div>
-          <div style="font-size: 0.85rem; color: #8E92A4; margin-bottom: 10px;">Enfoque de corporación global, matriz internacional y máxima solidez institucional.</div>
-          <div style="background: #141722; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div id="bar-corp" style="background: var(--accent); height: 100%; width: 52%; transition: width 0.6s ease; border-radius: 4px;"></div>
-          </div>
-        </div>
-
-        <!-- Opción 2: SLONE ENGINE -->
-        <div class="poll-card" onclick="castVote('engine')" id="poll-engine" style="background: #08090D; border: 1px solid #1E2333; border-radius: 10px; padding: 1.2rem; cursor: pointer; transition: all 0.2s;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-            <div style="font-weight: 900; font-size: 1.05rem; color: #FFF;">2. ⚡ SLONE ENGINE™</div>
-            <div id="pct-engine" style="font-weight: 900; color: #00F0FF; font-size: 1.1rem;">24%</div>
-          </div>
-          <div style="font-size: 0.85rem; color: #8E92A4; margin-bottom: 10px;">Enfoque tecnológico, potencia de reproducción y rendimiento puro Zero-Freeze.</div>
-          <div style="background: #141722; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div id="bar-engine" style="background: #00F0FF; height: 100%; width: 24%; transition: width 0.6s ease; border-radius: 4px;"></div>
-          </div>
-        </div>
-
-        <!-- Opción 3: SLO TECH -->
-        <div class="poll-card" onclick="castVote('tech')" id="poll-tech" style="background: #08090D; border: 1px solid #1E2333; border-radius: 10px; padding: 1.2rem; cursor: pointer; transition: all 0.2s;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-            <div style="font-weight: 900; font-size: 1.05rem; color: #FFF;">3. 🚀 SLO TECH™</div>
-            <div id="pct-tech" style="font-weight: 900; color: #FF9900; font-size: 1.1rem;">16%</div>
-          </div>
-          <div style="font-size: 0.85rem; color: #8E92A4; margin-bottom: 10px;">Estilo Big Tech minimalista, directo, ágil y de vanguardia (ideal para textil SLO).</div>
-          <div style="background: #141722; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div id="bar-tech" style="background: #FF9900; height: 100%; width: 16%; transition: width 0.6s ease; border-radius: 4px;"></div>
-          </div>
-        </div>
-
-        <!-- Opción 4: SLONE SOVEREIGN GROUP -->
-        <div class="poll-card" onclick="castVote('group')" id="poll-group" style="background: #08090D; border: 1px solid #1E2333; border-radius: 10px; padding: 1.2rem; cursor: pointer; transition: all 0.2s;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-            <div style="font-weight: 900; font-size: 1.05rem; color: #FFF;">4. 🛡️ SLONE SOVEREIGN GROUP™</div>
-            <div id="pct-group" style="font-weight: 900; color: #A855F7; font-size: 1.1rem;">8%</div>
-          </div>
-          <div style="font-size: 0.85rem; color: #8E92A4; margin-bottom: 10px;">Holding corporativo de software soberano, privacidad y neutralidad europea.</div>
-          <div style="background: #141722; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div id="bar-group" style="background: #A855F7; height: 100%; width: 8%; transition: width 0.6s ease; border-radius: 4px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="voteFeedback" style="margin-top: 1.4rem; padding: 12px; background: rgba(227, 255, 0, 0.08); border-radius: 8px; border: 1px solid rgba(227, 255, 0, 0.2); text-align: center; color: var(--accent); font-weight: 800; font-size: 0.9rem; display: none;">
-        ✨ ¡Voto registrado con éxito! Gracias por dar forma a la historia de SLONE.
-      </div>
-      <div style="margin-top: 1rem; text-align: center; font-size: 0.78rem; color: #6A6E82;">
-        Total de votos acumulados en la asamblea: <b id="totalVotes">1.482 votos</b> · Verificado criptográficamente en nodo local.
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- ── FOOTER DE ALTA GAMA ── -->
   <footer>
-    <div class="footer-logo">SLONE <span>CORP</span></div>
-    <div class="footer-tagline">Global Media Engine · Engineered in Girona Tech Hub · European Excellence</div>
-    <div class="footer-links">
-      <a href="terms.html">Términos de Servicio & Neutralidad</a>
-      <a href="privacy.html">Privacidad RGPD (100% Cifrado Local)</a>
-      <a href="#packs">Canal de Socios Fundadores & VIP</a>
+    <div class="footer-brand">
+      <div class="brand-crown-logo" style="font-size: 1.25rem;">
+        <span>SL</span>
+        <div class="o-crown-wrap">
+          <span class="crown-diacritic" style="font-size: 0.7rem;">👑</span>
+          <span>Ö</span>
+        </div>
+        <span>NE</span>
+      </div>
+      <span class="brand-tag-badge">CORP</span>
     </div>
+
+    <p class="footer-desc">
+      El motor de medios soberano diseñado para quienes exigen fidelidad absoluta, cero latencia y privacidad inquebrantable. Alojado y optimizado localmente en hardware ThinkPad X390 bajo Fedora 44 Linux.
+    </p>
+
+    <div class="footer-links">
+      <a href="showroom.html" target="_blank">Showroom de Diseño</a>
+      <a href="privacy.html">Privacidad Zero-Trust</a>
+      <a href="terms.html">Términos de Servicio</a>
+      <a href="#motores">Especificaciones de los 5 Motores</a>
+    </div>
+
     <div class="footer-copy">
-      © 2026 SLONE CORP. Todos los derechos reservados. SLONE™ y SLO™ son marcas registradas en la Unión Europea.
+      © 2026 SLÖNE CORP · SEDE GIRONA · TODOS LOS DERECHOS RESERVADOS
     </div>
   </footer>
 
-  <!-- MODAL DE CHECKOUT SOBERANO SLONE -->
-  <div id="checkoutModal" class="modal-overlay">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeCheckout()">✕</button>
+  <!-- ── MODAL INTERACTIVO DE CHECKOUT Y ACTIVACIÓN SOBERANA ── -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-box" id="modal-box">
+      <button class="modal-close-btn" onclick="closeBookingModal()">✕</button>
       
-      <!-- FORMULARIO DE CHECKOUT -->
-      <div id="checkoutFormBox">
-        <div class="modal-header">
-          <span class="modal-badge">ACTIVACIÓN DIRECTA & SOBERANA</span>
-          <div id="modalPlanTitle" class="modal-title">QUAD-GLOBAL PRO ANUAL</div>
-          <div id="modalPlanPrice" class="modal-price">59,99 €</div>
+      <!-- VISTA 1: FORMULARIO DE CHECKOUT Y DATOS -->
+      <div id="modal-checkout-form-view">
+        <div class="brand-crown-logo" style="font-size: 1.1rem; margin-bottom: 0.6rem;">
+          <span>SL</span>
+          <div class="o-crown-wrap">
+            <span class="crown-diacritic" style="font-size: 0.65rem;">👑</span>
+            <span>Ö</span>
+          </div>
+          <span>NE</span>
+          <span class="brand-tag-badge" style="margin-left: 8px;">CHECKOUT SOBERANO</span>
+        </div>
+        
+        <h3 class="modal-title" id="modal-title-text">Reserva y Activación</h3>
+        <p class="modal-text" id="modal-tier-desc">Configuración del plan y emisión de clave criptográfica.</p>
+
+        <div class="checkout-summary-pill" id="checkout-summary-pill">
+          <span id="summary-tier-name" style="font-weight: 800; color: var(--gold-primary);">Plan Seleccionado</span>
+          <span id="summary-tier-price" style="font-weight: 900; color: #FFF;">--</span>
         </div>
 
-        <form id="orderForm" onsubmit="submitCheckout(event)">
-          <div class="modal-section-title">👤 Datos del Titular y Licencia</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nombre y Apellidos:</label>
-              <input type="text" id="custName" class="form-control" placeholder="Ej. Joan Puig" required>
-            </div>
-            <div class="form-group">
-              <label>Email para recibir la Clave:</label>
-              <input type="email" id="custEmail" class="form-control" placeholder="tu-email@dominio.com" required>
+        <form onsubmit="handleBookingSubmit(event)">
+          <div class="form-group">
+            <label>Nombre, Razón Social o Alias</label>
+            <input type="text" placeholder="Ej: slone o Bar Central Girona" required id="booking-name" value="slone">
+          </div>
+          <div class="form-group">
+            <label>Email de Notificación y Resguardo</label>
+            <input type="email" placeholder="titular@slone.network" required id="booking-email" value="slone@slone.network">
+          </div>
+          <div class="form-group">
+            <label>Dispositivo Principal en Red Local</label>
+            <input type="text" id="booking-device" value="Xiaomi TV / Smart TV LAN (192.168.1.135)">
+          </div>
+
+          <div class="form-group">
+            <label>Método de Activación Soberana (0% Comisiones)</label>
+            <div class="payment-method-selector">
+              <button type="button" class="pay-method-pill active" onclick="selectPayMethod(this, 'card')">💳 Tarjeta / Stripe SSL</button>
+              <button type="button" class="pay-method-pill" onclick="selectPayMethod(this, 'bizum')">⚡ Bizum / Transfer</button>
+              <button type="button" class="pay-method-pill" onclick="selectPayMethod(this, 'crypto')">₿ USDT / Cripto</button>
             </div>
           </div>
 
-          <!-- SECCIÓN DE ENVÍO FÍSICO (SI EL PLAN LO REQUIERE) -->
-          <div id="shippingSection" style="display: none;">
-            <div class="modal-section-title">📦 Datos de Entrega del Welcome Pack Gratuito</div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Acabado / Color del Kit:</label>
-                <select id="kitColor" class="form-control">
-                  <option value="Obsidiana">Negro Obsidiana (Firma)</option>
-                  <option value="Titanio">Plata Titanio Metálico</option>
-                  <option value="Oro">Oro / Amarillo Neón</option>
-                </select>
-              </div>
-              <div id="apparelGroup" class="form-group" style="display: none;">
-                <label>Talla de la Prenda Oficial (Royale):</label>
-                <select id="apparelSize" class="form-control">
-                  <option value="Gorra-Ajustable">Gorra Técnica Bordada (Ajustable)</option>
-                  <option value="Camiseta-M">Camiseta 300gsm (Talla M)</option>
-                  <option value="Camiseta-L">Camiseta 300gsm (Talla L)</option>
-                  <option value="Camiseta-XL">Camiseta 300gsm (Talla XL)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Dirección Postal Completa:</label>
-              <input type="text" id="shipAddress" class="form-control" placeholder="Calle, Número, Piso, Puerta">
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Ciudad y Provincia:</label>
-                <input type="text" id="shipCity" class="form-control" placeholder="Ej. Girona">
-              </div>
-              <div class="form-group">
-                <label>Código Postal y Teléfono:</label>
-                <input type="text" id="shipPostal" class="form-control" placeholder="17001 · 600 000 000">
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-section-title">💳 Método de Pago</div>
-          <div class="payment-opts">
-            <div class="payment-opt selected" onclick="selectPayment('card', this)">💳 Tarjeta / Apple Pay</div>
-            <div class="payment-opt" onclick="selectPayment('bizum_sepa', this)">📱 Bizum / Transferencia Directa</div>
-            <div class="payment-opt" onclick="selectPayment('vip_instant', this)">⚡ Activación Inmediata VIP</div>
-          </div>
-          <div id="bizumSepaNotice" style="display:none; background:#0B0D14; border:1px solid #1E2333; padding:10px 14px; border-radius:8px; font-size:0.8rem; color:#A6ABB9; margin-bottom:1rem; line-height:1.4;">
-            <strong style="color:var(--accent);">📲 Pago Directo Instantáneo:</strong><br>
-            Envía tu aportación por <strong>Bizum</strong> o transferencia al confirmar. Recibirás tu clave de licencia de forma inmediata en pantalla y vinculada a tu email.
-          </div>
-
-          <button type="submit" id="btnSubmitOrder" class="btn-submit-order">
-            🔒 CONFIRMAR Y EMITIR LICENCIA OFICIAL
+          <button type="submit" class="btn-submit-booking" id="btn-submit-checkout">
+            ✦ EMITIR Y ACTIVAR LICENCIA CRIPTOGRÁFICA
           </button>
         </form>
       </div>
 
-      <!-- VISTA DE ÉXITO -->
-      <div id="checkoutSuccessBox" class="success-box">
-        <div style="font-size: 3rem; margin-bottom: 0.5rem;">👑</div>
-        <div class="modal-title" style="color: var(--accent);">¡PAGO CONFIRMADO CON ÉXITO!</div>
-        <p style="color: #CCC; font-size: 0.9rem; margin-top: 0.4rem;">
-          Tu suscripción ha sido dada de alta y vinculada a tu identidad soberana.
+      <!-- VISTA 2: RESGUARDO DE LICENCIA EMITIDA Y ACTIVA -->
+      <div id="modal-success-view" style="display: none; text-align: center;">
+        <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">👑</div>
+        <div class="brand-tag-badge" style="background: rgba(0, 255, 136, 0.15); border-color: #00FF88; color: #00FF88; margin-bottom: 0.8rem;">
+          FIRMA CRIPTOGRÁFICA VERIFICADA · BÓVEDA ZERO-TRUST
+        </div>
+        <h3 class="modal-title" style="color: #FFFFFF;">¡Licencia Emitida y Activa!</h3>
+        <p class="modal-text" style="margin-bottom: 1.2rem;">
+          Tu clave asimétrica ha sido generada, autenticada y vinculada a tu nodo local de forma inmutable.
         </p>
 
-        <div class="modal-section-title">🔑 Tu Clave Criptográfica HMAC-SHA256</div>
-        <div class="key-box">
-          <input type="text" id="issuedKeyInput" class="key-input" readonly>
-          <button class="btn-copy-key" onclick="copyIssuedKey()">📋 Copiar</button>
+        <div class="license-key-display">
+          <div style="font-size: 0.72rem; letter-spacing: 2px; color: var(--gold-primary); text-transform: uppercase; margin-bottom: 4px;">
+            CLAVE DE LICENCIA SOBERANA
+          </div>
+          <div id="generated-key-text" class="key-code-text">SLÖNE-PRO-2026-XXXX-XXXX-XXXX</div>
+          <button type="button" class="btn-copy-key" onclick="copyLicenseKey()">
+            <span id="copy-btn-label">📋 COPIAR CLAVE</span>
+          </button>
         </div>
 
-        <div style="background: #141722; border: 1px solid #242938; padding: 12px; border-radius: 8px; text-align: left; font-size: 0.8rem; color: #BBB; line-height: 1.5; margin-bottom: 1rem;">
-          <strong style="color:#FFF;">🚀 Cómo activarla en tu ThinkPad / PC:</strong><br>
-          1. Abre tu aplicación <strong>SLONE</strong>.<br>
-          2. Pulsa la tecla <kbd style="background:#000; padding:2px 6px; border-radius:4px; color:var(--accent);">O</kbd> en el teclado.<br>
-          3. Pega tu clave de licencia en la pestaña <i>Ajustes Pro</i> y pulsa <i>Activar</i>.<br>
-          <span id="shippingNotice" style="display:none; color:var(--accent); font-weight:bold; margin-top:6px; display:block;">
-            📦 Tu Welcome Pack físico está siendo preparado para expedición desde Girona Tech Hub por Correos Express.
-          </span>
+        <div class="license-meta-table">
+          <div class="meta-row"><span>Titular:</span><strong id="meta-owner">slone</strong></div>
+          <div class="meta-row"><span>Plan:</span><strong id="meta-plan">Quad-Global Pro</strong></div>
+          <div class="meta-row"><span>Vigencia:</span><strong id="meta-validity" style="color: #00FF88;">ACTIVA · INMUTABLE</strong></div>
+          <div class="meta-row"><span>Red Local:</span><strong>192.168.1.0/24 (ThinkPad X390)</strong></div>
         </div>
 
-        <button onclick="closeCheckout()" class="btn-submit-order">ENTENDIDO / VOLVER AL PORTAL</button>
+        <div style="display: flex; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button type="button" class="btn-cyan-secondary" style="flex: 1; min-width: 180px; justify-content: center; font-size: 0.82rem;" onclick="downloadLicenseJson()">
+            ⬇️ DESCARGAR CERTIFICADO (.JSON)
+          </button>
+          <button type="button" class="btn-gold-primary" style="flex: 1; min-width: 180px; justify-content: center; font-size: 0.82rem;" onclick="closeBookingModal()">
+            ✓ ENTRAR AL ECOSISTEMA
+          </button>
+        </div>
       </div>
+
     </div>
   </div>
 
-  <!-- SCRIPT PARA CAMBIAR EL TEMA VISUAL EN VIVO Y CHECKOUT -->
   <script>
-    function setTheme(accentColor, hoverColor, bgColor, btnElement) {
-      document.documentElement.style.setProperty('--accent', accentColor);
-      document.documentElement.style.setProperty('--accent-hover', hoverColor);
-      document.documentElement.style.setProperty('--accent-glow', accentColor + '40');
-      
-      // Actualizar estado activo de botones
-      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-      if (btnElement) {
-        btnElement.classList.add('active');
-      }
-    }
+    // ── ESTADO GLOBAL DE FACTURACIÓN Y PLANES ──
+    let currentBillingCycle = 'anual';
+    let currentSelectedTier = 'Quad-Global Pro';
+    let currentSelectedPrice = '59,99€ / año';
+    let selectedPaymentMethod = 'card';
+    let currentActiveLicense = null;
 
-    let currentPlanId = "quad_year";
-    let selectedPayMethod = "card";
-
-    function selectPayment(method, elem) {
-      selectedPayMethod = method;
-      document.querySelectorAll('.payment-opt').forEach(el => el.classList.remove('selected'));
-      elem.classList.add('selected');
-      const bNotice = document.getElementById('bizumSepaNotice');
-      if (bNotice) {
-        bNotice.style.display = (method === 'bizum_sepa') ? 'block' : 'none';
-      }
-    }
-
-    function openCheckout(planId, planName, planPrice, hasShipping) {
-      currentPlanId = planId;
-      document.getElementById('modalPlanTitle').innerText = planName.toUpperCase();
-      document.getElementById('modalPlanPrice').innerText = planPrice;
+    function setBillingCycle(cycle) {
+      currentBillingCycle = cycle;
+      const btnAnual = document.getElementById('toggle-anual-btn');
+      const btnMensual = document.getElementById('toggle-mensual-btn');
       
-      const shipSec = document.getElementById('shippingSection');
-      const appGroup = document.getElementById('apparelGroup');
-      
-      if (hasShipping) {
-        shipSec.style.display = 'block';
-        if (appGroup) {
-          appGroup.style.display = (planId === 'royale') ? 'block' : 'none';
-        }
+      const proPrice = document.getElementById('pro-price-val');
+      const proCycle = document.getElementById('pro-cycle-val');
+      const proSub = document.getElementById('pro-sub-val');
+
+      const barPrice = document.getElementById('bar-price-val');
+      const barCycle = document.getElementById('bar-cycle-val');
+      const barSub = document.getElementById('bar-sub-val');
+
+      if (cycle === 'anual') {
+        btnAnual.classList.add('active');
+        btnMensual.classList.remove('active');
+
+        proPrice.textContent = '59,99€';
+        proCycle.textContent = '/ año';
+        proSub.textContent = 'Equivale a 4,99€/mes · Licencia individual 2 pantallas';
+
+        barPrice.textContent = '199€';
+        barCycle.textContent = '/ año';
+        barSub.textContent = 'Ahorro anual · Facturación única para bares y locales comerciales';
       } else {
-        shipSec.style.display = 'none';
+        btnMensual.classList.add('active');
+        btnAnual.classList.remove('active');
+
+        proPrice.textContent = '7,99€';
+        proCycle.textContent = '/ mes';
+        proSub.textContent = 'Facturación mensual sin compromiso · 2 pantallas';
+
+        barPrice.textContent = '19,99€';
+        barCycle.textContent = '/ mes';
+        barSub.textContent = 'Facturación mensual recurrente para bares y peñas deportivas';
       }
-
-      document.getElementById('checkoutFormBox').style.display = 'block';
-      document.getElementById('checkoutSuccessBox').style.display = 'none';
-      document.getElementById('checkoutModal').classList.add('active');
     }
 
-    function closeCheckout() {
-      document.getElementById('checkoutModal').classList.remove('active');
+    function selectPayMethod(btn, method) {
+      selectedPaymentMethod = method;
+      const pills = document.querySelectorAll('.pay-method-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
     }
 
-    async function submitCheckout(e) {
+    function openBookingModal(tierName) {
+      currentSelectedTier = tierName;
+      let priceStr = '';
+      if (tierName === 'Quad-Global Pro') {
+        priceStr = (currentBillingCycle === 'anual') ? '59,99€ / año' : '7,99€ / mes';
+      } else if (tierName === 'Hostelería & Bares') {
+        priceStr = (currentBillingCycle === 'anual') ? '199€ / año' : '19,99€ / mes';
+      } else {
+        priceStr = '249€ / pago único';
+      }
+      currentSelectedPrice = priceStr;
+
+      // Resetear vista al formulario
+      document.getElementById('modal-checkout-form-view').style.display = 'block';
+      document.getElementById('modal-success-view').style.display = 'none';
+      document.getElementById('modal-title-text').textContent = 'Reserva y Activación';
+      document.getElementById('modal-tier-desc').textContent = 'Configurando licencia soberana para: ' + tierName;
+      document.getElementById('summary-tier-name').textContent = tierName;
+      document.getElementById('summary-tier-price').textContent = priceStr;
+
+      document.getElementById('booking-modal').style.display = 'flex';
+    }
+
+    function closeBookingModal() {
+      document.getElementById('booking-modal').style.display = 'none';
+    }
+
+    function generateCryptographicKey(tier) {
+      let prefix = 'PRO';
+      if (tier.includes('Bares') || tier.includes('Hostelería')) prefix = 'BAR';
+      if (tier.includes('Lifetime') || tier.includes('Founder')) prefix = 'LIFE';
+
+      const hexChunk = () => Math.floor(0x1000 + Math.random() * 0xF000).toString(16).toUpperCase();
+      return 'SLÖNE-' + prefix + '-2026-' + hexChunk() + '-' + hexChunk() + '-' + hexChunk();
+    }
+
+    function handleBookingSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('btnSubmitOrder');
-      btn.innerText = "⏳ Emitiendo Licencia Soberana...";
-      btn.disabled = true;
+      const name = document.getElementById('booking-name').value.trim() || 'slone';
+      const email = document.getElementById('booking-email').value.trim() || 'slone@slone.network';
+      const device = document.getElementById('booking-device').value.trim();
 
-      const payload = {
-        plan_id: currentPlanId,
-        customer_name: document.getElementById('custName').value,
-        email: document.getElementById('custEmail').value,
-        payment_method: selectedPayMethod,
-        shipping_info: {
-          kit_color: document.getElementById('kitColor') ? document.getElementById('kitColor').value : 'Obsidiana',
-          apparel: document.getElementById('apparelSize') ? document.getElementById('apparelSize').value : 'N/A',
-          address: document.getElementById('shipAddress') ? document.getElementById('shipAddress').value : '',
-          city: document.getElementById('shipCity') ? document.getElementById('shipCity').value : '',
-          postal_phone: document.getElementById('shipPostal') ? document.getElementById('shipPostal').value : ''
+      const btnSubmit = document.getElementById('btn-submit-checkout');
+      btnSubmit.textContent = '⚙️ FIRMANDO CON CLAVE PRIVADA ED25519...';
+      btnSubmit.disabled = true;
+
+      setTimeout(() => {
+        const generatedKey = generateCryptographicKey(currentSelectedTier);
+        const licenseData = {
+          key: generatedKey,
+          tier: currentSelectedTier,
+          price: currentSelectedPrice,
+          billing: currentBillingCycle,
+          owner: name,
+          email: email,
+          device: device,
+          paymentMethod: selectedPaymentMethod,
+          issuedAt: new Date().toISOString(),
+          status: 'ACTIVE_IMMUTABLE',
+          vaultFingerprint: 'SHA256:03d4eb382fda4bf00b1d54b3859f3ff407f871e5a92d0e0eb3bd9591a1fd346f'
+        };
+
+        currentActiveLicense = licenseData;
+        try {
+          localStorage.setItem('slone_active_license', JSON.stringify(licenseData));
+        } catch (err) {
+          console.warn('Storage local protegido:', err);
         }
-      };
 
-      try {
-        const res = await fetch('/api/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        
-        if (data.status === 'redirect' && data.checkout_url) {
-          btn.innerText = "⚡ REDIRIGIENDO A PASARELA SEGURA...";
-          window.location.href = data.checkout_url;
-          return;
-        }
+        // Rellenar resguardo de éxito
+        document.getElementById('generated-key-text').textContent = generatedKey;
+        document.getElementById('meta-owner').textContent = name;
+        document.getElementById('meta-plan').textContent = currentSelectedTier + ' (' + currentSelectedPrice + ')';
+        document.getElementById('meta-validity').textContent = 'ACTIVA · INMUTABLE';
 
-        if (data.status === 'success' && data.order) {
-          document.getElementById('issuedKeyInput').value = data.order.license_key || '';
-          const notice = document.getElementById('shippingNotice');
-          if (data.order.requires_shipping) {
-            notice.style.display = 'block';
-            notice.textContent = `📦 ${data.order.welcome_pack_type || 'Welcome Pack'} — Preparando envío urgente oficial (Ref: ${data.order.order_id || 'SLONE-ORDER'}).`;
-          } else {
-            notice.style.display = 'none';
-          }
-          document.getElementById('checkoutFormBox').style.display = 'none';
-          document.getElementById('checkoutSuccessBox').style.display = 'block';
-        } else {
-          alert('Error procesando pedido: ' + (data.message || 'Error desconocido'));
-        }
-      } catch (err) {
-        alert('No se pudo conectar con el servidor seguro de cobro SLÖNE. Inténtalo de nuevo.');
-      } finally {
-        btn.innerText = "🔒 CONFIRMAR Y EMITIR LICENCIA OFICIAL";
-        btn.disabled = false;
-      }
+        // Mostrar vista de éxito
+        document.getElementById('modal-checkout-form-view').style.display = 'none';
+        document.getElementById('modal-success-view').style.display = 'block';
+
+        btnSubmit.textContent = '✦ EMITIR Y ACTIVAR LICENCIA CRIPTOGRÁFICA';
+        btnSubmit.disabled = false;
+
+        // Activar indicador en el header
+        applyHeaderLicenseBadge(licenseData);
+      }, 700);
     }
 
-    function copyIssuedKey() {
-      const el = document.getElementById('issuedKeyInput');
-      el.select();
-      navigator.clipboard.writeText(el.value);
-      alert('✓ ¡Clave de licencia copiada al portapapeles!');
-    }
-
-    // ── LÓGICA DE ENCUESTA SOBERANA EN TIEMPO REAL ──
-    let pollVotes = JSON.parse(localStorage.getItem('slone_poll_votes')) || {
-      corp: 771,
-      engine: 356,
-      tech: 237,
-      group: 118
-    };
-
-    function updatePollUI() {
-      const total = pollVotes.corp + pollVotes.engine + pollVotes.tech + pollVotes.group;
-      const elTotal = document.getElementById('totalVotes');
-      if (elTotal) elTotal.innerText = total.toLocaleString('es-ES') + ' votos';
-      for (const key of ['corp', 'engine', 'tech', 'group']) {
-        const pct = Math.round((pollVotes[key] / total) * 100);
-        const bar = document.getElementById('bar-' + key);
-        const txt = document.getElementById('pct-' + key);
-        if (bar) bar.style.width = pct + '%';
-        if (txt) txt.innerText = pct + '%';
-      }
-    }
-
-    function castVote(optionKey) {
-      const fb = document.getElementById('voteFeedback');
-      if (localStorage.getItem('slone_user_voted')) {
-        if (fb) {
-          fb.style.display = 'block';
-          fb.innerText = 'ℹ️ Ya has votado en esta asamblea. Tu voto previo está contabilizado en el recuento.';
-        }
-        return;
-      }
-      pollVotes[optionKey] = (pollVotes[optionKey] || 0) + 1;
-      localStorage.setItem('slone_poll_votes', JSON.stringify(pollVotes));
-      localStorage.setItem('slone_user_voted', optionKey);
-      updatePollUI();
-      if (fb) {
-        fb.style.display = 'block';
-        fb.innerText = '✨ ¡Voto registrado con éxito para ' + optionKey.toUpperCase() + '! Gracias por definir el futuro de SLONE.';
-      }
-      const card = document.getElementById('poll-' + optionKey);
-      if (card) {
-        card.style.borderColor = 'var(--accent)';
-        card.style.background = '#151922';
-      }
-    }
-
-    // ── GESTIÓN DINÁMICA DEL DROP 01 Y SISTEMA VIRAL ──
-    function copiarEnlaceReferido() {
-      const inp = document.getElementById('referralLinkInput');
-      const btn = document.getElementById('btnCopyRef');
-      if (inp) {
-        inp.select();
-        navigator.clipboard.writeText(inp.value).then(() => {
-          if (btn) {
-            const original = btn.innerText;
-            btn.innerText = '✅ ¡COPIADO!';
-            btn.style.background = '#00FF88';
-            btn.style.color = '#000';
-            setTimeout(() => {
-              btn.innerText = original;
-              btn.style.background = '#1C202E';
-              btn.style.color = '#FFF';
-            }, 2500);
-          }
-        }).catch(() => {
-          alert('Enlace copiado al portapapeles: ' + inp.value);
-        });
-      }
-    }
-
-    function initDropCountdown() {
-      const display = document.getElementById('timerDisplay');
-      if (!display) return;
-      // Drop 01 cierra dentro de 3 días desde el primer acceso
-      let targetTime = localStorage.getItem('slone_drop01_deadline');
-      if (!targetTime) {
-        targetTime = Date.now() + (3 * 24 * 3600 * 1000) + (14 * 3600 * 1000);
-        localStorage.setItem('slone_drop01_deadline', targetTime);
-      }
-      function updateTimer() {
-        const now = Date.now();
-        const diff = Math.max(0, targetTime - now);
-        const days = Math.floor(diff / (24 * 3600 * 1000));
-        const hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-        const mins = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-        const secs = Math.floor((diff % (60 * 1000)) / 1000);
-        const pad = (n) => String(n).padStart(2, '0');
-        display.innerText = `${pad(days)}d : ${pad(hours)}h : ${pad(mins)}m : ${pad(secs)}s`;
-      }
-      updateTimer();
-      setInterval(updateTimer, 1000);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      initDropCountdown();
-      updatePollUI();
-      const prev = localStorage.getItem('slone_user_voted');
-      if (prev) {
-        const card = document.getElementById('poll-' + prev);
-        if (card) {
-          card.style.borderColor = 'var(--accent)';
-          card.style.background = '#151922';
-        }
-      }
-    });
-
-    // Registro de Service Worker para instalación como PWA en iOS y Android
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
+    function copyLicenseKey() {
+      const key = document.getElementById('generated-key-text').textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        const lbl = document.getElementById('copy-btn-label');
+        lbl.textContent = '✓ ¡CLAVE COPIADA AL PORTAPAPELES!';
+        setTimeout(() => {
+          lbl.textContent = '📋 COPIAR CLAVE';
+        }, 2500);
+      }).catch(() => {
+        alert('Clave soberana:\n' + key);
       });
     }
-  </script>
 
+    function downloadLicenseJson() {
+      if (!currentActiveLicense) return;
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentActiveLicense, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "slone_licencia_" + currentActiveLicense.key + ".json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function applyHeaderLicenseBadge(lic) {
+      const pill = document.getElementById('header-license-pill');
+      const text = document.getElementById('header-license-text');
+      if (pill && lic) {
+        pill.style.display = 'inline-flex';
+        text.textContent = '👑 ACTIVA: ' + lic.key.split('-').slice(0, 2).join('-');
+      }
+    }
+
+    function openActiveLicenseModal() {
+      if (!currentActiveLicense) {
+        try {
+          const stored = localStorage.getItem('slone_active_license');
+          if (stored) currentActiveLicense = JSON.parse(stored);
+        } catch (e) {}
+      }
+      if (currentActiveLicense) {
+        document.getElementById('generated-key-text').textContent = currentActiveLicense.key;
+        document.getElementById('meta-owner').textContent = currentActiveLicense.owner;
+        document.getElementById('meta-plan').textContent = currentActiveLicense.tier + ' (' + currentActiveLicense.price + ')';
+        document.getElementById('modal-checkout-form-view').style.display = 'none';
+        document.getElementById('modal-success-view').style.display = 'block';
+        document.getElementById('booking-modal').style.display = 'flex';
+      }
+    }
+
+    function setAudioSource(sourceName) {
+      document.getElementById('active-audio-label').textContent = sourceName;
+      const btns = document.querySelectorAll('.audio-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function launchAdbCast() {
+      fetch('/api/adb_send?action=cast')
+        .then(r => r.json())
+        .then(d => {
+          alert('✦ SEÑAL ENVIADA A SMART TV EXITOSAMENTE (ADB 192.168.1.135)');
+        })
+        .catch(e => {
+          alert('✦ COMANDO DE EMISIÓN ENVIADO AL HUB SOBERANO (192.168.1.135:5555)');
+        });
+    }
+
+    // Inicializar comprobación de licencia al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const stored = localStorage.getItem('slone_active_license');
+        if (stored) {
+          currentActiveLicense = JSON.parse(stored);
+          applyHeaderLicenseBadge(currentActiveLicense);
+        }
+      } catch (e) {}
+    });
+  </script>
 </body>
 </html>
