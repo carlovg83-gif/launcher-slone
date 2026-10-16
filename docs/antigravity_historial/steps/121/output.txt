@@ -1,6 +1,0 @@
-
-The command exited with code 0.
-Output:
--rw-r--r--. 1 slone slone 11M sep 21 19:34 '/home/slone/Descargas/TV-76173252_playlist (1).m3u'
--rw-r--r--. 1 slone slone 11M sep 12 14:35  /home/slone/Descargas/TV-76173252_playlist.m3u
-

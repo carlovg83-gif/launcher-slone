@@ -1,7 +1,0 @@
-Title: Live Content
-
-OG Description: Fetched live
-
-The full content of the article at https://share.gemini.google/PYcc4Z63h3zP has been saved to: /home/slone/.gemini/antigravity/brain/5bba4fad-3982-4afd-8d3d-152fe2ea644a/.system_generated/steps/3/content.md
-
-You can use the view_file tool to read specific sections if needed.

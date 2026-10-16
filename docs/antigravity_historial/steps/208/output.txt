@@ -1,5 +1,0 @@
-Using prompt: World-class minimalist brand logo for 'SYNQ' media streaming app, design by Dieter Rams and Nike design lab, ultra-modern bold glowing fluorescent yellow (#E3FF00) monogram mark on pure deep pitch black (#000000) background, aesthetic of high-end consumer tech like Sonos, Teenage Engineering and Red Bull Racing, aerodynamic letter S forming an infinite live broadcast signal wave, sleek, iconic, premium, vector art, 8k
-
-Generated image is saved at /home/slone/.gemini/antigravity/brain/5bba4fad-3982-4afd-8d3d-152fe2ea644a/synq_brand_logo_1790359185352.jpg.
-
- Do not output the path of this image to show to the user since the user can already see it. However, you can embed this image in artifacts for the USER's review.

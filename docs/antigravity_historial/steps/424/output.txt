@@ -1,2 +1,0 @@
-{"File":"/home/slone/.gemini/antigravity/scratch/slocast/slocast.py","LineNumber":44,"LineContent":"STYLE_SLONE = \"\"\""}
-{"File":"/home/slone/.gemini/antigravity/scratch/slocast/slocast.py","LineNumber":864,"LineContent":"        self.setStyleSheet(STYLE_SLONE)"}

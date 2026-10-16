@@ -1,7 +1,0 @@
-
-The command exited with code 0.
-Output:
-MPV IPC Response: {'data': 'mpv v0.41.0', 'request_id': 0, 'error': 'success'}
-Exiting... (Quit)
-[ipc_0] Write error (Broken pipe)
-

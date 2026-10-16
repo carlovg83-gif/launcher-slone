@@ -1,5 +1,0 @@
-
-The command exited with code 0.
-Output:
-Found by name: [Chromecast('unknown', port=8009, cast_info=CastInfo(services={MDNSServiceInfo(name='MiTV-AFKR0-f4121f62fb5c593a5627e208b3a7ab7c._googlecast._tcp.local.')}, uuid=UUID('f4121f62-fb5c-593a-5627-e208b3a7ab7c'), model_name='MiTV-AFKR0', friendly_name='SLÖNE', host='192.168.1.135', port=8009, cast_type='cast', manufacturer='Xiaomi'))]
-

@@ -1,6 +1,0 @@
-
-The command exited with code 0.
-Output:
-drwx------. 1 slone slone 298 sep 25 21:23 /home/slone/.gemini/antigravity/scratch/slocast
--rwx------. 1 slone slone  96 sep 25 20:42 /home/slone/.local/bin/slone
-

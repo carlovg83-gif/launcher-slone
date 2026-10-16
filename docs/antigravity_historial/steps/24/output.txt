@@ -1,8 +1,0 @@
-
-Encountered error in step execution: context canceled
-Output:
-Coloque su dedo en el lector de huellas dactilares
-Se ha agotado el tiempo de la verificación
-Coloque su dedo en el lector de huellas dactilares
-Se ha agotado el tiempo de la verificación
-[sudo] contraseña para slone: 

@@ -1,7 +1,0 @@
-
-The command exited with code 1.
-Output:
-active
-sudo: a password is required
-NO_SUDO_FIREWALL
-

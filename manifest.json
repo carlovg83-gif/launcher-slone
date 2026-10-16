@@ -1,0 +1,19 @@
+{
+  "name": "SLÖNE Sovereign Media Suite",
+  "short_name": "SLÖNE",
+  "description": "Sistema de Entretenimiento Privado Soberano y Streaming sin Anuncios para Android TV y Salón",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#05070B",
+  "theme_color": "#05070B",
+  "icons": [
+    {
+      "src": "assets/slone_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["entertainment", "video"]
+}

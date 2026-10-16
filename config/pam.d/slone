@@ -1,6 +1,0 @@
-#%PAM-1.0
-# SLONE — verificación de contraseña de respaldo.
-# Deliberadamente NO incluye pam_fprintd: solo verifica la contraseña del
-# sistema con pam_unix, sin invocar el sensor de huellas.
-auth        required      pam_unix.so nullok try_first_pass
-account     required      pam_unix.so

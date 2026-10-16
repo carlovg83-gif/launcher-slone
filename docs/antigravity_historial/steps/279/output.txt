@@ -1,9 +1,0 @@
-
-The command exited with code 0.
-Output:
-Total grupos únicos: 301
-Grupos España: 36 ['ES - TDT', 'ES - REPLAY F1 HD', 'ES - LIGA ACB', 'ES - Apple TV+ Series', 'ES - NFL']
-Grupos UK: 36 ['UK - Sky Sports+ (ONLY EVENTS)', 'UK - MUSIC', 'UK - SKY SPORTS', 'UK - DAZN', 'UK - EPL REPLAY']
-Grupos USA: 15 ['US - Factual', 'US - Movies', 'US - Sports', 'US - Spanish', 'TR - ULUSAL - HABER - YORESEL']
-Grupos Francia: 11 ['FR - GENERAL', 'FR - CINEMA', 'FR - INFO', 'FR - MUSIQUE', 'FR - SPORTS']
-

@@ -1,2 +1,0 @@
-{"File":"/home/slone/.gemini/antigravity/scratch/slocast/slocast.py","LineNumber":24,"LineContent":"from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer"}
-{"File":"/home/slone/.gemini/antigravity/scratch/slocast/slocast.py","LineNumber":365,"LineContent":"class RelayHTTPHandler(BaseHTTPRequestHandler):"}

@@ -1,5 +1,0 @@
-
-The command exited with code 0.
-Output:
-● Audio  --aid=1  (aac 2ch 48000 Hz 102 kbps)
-

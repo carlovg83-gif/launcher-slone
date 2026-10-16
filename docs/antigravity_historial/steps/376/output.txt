@@ -1,5 +1,0 @@
-
-The command exited with code 0.
-Output:
--rwx------. 1 slone slone 37981 sep 25 21:24 /home/slone/.gemini/antigravity/scratch/slocast/web_portal/index.html
-

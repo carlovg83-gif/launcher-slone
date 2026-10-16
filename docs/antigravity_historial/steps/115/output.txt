@@ -1,11 +1,0 @@
-
-Encountered error in step execution: context canceled
-Output:
-Actualizando y cargando repositorios:
- Claude Desktop for Fedora/RHEL         ???% |   0.0   B/s |   0.0   B |  00m00s Claude Desktop for Fedora/RHEL         ???% |   0.0   B/s |   0.0   B |  00m00s Claude Desktop for Fedora/RHEL         ???% |   0.0   B/s |   0.0   B |  00m00s Claude Desktop for Fedora/RHEL         ???% |   0.0   B/s |   0.0   B |  00m00s Claude Desktop for Fedora/RHEL         100% |   1.7 KiB/s | 833.0   B |  00m00s
- https://pkg.claude-desktop-debian.dev/ 100% |  56.8 KiB/s |   3.9 KiB |  00m00s
-Importando llave OpenPGP 0xB912E0F1:
- IDUsuario     : "Claude Desktop Debian <claude-desktop-debian@users.noreply.github.com>"
- Huella dactilar: 87494CF73ACC0F23AA9557B86E29E413B912E0F1
- Desde                    : https://pkg.claude-desktop-debian.dev/KEY.gpg
-Is this ok [y/N]: 
