@@ -2,12 +2,17 @@
 
 Este archivo define las directrices maestras de arquitectura, desarrollo y seguridad para **Claude Code** y asistentes de IA que operen en este repositorio.
 
+> 📡 **COORDINACIÓN INTER-ASISTENTES (Single Source of Truth)**:
+> Este proyecto mantiene su estado vivo, red y hardware sincronizados en [`PROJECT_STATE.md`](file:///home/slone/slocast%201.0/PROJECT_STATE.md).
+> **OBLIGATORIO**: Lee `PROJECT_STATE.md` al iniciar para conocer la IP activa, estado de ADB y servicios. Al finalizar cualquier cambio o solución técnica, actualiza `PROJECT_STATE.md` para que los demás asistentes (Antigravity, Gemini, Claude Desktop) continúen sin pérdida de contexto.
+
 ---
 
-## 🏛️ Identidad y Filosofía de SLÖNE
+## 🏛️ Identidad y Filosofía Universal de SLÖNE
 - **Ecosistema**: SLÖNE™ Sovereign Media Engine & TV OS.
-- **Misión**: Sistema operativo de salón de ultra-lujo, hiperdeportivo y sigilo cibernético (*cyber-stealth*), diseñado para eliminar por completo la latencia en transmisiones deportivas en directo, suprimir publicidad invasiva y otorgar soberanía total al usuario.
-- **Entorno de Producción**: Fedora 44 Linux · KDE Plasma 6 · ZSH · Xiaomi Mi TV (Android 11 / PatchWall vía ADB LAN en `192.168.1.135:5555`).
+- **Misión Universal**: Eliminar la publicidad invasiva, el rastreo y el bloatware en el salón. Diseñado para TODOS los usuarios y compatible con CUALQUIER pantalla (Android TV, Google TV, Fire TV, webOS, Tizen, PC y móviles vía PWA). Inspirado en la soberanía y limpieza de herramientas como Brave, SmartTube y SponsorBlock.
+- **Sin sesgos**: Proyecto global y abierto. Ni marcas exclusivas (no solo Xiaomi), ni clubes deportivos específicos, ni limitaciones territoriales.
+- **Entorno de Desarrollo y Pruebas**: Fedora 44 Linux · ThinkPad X390 · Banco de pruebas local en `192.168.1.135:5555`.
 
 ---
 
@@ -22,21 +27,21 @@ Este archivo define las directrices maestras de arquitectura, desarrollo y segur
 
 ## 🧩 Componentes del Repositorio
 
-- **`app/web_portal/launcher/index.html`**: Interfaz Flagship del Home Launcher para Xiaomi TV y Smart TV:
-  - *SLÖNE Shield Web Browser™*: Buscador privado estilo Brave Shields / Firefox Focus.
-  - *SLÖNE Tube™*: YouTube 4K sin publicidad con SponsorBlock y lanzamiento en SmartTube.
-  - *Multiview Stadium™ 4X*: 4 señales simultáneas HLS de ultra-baja latencia.
-  - *FanAudio™ Culer Matrix*: Sincronización milimétrica de RAC1 (Joan Maria Pou), CatRàdio y Sonido Estadio sin narradores con control de decalaje.
-  - *Ecosystem Dock*: Accesos directos a apps nativas de Android TV vía puente ADB.
-  - *Carruseles del CEO*: 39.737 canales clasificados en Fútbol, Champions, DAZN, Motor, TDT y Cine.
+- **`app/web_portal/launcher/index.html`**: Interfaz Universal Web/PWA para Smart TV, PC y móviles:
+  - *SLÖNE Shield Browser*: Acceso privado y bloqueador de rastreadores estilo Brave Shields.
+  - *SLÖNE Tube*: Reproducción de vídeo sin publicidad con salto automático de patrocinios (SponsorBlock).
+  - *Multiview 4X*: Multiventana de hasta 4 señales simultáneas HLS de baja latencia.
+  - *FanAudio Universal*: Sincronización milimétrica de pistas de audio externas y radios sobre emisiones en directo con control de decalaje (+/- ms).
+  - *Universal Dock*: Accesos directos a apps nativas en televisores conectados.
+  - *Carruseles Globales*: Canales organizados por categorías universales (Deportes Internacionales, Motor, Cine, Series, Noticias y TDT).
 - **`scripts/servidor_tv_hub.py`**: Servidor daemon autónomo de alta velocidad (puerto 8765):
   - Sirve el launcher PWA, el catálogo de canales en JSON (`/api/tv/ceo_catalog`), listas M3U, control remoto ADB de apps (`/api/tv/launch`, `/api/tv/open_url`, `/api/tv/open_smarttube`).
 - **`platforms/android/slone-tv-launcher`**: Motor nativo Android TV (Kotlin + Jetpack Compose for TV):
-  - Navegación por hardware D-Pad (control remoto físico de Xiaomi TV).
+  - Navegación universal por control remoto físico (D-Pad para cualquier mando de TV).
   - Tema Obsidian & Golden Sovereignty (`#D4AF37`) con foco dinámico de 4dp.
-  - Lanzamiento nativo Leanback de SmartTube, TiviMate, 3Cat, Netflix, Prime Video, etc.
-- **`dist/slone-tv-launcher-debug.apk`**: Binario compilado listo para instalar.
-- **`scripts/gestionar_tv_launcher.zsh`**: Script para compilar, instalar vía ADB y conmutar el launcher de la Xiaomi TV (`./scripts/gestionar_tv_launcher.zsh build | deploy | slone | normal`).
+  - Compatible con Android TV, Google TV, Fire TV Stick, Sony, TCL, Philips, Xiaomi y TV Boxes genéricos.
+- **`dist/slone-tv-launcher-debug.apk`**: Binario compilado listo para instalar en cualquier televisor.
+- **`scripts/gestionar_tv_launcher.zsh`**: Script para compilar, instalar vía ADB y conmutar el launcher en dispositivos de prueba (`./scripts/gestionar_tv_launcher.zsh build | deploy | slone | normal`).
 - **`stitch.json` & `DESIGN_SYSTEM.md`**: Manifiesto y especificación de tokens para Google Stitch y herramientas de diseño UI.
 - **`app/slocast.py`**: Aplicación de escritorio nativa PyQt6 con reproductor dual MPV IPC y VLC.
 

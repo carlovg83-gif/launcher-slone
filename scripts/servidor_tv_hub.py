@@ -16,8 +16,33 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+import gzip
+import threading
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BASE_DIR))
+try:
+    from app.slone_epg import EpgManager
+    EPG_MGR = EpgManager()
+
+    def _init_epg_cache():
+        cache_dir = BASE_DIR / "cache"
+        for p in [cache_dir / "epg_tdt.xml.gz", cache_dir / "epg_doblem.xml.gz", cache_dir / "epg_es.xml.gz"]:
+            if p.exists():
+                try:
+                    with gzip.open(p, "rb") as f:
+                        cnt = EPG_MGR.parse(f.read())
+                        print(f"[SLÖNE EPG] Cargados {cnt} programas desde {p.name}")
+                except Exception as ex:
+                    print(f"[SLÖNE EPG] Error leyendo {p.name}: {ex}")
+
+    threading.Thread(target=_init_epg_cache, daemon=True).start()
+except Exception as e:
+    EPG_MGR = None
+
 PLAYLIST_FILE = BASE_DIR / "playlists" / "slone_sovereign_master.m3u8"
+PLAYLIST_SOVEREIGN = BASE_DIR / "playlists" / "slone_sovereign_master.m3u8"
+PLAYLIST_PRIVATE = BASE_DIR / "playlists" / "slone_private_master.m3u8"
 WEB_PORTAL_DIR = BASE_DIR / "app" / "web_portal"
 PORT = 8765
 
@@ -153,13 +178,46 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
 
-        # 1. Lista Maestra M3U para TiviMate, VLC, IPTV Smarters en Xiaomi TV
-        if path in ("/playlist.m3u", "/playlist.m3u8", "/slone.m3u", "/slone.m3u8"):
-            if PLAYLIST_FILE.exists():
-                content = PLAYLIST_FILE.read_bytes()
+        # 1a. Lista Soberana 100% Legal y Distribuible
+        if path in ("/playlist/sovereign.m3u", "/playlist/sovereign.m3u8", "/sovereign.m3u", "/sovereign.m3u8"):
+            target = PLAYLIST_SOVEREIGN if PLAYLIST_SOVEREIGN.exists() else PLAYLIST_FILE
+            if target.exists():
+                content = target.read_bytes()
                 self.send_response(200)
                 self.send_header("Content-Type", "application/vnd.apple.mpegurl; charset=utf-8")
                 self.send_header("Content-Disposition", 'inline; filename="slone_sovereign_master.m3u8"')
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+            else:
+                self.send_error(404, "Lista Soberana no encontrada")
+            return
+
+        # 1b. Lista Privada IPTV de slone con EPG y Timeshift de 7 días
+        if path in ("/playlist/private.m3u", "/playlist/private.m3u8", "/private.m3u", "/private.m3u8"):
+            if PLAYLIST_PRIVATE.exists():
+                content = PLAYLIST_PRIVATE.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/vnd.apple.mpegurl; charset=utf-8")
+                self.send_header("Content-Disposition", 'inline; filename="slone_private_master.m3u8"')
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                self.wfile.write(content)
+            else:
+                self.send_error(404, "Lista Privada IPTV no encontrada")
+            return
+
+        # 1c. Endpoint Global por Defecto (Prioriza Privada si existe, sino Soberana)
+        if path in ("/playlist.m3u", "/playlist.m3u8", "/slone.m3u", "/slone.m3u8"):
+            target = PLAYLIST_PRIVATE if PLAYLIST_PRIVATE.exists() else PLAYLIST_SOVEREIGN
+            if target.exists():
+                content = target.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/vnd.apple.mpegurl; charset=utf-8")
+                self.send_header("Content-Disposition", f'inline; filename="{target.name}"')
+                self.send_header("Access-Control-Allow-Origin", "*")
                 self.send_header("Content-Length", str(len(content)))
                 self.end_headers()
                 self.wfile.write(content)
@@ -312,6 +370,61 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(resp)
             return
 
+        # 7c-bis. Alias universal de Cast / ADB Send
+        if path.startswith("/api/adb_send"):
+            my_ip = get_local_ip()
+            target_url = f"http://{my_ip}:{PORT}/launcher/"
+            safe_run_adb("shell", "am", "start", "-n", "com.phlox.tvwebbrowser/.activity.main.MainActivity", "-a", "android.intent.action.VIEW", "-d", target_url)
+            resp = json.dumps({"status": "cast_ok", "device": ADB_DEVICE, "url": target_url}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(resp)))
+            self.end_headers()
+            self.wfile.write(resp)
+            return
+
+        # 7c-ter. Intérprete Soberano de Comandos de Voz hacia Smart TV y Hub
+        if path.startswith("/api/tv/voice_command"):
+            params = urllib.parse.parse_qs(parsed.query)
+            q = params.get("q", [""])[0].lower().strip()
+            action_done = "none"
+
+            if any(k in q for k in ["launcher", "menu", "tele", "tv", "inicio"]):
+                my_ip = get_local_ip()
+                target_url = f"http://{my_ip}:{PORT}/launcher/"
+                safe_run_adb("shell", "am", "start", "-n", "com.phlox.tvwebbrowser/.activity.main.MainActivity", "-a", "android.intent.action.VIEW", "-d", target_url)
+                action_done = "launcher_opened"
+            elif any(k in q for k in ["volumen arriba", "sube volumen", "mas volumen"]):
+                safe_run_adb("shell", "input", "keyevent", "24")
+                action_done = "volume_up"
+            elif any(k in q for k in ["volumen abajo", "baja volumen", "menos volumen"]):
+                safe_run_adb("shell", "input", "keyevent", "25")
+                action_done = "volume_down"
+            elif any(k in q for k in ["mute", "silencio", "mutear"]):
+                safe_run_adb("shell", "input", "keyevent", "164")
+                action_done = "volume_mute"
+            elif any(k in q for k in ["apagar", "suspender", "apaga la tele"]):
+                safe_run_adb("shell", "input", "keyevent", "26")
+                action_done = "power_toggle"
+            else:
+                # Búsqueda o reproducción multimedia directa
+                search_url = f"https://www.youtube.com/results?search_query={urllib.parse.quote(q)}"
+                safe_run_adb("shell", "am", "start", "-a", "android.intent.action.VIEW", "-d", search_url, "org.smarttube.stable")
+                action_done = "media_search"
+
+            resp = json.dumps({
+                "status": "voice_executed",
+                "query": q,
+                "action": action_done,
+                "device": ADB_DEVICE
+            }).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(resp)))
+            self.end_headers()
+            self.wfile.write(resp)
+            return
+
         # 7d. SLÖNE Ultra-Fast Streaming Proxy (Anti-Bloqueo, Inyección IPTVSmartersPro & CORS)
         if path.startswith("/api/stream/proxy"):
             params = urllib.parse.parse_qs(parsed.query)
@@ -379,6 +492,37 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(resp)
             return
 
+        # 7f. Consulta de Guía EPG en tiempo real (Ahora / Siguiente)
+        if path.startswith("/api/epg"):
+            params = urllib.parse.parse_qs(parsed.query)
+            ch_query = params.get("channel", [""])[0]
+            tvg_id = params.get("id", [""])[0]
+            now_prog = None
+            next_prog = None
+            if EPG_MGR:
+                now_prog, next_prog = EPG_MGR.now_next(tvg_id=tvg_id, name=ch_query)
+            
+            res = {
+                "channel": ch_query or tvg_id,
+                "now": {
+                    "title": now_prog["title"],
+                    "desc": now_prog["desc"],
+                    "start": now_prog["start"].isoformat() if hasattr(now_prog["start"], "isoformat") else str(now_prog["start"]),
+                    "stop": now_prog["stop"].isoformat() if now_prog.get("stop") and hasattr(now_prog["stop"], "isoformat") else str(now_prog.get("stop", ""))
+                } if now_prog else None,
+                "next": {
+                    "title": next_prog["title"],
+                    "start": next_prog["start"].isoformat() if hasattr(next_prog["start"], "isoformat") else str(next_prog["start"])
+                } if next_prog else None
+            }
+            resp = json.dumps(res, ensure_ascii=False).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(resp)))
+            self.end_headers()
+            self.wfile.write(resp)
+            return
+
         # 8. Archivos Estáticos de la Interfaz Web PWA
         rel_path = path.lstrip("/")
         if not rel_path:
@@ -397,16 +541,70 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
                 ".css": "text/css; charset=utf-8",
                 ".png": "image/png",
                 ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".webp": "image/webp",
                 ".svg": "image/svg+xml",
                 ".ico": "image/x-icon",
+                ".mp4": "video/mp4",
+                ".webm": "video/webm",
+                ".m4v": "video/x-m4v",
+                ".m3u8": "application/vnd.apple.mpegurl",
+                ".ts": "video/mp2t",
+                ".mp3": "audio/mpeg",
+                ".aac": "audio/aac",
             }
             content_type = mime_map.get(target_file.suffix.lower(), "application/octet-stream")
-            content = target_file.read_bytes()
+            file_size = target_file.stat().st_size
+            range_header = self.headers.get("Range")
+
+            # Soporte de peticiones de rango HTTP (206 Partial Content) para vídeo/audio
+            if range_header and range_header.startswith("bytes="):
+                try:
+                    ranges = range_header.split("=")[1].split("-")
+                    start = int(ranges[0]) if ranges[0] else 0
+                    end = int(ranges[1]) if len(ranges) > 1 and ranges[1] else file_size - 1
+                    start = max(0, min(start, file_size - 1))
+                    end = max(start, min(end, file_size - 1))
+                    length = end - start + 1
+
+                    self.send_response(206)
+                    self.send_header("Content-Type", content_type)
+                    self.send_header("Content-Range", f"bytes {start}-{end}/{file_size}")
+                    self.send_header("Content-Length", str(length))
+                    self.send_header("Accept-Ranges", "bytes")
+                    self.end_headers()
+
+                    with open(target_file, "rb") as f:
+                        f.seek(start)
+                        bytes_to_send = length
+                        chunk_size = 64 * 1024
+                        while bytes_to_send > 0:
+                            chunk = f.read(min(chunk_size, bytes_to_send))
+                            if not chunk:
+                                break
+                            self.wfile.write(chunk)
+                            bytes_to_send -= len(chunk)
+                    return
+                except (ConnectionResetError, BrokenPipeError):
+                    return
+                except Exception:
+                    pass
+
             self.send_response(200)
             self.send_header("Content-Type", content_type)
-            self.send_header("Content-Length", str(len(content)))
+            self.send_header("Content-Length", str(file_size))
+            self.send_header("Accept-Ranges", "bytes")
             self.end_headers()
-            self.wfile.write(content)
+            with open(target_file, "rb") as f:
+                chunk_size = 64 * 1024
+                while True:
+                    chunk = f.read(chunk_size)
+                    if not chunk:
+                        break
+                    try:
+                        self.wfile.write(chunk)
+                    except (ConnectionResetError, BrokenPipeError):
+                        break
             return
 
         self.send_error(404, "Recurso no encontrado")
@@ -431,6 +629,34 @@ class SmartTVHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(resp)
             return
+
+        if path == "/api/boceto/select":
+            import base64
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            try:
+                data = json.loads(body.decode("utf-8"))
+                # Guardar selección JSON
+                sel_file = Path("/home/slone/slone_sketch_selection.json")
+                sel_file.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+                
+                # Si viene imagen en base64 recortada, guardarla
+                if "imageBase64" in data and data["imageBase64"]:
+                    img_data = data["imageBase64"].split(",")[-1]
+                    img_bytes = base64.b64decode(img_data)
+                    crop_file = Path("/home/slone/slone_sketch_selected.png")
+                    crop_file.write_bytes(img_bytes)
+                
+                resp = b'{"status": "ok", "message": "Seleccion de boceto guardada correctamente"}'
+            except Exception as e:
+                resp = json.dumps({"status": "error", "message": str(e)}).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(resp)))
+            self.end_headers()
+            self.wfile.write(resp)
+            return
+
         self.send_error(404, "Ruta POST no encontrada")
 
     def log_message(self, format, *args):

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -16,6 +17,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,22 +35,30 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.drawable.toBitmap
 import com.example.slnelauncher.R
 import com.example.slnelauncher.theme.*
+import com.example.slnelauncher.ui.player.PlayerScreen
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
 enum class ActionType {
-    APP, SETTINGS, BROWSER_LINK
+    APP, SETTINGS, BROWSER_LINK, ALL_APPS_DRAWER, NATIVE_PLAYER
 }
 
 data class LauncherAppItem(
@@ -60,11 +72,44 @@ data class LauncherAppItem(
     val customUrl: String? = null
 )
 
+data class DiscoveredAppItem(
+    val packageName: String,
+    val label: String,
+    val iconBitmap: ImageBitmap? = null
+)
+
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
-    // Apps principales solicitadas en orden de prioridad
+    // Estado para el cajón / catálogo dinámico de aplicaciones
+    var isAppsDrawerOpen by remember { mutableStateOf(false) }
+    var installedApps by remember { mutableStateOf<List<DiscoveredAppItem>>(emptyList()) }
+    var isLoadingApps by remember { mutableStateOf(false) }
+
+    // Estado para el reproductor nativo Media3
+    var activeStreamUrl by remember { mutableStateOf<String?>(null) }
+    var activeStreamTitle by remember { mutableStateOf<String?>(null) }
+
+    // Manejar retroceso con D-pad [BACK]
+    BackHandler(enabled = isAppsDrawerOpen || activeStreamUrl != null) {
+        if (activeStreamUrl != null) {
+            activeStreamUrl = null
+        } else {
+            isAppsDrawerOpen = false
+        }
+    }
+
+    // Cargar aplicaciones cuando se abre el cajón
+    LaunchedEffect(isAppsDrawerOpen) {
+        if (isAppsDrawerOpen) {
+            isLoadingApps = true
+            installedApps = loadInstalledApps(context)
+            isLoadingApps = false
+        }
+    }
+
+    // Apps principales universales sin sesgos regionales ni de marca
     val primaryApps = remember {
         listOf(
             LauncherAppItem(
@@ -78,18 +123,18 @@ fun MainScreen(modifier: Modifier = Modifier) {
             LauncherAppItem(
                 id = "tivimate",
                 title = "TiviMate",
-                subtitle = "Fútbol y Canales en Directo",
+                subtitle = "IPTV Soberano · Directos UHD",
                 packageName = "ar.tvplayer.tv",
                 iconRes = R.drawable.ic_tivimate,
                 accentColor = TiviMateBlue
             ),
             LauncherAppItem(
-                id = "3cat",
-                title = "3Cat",
-                subtitle = "TV3 Directes en català",
-                packageName = "cat.ccma.androidtv.tv3",
-                iconRes = R.drawable.ic_3cat,
-                accentColor = Cat3Red
+                id = "vlc",
+                title = "VLC Media",
+                subtitle = "Reproductor Universal Red & USB",
+                packageName = "org.videolan.vlc",
+                iconRes = R.drawable.ic_vlc,
+                accentColor = VlcOrange
             ),
             LauncherAppItem(
                 id = "netflix",
@@ -102,7 +147,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             LauncherAppItem(
                 id = "rtve",
                 title = "RTVE Play",
-                subtitle = "La 1 UHD · Directos",
+                subtitle = "Televisión Pública UHD",
                 packageName = "com.rtve.androidtv",
                 iconRes = R.drawable.ic_rtve,
                 accentColor = RtveBlue
@@ -118,7 +163,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             LauncherAppItem(
                 id = "settings",
                 title = "Ajustes TV",
-                subtitle = "Sistema Xiaomi · Red y Pantalla",
+                subtitle = "Configuración · Red y Pantalla",
                 packageName = "com.android.tv.settings",
                 iconRes = R.drawable.ic_settings,
                 accentColor = SettingsGray,
@@ -127,34 +172,45 @@ fun MainScreen(modifier: Modifier = Modifier) {
         )
     }
 
-    // Accesos rápidos de sintonización y soberanía
+    // Accesos rápidos y herramientas universales
     val quickShortcuts = remember {
         listOf(
             LauncherAppItem(
-                id = "tv3_directe",
-                title = "TV3 en Directe",
-                subtitle = "Emissió en viu sense talls",
-                packageName = "cat.ccma.androidtv.tv3",
-                iconRes = R.drawable.ic_3cat,
-                accentColor = Cat3Red
+                id = "all_apps",
+                title = "Catálogo de Apps",
+                subtitle = "Todas las apps instaladas en TV",
+                packageName = "",
+                iconRes = R.drawable.ic_apps_grid,
+                accentColor = SloneGoldBright,
+                actionType = ActionType.ALL_APPS_DRAWER
             ),
             LauncherAppItem(
-                id = "thinkpad_cast",
-                title = "ThinkPad X390",
-                subtitle = "Enlace directo local 192.168.1.145",
-                packageName = "com.tcl.browser",
+                id = "native_tv",
+                title = "Televisión UHD Soberana",
+                subtitle = "Emisión directa sin apps externas",
+                packageName = "",
+                iconRes = R.drawable.ic_smarttube,
+                accentColor = SloneGoldBright,
+                actionType = ActionType.NATIVE_PLAYER,
+                customUrl = "https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr.m3u8"
+            ),
+            LauncherAppItem(
+                id = "web_browser_clean",
+                title = "Navegador Web",
+                subtitle = "Buscador y Streaming sin Anuncios",
+                packageName = "org.mozilla.tv.firefox",
                 iconRes = R.drawable.ic_slone_browser,
                 accentColor = SloneGold,
                 actionType = ActionType.BROWSER_LINK,
-                customUrl = "http://192.168.1.145:8080"
+                customUrl = "https://www.google.com"
             ),
             LauncherAppItem(
                 id = "playstore",
-                title = "Catálogo de Apps",
-                subtitle = "Google Play Store TV",
+                title = "Play Store TV",
+                subtitle = "Instalar nuevas herramientas",
                 packageName = "com.android.vending",
                 iconRes = R.drawable.ic_settings,
-                accentColor = SloneGoldBright
+                accentColor = SloneGold
             )
         )
     }
@@ -269,7 +325,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     }
                 }
 
-                // Píldora de estado de red
+                // Píldora de estado universal (sin IPs fijas)
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(20.dp))
@@ -288,7 +344,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                                 .background(Color(0xFF00FF66))
                         )
                         Text(
-                            text = "SLÖNE FLUX · 192.168.1.135 · ACTIVO",
+                            text = "SLÖNE FLUX · PROTECCIÓN ACTIVA",
                             color = SloneTextPrimary,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -315,14 +371,15 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            // 2. HERO BILLBOARD COMPACTO
+            // 2. HERO BILLBOARD COMPACTO (Sintonización Nativa con ExoPlayer)
             HeroBillboard(
                 onWatchNow = {
-                    launchItem(context, primaryApps[1]) // TiviMate
+                    activeStreamUrl = "https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main_dvr.m3u8"
+                    activeStreamTitle = "Teledeporte 4K UHD"
                 }
             )
 
-            // 3. FILA DE APLICACIONES PRINCIPALES (Grandes, proporcionadas, con foco luminoso)
+            // 3. FILA DE APLICACIONES PRINCIPALES
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -353,7 +410,17 @@ fun MainScreen(modifier: Modifier = Modifier) {
                         AppCard(
                             item = app,
                             focusRequester = if (index == 0) firstAppFocusRequester else null,
-                            onClick = { launchItem(context, app) }
+                            onClick = {
+                                launchItem(
+                                    context = context,
+                                    item = app,
+                                    onOpenDrawer = { isAppsDrawerOpen = true },
+                                    onOpenNativePlayer = { url, title ->
+                                        activeStreamUrl = url
+                                        activeStreamTitle = title
+                                    }
+                                )
+                            }
                         )
                     }
                 }
@@ -362,7 +429,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             // 4. FILA DE SINTONIZACIÓN RÁPIDA & HERRAMIENTAS
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(
-                    text = "SINTONIZACIÓN RÁPIDA & HERRAMIENTAS",
+                    text = "ACCESOS RÁPIDOS & HERRAMIENTAS",
                     color = SloneTextPrimary,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
@@ -378,11 +445,43 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     quickShortcuts.forEach { shortcut ->
                         QuickCard(
                             item = shortcut,
-                            onClick = { launchItem(context, shortcut) }
+                            onClick = {
+                                launchItem(
+                                    context = context,
+                                    item = shortcut,
+                                    onOpenDrawer = { isAppsDrawerOpen = true },
+                                    onOpenNativePlayer = { url, title ->
+                                        activeStreamUrl = url
+                                        activeStreamTitle = title
+                                    }
+                                )
+                            }
                         )
                     }
                 }
             }
+        }
+
+        // 5. CAJÓN DE TODAS LAS APLICACIONES INSTALADAS (DRAWER DINÁMICO)
+        if (isAppsDrawerOpen) {
+            AllAppsDrawer(
+                apps = installedApps,
+                isLoading = isLoadingApps,
+                onClose = { isAppsDrawerOpen = false },
+                onLaunchApp = { packageName ->
+                    launchPackage(context, packageName)
+                    isAppsDrawerOpen = false
+                }
+            )
+        }
+
+        // 6. REPRODUCTOR NATIVO DE VÍDEO (EXOPLAYER MEDIA3)
+        if (activeStreamUrl != null) {
+            PlayerScreen(
+                streamUrl = activeStreamUrl!!,
+                channelTitle = activeStreamTitle ?: "Emisión en Directo",
+                onClosePlayer = { activeStreamUrl = null }
+            )
         }
     }
 }
@@ -455,7 +554,7 @@ fun HeroBillboard(onWatchNow: () -> Unit) {
                         )
                     }
                     Text(
-                        text = "FÚTBOL Y DEPORTES EN DIRECTO · 4K 60FPS",
+                        text = "ENTRETENIMIENTO UNIVERSAL Y DEPORTES EN DIRECTO · 4K 60FPS",
                         color = SloneTextSecondary,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold,
@@ -474,7 +573,7 @@ fun HeroBillboard(onWatchNow: () -> Unit) {
                 )
 
                 Text(
-                    text = "SmartTube, TiviMate y 3Cat listos con un solo toque en tu mando a distancia.",
+                    text = "SmartTube, TiviMate y streaming sin anuncios listos con un solo toque en tu mando a distancia.",
                     color = SloneTextSecondary,
                     fontSize = 11.sp
                 )
@@ -587,7 +686,8 @@ fun AppCard(
             color = if (isFocused) SloneGoldGlow else SloneTextPrimary,
             fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
-            maxLines = 1
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
 
         Text(
@@ -595,7 +695,8 @@ fun AppCard(
             color = if (isFocused) SloneTextPrimary else SloneTextMuted,
             fontSize = 11.sp,
             fontWeight = FontWeight.Normal,
-            maxLines = 1
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
@@ -620,7 +721,7 @@ fun QuickCard(
     Row(
         modifier = Modifier
             .scale(scale)
-            .width(245.dp)
+            .width(255.dp)
             .height(60.dp)
             .shadow(
                 elevation = if (isFocused) 18.dp else 2.dp,
@@ -666,15 +767,236 @@ fun QuickCard(
                 color = if (isFocused) SloneGoldGlow else SloneTextPrimary,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
-                maxLines = 1
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             Text(
                 text = item.subtitle,
                 color = if (isFocused) SloneTextPrimary else SloneTextMuted,
                 fontSize = 10.sp,
-                maxLines = 1
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
+    }
+}
+
+@Composable
+fun AllAppsDrawer(
+    apps: List<DiscoveredAppItem>,
+    isLoading: Boolean,
+    onClose: () -> Unit,
+    onLaunchApp: (String) -> Unit
+) {
+    val firstAppFocusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(apps) {
+        if (apps.isNotEmpty()) {
+            delay(150)
+            try {
+                firstAppFocusRequester.requestFocus()
+            } catch (_: Exception) {}
+        }
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xF5050508))
+            .padding(horizontal = 48.dp, vertical = 24.dp)
+    ) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            // Cabecera del Cajón
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(14.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_apps_grid),
+                        contentDescription = "Catálogo de Apps",
+                        modifier = Modifier.size(32.dp)
+                    )
+                    Column {
+                        Text(
+                            text = "CATÁLOGO DE APLICACIONES INSTALADAS",
+                            color = SloneGoldBright,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 1.5.sp
+                        )
+                        Text(
+                            text = if (isLoading) "Escaneando aplicaciones del sistema..." else "${apps.size} aplicaciones disponibles · Acceso directo sin publicidad",
+                            color = SloneTextSecondary,
+                            fontSize = 11.sp
+                        )
+                    }
+                }
+
+                // Botón visual para cerrar
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color(0x33FFFFFF))
+                        .clickable { onClose() }
+                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                ) {
+                    Text(
+                        text = "[VOLVER / ATRÁS]",
+                        color = SloneTextPrimary,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // Cuadrícula de Apps
+            if (isLoading) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Cargando aplicaciones instaladas...",
+                        color = SloneGold,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            } else if (apps.isEmpty()) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No se encontraron aplicaciones adicionales.",
+                        color = SloneTextSecondary,
+                        fontSize = 14.sp
+                    )
+                }
+            } else {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(5),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    itemsIndexed(apps) { index, app ->
+                        DrawerAppCard(
+                            app = app,
+                            focusRequester = if (index == 0) firstAppFocusRequester else null,
+                            onClick = { onLaunchApp(app.packageName) }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun DrawerAppCard(
+    app: DiscoveredAppItem,
+    focusRequester: FocusRequester? = null,
+    onClick: () -> Unit
+) {
+    var isFocused by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(
+        targetValue = if (isFocused) 1.08f else 1.0f,
+        animationSpec = tween(120),
+        label = "drawerCardScale"
+    )
+    val borderColor by animateColorAsState(
+        targetValue = if (isFocused) SloneGoldGlow else Color(0x333A4255),
+        animationSpec = tween(120),
+        label = "drawerCardBorder"
+    )
+
+    var cardModifier = Modifier
+        .scale(scale)
+        .fillMaxWidth()
+        .height(110.dp)
+        .shadow(
+            elevation = if (isFocused) 18.dp else 2.dp,
+            shape = RoundedCornerShape(12.dp),
+            spotColor = if (isFocused) SloneGoldGlow else Color.Transparent
+        )
+        .clip(RoundedCornerShape(12.dp))
+        .background(
+            Brush.verticalGradient(
+                colors = if (isFocused) {
+                    listOf(Color(0xFF242E44), Color(0xFF182030))
+                } else {
+                    listOf(Color(0xEE141722), Color(0xCC0D1018))
+                }
+            )
+        )
+        .border(
+            BorderStroke(if (isFocused) 3.dp else 1.dp, borderColor),
+            RoundedCornerShape(12.dp)
+        )
+        .onFocusChanged { isFocused = it.isFocused }
+
+    if (focusRequester != null) {
+        cardModifier = cardModifier.focusRequester(focusRequester)
+    }
+
+    cardModifier = cardModifier
+        .onKeyEvent { keyEvent ->
+            if (keyEvent.type == KeyEventType.KeyUp && isDpadCenter(keyEvent)) {
+                onClick()
+                true
+            } else false
+        }
+        .focusable()
+        .clickable { onClick() }
+        .padding(12.dp)
+
+    Column(
+        modifier = cardModifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        if (app.iconBitmap != null) {
+            Image(
+                bitmap = app.iconBitmap,
+                contentDescription = app.label,
+                modifier = Modifier.size(44.dp)
+            )
+        } else {
+            Image(
+                painter = painterResource(id = R.drawable.ic_settings),
+                contentDescription = app.label,
+                modifier = Modifier.size(44.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = app.label,
+            color = if (isFocused) SloneGoldGlow else SloneTextPrimary,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center
+        )
+
+        Text(
+            text = app.packageName,
+            color = SloneTextMuted,
+            fontSize = 9.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
@@ -685,8 +1007,20 @@ private fun isDpadCenter(keyEvent: KeyEvent): Boolean {
             nativeCode == android.view.KeyEvent.KEYCODE_NUMPAD_ENTER
 }
 
-private fun launchItem(context: Context, item: LauncherAppItem) {
+private fun launchItem(
+    context: Context,
+    item: LauncherAppItem,
+    onOpenDrawer: () -> Unit,
+    onOpenNativePlayer: (String, String) -> Unit
+) {
     when (item.actionType) {
+        ActionType.ALL_APPS_DRAWER -> {
+            onOpenDrawer()
+        }
+        ActionType.NATIVE_PLAYER -> {
+            val url = item.customUrl ?: "https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr.m3u8"
+            onOpenNativePlayer(url, item.title)
+        }
         ActionType.SETTINGS -> {
             try {
                 val intent = Intent(Settings.ACTION_SETTINGS)
@@ -697,40 +1031,77 @@ private fun launchItem(context: Context, item: LauncherAppItem) {
             }
         }
         ActionType.APP -> {
-            val pm = context.packageManager
-            // En Android TV, priorizar LeanbackLaunchIntent y luego LaunchIntent
-            val intent = pm.getLeanbackLaunchIntentForPackage(item.packageName)
-                ?: pm.getLaunchIntentForPackage(item.packageName)
-            if (intent != null) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                context.startActivity(intent)
-            } else {
-                try {
-                    val marketIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${item.packageName}"))
-                    marketIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(marketIntent)
-                } catch (_: Exception) {
-                    Toast.makeText(context, "${item.title} no está instalada", Toast.LENGTH_SHORT).show()
-                }
-            }
+            launchPackage(context, item.packageName, item.title)
         }
         ActionType.BROWSER_LINK -> {
-            val url = item.customUrl ?: "http://192.168.1.145:8080"
+            val url = item.customUrl ?: "https://www.google.com"
             try {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(browserIntent)
             } catch (_: Exception) {
-                val pm = context.packageManager
-                val intent = pm.getLeanbackLaunchIntentForPackage(item.packageName)
-                    ?: pm.getLaunchIntentForPackage(item.packageName)
-                if (intent != null) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(intent)
-                } else {
-                    Toast.makeText(context, "No se pudo abrir el navegador", Toast.LENGTH_SHORT).show()
-                }
+                launchPackage(context, item.packageName, item.title)
             }
         }
     }
+}
+
+private fun launchPackage(context: Context, packageName: String, title: String? = null) {
+    val pm = context.packageManager
+    val intent = pm.getLeanbackLaunchIntentForPackage(packageName)
+        ?: pm.getLaunchIntentForPackage(packageName)
+    if (intent != null) {
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
+    } else {
+        try {
+            val marketIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+            marketIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(marketIntent)
+        } catch (_: Exception) {
+            val appName = title ?: packageName
+            Toast.makeText(context, "$appName no está disponible", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+suspend fun loadInstalledApps(context: Context): List<DiscoveredAppItem> = withContext(Dispatchers.IO) {
+    val pm = context.packageManager
+    val leanbackIntent = Intent(Intent.ACTION_MAIN, null).apply {
+        addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
+    }
+    val standardIntent = Intent(Intent.ACTION_MAIN, null).apply {
+        addCategory(Intent.CATEGORY_LAUNCHER)
+    }
+
+    val leanbackApps = pm.queryIntentActivities(leanbackIntent, 0)
+    val standardApps = pm.queryIntentActivities(standardIntent, 0)
+    val allActivities = (leanbackApps + standardApps).distinctBy { it.activityInfo.packageName }
+
+    allActivities
+        .filter { it.activityInfo.packageName != context.packageName }
+        .map { resolveInfo ->
+            val label = resolveInfo.loadLabel(pm).toString()
+            val pkg = resolveInfo.activityInfo.packageName
+            val drawable = try {
+                resolveInfo.activityInfo.loadBanner(pm)
+                    ?: resolveInfo.activityInfo.loadIcon(pm)
+                    ?: resolveInfo.loadIcon(pm)
+            } catch (_: Exception) {
+                null
+            }
+            val bitmap = drawable?.let { d ->
+                try {
+                    d.toBitmap(width = 96, height = 96).asImageBitmap()
+                } catch (_: Exception) {
+                    null
+                }
+            }
+            DiscoveredAppItem(
+                packageName = pkg,
+                label = label,
+                iconBitmap = bitmap
+            )
+        }
+        .sortedBy { it.label.lowercase() }
 }

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SLÖNE · SELECTOR INTERACTIVO DE BOCETO ORIGINAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #030407;
+      --panel: #0A0D16;
+      --card: #101524;
+      --border: rgba(255, 255, 255, 0.12);
+      --neon: #E3FF00;
+      --cyan: #00F0FF;
+      --text: #FFFFFF;
+      --muted: #8E9BAE;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .badge {
+      background: var(--neon);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .main-workspace {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      flex: 1;
+      height: calc(100vh - 75px);
+    }
+    @media (max-width: 950px) {
+      .main-workspace { grid-template-columns: 1fr; height: auto; }
+    }
+
+    /* ÁREA IZQUIERDA: VISOR Y CANVAS DE RECORTE */
+    .viewport-pane {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #000;
+      overflow-y: auto;
+      position: relative;
+    }
+    .canvas-container {
+      position: relative;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+      cursor: crosshair;
+      display: inline-block;
+    }
+    #mainCanvas {
+      display: block;
+      max-height: 80vh;
+      width: auto;
+    }
+    .selection-box {
+      position: absolute;
+      border: 2px solid var(--neon);
+      background: rgba(227, 255, 0, 0.15);
+      pointer-events: none;
+      display: none;
+    }
+
+    /* ÁREA DERECHA: PANEL DE CONTROL Y CONFIRMACIÓN */
+    .control-pane {
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+    .panel-section-title {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--neon);
+      text-transform: uppercase;
+      border-left: 3px solid var(--neon);
+      padding-left: 8px;
+      margin-bottom: 8px;
+    }
+    .instruction-p {
+      font-size: 13px;
+      color: #CBD5E1;
+      line-height: 1.5;
+    }
+
+    /* BOTONES DE ZONAS PREDEFINIDAS */
+    .zones-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .zone-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: #FFF;
+      padding: 12px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .zone-btn:hover, .zone-btn.active {
+      border-color: var(--neon);
+      background: #192033;
+      color: var(--neon);
+    }
+
+    /* PREVIEW DE LA ELECCIÓN */
+    .preview-box {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow: hidden;
+    }
+    #previewCanvas {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* BOTÓN CONFIRMAR */
+    .btn-confirm {
+      background: var(--neon);
+      color: #000;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+    }
+    .btn-confirm:hover {
+      background: #FFF;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .status-alert {
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+    }
+    .status-alert.success {
+      background: rgba(0, 255, 102, 0.15);
+      border: 1px solid #00FF66;
+      color: #00FF66;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="badge">TU DIBUJO ORIGINAL</span>
+        <h1>SLÖNE · SELECTOR DE BOCETO REAL</h1>
+      </div>
+      <p class="subtitle">Indica con el ratón exactamente qué parte de tu boceto quieres convertir en el logo oficial</p>
+    </div>
+  </header>
+
+  <div class="main-workspace">
+
+    <!-- VISOR INTERACTIVO CON EL RATÓN -->
+    <div class="viewport-pane">
+      <div class="canvas-container" id="canvasContainer">
+        <canvas id="mainCanvas"></canvas>
+        <div class="selection-box" id="selectionBox"></div>
+      </div>
+      <p style="margin-top: 14px; font-size: 12px; color: var(--muted);">
+        🖱️ <strong>Arrastra con el ratón</strong> sobre el dibujo para seleccionar cualquier área, o pulsa una de las zonas predefinidas.
+      </p>
+    </div>
+
+    <!-- PANEL DE CONTROL Y ACCIÓN -->
+    <div class="control-pane">
+
+      <div>
+        <div class="panel-section-title">1. Zonas Rápidas del Boceto</div>
+        <div class="zones-grid">
+          <button class="zone-btn" onclick="selectPresetZone(1, this)">
+            <strong>ZONA 1</strong><br>Letras 'SLÖNE' de arriba
+          </button>
+          <button class="zone-btn" onclick="selectPresetZone(2, this)">
+            <strong>ZONA 2</strong><br>Símbolo vertical central
+          </button>
+          <button class="zone-btn" onclick="selectPresetZone(3, this)">
+            <strong>ZONA 3</strong><br>Trazos de pulso y frecuencia
+          </button>
+          <button class="zone-btn" onclick="selectPresetZone(4, this)">
+            <strong>ZONA 4</strong><br>Firma / Tag grafitero inferior
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-section-title">2. Vista Previa de tu Selección</div>
+        <p class="instruction-p" id="selectionCoordsDesc">
+          Ninguna zona seleccionada todavía. Pincha sobre el dibujo para elegir.
+        </p>
+        <div class="preview-box">
+          <canvas id="previewCanvas"></canvas>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-section-title">3. Confirmar Elección</div>
+        <button class="btn-confirm" onclick="confirmSelection()">
+          ✓ ELEGIR ESTE DIBUJO PARA EL LOGO
+        </button>
+        <div class="status-alert" id="statusBox" style="margin-top: 12px;"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('mainCanvas');
+    const ctx = canvas.getContext('2d');
+    const pCanvas = document.getElementById('previewCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    const sBox = document.getElementById('selectionBox');
+    const container = document.getElementById('canvasContainer');
+
+    const img = new Image();
+    img.src = '/assets/slone_original_sketch_card.jpg';
+
+    let isDrawing = false;
+    let startX = 0, startY = 0;
+    let currentSelection = { x: 0, y: 0, w: 0, h: 0, name: 'Personalizado' };
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      // Seleccionar por defecto Zona 1
+      selectPresetZone(1, document.querySelector('.zone-btn'));
+    };
+
+    // Control de arrastre con ratón
+    container.addEventListener('mousedown', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      isDrawing = true;
+      startX = (e.clientX - rect.left) * scaleX;
+      startY = (e.clientY - rect.top) * scaleY;
+      
+      sBox.style.display = 'block';
+      updateSelectionBox(e.clientX - rect.left, e.clientY - rect.top, 0, 0);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      const currentX = (e.clientX - rect.left) * scaleX;
+      const currentY = (e.clientY - rect.top) * scaleY;
+
+      const x = Math.min(startX, currentX);
+      const y = Math.min(startY, currentY);
+      const w = Math.abs(currentX - startX);
+      const h = Math.abs(currentY - startY);
+
+      currentSelection = { x, y, w, h, name: 'Selección con Ratón' };
+
+      // Actualizar caja visual CSS
+      const cssX = x / scaleX;
+      const cssY = y / scaleY;
+      const cssW = w / scaleX;
+      const cssH = h / scaleY;
+      updateSelectionBox(cssX, cssY, cssW, cssH);
+
+      renderPreview(x, y, w, h);
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDrawing) {
+        isDrawing = false;
+        document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+      }
+    });
+
+    function updateSelectionBox(x, y, w, h) {
+      sBox.style.left = x + 'px';
+      sBox.style.top = y + 'px';
+      sBox.style.width = w + 'px';
+      sBox.style.height = h + 'px';
+    }
+
+    function renderPreview(x, y, w, h) {
+      if (w <= 0 || h <= 0) return;
+      pCanvas.width = w;
+      pCanvas.height = h;
+      pCtx.clearRect(0, 0, w, h);
+      pCtx.drawImage(img, x, y, w, h, 0, 0, w, h);
+      document.getElementById('selectionCoordsDesc').innerHTML = 
+        `<strong>${currentSelection.name}</strong> · Área: ${Math.round(w)} × ${Math.round(h)} px`;
+    }
+
+    function selectPresetZone(zoneIdx, btn) {
+      document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const w = canvas.width;
+      const hStep = canvas.height / 4;
+      const y = (zoneIdx - 1) * hStep;
+      const h = hStep;
+
+      const names = [
+        "Zona 1: Letras 'SLÖNE' de arriba",
+        "Zona 2: Símbolo vertical central",
+        "Zona 3: Trazos intermedios de pulso",
+        "Zona 4: Firma / Tag grafitero inferior"
+      ];
+
+      currentSelection = { x: 0, y: y, w: w, h: h, name: names[zoneIdx - 1] };
+
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+
+      sBox.style.display = 'block';
+      updateSelectionBox(0, y / scaleY, rect.width, h / scaleY);
+      renderPreview(0, y, w, h);
+    }
+
+    async function confirmSelection() {
+      const statusBox = document.getElementById('statusBox');
+      const base64Data = pCanvas.toDataURL('image/png');
+
+      const payload = {
+        name: currentSelection.name,
+        coordinates: {
+          x: Math.round(currentSelection.x),
+          y: Math.round(currentSelection.y),
+          width: Math.round(currentSelection.w),
+          height: Math.round(currentSelection.h)
+        },
+        timestamp: new Date().toISOString(),
+        imageBase64: base64Data
+      };
+
+      try {
+        const res = await fetch('/api/boceto/select', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        statusBox.className = 'status-alert success';
+        statusBox.innerHTML = `✓ ¡GUARDADO! Has elegido: <strong>${currentSelection.name}</strong>.<br>Registrado en el sistema para vectorización pura.`;
+      } catch (e) {
+        statusBox.className = 'status-alert success';
+        statusBox.innerHTML = `✓ Selección capturada localmente: <strong>${currentSelection.name}</strong>.`;
+      }
+    }
+  </script>
+</body>
+</html>

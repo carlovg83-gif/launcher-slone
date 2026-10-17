@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <rect width="600" height="500" fill="#000000"/>
+  
+  <!-- EMBLEMA CENTRAL (ESCUDO 'S' SOBERANO CON SATÉLITES) -->
+  <g transform="translate(240, 50)" fill="none" stroke="#E3FF00">
+    <!-- Satélites gemelos Ö en la cima del escudo -->
+    <circle cx="44" cy="10" r="7" fill="#E3FF00" stroke="none"/>
+    <circle cx="76" cy="10" r="7" fill="#E3FF00" stroke="none"/>
+    <!-- Marco pentagonal exterior -->
+    <polygon points="60,26 108,44 92,110 60,128 28,110 12,44" stroke-width="8" stroke-linejoin="round"/>
+    <!-- S facetada central -->
+    <path d="M80,52 L42,52 L36,74 L78,76 L74,102 L38,102" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- WORDMARK SLÖNE DEBAJO -->
+  <g transform="translate(60, 260)" fill="#E3FF00">
+    <!-- S -->
+    <path d="M45,20 C24,20 12,32 12,46 C12,66 40,66 40,76 C40,82 32,84 24,82 C16,80 12,74 10,70 L2,80 C8,88 18,94 28,94 C48,94 56,82 56,68 C56,50 32,48 32,38 C32,32 38,30 44,32 C50,33 54,37 58,42 L64,30 C60,24 52,20 45,20 Z"/>
+    <!-- L -->
+    <path d="M90,22 L108,22 L108,80 L150,80 L150,94 L90,94 Z"/>
+    <!-- Ö -->
+    <circle cx="196" cy="10" r="5"/>
+    <circle cx="224" cy="10" r="5"/>
+    <path d="M210,20 C182,20 162,40 162,58 C162,76 182,96 210,96 C238,96 258,76 258,58 C258,40 238,20 210,20 Z M210,34 C228,34 240,46 240,58 C240,70 228,82 210,82 C192,82 180,70 180,58 C180,46 192,34 210,34 Z"/>
+    <!-- N -->
+    <path d="M280,22 L298,22 L330,70 L330,22 L348,22 L348,94 L330,94 L298,46 L298,94 L280,94 Z"/>
+    <!-- E -->
+    <path d="M374,22 L432,22 L432,36 L392,36 L392,50 L426,50 L426,64 L392,64 L392,80 L434,80 L434,94 L374,94 Z"/>
+  </g>
+  
+  <!-- SUB-LEYENDA SOBERANA -->
+  <text x="300" y="420" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="system-ui, sans-serif" font-size="12" font-weight="800" letter-spacing="6px">SOVEREIGN NETWORK ECOSYSTEM</text>
+</svg>

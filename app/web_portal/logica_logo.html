@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE · LA LÓGICA DEL SÍMBOLO (BLUEPRINT)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #04060A;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+      padding: 32px 20px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* CABECERA */
+    .top-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid #00F0FF;
+      color: #00F0FF;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #94A3B8;
+      max-width: 800px;
+    }
+
+    /* COMPARATIVA CON LOS GRANDES (LA REGLA TESLA / SPOTIFY) */
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 768px) { .benchmark-grid { grid-template-columns: 1fr; } }
+    .benchmark-card {
+      background: #090E17;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .benchmark-brand {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFF;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .benchmark-tech {
+      font-size: 12px;
+      color: #00F0FF;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .benchmark-desc {
+      font-size: 12px;
+      color: #8E9BAE;
+    }
+
+    /* ANATOMÍA DEL PRODUCTO SLÖNE */
+    .formula-box {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(0, 102, 255, 0.04));
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+      text-align: center;
+    }
+    .formula-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .formula-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #0B101D;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #00F0FF;
+    }
+    .formula-op {
+      font-size: 28px;
+      font-weight: 900;
+      color: #64748B;
+    }
+
+    /* LAS 4 PROPUESTAS LÓGICAS */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) { .concepts-grid { grid-template-columns: 1fr; } }
+    .concept-card {
+      background: #070B14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .concept-card:hover {
+      border-color: #00F0FF;
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+    }
+    .concept-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .concept-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .svg-viewport {
+      width: 100%;
+      height: 240px;
+      background: #020306;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .svg-viewport svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .logic-list {
+      list-style: none;
+      font-size: 13px;
+      color: #CBD5E1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .logic-list li::before {
+      content: "✦ ";
+      color: #00F0FF;
+      font-weight: 900;
+    }
+
+    /* ESCALA DE RECONOCIMIENTO (SMART TV, APP, ESTADIO) */
+    .scale-row {
+      background: #030508;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+    .scale-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: #64748B;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .scale-icons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .icon-small { width: 28px; height: 28px; }
+    .icon-med { width: 44px; height: 44px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="top-header">
+      <div class="badge">INGENIERÍA DE MARCA · ZERO HUMO</div>
+      <h1 class="title">LA LÓGICA INQUEBRANTABLE DEL SÍMBOLO SLÖNE</h1>
+      <p class="subtitle">
+        Tienes toda la razón: Tesla no usa un neumático ni un tenedor; usa el rotor magnético de su motor. 
+        Spotify no usa una clave de sol genérica; usa las 3 ondas de compresión de streaming. 
+        <strong>Aquí está la física y la lógica exacta de lo que vende SLÖNE.</strong>
+      </p>
+    </div>
+
+    <!-- CÓMO LO HACEN LOS GRANDES -->
+    <div class="benchmark-grid">
+      <div class="benchmark-card">
+        <div class="benchmark-brand"><span>TESLA</span><span style="color: #64748B;">MOTOR ELÉCTRICO</span></div>
+        <div class="benchmark-tech">T = Sección del rotor de inducción</div>
+        <div class="benchmark-desc">No es una 'T' tipográfica: es el corte transversal del inducido y los polos magnéticos que Nikola Tesla patentó en 1888.</div>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-brand"><span>SPOTIFY</span><span style="color: #64748B;">STREAMING AUDIO</span></div>
+        <div class="benchmark-tech">Ondas de sonido expansivas</div>
+        <div class="benchmark-desc">Tres ondas acústicas dentro de una pastilla verde. Todo el mundo ve sonido y transmisión sin necesidad de leer una sola letra.</div>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-brand"><span>BLUETOOTH</span><span style="color: #64748B;">ENLACE INALÁMBRICO</span></div>
+        <div class="benchmark-tech">Runa Hagall (ᚼ) + Bjarkan (ᛒ)</div>
+        <div class="benchmark-desc">Las iniciales rúnicas del rey vikingo que unificó las islas. Comunica unión inalámbrica entre dos dispositivos distintos.</div>
+      </div>
+    </div>
+
+    <!-- LA FÓRMULA SLÖNE -->
+    <div class="formula-box">
+      <div class="formula-item">
+        <div class="formula-circle">S</div>
+        <div style="font-size: 11px; font-weight: 800; color: #FFF;">LETRA S</div>
+        <div style="font-size: 10px; color: #64748B;">Identidad Soberana</div>
+      </div>
+      <div class="formula-op">+</div>
+      <div class="formula-item">
+        <div class="formula-circle">〰</div>
+        <div style="font-size: 11px; font-weight: 800; color: #FFF;">ONDA DE AUDIO</div>
+        <div style="font-size: 10px; color: #64748B;">Frecuencia & Casters</div>
+      </div>
+      <div class="formula-op">+</div>
+      <div class="formula-item">
+        <div class="formula-circle">Ö</div>
+        <div style="font-size: 11px; font-weight: 800; color: #FFF;">DIÉRESIS DUAL</div>
+        <div style="font-size: 10px; color: #64748B;">Audio + Vídeo a 0 ms</div>
+      </div>
+      <div class="formula-op">=</div>
+      <div class="formula-item">
+        <div class="formula-circle" style="background: #00F0FF; color: #000; border-color: #00F0FF;">⚡</div>
+        <div style="font-size: 11px; font-weight: 800; color: #00F0FF;">SLÖNE MARK</div>
+        <div style="font-size: 10px; color: #CBD5E1;">Inconfundible a 50 metros</div>
+      </div>
+    </div>
+
+    <!-- LAS 4 PROPUESTAS BASADAS EN LA TECNOLOGÍA REAL DE SLÖNE -->
+    <div class="concepts-grid">
+      
+      <!-- PROPUESTA 1 -->
+      <div class="concept-card">
+        <div class="concept-header">
+          <div class="concept-title">PROPUESTA 1: LA 'S' DE ONDA ACÚSTICA (SOUNDWAVE)</div>
+          <span class="badge">DIRECTO & PURO</span>
+        </div>
+        <div class="svg-viewport">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+  </defs>
+  <!-- FONDO NEGRO PURO OLED -->
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+  
+  <!-- GUÍAS DE ONDAS CONCÉNTRICAS (ANATOMÍA DE SONIDO) -->
+  <circle cx="150" cy="105" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="150" cy="195" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- LA 'S' DE SEÑAL DE AUDIO PURA: DOS ONDAS CURVAS QUE SE ENLAZAN -->
+  <g fill="none" stroke="url(#cyanBlue)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Onda superior (emisión canal izquierdo / vídeo) -->
+    <path d="M 205 92 C 205 65, 175 52, 150 52 C 120 52, 95 70, 95 100 C 95 135, 140 145, 150 150 C 160 155, 205 165, 205 200 C 205 230, 180 248, 150 248 C 125 248, 95 235, 95 208"/>
+  </g>
+  
+  <!-- LOS DOS NODOS DE SINCRONIZACIÓN (LA Ö DE SLÖNE / EMISORES ESTÉREO A CERO LATENCIA) -->
+  <circle cx="128" cy="30" r="6" fill="#00F0FF"/>
+  <circle cx="172" cy="30" r="6" fill="#00F0FF"/>
+</svg>
+        </div>
+        <ul class="logic-list">
+          <li><strong>¿Qué es?</strong> La letra 'S' está construida literalmente por dos ondas de compresión de audio opuestas que se abrazan.</li>
+          <li><strong>¿Por qué funciona?</strong> Exactamente igual que las ondas de Spotify, pero aquí la onda forma la inicial 'S' de SLÖNE.</li>
+          <li><strong>Los dos satélites superiores:</strong> Representan la diéresis de la Ö y los dos canales de sonido estéreo sincronizados al milisegundo con la TV.</li>
+        </ul>
+        <div class="scale-row">
+          <span class="scale-label">RECONOCIMIENTO EN SMART TV (64px & 32px)</span>
+          <div class="scale-icons">
+            <div class="icon-med"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+  </defs>
+  <!-- FONDO NEGRO PURO OLED -->
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+  
+  <!-- GUÍAS DE ONDAS CONCÉNTRICAS (ANATOMÍA DE SONIDO) -->
+  <circle cx="150" cy="105" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="150" cy="195" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- LA 'S' DE SEÑAL DE AUDIO PURA: DOS ONDAS CURVAS QUE SE ENLAZAN -->
+  <g fill="none" stroke="url(#cyanBlue)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Onda superior (emisión canal izquierdo / vídeo) -->
+    <path d="M 205 92 C 205 65, 175 52, 150 52 C 120 52, 95 70, 95 100 C 95 135, 140 145, 150 150 C 160 155, 205 165, 205 200 C 205 230, 180 248, 150 248 C 125 248, 95 235, 95 208"/>
+  </g>
+  
+  <!-- LOS DOS NODOS DE SINCRONIZACIÓN (LA Ö DE SLÖNE / EMISORES ESTÉREO A CERO LATENCIA) -->
+  <circle cx="128" cy="30" r="6" fill="#00F0FF"/>
+  <circle cx="172" cy="30" r="6" fill="#00F0FF"/>
+</svg></div>
+            <div class="icon-small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+  </defs>
+  <!-- FONDO NEGRO PURO OLED -->
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+  
+  <!-- GUÍAS DE ONDAS CONCÉNTRICAS (ANATOMÍA DE SONIDO) -->
+  <circle cx="150" cy="105" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="150" cy="195" r="55" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- LA 'S' DE SEÑAL DE AUDIO PURA: DOS ONDAS CURVAS QUE SE ENLAZAN -->
+  <g fill="none" stroke="url(#cyanBlue)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Onda superior (emisión canal izquierdo / vídeo) -->
+    <path d="M 205 92 C 205 65, 175 52, 150 52 C 120 52, 95 70, 95 100 C 95 135, 140 145, 150 150 C 160 155, 205 165, 205 200 C 205 230, 180 248, 150 248 C 125 248, 95 235, 95 208"/>
+  </g>
+  
+  <!-- LOS DOS NODOS DE SINCRONIZACIÓN (LA Ö DE SLÖNE / EMISORES ESTÉREO A CERO LATENCIA) -->
+  <circle cx="128" cy="30" r="6" fill="#00F0FF"/>
+  <circle cx="172" cy="30" r="6" fill="#00F0FF"/>
+</svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPUESTA 2 -->
+      <div class="concept-card">
+        <div class="concept-header">
+          <div class="concept-title">PROPUESTA 2: LA ANTENA DE TRANSMISIÓN DIRECTA</div>
+          <span class="badge">NIVEL BLUETOOTH</span>
+        </div>
+        <div class="svg-viewport">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="whiteSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EJE CENTRAL DE TRANSMISIÓN (EL NODO SLÖNE) -->
+  <line x1="150" y1="45" x2="150" y2="255" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- ONDAS DE RADIO ANGULARES QUE FORMAN LA 'S' (CONECTIVIDAD PURA) -->
+  <!-- Bucle superior derecho -->
+  <path d="M 150 75 L 210 115 L 150 150" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala izquierda de frecuencia -->
+  <path d="M 150 75 L 90 115 L 150 150" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Bucle inferior izquierdo (cerrando la S rúnica) -->
+  <path d="M 150 150 L 90 185 L 150 225" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala derecha de frecuencia inferior -->
+  <path d="M 150 150 L 210 185 L 150 225" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- DIÉRESIS DE LA Ö (TRANSMISIÓN VIVA) -->
+  <circle cx="130" cy="28" r="5" fill="#00F0FF"/>
+  <circle cx="170" cy="28" r="5" fill="#00F0FF"/>
+</svg>
+        </div>
+        <ul class="logic-list">
+          <li><strong>¿Qué es?</strong> Un mástil central de emisión de señal hacia la Smart TV donde los frentes de onda izquierdo y derecho forman la silueta de la 'S'.</li>
+          <li><strong>¿Por qué funciona?</strong> Comunica "HARDWARE Y CONECTIVIDAD INALÁMBRICA" al primer golpe de vista, como la runa de Bluetooth.</li>
+          <li><strong>Aplicación física:</strong> Ideal para imprimir en relieve en el botón central del mando a distancia de la Smart TV.</li>
+        </ul>
+        <div class="scale-row">
+          <span class="scale-label">RECONOCIMIENTO EN SMART TV (64px & 32px)</span>
+          <div class="scale-icons">
+            <div class="icon-med"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="whiteSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EJE CENTRAL DE TRANSMISIÓN (EL NODO SLÖNE) -->
+  <line x1="150" y1="45" x2="150" y2="255" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- ONDAS DE RADIO ANGULARES QUE FORMAN LA 'S' (CONECTIVIDAD PURA) -->
+  <!-- Bucle superior derecho -->
+  <path d="M 150 75 L 210 115 L 150 150" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala izquierda de frecuencia -->
+  <path d="M 150 75 L 90 115 L 150 150" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Bucle inferior izquierdo (cerrando la S rúnica) -->
+  <path d="M 150 150 L 90 185 L 150 225" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala derecha de frecuencia inferior -->
+  <path d="M 150 150 L 210 185 L 150 225" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- DIÉRESIS DE LA Ö (TRANSMISIÓN VIVA) -->
+  <circle cx="130" cy="28" r="5" fill="#00F0FF"/>
+  <circle cx="170" cy="28" r="5" fill="#00F0FF"/>
+</svg></div>
+            <div class="icon-small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="whiteSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EJE CENTRAL DE TRANSMISIÓN (EL NODO SLÖNE) -->
+  <line x1="150" y1="45" x2="150" y2="255" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- ONDAS DE RADIO ANGULARES QUE FORMAN LA 'S' (CONECTIVIDAD PURA) -->
+  <!-- Bucle superior derecho -->
+  <path d="M 150 75 L 210 115 L 150 150" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala izquierda de frecuencia -->
+  <path d="M 150 75 L 90 115 L 150 150" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Bucle inferior izquierdo (cerrando la S rúnica) -->
+  <path d="M 150 150 L 90 185 L 150 225" fill="none" stroke="url(#whiteSilver)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Ala derecha de frecuencia inferior -->
+  <path d="M 150 150 L 210 185 L 150 225" fill="none" stroke="#00F0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- DIÉRESIS DE LA Ö (TRANSMISIÓN VIVA) -->
+  <circle cx="130" cy="28" r="5" fill="#00F0FF"/>
+  <circle cx="170" cy="28" r="5" fill="#00F0FF"/>
+</svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPUESTA 3 -->
+      <div class="concept-card">
+        <div class="concept-header">
+          <div class="concept-title">PROPUESTA 3: EL PULSO CARDÍACO DEL PARTIDO (LIVE EKG)</div>
+          <span class="badge">EMOCIÓN & VITALIDAD</span>
+        </div>
+        <div class="svg-viewport">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="neonPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF66"/>
+      <stop offset="100%" stop-color="#00F0FF"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- REJILLA DE EMISIÓN DEPORTIVA Y AUDIO -->
+  <g opacity="0.1" stroke="#00F0FF" stroke-width="1">
+    <line x1="30" y1="150" x2="270" y2="150"/>
+    <line x1="150" y1="30" x2="150" y2="270"/>
+    <circle cx="150" cy="150" r="100" fill="none"/>
+  </g>
+
+  <!-- LA ONDA VITAL CONTINUA QUE FORMA LA 'S' EN UN SOLO TRAZO -->
+  <path d="M 40 150 L 80 150 L 95 120 L 110 180 L 125 70 C 140 45, 195 45, 195 95 C 195 140, 105 160, 105 205 C 105 255, 160 255, 175 230 L 190 120 L 205 180 L 220 150 L 260 150" 
+        fill="none" stroke="url(#neonPulse)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- NODOS DE SEÑAL EN DIRECTO (LATENCIA CERO) -->
+  <circle cx="138" cy="25" r="5" fill="#00FF66"/>
+  <circle cx="162" cy="25" r="5" fill="#00FF66"/>
+</svg>
+        </div>
+        <ul class="logic-list">
+          <li><strong>¿Qué es?</strong> El monitor de ritmo cardíaco: la línea plana de reposo que ante el estallido del gol a 110 dB dibuja la curva de la 'S' en un trazo continuo.</li>
+          <li><strong>¿Por qué funciona?</strong> El fútbol es taquicardia y emoción en vivo. Nadie confunde un trazado de pulso médico con otra cosa.</li>
+          <li><strong>Color neón verde:</strong> Señal de directo permanente ("ON-AIR") en la esquina superior del televisor.</li>
+        </ul>
+        <div class="scale-row">
+          <span class="scale-label">RECONOCIMIENTO EN SMART TV (64px & 32px)</span>
+          <div class="scale-icons">
+            <div class="icon-med"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="neonPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF66"/>
+      <stop offset="100%" stop-color="#00F0FF"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- REJILLA DE EMISIÓN DEPORTIVA Y AUDIO -->
+  <g opacity="0.1" stroke="#00F0FF" stroke-width="1">
+    <line x1="30" y1="150" x2="270" y2="150"/>
+    <line x1="150" y1="30" x2="150" y2="270"/>
+    <circle cx="150" cy="150" r="100" fill="none"/>
+  </g>
+
+  <!-- LA ONDA VITAL CONTINUA QUE FORMA LA 'S' EN UN SOLO TRAZO -->
+  <path d="M 40 150 L 80 150 L 95 120 L 110 180 L 125 70 C 140 45, 195 45, 195 95 C 195 140, 105 160, 105 205 C 105 255, 160 255, 175 230 L 190 120 L 205 180 L 220 150 L 260 150" 
+        fill="none" stroke="url(#neonPulse)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- NODOS DE SEÑAL EN DIRECTO (LATENCIA CERO) -->
+  <circle cx="138" cy="25" r="5" fill="#00FF66"/>
+  <circle cx="162" cy="25" r="5" fill="#00FF66"/>
+</svg></div>
+            <div class="icon-small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="neonPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF66"/>
+      <stop offset="100%" stop-color="#00F0FF"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- REJILLA DE EMISIÓN DEPORTIVA Y AUDIO -->
+  <g opacity="0.1" stroke="#00F0FF" stroke-width="1">
+    <line x1="30" y1="150" x2="270" y2="150"/>
+    <line x1="150" y1="30" x2="150" y2="270"/>
+    <circle cx="150" cy="150" r="100" fill="none"/>
+  </g>
+
+  <!-- LA ONDA VITAL CONTINUA QUE FORMA LA 'S' EN UN SOLO TRAZO -->
+  <path d="M 40 150 L 80 150 L 95 120 L 110 180 L 125 70 C 140 45, 195 45, 195 95 C 195 140, 105 160, 105 205 C 105 255, 160 255, 175 230 L 190 120 L 205 180 L 220 150 L 260 150" 
+        fill="none" stroke="url(#neonPulse)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- NODOS DE SEÑAL EN DIRECTO (LATENCIA CERO) -->
+  <circle cx="138" cy="25" r="5" fill="#00FF66"/>
+  <circle cx="162" cy="25" r="5" fill="#00FF66"/>
+</svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPUESTA 4 -->
+      <div class="concept-card">
+        <div class="concept-header">
+          <div class="concept-title">PROPUESTA 4: EL ESTADIO Y EL HAZ DE SEÑAL</div>
+          <span class="badge">ARQUITECTURA DEPORTIVA</span>
+        </div>
+        <div class="svg-viewport">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EL ANILLO DEL ESTADIO (ARQUITECTURA MONUMENTAL) -->
+  <ellipse cx="150" cy="165" rx="85" ry="95" fill="none" stroke="url(#goldTitanium)" stroke-width="14"/>
+
+  <!-- CORTE INTERNO EN 'S' DE FIBRA ÓPTICA Y AUDIO DIRECTO -->
+  <path d="M 190 125 C 190 100, 170 85, 150 85 C 125 85, 110 100, 110 125 C 110 155, 190 175, 190 205 C 190 230, 175 245, 150 245 C 125 245, 110 230, 110 205" 
+        fill="none" stroke="#00F0FF" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- LAS DOS TORRES DE EMISIÓN DE ESTADIO (DIÉRESIS DE LA Ö) -->
+  <circle cx="120" cy="42" r="7" fill="#00F0FF"/>
+  <circle cx="180" cy="42" r="7" fill="#00F0FF"/>
+</svg>
+        </div>
+        <ul class="logic-list">
+          <li><strong>¿Qué es?</strong> La 'Ö' es la silueta monumental del estadio de fútbol vista desde el cielo. Los dos puntos son las torres de emisión satelital.</li>
+          <li><strong>El interior:</strong> La fibra óptica interna dibuja la 'S' conectando las gradas con los hogares.</li>
+          <li><strong>¿Por qué funciona?</strong> Une directamente el estadio de fútbol con la marca de retransmisión soberana.</li>
+        </ul>
+        <div class="scale-row">
+          <span class="scale-label">RECONOCIMIENTO EN SMART TV (64px & 32px)</span>
+          <div class="scale-icons">
+            <div class="icon-med"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EL ANILLO DEL ESTADIO (ARQUITECTURA MONUMENTAL) -->
+  <ellipse cx="150" cy="165" rx="85" ry="95" fill="none" stroke="url(#goldTitanium)" stroke-width="14"/>
+
+  <!-- CORTE INTERNO EN 'S' DE FIBRA ÓPTICA Y AUDIO DIRECTO -->
+  <path d="M 190 125 C 190 100, 170 85, 150 85 C 125 85, 110 100, 110 125 C 110 155, 190 175, 190 205 C 190 230, 175 245, 150 245 C 125 245, 110 230, 110 205" 
+        fill="none" stroke="#00F0FF" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- LAS DOS TORRES DE EMISIÓN DE ESTADIO (DIÉRESIS DE LA Ö) -->
+  <circle cx="120" cy="42" r="7" fill="#00F0FF"/>
+  <circle cx="180" cy="42" r="7" fill="#00F0FF"/>
+</svg></div>
+            <div class="icon-small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldTitanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="36" fill="#05070D"/>
+
+  <!-- EL ANILLO DEL ESTADIO (ARQUITECTURA MONUMENTAL) -->
+  <ellipse cx="150" cy="165" rx="85" ry="95" fill="none" stroke="url(#goldTitanium)" stroke-width="14"/>
+
+  <!-- CORTE INTERNO EN 'S' DE FIBRA ÓPTICA Y AUDIO DIRECTO -->
+  <path d="M 190 125 C 190 100, 170 85, 150 85 C 125 85, 110 100, 110 125 C 110 155, 190 175, 190 205 C 190 230, 175 245, 150 245 C 125 245, 110 230, 110 205" 
+        fill="none" stroke="#00F0FF" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- LAS DOS TORRES DE EMISIÓN DE ESTADIO (DIÉRESIS DE LA Ö) -->
+  <circle cx="120" cy="42" r="7" fill="#00F0FF"/>
+  <circle cx="180" cy="42" r="7" fill="#00F0FF"/>
+</svg></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

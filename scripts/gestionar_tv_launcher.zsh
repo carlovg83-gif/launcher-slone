@@ -7,20 +7,20 @@ set -e
 DIR_PROYECTO="$(cd "$(dirname "$0")/.." && pwd)"
 DIR_ANDROID="$DIR_PROYECTO/platforms/android/slone-tv-launcher"
 DIR_DIST="$DIR_PROYECTO/dist"
-TV_IP="192.168.1.135:5555"
+TV_IP="${TV_IP:-192.168.1.135:5555}"
 PKG_NAME="com.slone.launcher"
-ACT_NAME="com.slone.launcher.MainActivity"
+ACT_NAME="com.example.slnelauncher.MainActivity"
 HABITUAL_PKG="com.google.android.apps.tv.launcherx"
 HABITUAL_ACT="com.google.android.apps.tv.launcherx.home.HomeActivity"
 
 conectar() {
-    echo "📡 Conectando a Xiaomi TV ($TV_IP)..."
+    echo "📡 Conectando a Android TV ($TV_IP)..."
     adb connect "$TV_IP" >/dev/null 2>&1 || true
 }
 
 case "$1" in
     build|compilar)
-        echo "🔨 Compilando SLÖNELauncher Nativo (Compose for TV)..."
+        echo "🔨 Compilando SLÖNELauncher Nativo (Debug)..."
         cd "$DIR_ANDROID"
         ./gradlew assembleDebug
         mkdir -p "$DIR_DIST"
@@ -28,17 +28,32 @@ case "$1" in
         echo "✅ Compilación completada con éxito."
         echo "📦 Binario generado: $DIR_DIST/slone-tv-launcher-debug.apk"
         ;;
+    release)
+        echo "💎 Compilando SLÖNELauncher Producción (Release Firmado con R8)..."
+        cd "$DIR_ANDROID"
+        ./gradlew assembleRelease
+        mkdir -p "$DIR_DIST"
+        cp "$DIR_ANDROID/app/build/outputs/apk/release/app-release.apk" "$DIR_DIST/slone-tv-launcher-v1.0.0-release.apk"
+        echo "✅ Compilación Release completada con éxito."
+        echo "📦 Binario firmado: $DIR_DIST/slone-tv-launcher-v1.0.0-release.apk"
+        ;;
     deploy|instalar)
         conectar
-        APK="$DIR_DIST/slone-tv-launcher-debug.apk"
+        APK="$DIR_DIST/slone-tv-launcher-v1.0.0-release.apk"
+        if [[ ! -f "$APK" ]]; then
+            APK="$DIR_DIST/slone-tv-launcher-debug.apk"
+        fi
+        if [[ ! -f "$APK" ]]; then
+            APK="$DIR_ANDROID/app/build/outputs/apk/release/app-release.apk"
+        fi
         if [[ ! -f "$APK" ]]; then
             APK="$DIR_ANDROID/app/build/outputs/apk/debug/app-debug.apk"
         fi
         if [[ ! -f "$APK" ]]; then
-            echo "❌ No se encontró el APK. Ejecuta primero: ./gestionar_tv_launcher.zsh build"
+            echo "❌ No se encontró ningún APK. Ejecuta primero: ./gestionar_tv_launcher.zsh release"
             exit 1
         fi
-        echo "📲 Instalando $APK en Xiaomi TV..."
+        echo "📲 Instalando $APK en Android TV ($TV_IP)..."
         adb -s "$TV_IP" install -r "$APK"
         echo "✅ SLÖNELauncher instalado correctamente."
         ;;
@@ -50,13 +65,13 @@ case "$1" in
         adb -s "$TV_IP" shell am start -n "$PKG_NAME/$ACT_NAME"
         echo "✅ SLÖNELauncher activo."
         ;;
-    normal|xiaomi)
+    normal|stock)
         conectar
-        echo "🔄 Restaurando interfaz Xiaomi habitual (Google TV)..."
+        echo "🔄 Restaurando interfaz estándar habitual (Google TV)..."
         adb -s "$TV_IP" shell cmd package enable "$HABITUAL_PKG" >/dev/null 2>&1 || true
         adb -s "$TV_IP" shell cmd package set-home-activity "$HABITUAL_PKG/$HABITUAL_ACT" >/dev/null 2>&1 || true
         adb -s "$TV_IP" shell am start -n "$HABITUAL_PKG/$HABITUAL_ACT"
-        echo "✅ Xiaomi TV en su estado habitual."
+        echo "✅ Android TV en su estado habitual."
         ;;
     captura|screenshot)
         conectar
@@ -74,9 +89,9 @@ case "$1" in
     *)
         echo "Uso: $0 [build | deploy | slone | normal | status | captura]"
         echo "  build   -> Compila el APK nativo con Gradle"
-        echo "  deploy  -> Instala el APK compilado en la Xiaomi TV"
+        echo "  deploy  -> Instala el APK compilado en Android TV"
         echo "  slone   -> Lanza SLÖNELauncher como Home"
-        echo "  normal  -> Vuelve al launcher habitual de Xiaomi"
+        echo "  normal  -> Vuelve al launcher habitual de la TV"
         echo "  status  -> Muestra la actividad en foco"
         echo "  captura -> Toma captura de la TV y la guarda en docs/"
         ;;

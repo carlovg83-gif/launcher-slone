@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SLÖNE · IDENTIDAD ESTILO SPOTIFY & TECH STREAMING</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #0B0E14;
+      --border: rgba(255, 255, 255, 0.12);
+      --neon: #E3FF00;
+      --spotify-green: #1DB954;
+      --white: #FFFFFF;
+      --muted: #8E9BAE;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Circular', 'Inter', system-ui, sans-serif;
+      padding: 32px 20px 80px 20px;
+      line-height: 1.6;
+    }
+    .wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--neon);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 5px 14px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .lead {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* COMPARATIVA DIRECTA: SPOTIFY VS SLÖNE */
+    .compare-container {
+      background: #06080E;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    .compare-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--neon);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: #020306;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .compare-card.slone-spot {
+      border-color: rgba(227, 255, 0, 0.4);
+      box-shadow: 0 0 35px rgba(227, 255, 0, 0.1);
+    }
+    .brand-logo-preview {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 20px;
+    }
+
+    /* LOS 3 CONCEPTOS DE LA 'Ö' ESTILO SPOTIFY */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .concepts-grid { grid-template-columns: 1fr; }
+    }
+    .concept-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+    .concept-card:hover {
+      border-color: var(--neon);
+      transform: translateY(-3px);
+    }
+    .concept-tag {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--neon);
+      margin-bottom: 12px;
+    }
+    .concept-icon-box {
+      width: 160px;
+      height: 160px;
+      margin: 16px 0 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .concept-name {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .concept-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* WORDMARK HORIZONTAL COMPLETO (SLÖNE) */
+    .wordmark-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .wordmark-box {
+      max-width: 760px;
+      margin: 20px auto 0 auto;
+      padding: 24px;
+      background: #020306;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    /* MOCKUP EN DISPOSITIVO REAL Y APP */
+    .mockup-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px) {
+      .mockup-section { grid-template-columns: 1fr; }
+    }
+    .mockup-img-side img {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+    .mockup-text-side {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mockup-h3 {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .mockup-p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* SIMULADOR DE HOME SCREEN DE SMARTPHONE (COMPITIENDO CON OTRAS APPS) */
+    .homescreen-box {
+      background: #070911;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+    .app-dock {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .app-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .app-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+    }
+    .app-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #CAD5E2;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <header>
+      <div class="badge">NUEVA DIRECCIÓN · SCANDINAVIAN TECH BRAND</div>
+      <h1>SLÖNE · LOGOTIPO ESTILO SPOTIFY</h1>
+      <p class="lead">
+        Cero estética noventera, cero brillos metálicos pesados ni efectos de película de acción. 
+        <strong>Minimalismo nórdico puro: plano, vector geométrico, contraste extremo y lenguaje de app de streaming global.</strong>
+      </p>
+    </header>
+
+    <!-- 1. COMPARATIVA DIRECTA: SPOTIFY VS SLÖNE -->
+    <div class="compare-container">
+      <div class="compare-title">✦ COMPARATIVA DIRECTA: EL LENGUAJE VISUAL DE LAS APPS LÍDERES</div>
+      <div class="compare-grid">
+        
+        <!-- CARD SPOTIFY -->
+        <div class="compare-card">
+          <div class="brand-logo-preview">
+            <!-- Icono clásico de Spotify -->
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <circle cx="50" cy="50" r="48" fill="#1DB954"/>
+              <path d="M 28 40 C 44 34 62 36 74 44" fill="none" stroke="#000000" stroke-width="6.5" stroke-linecap="round"/>
+              <path d="M 31 52 C 44 47 59 49 69 55" fill="none" stroke="#000000" stroke-width="5.5" stroke-linecap="round"/>
+              <path d="M 34 63 C 44 59 56 61 64 66" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div style="font-size: 18px; font-weight: 900; color: #1DB954;">SPOTIFY</div>
+          <div style="font-size: 12px; color: var(--muted); margin-top: 4px;">
+            Verde #1DB954 · 3 Ondas de sonido · Círculo plano · Tipografía Circular Std
+          </div>
+        </div>
+
+        <!-- CARD SLÖNE -->
+        <div class="compare-card slone-spot">
+          <div class="brand-logo-preview">
+            <img src="/assets/spotify_slone_1_disc_o.svg" alt="SLÖNE Disco Neón" style="width: 100%; height: 100%;">
+          </div>
+          <div style="font-size: 18px; font-weight: 900; color: var(--neon);">SLÖNE</div>
+          <div style="font-size: 12px; color: var(--muted); margin-top: 4px;">
+            Amarillo Neón #E3FF00 · Letra 'Ö' calada · Proporción 1:5 · Modern Flat
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. LOS 3 CONCEPTOS DE LA 'Ö' ESTILO SPOTIFY -->
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--neon); text-transform: uppercase; margin-bottom: 16px;">
+      ✦ 3 PROPUESTAS DE IDENTIDAD MINIMALISTA (ELIGE TU FAVORITA)
+    </div>
+
+    <div class="concepts-grid">
+
+      <!-- CONCEPTO 1: EL DISCO NEÓN (EL ANÁLOGO EXACTO DE SPOTIFY) -->
+      <div class="concept-card">
+        <div class="concept-tag">PROPUESTA 01 · EL MÁS DIRECTO</div>
+        <div class="concept-icon-box">
+          <img src="/assets/spotify_slone_1_disc_o.svg" alt="Disco Neón" style="width: 100%;">
+        </div>
+        <div class="concept-name">01 · El Disco Neón Acústico</div>
+        <div class="concept-desc">
+          El concepto más cercano a Spotify: un disco sólido en <strong>Amarillo Neón Eléctrico (#E3FF00)</strong> con la <strong>'Ö' calada en negro puro</strong>. Máximo impacto visual instantáneo en pantallas y vallas.
+        </div>
+      </div>
+
+      <!-- CONCEPTO 2: ONDAS DE STREAMING 'Ö' -->
+      <div class="concept-card">
+        <div class="concept-tag">PROPUESTA 02 · LENGUAJE ACÚSTICO</div>
+        <div class="concept-icon-box">
+          <img src="/assets/spotify_slone_2_waves_o.svg" alt="Ondas Streaming Ö" style="width: 100%;">
+        </div>
+        <div class="concept-name">02 · Ondas de Sonido 'Ö'</div>
+        <div class="concept-desc">
+          La <strong>'Ö'</strong> construida con <strong>arcos de transmisión de audio</strong> sobre disco negro mate, y dos satélites pulsantes superiores. Traduce literalmente el concepto de streaming y sonido.
+        </div>
+      </div>
+
+      <!-- CONCEPTO 3: GLIFO PURO GEOMÉTRICO SCANDINAVIAN -->
+      <div class="concept-card">
+        <div class="concept-tag">PROPUESTA 03 · MINIMAL TECH</div>
+        <div class="concept-icon-box">
+          <img src="/assets/spotify_slone_3_pure_tech_o.svg" alt="Glifo Minimal" style="width: 100%;">
+        </div>
+        <div class="concept-name">03 · Glifo Puro de Alta Precisión</div>
+        <div class="concept-desc">
+          Geometría pura de línea sólida en Neón con ratio de masa 1:5. Estilo <em>Teenage Engineering / Beats / Nothing</em>. Funciona con o sin contenedor circular.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. LOGOTIPO COMPLETO HORIZONTAL (ICONO + WORDMARK) -->
+    <div class="wordmark-section">
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--neon); text-transform: uppercase;">
+        ✦ LOGOTIPO COMPLETO: ICONO SPOTIFY + WORDMARK "SLÖNE"
+      </div>
+      <div class="wordmark-box">
+        <img src="/assets/spotify_slone_full_brand.svg" alt="SLÖNE Full Brand" style="max-width: 100%; height: auto;">
+      </div>
+      <p style="font-size: 13px; color: var(--muted); margin-top: 14px;">
+        Tipografía sans-serif geométrica moderna (grotesque) con la <strong>'Ö' en Amarillo Neón</strong> integrada como el corazón de la marca.
+      </p>
+    </div>
+
+    <!-- 4. MOCKUP REAL EN ENTORNO TECH Y APP SMARTPHONE -->
+    <div class="mockup-section">
+      <div class="mockup-img-side">
+        <img src="/assets/slone_spotify_mockup.jpg" alt="SLÖNE Streaming App Mockup">
+      </div>
+      <div class="mockup-text-side">
+        <div class="badge" style="width: fit-content;">VERIFICACIÓN EN ENTORNO REAL</div>
+        <h3 class="mockup-h3">Así se ve SLÖNE como App de Streaming</h3>
+        <p class="mockup-p">
+          En la pantalla de un smartphone, en packaging mate negro y auriculares. 
+          Un diseño sobrio, contemporáneo, con personalidad internacional y sin rastro de los efectos noventeros de cine.
+        </p>
+        <div style="font-family: monospace; font-size: 12px; color: #94A3B8; background: #05070D; padding: 14px; border-radius: 8px; border: 1px solid var(--border);">
+          ✦ Paleta Oficial: #E3FF00 (Electric Lime) + #000000 (OLED Pitch Black)<br>
+          ✦ Geometría: Vector plano, escalabilidad infinita, 0% distorsión 3D noventera.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. TEST DE PARRILLA DE APPS (HOME SCREEN) -->
+    <div class="homescreen-box">
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--neon); text-transform: uppercase;">
+        ✦ TEST EN PARRILLA DE APPS: CÓMO DESTACA SLÖNE JUNTO A LOS GIGANTES
+      </div>
+      <div class="app-dock">
+        
+        <div class="app-item">
+          <div class="app-icon" style="background: #1DB954;">
+            <svg viewBox="0 0 100 100" width="46" height="46">
+              <path d="M 24 38 C 42 32 62 34 76 43" fill="none" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+              <path d="M 28 51 C 42 46 59 48 70 55" fill="none" stroke="#000" stroke-width="6" stroke-linecap="round"/>
+              <path d="M 32 63 C 43 59 56 61 65 67" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="app-label">Spotify</span>
+        </div>
+
+        <div class="app-item">
+          <div class="app-icon" style="background: #000; border: 2px solid var(--neon);">
+            <img src="/assets/spotify_slone_1_disc_o.svg" width="60" height="60">
+          </div>
+          <span class="app-label" style="color: var(--neon);">SLÖNE</span>
+        </div>
+
+        <div class="app-item">
+          <div class="app-icon" style="background: #E50914;">
+            <span style="font-size: 32px; font-weight: 900; color: #FFF; font-family: sans-serif;">N</span>
+          </div>
+          <span class="app-label">Netflix</span>
+        </div>
+
+        <div class="app-item">
+          <div class="app-icon" style="background: #FF0000;">
+            <svg viewBox="0 0 100 100" width="40" height="40">
+              <polygon points="38,32 72,50 38,68" fill="#FFF"/>
+            </svg>
+          </div>
+          <span class="app-label">YouTube</span>
+        </div>
+
+        <div class="app-item">
+          <div class="app-icon" style="background: linear-gradient(135deg, #FC3C44, #F94C57);">
+            <svg viewBox="0 0 100 100" width="40" height="40">
+              <circle cx="38" cy="65" r="12" fill="#FFF"/>
+              <circle cx="68" cy="55" r="12" fill="#FFF"/>
+              <rect x="46" y="25" width="8" height="40" fill="#FFF"/>
+              <rect x="76" y="20" width="8" height="35" fill="#FFF"/>
+              <polygon points="46,25 84,18 84,28 46,35" fill="#FFF"/>
+            </svg>
+          </div>
+          <span class="app-label">Apple Music</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

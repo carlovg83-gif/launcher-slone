@@ -11,7 +11,7 @@ PROJECT_DIR="/home/slone/slocast 1.0"
 DIST_DIR="${PROJECT_DIR}/dist"
 WEB_OUT="${DIST_DIR}/slone_web_produccion"
 
-echo "\n👑 [SLONE CORP] Preparando paquete de despliegue web para producción..."
+echo "\n✦ [SLÖNE CORP] Preparando paquete de despliegue web para producción..."
 
 rm -rf "${WEB_OUT}"
 mkdir -p "${WEB_OUT}"
@@ -22,7 +22,9 @@ cp "${PROJECT_DIR}/app/web_portal/manifest.json" "${WEB_OUT}/"
 cp "${PROJECT_DIR}/app/web_portal/sw.js" "${WEB_OUT}/"
 cp "${PROJECT_DIR}/app/web_portal/privacy.html" "${WEB_OUT}/" 2>/dev/null || true
 cp "${PROJECT_DIR}/app/web_portal/terms.html" "${WEB_OUT}/" 2>/dev/null || true
+cp "${PROJECT_DIR}/app/web_portal/showroom.html" "${WEB_OUT}/" 2>/dev/null || true
 cp -r "${PROJECT_DIR}/app/web_portal/assets" "${WEB_OUT}/"
+cp -r "${PROJECT_DIR}/app/web_portal/launcher" "${WEB_OUT}/"
 
 # Añadir _redirects y configuración para Cloudflare Pages y SPA
 cat << 'EOF' > "${WEB_OUT}/_redirects"
@@ -44,7 +46,7 @@ EOF
 # Archivo de instrucciones para el CEO
 cat << 'EOF' > "${WEB_OUT}/COMO_PUBLICAR_EN_INTERNET.txt"
 ══════════════════════════════════════════════════════════════════════════
-👑 SLONE CORP · GUÍA DE PUBLICACIÓN EN DOMINIO GLOBAL (0 € EN SERVIDORES)
+✦ SLÖNE CORP · GUÍA DE PUBLICACIÓN EN DOMINIO GLOBAL (0 € EN SERVIDORES)
 ══════════════════════════════════════════════════════════════════════════
 
 MÉTODO 1 · CLOUDFLARE PAGES (RECOMENDADO · ULTRA-RÁPIDO Y GRATUITO):

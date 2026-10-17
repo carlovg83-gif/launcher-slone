@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <!-- Degradado de alta fidelidad: Amarillo Neón a Neón Lima -->
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#E3FF00"/>
+      <stop offset="100%" stop-color="#A6D900"/>
+    </linearGradient>
+    
+    <!-- Filtro de sombra de contacto óptica ultra-sutil -->
+    <filter id="softDepth" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#E3FF00" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- FONDO NEGRO PURO -->
+  <rect width="600" height="600" fill="#000000"/>
+
+  <!-- CÍRCULO CONTENEDOR MATE DE PRECISIÓN (OPCIONAL/SUTIL) -->
+  <circle cx="300" cy="300" r="270" fill="#05070D" stroke="#121722" stroke-width="2"/>
+
+  <!-- LOGO MASTER: FASE ESTÉREO 'Ö' -->
+  <g transform="translate(0, 20)">
+
+    <!-- CUERPO PRINCIPAL DE LA 'O': ANILLO ESCULPIDO CON CORTE DE TANGENCIA ÓPTICA -->
+    <!-- Arco Inferior Base: Masa resonante sólida con terminaciones a 45 grados -->
+    <path d="M 172 260 
+             C 150 340 195 440 290 445 
+             C 385 440 430 340 408 260
+             C 400 230 375 230 365 255
+             C 345 320 320 375 290 375
+             C 260 375 235 320 215 255
+             C 205 230 180 230 172 260 Z" 
+          fill="url(#neonGlow)" filter="url(#softDepth)"/>
+
+    <!-- Arco Superior de Frecuencia: Cierre acústico calibrado -->
+    <path d="M 205 210
+             C 225 160 260 140 290 140
+             C 320 140 355 160 375 210
+             C 385 235 410 230 405 200
+             C 380 130 330 95 290 95
+             C 250 95 200 130 175 200
+             C 170 230 195 235 205 210 Z"
+          fill="url(#neonGlow)" filter="url(#softDepth)"/>
+
+    <!-- DIÉRESIS DE INGENIERÍA: CÁPSULAS ACÚSTICAS RADIALES (NO BOLAS CUTRES) -->
+    <!-- Cápsula Izquierda: Inclinada -15 grados hacia el centro focal de audio -->
+    <g transform="translate(232, 60) rotate(-14)">
+      <rect x="-14" y="-22" width="28" height="44" rx="14" fill="url(#neonGlow)" filter="url(#softDepth)"/>
+      <circle cx="0" cy="0" r="4" fill="#000000"/>
+    </g>
+
+    <!-- Cápsula Derecha: Inclinada +14 grados hacia el centro focal de audio -->
+    <g transform="translate(348, 60) rotate(14)">
+      <rect x="-14" y="-22" width="28" height="44" rx="14" fill="url(#neonGlow)" filter="url(#softDepth)"/>
+      <circle cx="0" cy="0" r="4" fill="#000000"/>
+    </g>
+
+    <!-- NODO CENTRAL DE TRANSMISIÓN (MICRO-DETALLE DE PRECISIÓN EN EL ESPACIO NEGATIVO) -->
+    <circle cx="290" cy="270" r="6" fill="#E3FF00" opacity="0.8"/>
+
+  </g>
+</svg>

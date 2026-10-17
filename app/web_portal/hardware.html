@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="2; url=tv.html">
+  <title>SLÖNE · Software Soberano sobre ThinkPad X390</title>
+  <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
+  <style>
+    :root {
+      --bg: #07090E;
+      --card: #10141D;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #E3FF00;
+      --cyan: #00F0FF;
+      --green: #00E676;
+      --text: #FFFFFF;
+      --muted: #8E95A5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background-image: radial-gradient(circle at 50% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 60%);
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    .logo-img {
+      height: 48px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(227, 255, 0, 0.3));
+    }
+
+    .badge-sovereign {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 230, 118, 0.12);
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      color: #FFF;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .spec-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    .spec-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .spec-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFF;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+
+    .btn-redirect {
+      background: var(--accent);
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 14px 28px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 25px rgba(227, 255, 0, 0.35);
+    }
+
+    .btn-redirect:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(227, 255, 0, 0.5);
+    }
+
+    .countdown-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="assets/slone_luxury_logo.svg" alt="SLÖNE" class="logo-img" onerror="this.src='assets/slone_isotipo_soberano.svg'">
+    
+    <div class="badge-sovereign">
+      <span>🛡️</span> Cero Hardware Físico Requerido · 100% Software Soberano
+    </div>
+
+    <h1>SLÖNE Corre en Tu <span>ThinkPad X390</span></h1>
+    <p>
+      SLÖNE no es una caja china ni un aparato físico cerrado de 200€. Es el motor de software soberano ultra-ligero diseñado para volar directamente sobre tu hardware actual, sincronizando tus canales de TV, listas IPTV y audios en vivo sin calentar el portátil ni consumir batería.
+    </p>
+
+    <div class="specs-grid">
+      <div class="spec-box">
+        <div class="spec-label">Consumo de CPU ThinkPad</div>
+        <div class="spec-val" style="color: var(--green);">&lt; 2% (VA-API Intel HW)</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Huella de Memoria RAM</div>
+        <div class="spec-val" style="color: var(--cyan);">~40 MB Ultraligero</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Guía EPG Inteligente</div>
+        <div class="spec-val">Multilingüe (5 Idiomas)</div>
+      </div>
+      <div class="spec-box">
+        <div class="spec-label">Casilla Unificada</div>
+        <div class="spec-val" style="color: var(--accent);">Vídeo + Audio 1-Clic</div>
+      </div>
+    </div>
+
+    <a href="tv.html" class="btn-redirect">
+      <span>📺</span> Abrir Casilla Unificada SLÖNE TV
+    </a>
+
+    <div class="countdown-note">
+      Redirigiendo automáticamente a SLÖNE TV en 2 segundos...
+    </div>
+  </div>
+
+</body>
+</html>

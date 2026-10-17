@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SLÖNE · LOS DOS LOGOTIPOS SOLICITADOS (DISEÑO GRÁFICO ÉLITE)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #0A0D14;
+      --border: rgba(255, 255, 255, 0.1);
+      --neon: #E3FF00;
+      --white: #FFFFFF;
+      --muted: #8E9BAE;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+      padding: 40px 24px;
+      line-height: 1.6;
+    }
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--neon);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* GRID DE LOS DOS LOGOS */
+    .logos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 850px) {
+      .logos-grid { grid-template-columns: 1fr; }
+    }
+
+    .logo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+      transition: border-color 0.2s ease;
+    }
+    .logo-card:hover {
+      border-color: rgba(227, 255, 0, 0.4);
+    }
+    .card-header {
+      padding: 16px 20px;
+      background: #0E131E;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #E2E8F0;
+    }
+    .card-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--neon);
+      text-transform: uppercase;
+    }
+
+    .canvas-stage {
+      background: #000000;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .canvas-stage img {
+      max-width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+    }
+
+    .card-footer {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      background: #0A0D15;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.5;
+    }
+    .card-meta {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #64748B;
+      font-family: monospace;
+    }
+
+    /* MODO COMPARATIVA APLICADA (MOCKUP EN VIVO) */
+    .mockup-preview-bar {
+      background: #07090F;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .mockup-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .mockup-brand img.icon {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+    .mockup-brand img.text {
+      height: 36px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <header>
+      <div class="badge">DISEÑO GRÁFICO Y PUBLICIDAD DE ÉLITE</div>
+      <h1>SLÖNE · LOS DOS LOGOTIPOS</h1>
+      <p class="lead">
+        Generados por directores de arte especializados: <strong>un logo centrado exclusivamente en la letra 'Ö'</strong> (isotipo de máxima síntesis) y <strong>otro logo centrado en las letras completas 'SLÖNE'</strong> (wordmark tipográfico de alta gama). Cero rollos nórdicos, cero 3D, plano puro 2D.
+      </p>
+    </header>
+
+    <div class="logos-grid">
+
+      <!-- LOGO 1: LA LETRA Ö -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="card-title">LOGO 1 · ISOTIPO LETRA 'Ö'</div>
+          <div class="card-tag">SÍNTESIS PURA</div>
+        </div>
+        <div class="canvas-stage">
+          <img src="/assets/logo_1_letra_o_ai.jpg" alt="Logo Letra Ö generado por IA">
+        </div>
+        <div class="card-footer">
+          <p class="card-desc">
+            <strong>El Isotipo Autónomo:</strong> Centrado al 100% en la letra <strong>'Ö'</strong>. Un círculo de precisión milimétrica en amarillo neón (#E3FF00) con dos satélites gemelos diéresis suspendidos con equilibrio visual perfecto. Funciona como icono de app, botón de mando de televisión o grabado láser.
+          </p>
+          <p class="card-meta">
+            Fichero: /home/slone/.gemini/antigravity/brain/a9925caf-3269-4442-9e14-85436ece9958/o_umlaut_trademark_logo_1792183910201.jpg
+          </p>
+        </div>
+      </div>
+
+      <!-- LOGO 2: LAS LETRAS SLÖNE -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="card-title">LOGO 2 · TIPOGRAFÍA 'SLÖNE'</div>
+          <div class="card-tag">WORDMARK CORPORATIVO</div>
+        </div>
+        <div class="canvas-stage">
+          <img src="/assets/logo_2_letras_slone_ai.jpg" alt="Logo Tipográfico SLÖNE generado por IA">
+        </div>
+        <div class="card-footer">
+          <p class="card-desc">
+            <strong>El Logotipo Tipográfico Completo:</strong> Las letras <strong>'SLÖNE'</strong> trazadas en mayúsculas rotundas de estilo Grotesk suizo de alta gama. Kerning calibrado, cortes afilados en la 'S', proporción monumental y los dos puntos exactos sobre la 'Ö'. Sin distorsiones ortográficas.
+          </p>
+          <p class="card-meta">
+            Fichero: /home/slone/.gemini/antigravity/brain/a9925caf-3269-4442-9e14-85436ece9958/slone_corporate_wordmark_logo_1792183900298.jpg
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CÓMO FUNCIONAN COMBINADOS -->
+    <div style="margin-bottom: 12px; font-size: 13px; font-weight: 800; letter-spacing: 2px; color: var(--neon); text-transform: uppercase;">
+      ✦ APLICACIÓN CONJUNTA (ISOTIPO 'Ö' + WORDMARK 'SLÖNE')
+    </div>
+    <div class="mockup-preview-bar">
+      <div class="mockup-brand">
+        <img src="/assets/logo_1_letra_o_ai.jpg" class="icon" alt="Isotipo Ö">
+        <img src="/assets/logo_2_letras_slone_ai.jpg" class="text" alt="Wordmark SLÖNE">
+      </div>
+      <div style="font-size: 12px; color: var(--muted); font-weight: 700;">
+        CABECERA SMART TV & PORTAL WEB · SOBERANO
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" width="100%" height="100%">
+  <!-- FONDO TRANSPARENTE -->
+  <rect width="1000" height="280" fill="transparent"/>
+
+  <!-- 1. ICONO SLÖNE A LA IZQUIERDA (ESTILO DISCO SPOTIFY) -->
+  <g transform="translate(140, 140)">
+    <!-- Disco Verde Neón -->
+    <circle cx="0" cy="0" r="95" fill="#E3FF00"/>
+    
+    <!-- Anillo Interior Calado en Negro -->
+    <circle cx="0" cy="10" r="54" fill="#000000"/>
+    <circle cx="0" cy="10" r="30" fill="#E3FF00"/>
+    
+    <!-- Diéresis Superior Calada -->
+    <circle cx="-20" cy="-62" r="10" fill="#000000"/>
+    <circle cx="20" cy="-62" r="10" fill="#000000"/>
+  </g>
+
+  <!-- 2. WORDMARK GEOMÉTRICO "SLÖNE" (TIPOGRAFÍA BRUTALISTA MODERNA TIPO TECH/STREAMING) -->
+  <g transform="translate(300, 175)">
+    <!-- TEXTO VECTORIAL PRINCIPAL -->
+    <text x="0" y="0" 
+          font-family="system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Circular', 'Montserrat', sans-serif" 
+          font-size="118" 
+          font-weight="900" 
+          letter-spacing="6px" 
+          fill="#FFFFFF">SL<tspan fill="#E3FF00">Ö</tspan>NE</text>
+  </g>
+
+  <!-- LÍNEA SUTIL DE BRANDING -->
+  <text x="306" y="220" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="16" 
+        font-weight="800" 
+        letter-spacing="9px" 
+        fill="#8E9BAE">STREAMING &amp; SOUND ECOSYSTEM</text>
+</svg>

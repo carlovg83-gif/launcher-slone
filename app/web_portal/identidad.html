@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE CÖRP · Blueprint y Lógica Formal del Símbolo Söberanö</title>
+  <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
+  <style>
+    :root {
+      --bg: #050608;
+      --card-bg: rgba(13, 17, 24, 0.85);
+      --border: rgba(255, 215, 0, 0.2);
+      --gold: #FFD700;
+      --gold-dim: #D4AF37;
+      --cyan: #00F0FF;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; padding: 3rem 1.5rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 4rem; }
+    .badge { display: inline-block; padding: 6px 16px; border-radius: 30px; border: 1px solid var(--border); font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; color: var(--gold); margin-bottom: 1.5rem; text-transform: uppercase; }
+    h1 { font-size: 3.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 1rem; }
+    .lead { font-size: 1.2rem; color: var(--text-muted); max-width: 780px; margin: 0 auto; }
+
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 4rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+    .card-title { font-size: 1.3rem; font-weight: 800; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+    .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .symbol-viewport { background: #000; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); padding: 3rem; text-align: center; margin-bottom: 2rem; position: relative; }
+    .symbol-svg { max-width: 240px; height: auto; display: inline-block; }
+
+    .cad-specs-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .cad-specs-table th { text-align: left; color: var(--text-muted); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 600; }
+    .cad-specs-table td { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .cad-specs-table strong { color: var(--gold); font-family: monospace; font-size: 0.95rem; }
+
+    .benchmark-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .bench-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 1.5rem; }
+    .bench-brand { font-size: 1.1rem; font-weight: 900; margin-bottom: 6px; }
+    .bench-concept { font-size: 0.85rem; color: var(--cyan); margin-bottom: 8px; font-weight: 700; }
+    .bench-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="nav-back">← VOLVER AL PORTAL SLÖNE CÖRP</a>
+    
+    <header>
+      <div class="badge">MANIFIESTO DE INGENIERÍA DE MARCA · PRIMEROS PRINCIPIOS</div>
+      <h1>LA LÓGICA DEL SÍMBOLO SOBERANO</h1>
+      <p class="lead">
+        Un símbolo de escala mundial no se dibuja al azar ni se adorna con fantasías. Se deduce por primeros principios a partir del problema fundamental que la empresa resuelve en el universo físico.
+      </p>
+    </header>
+
+    <!-- VISUALIZADOR DEL ISOTIPO MAESTRO -->
+    <div class="symbol-viewport">
+      <img src="assets/slone_isotipo_soberano.svg" alt="Isotipo Söberanö SLÖNE" class="symbol-svg">
+      <div style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-muted); letter-spacing: 1px;">
+        ISOTIPO SOBERANO: ANILLO DE TRANSMISIÓN CONTINUA + POLOS DE SINCRONIZACIÓN TEMPORAL (0 MS)
+      </div>
+    </div>
+
+    <!-- ANÁLISIS DE PRIMEROS PRINCIPIOS: COMPARATIVA CON LOS GRANDES -->
+    <div class="card" style="margin-bottom: 3.5rem;">
+      <div class="card-title">✦ Primeros Principios: La Lógica de los Símbolos Universales</div>
+      <p class="card-desc">
+        Tesla no tiene un neumático; tiene el rotor de inducción de Nikola Tesla. Spotify no tiene una nota musical; tiene tres ondas de sonido en expansión. Apple no tiene un circuito impreso; tiene la fruta del conocimiento de Newton y Turing con la escala de un bocado (byte).
+      </p>
+      
+      <div class="benchmark-grid">
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #E82127;">TESLA</div>
+          <div class="bench-concept">El Rotor Electromagnético</div>
+          <div class="bench-desc">La 'T' es la sección transversal del núcleo de un motor de inducción. Comunica la física de la energía antes que el coche.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #1DB954;">SPOTIFY</div>
+          <div class="bench-concept">Las Ondas de Propagación</div>
+          <div class="bench-desc">Tres ondas acústicas horizontales. Transmite streaming de audio sin cables y en libertad total sin decir una sola palabra.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #00F0FF;">SLÖNE</div>
+          <div class="bench-concept">Órbita Söberana + Fase 0 ms</div>
+          <div class="bench-desc">El anillo 'O' es el perímetro local Zerö-Trust. Los dos satélites '¨' son los flujos de vídeo 4K y radio en vivo sincronizados a 0 ms.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COTAS MATEMÁTICAS Y PROPORCIONES CAD -->
+    <div class="showcase-grid">
+      <div class="card">
+        <div class="card-title">📐 Geometría y Cotas Matemáticas</div>
+        <table class="cad-specs-table">
+          <thead>
+            <tr><th>Elemento Geométrico</th><th>Valor Formal de Ingeniería</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Diámetro de Órbita Primaria</td><td><strong>Ø 272 px (Proporción G2 Áurea)</strong></td></tr>
+            <tr><td>Grosor del Anillo Söberanö</td><td><strong>38 px (Mecanizado Sólido Suizo)</strong></td></tr>
+            <tr><td>Polos Temporales Gemelos</td><td><strong>2 Satélites Cuánticos (Ø 52 px)</strong></td></tr>
+            <tr><td>Distancia Inter-focal de Ejes</td><td><strong>136 px de separación bilateral</strong></td></tr>
+            <tr><td>Tensión de Gap Vertical</td><td><strong>13 px (Resonancia Gestalt)</strong></td></tr>
+            <tr><td>Desfase Temporal Simbólico</td><td><strong>0.000 ms (Coherencia de Fase Pura)</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🛡️ Resiliencia de Escala (16px a 100m)</div>
+        <p class="card-desc">
+          El símbolo supera el test de legibilidad extrema:
+        </p>
+        <ul style="list-style: none; font-size: 0.88rem; color: var(--text-muted); line-height: 1.8;">
+          <li>✓ <strong>Favicon 16×16 px</strong>: El contraste del anillo y los dos puntos permanece 100% nítido.</li>
+          <li>✓ <strong>Smartwatch / TV UI</strong>: Reconocible al instante sin tipografía accesoria.</li>
+          <li>✓ <strong>Hardware Dedicado</strong>: Grabable a láser en aluminio anodizado de chasis o placas.</li>
+          <li>✓ <strong>Valla de Estadio</strong>: Silueta icónica identificable a 100 metros en retransmisiones.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MATRIZ DE EXPANSIÓN GLOBAL SLÖNE (3 A 99 AÑOS) -->
+    <div class="card" style="margin-bottom: 4rem;">
+      <div class="card-title">🌐 Matriz de Expansión del Ecosistema SLÖNE (De 3 a 99 años)</div>
+      <p class="card-desc">
+        La ingeniería de latencia cero y soberanía Zero-Trust no se limita a un reproductor multimedia: es la columna vertebral de un conglomerado de impacto humano y comercial masivo en todo el mundo.
+      </p>
+
+      <div class="benchmark-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="bench-card">
+          <div class="bench-brand" style="color: var(--gold);">SLÖNE SÉNIÖRS & CARE (80-99 años)</div>
+          <div class="bench-concept">El Puente Familiar 1-Touch</div>
+          <div class="bench-desc">Audio DSP con realce de formantes de voz para presbiacusia y enlace bidireccional instantáneo a 0 ms sin contraseñas ni apps confusas. Dignidad para nuestros mayores.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: var(--cyan);">SLÖNE KIDS PLAYGROUND (3-12 años)</div>
+          <div class="bench-concept">Cápsula Cultural Anti-Dopamina</div>
+          <div class="bench-desc">Contenidos educativos y cuentacuentos interactivos en red local sin conexión externa. Cero algoritmos adictivos, cero publicidad, cero telemetría infantil.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #00FF88;">SLÖNE STADIUM & BARS (B2B)</div>
+          <div class="bench-concept">Sincronía Multiaudio por QR</div>
+          <div class="bench-desc">Cientos de bares y estadios con 8 pantallas emitiendo simultáneamente. Cada cliente apunta al QR de la pantalla y escucha el audio perfecto en sus auriculares sin lag.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #FF5E3A;">SLÖNE MÖTÖRS & CÖCKPIT</div>
+          <div class="bench-concept">Telemetría CAN-Bus & Team Radio</div>
+          <div class="bench-desc">Simracing y automovilismo con ingesta UDP y jitter sub-3ms. Telemetría de pista y radio de equipo unificadas en un HUD holográfico instantáneo.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #E2E8F0;">SLÖNE CÖRE HARDWARE</div>
+          <div class="bench-concept">Micro-Appliance de Aluminio Unibody</div>
+          <div class="bench-desc">Dispositivo físico silencioso (refrigeración 100% pasiva) con la Ö mecanizada en relieve. Plug & play absoluto: se conecta a la TV y router y autodescubre el hogar.</div>
+        </div>
+
+        <div class="bench-card">
+          <div class="bench-brand" style="color: #A78BFA;">SLÖNE SÖVEREIGN HEALTH</div>
+          <div class="bench-concept">Telemedicina Zero-Trust Crítica</div>
+          <div class="bench-desc">Transmisión de bioseñales (fonendoscopio digital, ECG) cifradas P2P sin servidores en nube intermedia. Audio médico sin pérdidas acústicas para diagnósticos remotos vitales.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <!-- Oro Líquido 24K Champán PVD -->
+    <linearGradient id="gold24k" x1="12%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%" stop-color="#FFFDF2" />
+      <stop offset="15%" stop-color="#FFE26A" />
+      <stop offset="42%" stop-color="#D9A826" />
+      <stop offset="68%" stop-color="#FDE895" />
+      <stop offset="88%" stop-color="#B8860B" />
+      <stop offset="100%" stop-color="#734F0A" />
+    </linearGradient>
+
+    <!-- Contornos de Luz Cenital y Titanio -->
+    <linearGradient id="titaniumRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="35%" stop-color="#FFE89E" stop-opacity="0.4" />
+      <stop offset="75%" stop-color="#543A02" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Bloque de Extrusión 3D Grafito / Obsidiana -->
+    <linearGradient id="blockExtrusion" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#2D3442" />
+      <stop offset="35%" stop-color="#151922" />
+      <stop offset="100%" stop-color="#06080D" />
+    </linearGradient>
+
+    <!-- Satélite Glow -->
+    <radialGradient id="satLens" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="30%" stop-color="#FFE57E" />
+      <stop offset="70%" stop-color="#D4A017" />
+      <stop offset="100%" stop-color="#7A4E00" />
+    </radialGradient>
+  </defs>
+
+  <!-- ==============================================================================
+       CAPA 1: EXTRUSIÓN 3D CONTINUA (BLOQUES DE PERSPECTIVA DEL BOCETO)
+       ============================================================================== -->
+  <g id="blocks-3d" opacity="0.95">
+    <!-- 3D de la S (Ala izquierda) -->
+    <path d="M 60,150 L 380,105 L 390,140 L 150,185 L 175,255 L 75,275 Z" fill="url(#blockExtrusion)" stroke="#1E293B" stroke-width="1.2" />
+    
+    <!-- 3D de la L (Columna central izquierda) -->
+    <path d="M 280,210 L 450,135 L 480,195 L 310,380 L 260,335 Z" fill="url(#blockExtrusion)" stroke="#1E293B" stroke-width="1.2" />
+    <path d="M 310,380 L 480,195 L 495,240 L 375,415 L 310,415 Z" fill="#0A0D14" stroke="#1E293B" stroke-width="1" />
+
+    <!-- 3D del Anillo Central Ö (Apoyo de base) -->
+    <path d="M 540,345 L 660,355 L 640,395 L 535,385 Z" fill="url(#blockExtrusion)" />
+
+    <!-- 3D de la N (Columna central derecha) -->
+    <path d="M 720,210 L 870,140 L 895,190 L 750,380 L 705,335 Z" fill="url(#blockExtrusion)" stroke="#1E293B" stroke-width="1.2" />
+    
+    <!-- 3D de la E (Ala derecha simétrica) -->
+    <path d="M 910,140 L 1120,95 L 1140,130 L 970,175 L 1090,245 L 1070,275 L 940,250 Z" fill="url(#blockExtrusion)" stroke="#1E293B" stroke-width="1.2" />
+  </g>
+
+  <!-- ==============================================================================
+       CAPA 2: CARAS FRONTALES SOBERANAS (S - L - Ö - N - E)
+       Equilibrio armónico con la Ö en el centro exacto (X=600)
+       ============================================================================== -->
+  <g id="front-wordmark">
+    <!-- ── 1. LETRA 'S' (Ala aerodinámica izquierda) ── -->
+    <path d="M 50,135 L 380,90 L 400,120 L 190,155 L 290,180 L 140,265 L 60,250 L 155,200 L 50,135 Z" 
+          fill="url(#gold24k)" 
+          stroke="url(#titaniumRim)" 
+          stroke-width="2.2" 
+          stroke-linejoin="round" />
+
+    <!-- ── 2. LETRA 'L' (Vértice cinético de 54°) ── -->
+    <path d="M 270,180 L 390,125 L 455,170 L 300,355 L 245,305 L 365,205 Z" 
+          fill="url(#gold24k)" 
+          stroke="url(#titaniumRim)" 
+          stroke-width="2.2" 
+          stroke-linejoin="round" />
+
+    <!-- ── 3. CORAZÓN SOBERANO: 'Ö' (CENTRO MATEMÁTICO ABSOLUTO EN X=600) ── -->
+    <g transform="translate(600, 260)">
+      <!-- Anillo Toroidal Maestro (Grosor 34px) -->
+      <ellipse cx="0" cy="0" rx="88" ry="94" 
+               fill="none" 
+               stroke="url(#gold24k)" 
+               stroke-width="32" 
+               stroke-linecap="round" />
+      <ellipse cx="0" cy="0" rx="103.5" ry="109.5" fill="none" stroke="url(#titaniumRim)" stroke-width="1.5" />
+      <ellipse cx="0" cy="0" rx="72.5" ry="78.5" fill="none" stroke="url(#titaniumRim)" stroke-width="1.5" opacity="0.8" />
+
+      <!-- Satélite Orbital Izquierdo (Alfa: Emisión 4K) -->
+      <g transform="translate(-44, -132)">
+        <circle cx="0" cy="0" r="22" fill="url(#satLens)" />
+        <circle cx="0" cy="0" r="22" fill="none" stroke="url(#titaniumRim)" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" />
+        <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" />
+      </g>
+
+      <!-- Satélite Orbital Derecho (Beta: Sincronía 0 ms - Proporción armónica del boceto) -->
+      <g transform="translate(46, -140)">
+        <circle cx="0" cy="0" r="30" fill="url(#satLens)" />
+        <circle cx="0" cy="0" r="30" fill="none" stroke="url(#titaniumRim)" stroke-width="1.8" />
+        <circle cx="0" cy="0" r="14" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" />
+        <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" />
+      </g>
+    </g>
+
+    <!-- ── 4. LETRA 'N' (Columna gemela en ángulo de la L) ── -->
+    <g transform="translate(735, 150)">
+      <path d="M 0,175 L 0,35 L 34,22 L 78,135 L 78,12 L 110,0 L 110,158 L 76,170 L 32,58 L 32,185 Z" 
+            fill="url(#gold24k)" 
+            stroke="url(#titaniumRim)" 
+            stroke-width="2.2" 
+            stroke-linejoin="round" />
+    </g>
+
+    <!-- ── 5. LETRA 'E' (Ala aerodinámica derecha simétrica con la S) ── -->
+    <g transform="translate(885, 140)">
+      <path d="M 0,195 L 0,22 L 95,0 L 100,32 L 36,44 L 36,92 L 85,84 L 88,115 L 36,122 L 36,168 L 102,156 L 105,190 Z" 
+            fill="url(#gold24k)" 
+            stroke="url(#titaniumRim)" 
+            stroke-width="2.2" 
+            stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- GUÍAS DE INGENIERÍA SOBERANA (EJE CENTRAL X=600) -->
+  <g opacity="0.25">
+    <line x1="50" y1="465" x2="1150" y2="465" stroke="#FFD700" stroke-width="1" stroke-dasharray="4 6" />
+    <line x1="600" y1="40" x2="600" y2="490" stroke="#00F0FF" stroke-width="1.2" stroke-dasharray="2 4" />
+    <circle cx="600" cy="260" r="4" fill="#00F0FF" />
+  </g>
+</svg>

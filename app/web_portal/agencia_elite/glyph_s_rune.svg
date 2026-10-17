@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Rejilla de construcción tenue -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="2 4"/>
+  <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="2 4"/>
+  <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="20" y1="100" x2="180" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  
+  <!-- LA SOBERANA RUNA S (Línea Continua Geométrica Bluetooth-Grade) -->
+  <!-- Mástil vertical central de transmisión -->
+  <line x1="100" y1="28" x2="100" y2="172" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  <!-- Ala rúnica superior (S inicial hacia derecha y retorno) -->
+  <path d="M100,52 L144,82 L100,108 L56,134 L100,164" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M100,52 L56,82 L100,108 L144,134 L100,164" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Satélites gemelos de la Ö (Diéresis calibrada) -->
+  <circle cx="72" cy="22" r="7.5" fill="#E3FF00"/>
+  <circle cx="128" cy="22" r="7.5" fill="#E3FF00"/>
+</svg>

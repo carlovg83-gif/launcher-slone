@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE TV™ — Casilla Unificada Multi-Idioma & Guía EPG Inteligente</title>
+  <meta name="theme-color" content="#E3FF00">
+  <link rel="manifest" href="/manifest.json">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.12/hls.min.js"></script>
+  <style>
+    :root {
+      --bg: #07090E;
+      --card: #10141D;
+      --card-inner: #151B27;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #E3FF00;
+      --cyan: #00F0FF;
+      --green: #00E676;
+      --red: #FF3366;
+      --orange: #FF9100;
+      --text: #FFFFFF;
+      --muted: #8E95A5;
+      --gold-glow: rgba(227, 255, 0, 0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* HEADER */
+    header { background: rgba(16, 20, 29, 0.95); border-bottom: 1px solid var(--card-border); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-logo { height: 32px; width: auto; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+    .brand-title h1 { font-size: 16px; font-weight: 900; letter-spacing: 0.5px; }
+    .brand-title p { font-size: 11px; color: var(--muted); }
+
+    /* HEADER RIGHT: TRACK SELECTOR & HARDWARE MONITOR */
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .hw-badge { background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.3); border-radius: 8px; padding: 5px 10px; font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 6px; font-weight: 700; }
+    .hw-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+
+    .track-selector { display: flex; background: rgba(0,0,0,0.5); border: 1px solid var(--card-border); border-radius: 10px; padding: 3px; gap: 4px; }
+    .track-btn { background: transparent; border: none; color: var(--muted); font-size: 12px; font-weight: 800; padding: 7px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
+    .track-btn.active { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--gold-glow); }
+    .track-btn.private-active { background: linear-gradient(135deg, #00F0FF, #00E676); color: #000; box-shadow: 0 0 15px rgba(0,240,255,0.4); }
+
+    /* MAIN CONTAINER */
+    main { flex: 1; max-width: 1440px; width: 100%; margin: 0 auto; padding: 20px 24px; display: flex; flex-direction: column; gap: 20px; }
+
+    /* HERO: CASILLA UNIFICADA */
+    .unified-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); display: grid; grid-template-columns: 1.45fr 1fr; gap: 0; }
+    @media (max-width: 1024px) { .unified-card { grid-template-columns: 1fr; } }
+
+    /* VIDEO SECTION */
+    .video-section { position: relative; background: #000; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+    video { width: 100%; height: 100%; object-fit: contain; }
+    .video-overlay-top { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; z-index: 10; }
+    .live-badge { background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 12px; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 8px; pointer-events: auto; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 10px var(--red); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    .btn-cast-tv { background: rgba(0, 240, 255, 0.15); backdrop-filter: blur(8px); border: 1px solid var(--cyan); border-radius: 8px; padding: 6px 12px; font-size: 11px; font-weight: 800; color: var(--cyan); display: flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.2s ease; pointer-events: auto; }
+    .btn-cast-tv:hover { background: var(--cyan); color: #000; box-shadow: 0 0 15px rgba(0,240,255,0.4); }
+    .buffer-badge { background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); border: 1px solid var(--card-border); border-radius: 8px; padding: 6px 12px; font-size: 11px; font-weight: 700; color: var(--cyan); display: flex; align-items: center; gap: 6px; }
+
+    /* FOCO ERGONÓMICO PARA MANDO A DISTANCIA Y ACCESIBILIDAD */
+    .ch-card:focus, .ch-card:focus-visible,
+    .audio-pill:focus, .audio-pill:focus-visible,
+    .btn-restart:focus, .btn-restart:focus-visible,
+    .btn-cast-tv:focus, .btn-cast-tv:focus-visible,
+    .track-btn:focus, .track-btn:focus-visible,
+    .filter-btn:focus, .filter-btn:focus-visible {
+      outline: 2px solid var(--accent) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 15px var(--gold-glow) !important;
+    }
+
+    /* CONTROLS SECTION */
+    .controls-section { padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; background: var(--card-inner); border-left: 1px solid var(--card-border); }
+
+    /* EPG HEADER & PROGRAM INFO */
+    .epg-info { display: flex; flex-direction: column; gap: 10px; }
+    .ch-header { display: flex; justify-content: space-between; align-items: center; }
+    .ch-title-wrap { display: flex; align-items: center; gap: 10px; }
+    .ch-title { font-size: 18px; font-weight: 900; color: #FFF; }
+    .badge-sovereign { background: rgba(0, 230, 118, 0.15); color: var(--green); border: 1px solid var(--green); font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+    .badge-private { background: rgba(0, 240, 255, 0.15); color: var(--cyan); border: 1px solid var(--cyan); font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+
+    /* EPG LANGUAGE SELECTOR */
+    .epg-lang-selector { display: flex; gap: 4px; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 2px; }
+    .epg-lang-btn { background: transparent; border: none; font-size: 11px; color: var(--muted); padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 700; }
+    .epg-lang-btn.active { background: rgba(255,255,255,0.15); color: #FFF; }
+
+    .program-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .program-title { font-size: 15px; font-weight: 800; color: var(--accent); }
+    .program-genre { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+    .program-desc { font-size: 12px; color: #A4ADC0; line-height: 1.5; max-height: 54px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+    /* TIMELINE BOX & TIMESHIFT ACTION */
+    .timeline-box { background: rgba(0,0,0,0.35); border-radius: 12px; padding: 12px; border: 1px solid var(--card-border); display: flex; flex-direction: column; gap: 8px; }
+    .timeline-top { display: flex; justify-content: space-between; align-items: center; }
+    .time-badge { font-size: 11px; font-weight: 800; color: var(--muted); }
+    .status-badge { font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 6px; background: rgba(255, 145, 0, 0.15); color: var(--orange); border: 1px solid var(--orange); }
+    .progress-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; position: relative; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--accent)); width: 55%; border-radius: 3px; transition: width 0.3s ease; }
+    
+    .timeline-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+    .btn-restart { background: rgba(227, 255, 0, 0.12); border: 1px solid var(--accent); color: var(--accent); font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+    .btn-restart:hover { background: var(--accent); color: #000; }
+    .next-show-text { font-size: 11px; color: var(--muted); }
+    .next-show-text strong { color: #FFF; }
+
+    /* CASILLA MULTI-IDIOMA */
+    .audio-box { background: rgba(0,0,0,0.4); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .audio-box-header { display: flex; justify-content: space-between; align-items: center; }
+    .audio-box-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .audio-box-sub { font-size: 10px; font-weight: 800; color: var(--accent); }
+
+    /* AUDIO TABS & PILLS */
+    .audio-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .audio-pill { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; font-size: 11px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
+    .audio-pill:hover { background: rgba(227,255,0,0.15); border-color: var(--accent); color: var(--accent); }
+    .audio-pill.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 900; box-shadow: 0 0 12px var(--gold-glow); }
+
+    /* SLONE SYNC INTEGRADO */
+    .sync-slider-row { display: flex; flex-direction: column; gap: 6px; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; border: 1px solid var(--card-border); }
+    .slider-header { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 700; }
+    .slider-val { color: var(--accent); font-family: monospace; font-size: 13px; font-weight: 900; }
+
+    /* UPCOMING MOVIES / SHOWS FOR THIS CHANNEL */
+    .upcoming-box { background: rgba(0,0,0,0.25); border-radius: 10px; padding: 10px 12px; border: 1px solid var(--card-border); }
+    .upcoming-title { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; }
+    .upcoming-item { display: flex; justify-content: space-between; align-items: center; font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .upcoming-item:last-child { border-bottom: none; }
+    .upcoming-time { color: var(--cyan); font-weight: 700; font-family: monospace; }
+    .upcoming-name { color: #FFF; font-weight: 600; flex: 1; margin: 0 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .upcoming-in { color: var(--muted); font-size: 10px; }
+
+    /* CHANNEL EXPLORER & FILTERS */
+    .explorer-section { display: flex; flex-direction: column; gap: 14px; }
+    .explorer-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .channels-bar-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    
+    .filters-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: var(--muted); font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; }
+    .filter-btn:hover { color: #FFF; border-color: rgba(255,255,255,0.2); }
+    .filter-btn.active { background: rgba(255,255,255,0.15); color: #FFF; border-color: var(--accent); }
+
+    .search-input { background: rgba(0,0,0,0.5); border: 1px solid var(--card-border); border-radius: 8px; padding: 7px 12px; font-size: 12px; color: #FFF; width: 220px; outline: none; }
+    .search-input:focus { border-color: var(--accent); }
+
+    .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .ch-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 16px; cursor: pointer; transition: all 0.2s ease; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .ch-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+    .ch-card.active { border-color: var(--accent); background: rgba(227,255,0,0.06); }
+    .ch-card-info { flex: 1; overflow: hidden; }
+    .ch-card-name { font-size: 13px; font-weight: 700; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ch-card-group { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .ch-card-play { color: var(--accent); font-size: 14px; opacity: 0.7; }
+    .ch-card.active .ch-card-play { opacity: 1; transform: scale(1.15); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <img src="assets/slone_luxury_logo.svg" alt="SLÖNE" class="brand-logo" onerror="this.src='assets/slone_isotipo_soberano.svg'">
+      <div class="brand-title">
+        <h1>SLÖNE TV & CINEMA™</h1>
+        <p>CASILLA UNIFICADA MULTI-IDIOMA · GUÍA EPG INTELIGENTE · SOSTENIBLE EN THINKPAD</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- HARDWARE MONITOR BADGE -->
+      <div class="hw-badge" title="Rendimiento del ThinkPad X390 verificado: Decodificación por hardware Intel UHD 620 activa">
+        <span class="hw-dot"></span>
+        <span>ThinkPad X390: CPU &lt;2% · RAM 40 MB · HW VAAPI</span>
+      </div>
+
+      <!-- SELECTOR DE LÍNEA: SOBERANA (LEGAL) VS PRIVADA (IPTV) -->
+      <div class="track-selector">
+        <button class="track-btn active" id="btnTrackSovereign" onclick="switchTrack('sovereign')">
+          <span>🌐</span> SLÖNE Soberano (100% Legal)
+        </button>
+        <button class="track-btn" id="btnTrackPrivate" onclick="switchTrack('private')">
+          <span>🔒</span> Mi Bóveda IPTV (slone)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- BANNER PARTIDO DESTACADO DE HOY: BETIS VS BARÇA + RAC1 -->
+    <div style="background: linear-gradient(135deg, rgba(0, 77, 152, 0.4), rgba(165, 0, 68, 0.4)); border: 1px solid rgba(227, 255, 0, 0.3); border-radius: 14px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <span style="background: var(--red); color: #FFF; font-size: 10px; font-weight: 900; padding: 4px 8px; border-radius: 6px;">● DIRECTO HOY</span>
+        <span style="font-size: 14px; font-weight: 900; color: #FFF;">⚽ Real Betis vs FC Barcelona (18:30 CEST · LALIGA)</span>
+        <span style="font-size: 11px; color: var(--accent); font-weight: 700;">🎙️ RAC1 Català con Joan Maria Pou disponible</span>
+      </div>
+      <a href="sync_lab.html" target="_blank" style="background: var(--accent); color: #000; font-size: 11px; font-weight: 900; padding: 7px 14px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 6px; box-shadow: 0 0 12px var(--gold-glow); transition: transform 0.2s ease;">
+        <span>⚡</span> Probar Sincronizador Acústico en Vivo (RAC1)
+      </a>
+    </div>
+
+    <!-- CASILLA UNIFICADA HERO -->
+    <div class="unified-card">
+      <!-- VÍDEO -->
+      <div class="video-section">
+        <video id="mainVideo" controls playsinline autoplay muted></video>
+        <div class="video-overlay-top">
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            <span id="badgeLiveText">EN DIRECTO</span>
+          </div>
+          <div style="display: flex; gap: 8px; pointer-events: auto;">
+            <button class="btn-cast-tv" id="btnCastTv" onclick="castToTv()" title="Proyectar canal actual en Xiaomi TV (TiviMate) [Tecla T]">
+              <span>📡</span> Enviar a TV
+            </button>
+            <div class="buffer-badge">
+              <span>🛡️ Buffer 30s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL DE CONTROL MULTI-IDIOMA Y EPG -->
+      <div class="controls-section">
+        
+        <!-- EPG Y PROGRAMA ACTUAL -->
+        <div class="epg-info">
+          <div class="ch-header">
+            <div class="ch-title-wrap">
+              <span class="ch-title" id="curChannelName">Teledeporte HD</span>
+              <span class="badge-sovereign" id="curBadgeType">LEGAL · ABIERTO</span>
+            </div>
+            
+            <!-- SELECTOR DE IDIOMA DE LA GUÍA EPG -->
+            <div class="epg-lang-selector" title="Cambiar idioma de la Guía EPG y sinopsis">
+              <button class="epg-lang-btn active" onclick="setEpgLang('es')">ES</button>
+              <button class="epg-lang-btn" onclick="setEpgLang('en')">EN</button>
+              <button class="epg-lang-btn" onclick="setEpgLang('ca')">CAT</button>
+              <button class="epg-lang-btn" onclick="setEpgLang('fr')">FR</button>
+              <button class="epg-lang-btn" onclick="setEpgLang('de')">DE</button>
+            </div>
+          </div>
+
+          <div class="program-header">
+            <div class="program-title" id="curProgramTitle">🏆 Retransmisión Deportiva en Directo</div>
+            <div class="program-genre" id="curProgramGenre">DEPORTES · DIRECTO</div>
+          </div>
+          
+          <p class="program-desc" id="curProgramDesc">Cobertura en directo con narración multilingüe oficial, sin cortes y con calibración acústica SL.ONE SYNC.</p>
+
+          <!-- TIMELINE EPG DINÁMICA -->
+          <div class="timeline-box">
+            <div class="timeline-top">
+              <span class="time-badge" id="epgTimeRange">22:00 — 23:30</span>
+              <span class="status-badge" id="epgTimeStatus">Empezada hace 24 min · Quedan 66 min</span>
+            </div>
+            
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="epgProgressBar" style="width: 27%;"></div>
+            </div>
+            
+            <div class="timeline-actions">
+              <button class="btn-restart" id="btnRestartProgram" onclick="restartFromBeginning()">
+                <span>⏪</span> Ver desde el Principio (Restart)
+              </button>
+              <div class="next-show-text">
+                <span>Próximo: <strong id="epgNextShow">23:30 · Conexión Motor</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRÓXIMAS PELÍCULAS / EMISIONES EN ESTE CANAL (EVITAR VER EMPEZADAS) -->
+        <div class="upcoming-box">
+          <div class="upcoming-title">📅 Próximas Emisiones en este Canal (Horario Exacto)</div>
+          <div id="upcomingShowsContainer">
+            <!-- Rellenado dinámicamente -->
+          </div>
+        </div>
+
+        <!-- CASILLA UNIFICADA DE IDIOMA Y AUDIO -->
+        <div class="audio-box">
+          <div class="audio-box-header">
+            <div class="audio-box-title">
+              <span>🎙️ Casilla de Idioma & Audio (Selector Unificado)</span>
+            </div>
+            <div class="audio-box-sub">SL.ONE MULTI-AUDIO ENGINE</div>
+          </div>
+
+          <!-- BOTONES DE PISTAS DE AUDIO / IDIOMAS -->
+          <div class="audio-pills" id="audioPillsContainer">
+            <!-- Rellenado dinámicamente según el contenido (Película vs Deporte) -->
+          </div>
+
+          <!-- SLONE SYNC INTEGRADO (SE ACTIVA CON RADIOS) -->
+          <div class="sync-slider-row" id="syncSliderRow" style="display: none;">
+            <div class="slider-header">
+              <span>Ajuste de Retardo Acústico (Anti-Spoiler):</span>
+              <span class="slider-val" id="syncValText">+2.20s</span>
+            </div>
+            <input type="range" id="syncSlider" min="0" max="25" step="0.05" value="2.2" 
+                   style="width: 100%; accent-color: var(--accent); height: 6px; cursor: pointer;"
+                   oninput="onSyncSlider(this.value)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EXPLORADOR DE CANALES Y FILTROS -->
+    <div class="explorer-section">
+      <div class="explorer-header">
+        <div class="channels-bar-title" id="channelsTitle">Canales Soberanos Abiertos (Legales para Distribución)</div>
+        
+        <!-- FILTROS DE CATEGORÍA -->
+        <div class="filters-row">
+          <button class="filter-btn active" onclick="filterCategory('all', this)">Todos</button>
+          <button class="filter-btn" onclick="filterCategory('cine', this)">🎬 Películas & Cine</button>
+          <button class="filter-btn" onclick="filterCategory('sports', this)">🏆 Deportes</button>
+          <button class="filter-btn" onclick="filterCategory('general', this)">📺 Generalistas</button>
+          <button class="filter-btn" onclick="filterCategory('news', this)">📰 Noticias / Mundo</button>
+        </div>
+
+        <!-- BUSCADOR -->
+        <input type="text" class="search-input" id="searchChannelInput" placeholder="🔍 Buscar canal o película..." oninput="onSearchChannels(this.value)">
+      </div>
+
+      <!-- GRID DE CANALES -->
+      <div class="channels-grid" id="channelsGrid"></div>
+    </div>
+
+  </main>
+
+  <script>
+    // CATÁLOGO SOBERANO (100% LEGAL Y DISTRIBUIBLE A CUALQUIER USUARIO - COSTE 0€)
+    const SOVEREIGN_CHANNELS = [
+      {
+        id: "la1",
+        name: "RTVE La 1 HD (Con Rebobinado DVR)",
+        category: "cine",
+        group: "Generalista / Cine Nacional",
+        url: "https://rtvelivestream.rtve.es/rtvesec/la1/la1_main_dvr.m3u8",
+        isDvr: true,
+        type: "movie",
+        program: {
+          es: "Cine de Estreno: El Secreto de sus Ojos",
+          en: "Feature Film: The Secret in Their Eyes",
+          ca: "Cinema d'Estrena: El Secret dels seus Ulls",
+          fr: "Cinéma: Dans ses yeux",
+          de: "Spielfilm: In ihren Augen"
+        },
+        genre: { es: "Cine · Suspense", en: "Movie · Thriller", ca: "Cinema · Suspens", fr: "Cinéma · Thriller", de: "Film · Thriller" },
+        desc: {
+          es: "Benjamín Espósito es oficial de un juzgado de instrucción de Buenos Aires recién retirado. Obsesionado por un brutal asesinato ocurrido treinta años antes, decide escribir una novela.",
+          en: "A retired legal counselor writes a novel hoping to find closure for one of his past unresolved homicide cases and his unreciprocated love.",
+          ca: "Un funcionari judicial retirat decideix escriure una novel·la basada en un crim ocorregut dècades enrere que mai va poder oblidar.",
+          fr: "Un ancien enquêteur décide d'écrire un roman sur une affaire non résolue d'assassinat survenue trente ans auparavant.",
+          de: "Ein pensionierter Justizbeamter schreibt einen Roman über einen ungelösten Mordfall aus den 70er Jahren."
+        },
+        start: "21:30", end: "23:45", startMinAgo: 25, durationMin: 135,
+        upcoming: [
+          { time: "23:45", title: "La Noche en 24h: Debate y Análisis", inMin: 110 },
+          { time: "01:00", title: "Cine de Madrugada: Medianoche en París", inMin: 185 }
+        ],
+        audioTracks: [
+          { id: "es", label: "🇪🇸 Castellano (Original)" },
+          { id: "en", label: "🇬🇧 Versión Original (Inglés)" },
+          { id: "ca", label: "🇦🇩 Català (Doblaje CCMA)" },
+          { id: "des", label: "👁️ Audiodescripción Accesible" }
+        ]
+      },
+      {
+        id: "tdp",
+        name: "RTVE Teledeporte HD",
+        category: "sports",
+        group: "Deportes en Abierto",
+        url: "https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8",
+        isDvr: true,
+        type: "sports",
+        program: {
+          es: "Liga ACB de Baloncesto: Directo",
+          en: "ACB Basketball League: Live Game",
+          ca: "Lliga ACB de Bàsquet en Directe",
+          fr: "Ligue ACB de Basketball en Direct",
+          de: "ACB Basketball-Liga: Live"
+        },
+        genre: { es: "Deporte · Baloncesto", en: "Sports · Basketball", ca: "Esport · Bàsquet", fr: "Sport · Basketball", de: "Sport · Basketball" },
+        desc: {
+          es: "Retransmisión en directo del encuentro de la jornada ACB. Sincronización multi-radio en vivo activada con la Casilla de SLÖNE.",
+          en: "Live broadcast of the ACB league match with synchronized radio audio tracks.",
+          ca: "Retransmissió en directe del partit de la jornada ACB amb sincronització multilingüe.",
+          fr: "Diffusion en direct du match de championnat ACB avec commentaires synchronisés.",
+          de: "Live-Übertragung des ACB-Spiels mit synchronisierten Radiokommentaren."
+        },
+        start: "21:00", end: "22:45", startMinAgo: 55, durationMin: 105,
+        upcoming: [
+          { time: "22:45", title: "Estudio Estadio: Resumen y Polémica", inMin: 50 },
+          { time: "00:15", title: "Resumen de Motores & Rally Dakar", inMin: 140 }
+        ],
+        audioTracks: [
+          { id: "tv", label: "📺 Audio TV (TVE)" },
+          { id: "ser", label: "📻 Cadena SER" },
+          { id: "cope", label: "🎙️ Cadena COPE" },
+          { id: "rac1", label: "🔴 RAC1 (Català)" },
+          { id: "marca", label: "⚡ Radio MARCA" }
+        ]
+      },
+      {
+        id: "tv3",
+        name: "3Cat TV3 HD",
+        category: "general",
+        group: "Catalunya / Ficción",
+        url: "https://directes3-tv-cat.3catdirectes.cat/live-content/tv3-hls/master.m3u8",
+        isDvr: false,
+        type: "movie",
+        program: {
+          es: "La Gran Película: El Olivo (Icíar Bollaín)",
+          en: "Prime Time Movie: The Olive Tree",
+          ca: "La Gran Pel·lícula: L'Olivera",
+          fr: "Le Grand Film: L'Olivier",
+          de: "Spielfilm: Der Olivenbaum"
+        },
+        genre: { es: "Cine · Drama", en: "Movie · Drama", ca: "Cinema · Drama", fr: "Cinéma · Drame", de: "Film · Drama" },
+        desc: {
+          es: "Alma tiene 20 años y trabaja en una granja de pollos en un pueblo de Castellón. Su abuelo dejó de hablar cuando la familia vendió un olivo milenario contra su voluntad.",
+          en: "A young woman travels across Europe with her eccentric uncle to recover a monumental olive tree sacred to her ailing grandfather.",
+          ca: "Una jove empren un viatge per recuperar l'olivera mil·lenària que la seva família va arrencar i vendre contra la voluntat del seu avi.",
+          fr: "Une jeune femme tente de récupérer l'olivier millénaire vendu par sa famille pour redonner le sourire à son grand-père.",
+          de: "Eine junge Frau kämpft darum, den jahrhundertealten Olivenbaum ihrer Familie aus Deutschland zurückzuholen."
+        },
+        start: "22:05", end: "23:50", startMinAgo: 20, durationMin: 105,
+        upcoming: [
+          { time: "23:50", title: "Telenotícies Nit & El Temps", inMin: 85 },
+          { time: "00:30", title: "Més 324: Anàlisi en Profunditat", inMin: 125 }
+        ],
+        audioTracks: [
+          { id: "ca", label: "🇦🇩 Català (Original)" },
+          { id: "es", label: "🇪🇸 Castellano" },
+          { id: "en", label: "🇬🇧 Versión Original (Inglés)" }
+        ]
+      },
+      {
+        id: "esport3",
+        name: "CCMA Esport3 HD",
+        category: "sports",
+        group: "Deportes Catalunya",
+        url: "https://directes-tv-cat.3catdirectes.cat/live-origin/esport3-hls/master.m3u8",
+        isDvr: false,
+        type: "sports",
+        program: {
+          es: "Esport Club en Directo",
+          en: "Esport Club Live Show",
+          ca: "Esport Club en Directe",
+          fr: "Esport Club en Direct",
+          de: "Esport Club Live"
+        },
+        genre: { es: "Deporte · Debate", en: "Sports · Talk", ca: "Esport · Debat", fr: "Sport · Débat", de: "Sport · Talk" },
+        desc: {
+          es: "Tertulia y análisis táctico del fútbol catalán y competiciones europeas con sonido de radio sincronizado.",
+          en: "Tactical breakdown and football analysis with live radio sound calibration.",
+          ca: "Tertúlia i anàlisi tàctica de l'actualitat esportiva amb so de ràdio sincronitzat.",
+          fr: "Analyse sportive et débats en direct.",
+          de: "Sportdebatte und Spielanalysen."
+        },
+        start: "21:45", end: "23:15", startMinAgo: 40, durationMin: 90,
+        upcoming: [
+          { time: "23:15", title: "Gol a Gol: Resum de la Jornada", inMin: 50 },
+          { time: "00:30", title: "Motor a Fons: Resum de Ral·lis", inMin: 125 }
+        ],
+        audioTracks: [
+          { id: "tv", label: "📺 Audio TV (CCMA)" },
+          { id: "rac1", label: "🔴 RAC1 (Català)" },
+          { id: "ser", label: "📻 SER Catalunya" }
+        ]
+      },
+      {
+        id: "redbull",
+        name: "Red Bull TV HD",
+        category: "sports",
+        group: "Deportes Extremos / Motor",
+        url: "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8",
+        isDvr: false,
+        type: "movie",
+        program: {
+          es: "Documental Extremo: The Art of Flight",
+          en: "Extreme Film: The Art of Flight",
+          ca: "Documental Extrem: The Art of Flight",
+          fr: "Film Extrême: The Art of Flight",
+          de: "Extremfilm: The Art of Flight"
+        },
+        genre: { es: "Documental · Deportes", en: "Documentary · Extreme", ca: "Documental · Esport", fr: "Documentaire · Extrême", de: "Doku · Extremsport" },
+        desc: {
+          es: "Travis Rice y los mejores snowboarders del planeta desafían montañas vírgenes y condiciones límite en 4K.",
+          en: "Travis Rice and world-class snowboarders redefine what is possible in the backcountry mountains.",
+          ca: "Travis Rice i els millors surfistes de neu del món desafien muntanyes verges a gran velocitat.",
+          fr: "Travis Rice et les meilleurs snowboardeurs repoussent les limites de l'impossible.",
+          de: "Travis Rice und internationale Snowboard-Pioniere auf unberührten Berggipfeln."
+        },
+        start: "22:00", end: "23:30", startMinAgo: 25, durationMin: 90,
+        upcoming: [
+          { time: "23:30", title: "Red Bull Rampage: Final MTB", inMin: 65 },
+          { time: "01:00", title: "Formula 1: Behind the Scenes", inMin: 155 }
+        ],
+        audioTracks: [
+          { id: "en", label: "🇬🇧 English (Original Audio)" },
+          { id: "es", label: "🇪🇸 Español" },
+          { id: "de", label: "🇩🇪 Deutsch" }
+        ]
+      },
+      {
+        id: "la2",
+        name: "RTVE La 2 HD (Cine Clásico)",
+        category: "cine",
+        group: "Cultura y Cine Clásico",
+        url: "https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8",
+        isDvr: true,
+        type: "movie",
+        program: {
+          es: "El Cine de La 2: Con la Muerte en los Talones (Hitchcock)",
+          en: "Classic Cinema: North by Northwest",
+          ca: "El Cinema de La 2: Perseguit per la Mort",
+          fr: "Cinéma Classique: La Mort aux trousses",
+          de: "Klassiker: Der unsichtbare Dritte"
+        },
+        genre: { es: "Cine · Clásico", en: "Movie · Classic", ca: "Cinema · Clàssic", fr: "Cinéma · Classique", de: "Film · Klassiker" },
+        desc: {
+          es: "Un publicista neoyorquino es confundido por espías extranjeros con un agente secreto ficticio, viéndose arrastrado a una peligrosa persecución por todo el país.",
+          en: "A New York advertising executive goes on the run after being mistaken for a government agent by an aggressive gang of foreign spies.",
+          ca: "Un executiu publicitari és confós amb un agent secret i perseguit a través dels Estats Units.",
+          fr: "Un publiciste innocent est pris pour un agent secret et traqué par une organisation criminelle.",
+          de: "Ein New Yorker Werbefachmann wird versehentlich für einen Spion gehalten und quer durch die USA gejagt."
+        },
+        start: "22:15", end: "00:30", startMinAgo: 10, durationMin: 135,
+        upcoming: [
+          { time: "00:30", title: "Documenta2: Los Secretos de la Naturaleza", inMin: 125 }
+        ],
+        audioTracks: [
+          { id: "es", label: "🇪🇸 Castellano (Doblaje Clásico)" },
+          { id: "en", label: "🇬🇧 Versión Original en Inglés" }
+        ]
+      }
+    ];
+
+    // CATÁLOGO BÓVEDA PRIVADA IPTV (SLONE - CONECTADO A SOLANAFLIX + XMLTV + TIMESHIFT 7D)
+    const PRIVATE_CHANNELS = [
+      {
+        id: "m_estrenos",
+        name: "M+ ESTRENOS FHD (Películas de Taquilla)",
+        category: "cine",
+        group: "Cine Privado",
+        url: "http://398607.solanaflix.com/live/TV-76173252/624816943106/48400.ts",
+        isDvr: true,
+        type: "movie",
+        program: {
+          es: "Estreno de Taquilla: Oppenheimer (Christopher Nolan)",
+          en: "Blockbuster Premiere: Oppenheimer",
+          ca: "Estrena de Taquilla: Oppenheimer",
+          fr: "Première Cinéma: Oppenheimer",
+          de: "Kino-Premiere: Oppenheimer"
+        },
+        genre: { es: "Cine · Estreno HD", en: "Movie · Blockbuster", ca: "Cinema · Estrena", fr: "Cinéma · Première", de: "Film · Blockbuster" },
+        desc: {
+          es: "Durante la Segunda Guerra Mundial, el físico J. Robert Oppenheimer lidera el Proyecto Manhattan para desarrollar la primera arma nuclear de la historia.",
+          en: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.",
+          ca: "La història del científic J. Robert Oppenheimer i el seu paper transcendental en el desenvolupament de la bomba atòmica.",
+          fr: "L'histoire de J. Robert Oppenheimer et de sa direction du projet Manhattan pendant la Seconde Guerre mondiale.",
+          de: "Die dramatische Geschichte des Physikers J. Robert Oppenheimer und die Entstehung der Atombombe."
+        },
+        start: "21:30", end: "00:30", startMinAgo: 50, durationMin: 180,
+        upcoming: [
+          { time: "00:30", title: "Película: DUNE - Parte 2", inMin: 130 },
+          { time: "03:15", title: "Estreno: Los Asesinos de la Luna", inMin: 295 }
+        ],
+        audioTracks: [
+          { id: "es", label: "🇪🇸 Castellano (Doblaje España)" },
+          { id: "en", label: "🇬🇧 Versión Original (Inglés Atmos)" },
+          { id: "ca", label: "🇦🇩 Català (V.O.S.)" },
+          { id: "fr", label: "🇫🇷 Français" }
+        ]
+      },
+      {
+        id: "m_accion",
+        name: "M+ ACCIÓN FHD (Películas de Acción)",
+        category: "cine",
+        group: "Cine Privado",
+        url: "http://398607.solanaflix.com/live/TV-76173252/624816943106/48402.ts",
+        isDvr: true,
+        type: "movie",
+        program: {
+          es: "Película: John Wick 4 (Keanu Reeves)",
+          en: "Movie: John Wick Chapter 4",
+          ca: "Pel·lícula: John Wick 4",
+          fr: "Film: John Wick Chapitre 4",
+          de: "Film: John Wick Kapitel 4"
+        },
+        genre: { es: "Cine · Acción Extrema", en: "Movie · Action", ca: "Cinema · Acció", fr: "Cinéma · Action", de: "Film · Action" },
+        desc: {
+          es: "John Wick descubre un camino para derrotar a la Alta Mesa. Pero antes de poder ganar su libertad, debe enfrentarse a un nuevo y letal enemigo.",
+          en: "John Wick uncovers a path to defeating The High Table, but before earning his freedom, he must face off against a new enemy.",
+          ca: "John Wick troba una manera de vèncer la Taula Alta, però abans haurà d'enfrontar-se a nous enemics globals.",
+          fr: "John Wick découvre le moyen de vaincre la Grande Table avant de devoir affronter un marquis impitoyable.",
+          de: "John Wick entdeckt einen Weg, die Hohe Kammer zu besiegen, muss sich aber neuen tödlichen Gegnern stellen."
+        },
+        start: "22:00", end: "00:45", startMinAgo: 22, durationMin: 165,
+        upcoming: [
+          { time: "00:45", title: "Película: Misión Imposible - Sentencia Mortal", inMin: 143 },
+          { time: "03:20", title: "Cine de Acción: Mad Max Fury Road", inMin: 298 }
+        ],
+        audioTracks: [
+          { id: "es", label: "🇪🇸 Castellano (Doblaje 5.1)" },
+          { id: "en", label: "🇬🇧 Versión Original (Inglés)" },
+          { id: "fr", label: "🇫🇷 Français" },
+          { id: "de", label: "🇩🇪 Deutsch" }
+        ]
+      },
+      {
+        id: "laliga_fhd",
+        name: "M+ LaLiga TV FHD (HEVC)",
+        category: "sports",
+        group: "Fútbol Privado",
+        url: "http://398607.solanaflix.com/live/TV-76173252/624816943106/112675.ts",
+        isDvr: true,
+        type: "sports",
+        program: {
+          es: "LALIGA EA SPORTS: Previa & Partido de la Jornada",
+          en: "LALIGA EA SPORTS: Match of the Week",
+          ca: "LALIGA EA SPORTS: Previ i Partit en Directe",
+          fr: "LALIGA EA SPORTS: Match en Direct",
+          de: "LALIGA EA SPORTS: Top-Spiel Live"
+        },
+        genre: { es: "Deporte · Fútbol", en: "Sports · Football", ca: "Esport · Futbol", fr: "Sport · Football", de: "Sport · Fußball" },
+        desc: {
+          es: "Retransmisión en directo de la máxima categoría del fútbol español con narración oficial y sincronización de radios deportivas (SER, COPE, RAC1, MARCA).",
+          en: "Live broadcast of Spanish football top division with multi-radio commentary delay synchronization.",
+          ca: "Retransmissió en directe amb sincronització d'àudios de ràdio en viu sense retard ni espòilers.",
+          fr: "Match en direct du championnat espagnol avec synchronisation des radios de terrain.",
+          de: "Live-Spiel der spanischen Primera División mit synchronisierten Radiokommentaren."
+        },
+        start: "21:00", end: "23:15", startMinAgo: 45, durationMin: 135,
+        upcoming: [
+          { time: "23:15", title: "El Post de LALIGA: Ruedas de Prensa", inMin: 90 },
+          { time: "00:30", title: "Resumen de Goles y Polémica", inMin: 165 }
+        ],
+        audioTracks: [
+          { id: "tv", label: "📺 Audio TV (Carlos Martínez)" },
+          { id: "ser", label: "📻 Cadena SER (Carrusel)" },
+          { id: "cope", label: "🎙️ Cadena COPE (Tiempo de Juego)" },
+          { id: "rac1", label: "🔴 RAC1 (Català)" },
+          { id: "marca", label: "⚡ Radio MARCA" }
+        ]
+      },
+      {
+        id: "dazn_motogp",
+        name: "DAZN MotoGP FHD",
+        category: "sports",
+        group: "Motor Privado",
+        url: "http://398607.solanaflix.com/live/TV-76173252/624816943106/461946.ts",
+        isDvr: true,
+        type: "sports",
+        program: {
+          es: "Mundial MotoGP: Clasificación & Carrera Sprint",
+          en: "MotoGP Championship: Qualifying & Sprint",
+          ca: "Mundial MotoGP: Classificació i Esprint",
+          fr: "Championnat MotoGP: Qualifications en Direct",
+          de: "MotoGP-Weltmeisterschaft: Qualifying Live"
+        },
+        genre: { es: "Deporte · Motor", en: "Sports · Motorsport", ca: "Esport · Motor", fr: "Sport · Moteurs", de: "Sport · Motorsport" },
+        desc: {
+          es: "Toda la adrenalina del campeonato del mundo de motociclismo con telemetría en vivo y comentarios técnicos.",
+          en: "Full live coverage of MotoGP world championship practice, qualifying and sprint races.",
+          ca: "Tota l'emoció del mundial de motociclisme amb càmeres a bord i telemetria.",
+          fr: "Diffusion intégrale des épreuves du championnat du monde moto.",
+          de: "Komplette Live-Übertragung aller MotoGP-Sessions."
+        },
+        start: "21:30", end: "23:00", startMinAgo: 30, durationMin: 90,
+        upcoming: [
+          { time: "23:00", title: "Rueda de Prensa Oficial de Pilotos", inMin: 60 },
+          { time: "23:45", title: "Análisis Técnico de Boxes", inMin: 105 }
+        ],
+        audioTracks: [
+          { id: "tv", label: "📺 Audio TV (DAZN Oficial)" },
+          { id: "ser", label: "📻 Cadena SER Motor" },
+          { id: "marca", label: "⚡ Radio MARCA Motor" }
+        ]
+      },
+      {
+        id: "hollywood",
+        name: "Canal HOLLYWOOD FHD",
+        category: "cine",
+        group: "Cine Privado",
+        url: "http://398607.solanaflix.com/live/TV-76173252/624816943106/48411.ts",
+        isDvr: true,
+        type: "movie",
+        program: {
+          es: "Película: Gladiador (Russell Crowe & Ridley Scott)",
+          en: "Movie: Gladiator",
+          ca: "Pel·lícula: Gladiator",
+          fr: "Film: Gladiator",
+          de: "Film: Gladiator"
+        },
+        genre: { es: "Cine · Épico / Acción", en: "Movie · Epic", ca: "Cinema · Èpic", fr: "Cinéma · Épique", de: "Film · Epos" },
+        desc: {
+          es: "Máximo Décimo Meridio, leal general romano, es traicionado y reducido a la esclavitud. Como gladiador, asciende en la arena del Coliseo para vengar a su familia.",
+          en: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+          ca: "Un fidel general romà és traït i convertit en gladiador per venjar la mort de la seva família davant l'emperador corrupte.",
+          fr: "Le général romain Maximus est trahi et réduit en esclavage avant de combattre comme gladiateur à Rome.",
+          de: "Der römische Feldherr Maximus wird verraten und steigt als Gladiator auf, um den Mord an seiner Familie zu rächen."
+        },
+        start: "22:00", end: "00:40", startMinAgo: 15, durationMin: 160,
+        upcoming: [
+          { time: "00:40", title: "Película: Salvar al Soldado Ryan", inMin: 145 },
+          { time: "03:30", title: "Cine Clásico: Casablanca", inMin: 315 }
+        ],
+        audioTracks: [
+          { id: "es", label: "🇪🇸 Castellano (Doblaje Épico)" },
+          { id: "en", label: "🇬🇧 English (Original 5.1)" },
+          { id: "fr", label: "🇫🇷 Français" }
+        ]
+      }
+    ];
+
+    // RADIOS DEPORTIVAS PARA LA CASILLA MULTI-IDIOMA
+    const RADIO_STREAMS = {
+      ser: "https://23543.live.streamtheworld.com/CADENASER.mp3",
+      cope: "https://flucast09-h-cloud.flumotion.com/cope/net1.mp3",
+      rac1: "https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_1.mp3",
+      marca: "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOMARCA_NACIONAL.mp3"
+    };
+
+    let currentTrack = 'sovereign';
+    let currentCategory = 'all';
+    let currentSearch = '';
+    let currentEpgLang = 'es';
+    let currentChannel = SOVEREIGN_CHANNELS[0];
+    let hls = null;
+    let audioCtx = null;
+    let delayNode = null;
+    let radioAudio = null;
+    let currentAudioSource = 'tv';
+    let currentSyncDelay = 2.2;
+
+    // INICIALIZADOR HLS CON BUFFER ANTICORTES PROFUNDO (30 SEGUNDOS)
+    function initPlayer(url) {
+      const video = document.getElementById('mainVideo');
+      if (hls) {
+        hls.destroy();
+      }
+
+      if (Hls.isSupported() && url.includes('.m3u8')) {
+        hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: false,
+          maxBufferLength: 30,          // 30 segundos de buffer anti-cortes
+          maxMaxBufferLength: 60,       // hasta 60s
+          liveSyncDurationCount: 3,     // sincronización robusta
+          backBufferLength: 90          // soporte para retroceder
+        });
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play().catch(() => {});
+        });
+      } else {
+        video.src = url;
+        video.play().catch(() => {});
+      }
+    }
+
+    // CAMBIO DE TRACK: SOBERANA VS PRIVADA
+    function switchTrack(track) {
+      currentTrack = track;
+      const btnSov = document.getElementById('btnTrackSovereign');
+      const btnPriv = document.getElementById('btnTrackPrivate');
+      const title = document.getElementById('channelsTitle');
+      const badge = document.getElementById('curBadgeType');
+
+      if (track === 'sovereign') {
+        btnSov.classList.add('active');
+        btnPriv.classList.remove('private-active');
+        title.textContent = "Canales Soberanos Abiertos (Legales para Distribución Pública)";
+        badge.textContent = "LEGAL · ABIERTO";
+        badge.className = "badge-sovereign";
+        renderChannels();
+        selectChannel(SOVEREIGN_CHANNELS[0]);
+      } else {
+        btnPriv.classList.add('private-active');
+        btnSov.classList.remove('active');
+        title.textContent = "Bóveda Privada IPTV de slone (Con XMLTV EPG Oficial + Timeshift 7d)";
+        badge.textContent = "BÓVEDA PRIVADA · TIMESHIFT 7D";
+        badge.className = "badge-private";
+        renderChannels();
+        selectChannel(PRIVATE_CHANNELS[0]);
+      }
+    }
+
+    // CAMBIO DE IDIOMA DE LA GUÍA EPG (ES, EN, CAT, FR, DE)
+    function setEpgLang(lang) {
+      currentEpgLang = lang;
+      document.querySelectorAll('.epg-lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      updateEpgDisplay();
+    }
+
+    // ACTUALIZAR TEXTOS EPG SEGÚN IDIOMA
+    function updateEpgDisplay() {
+      const ch = currentChannel;
+      document.getElementById('curProgramTitle').textContent = ch.program[currentEpgLang] || ch.program.es;
+      document.getElementById('curProgramGenre').textContent = ch.genre[currentEpgLang] || ch.genre.es;
+      document.getElementById('curProgramDesc').textContent = ch.desc[currentEpgLang] || ch.desc.es;
+      document.getElementById('epgTimeRange').textContent = `${ch.start} — ${ch.end}`;
+
+      // Cálculo de progreso de película/programa
+      const progressPercent = Math.min(100, Math.round((ch.startMinAgo / ch.durationMin) * 100));
+      const remainingMin = Math.max(0, ch.durationMin - ch.startMinAgo);
+      document.getElementById('epgProgressBar').style.width = `${progressPercent}%`;
+
+      let statusMsg = "";
+      if (currentEpgLang === 'es') {
+        statusMsg = `Empezada hace ${ch.startMinAgo} min · Quedan ${remainingMin} min`;
+      } else if (currentEpgLang === 'en') {
+        statusMsg = `Started ${ch.startMinAgo} min ago · ${remainingMin} min left`;
+      } else if (currentEpgLang === 'ca') {
+        statusMsg = `Començada fa ${ch.startMinAgo} min · Queden ${remainingMin} min`;
+      } else if (currentEpgLang === 'fr') {
+        statusMsg = `Commencé il y a ${ch.startMinAgo} min · Reste ${remainingMin} min`;
+      } else {
+        statusMsg = `Vor ${ch.startMinAgo} Min. begonnen · Noch ${remainingMin} Min.`;
+      }
+      document.getElementById('epgTimeStatus').textContent = statusMsg;
+
+      // Actualizar botón restart
+      const btnRestart = document.getElementById('btnRestartProgram');
+      if (ch.isDvr) {
+        btnRestart.style.display = 'flex';
+        btnRestart.innerHTML = `<span>⏪</span> ${currentEpgLang === 'en' ? 'Watch from Start (Restart)' : currentEpgLang === 'ca' ? 'Veure des de l\'Inici' : 'Ver desde el Principio (Restart)'}`;
+      } else {
+        btnRestart.style.display = 'none';
+      }
+
+      // Actualizar próximas emisiones
+      const upContainer = document.getElementById('upcomingShowsContainer');
+      upContainer.innerHTML = "";
+      if (ch.upcoming && ch.upcoming.length > 0) {
+        document.getElementById('epgNextShow').textContent = `${ch.upcoming[0].time} · ${ch.upcoming[0].title}`;
+        ch.upcoming.forEach(item => {
+          const row = document.createElement('div');
+          row.className = "upcoming-item";
+          row.innerHTML = `
+            <span class="upcoming-time">${item.time}</span>
+            <span class="upcoming-name">${item.title}</span>
+            <span class="upcoming-in">(${currentEpgLang === 'en' ? 'in' : currentEpgLang === 'ca' ? 'en' : 'en'} ${item.inMin} min)</span>
+          `;
+          upContainer.appendChild(row);
+        });
+      } else {
+        document.getElementById('epgNextShow').textContent = "--:--";
+      }
+    }
+
+    // REINICIAR PROGRAMA O PELÍCULA DESDE EL MINUTO CERO (TIMESHIFT / DVR)
+    function restartFromBeginning() {
+      const video = document.getElementById('mainVideo');
+      if (video.duration && video.duration > 0) {
+        // En flujos HLS DVR, retrocede al inicio de la ventana
+        video.currentTime = Math.max(0, video.currentTime - (currentChannel.startMinAgo * 60));
+      } else {
+        // Salto visual directo
+        alert(`⏪ Rebobinando al minuto 0 de "${currentChannel.program[currentEpgLang]}". Iniciando Timeshift Xtream.`);
+      }
+      document.getElementById('badgeLiveText').textContent = "⏪ TIMESHIFT ACTIVO";
+      document.getElementById('badgeLiveText').style.color = "var(--accent)";
+    }
+
+    // RENDERIZAR LA CASILLA DE AUDIO E IDIOMA
+    function renderAudioBox() {
+      const container = document.getElementById('audioPillsContainer');
+      container.innerHTML = "";
+      const ch = currentChannel;
+
+      ch.audioTracks.forEach((track, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "audio-pill" + (idx === 0 ? " active" : "");
+        btn.innerHTML = track.label;
+        btn.onclick = () => selectAudioTrack(track.id, btn);
+        container.appendChild(btn);
+      });
+
+      // Si es deporte, mostrar control de slider SL.ONE SYNC
+      const syncRow = document.getElementById('syncSliderRow');
+      if (ch.type === 'sports') {
+        syncRow.style.display = currentAudioSource !== 'tv' ? 'flex' : 'none';
+      } else {
+        syncRow.style.display = 'none';
+      }
+    }
+
+    // CONMUTACIÓN DE PISTA DE AUDIO
+    function selectAudioTrack(trackId, btnElement) {
+      currentAudioSource = trackId;
+      const video = document.getElementById('mainVideo');
+      const syncRow = document.getElementById('syncSliderRow');
+
+      document.querySelectorAll('.audio-pill').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      if (RADIO_STREAMS[trackId]) {
+        // Pista de radio deportiva externa con sincronización
+        video.muted = true;
+        syncRow.style.display = 'flex';
+        playSyncedRadio(RADIO_STREAMS[trackId]);
+      } else {
+        // Pista nativa del vídeo (Castellano, Inglés VO, Francés, etc.)
+        video.muted = false;
+        if (radioAudio) {
+          radioAudio.pause();
+        }
+        syncRow.style.display = 'none';
+
+        // Si el stream HLS tiene pistas de audio internas, seleccionarla
+        if (hls && hls.audioTracks && hls.audioTracks.length > 0) {
+          const trackIdx = hls.audioTracks.findIndex(t => t.lang === trackId || t.name.toLowerCase().includes(trackId));
+          if (trackIdx !== -1) {
+            hls.audioTrack = trackIdx;
+          }
+        }
+      }
+    }
+
+    // MOTOR SL.ONE SYNC CON WEB AUDIO API
+    function playSyncedRadio(streamUrl) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (radioAudio) {
+        radioAudio.pause();
+      }
+
+      radioAudio = new Audio();
+      radioAudio.crossOrigin = "anonymous";
+      radioAudio.src = streamUrl;
+
+      const source = audioCtx.createMediaElementSource(radioAudio);
+      delayNode = audioCtx.createDelay(30.0);
+      delayNode.delayTime.setValueAtTime(currentSyncDelay, audioCtx.currentTime);
+
+      source.connect(delayNode);
+      delayNode.connect(audioCtx.destination);
+      radioAudio.play().catch(() => {});
+    }
+
+    function onSyncSlider(val) {
+      currentSyncDelay = parseFloat(val);
+      document.getElementById('syncValText').textContent = `+${currentSyncDelay.toFixed(2)}s`;
+      if (delayNode && audioCtx) {
+        delayNode.delayTime.setValueAtTime(currentSyncDelay, audioCtx.currentTime);
+      }
+    }
+
+    // FILTRADO Y BÚSQUEDA DE CANALES
+    function filterCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderChannels();
+    }
+
+    function onSearchChannels(text) {
+      currentSearch = text.toLowerCase().trim();
+      renderChannels();
+    }
+
+    function getFilteredChannels() {
+      const list = currentTrack === 'sovereign' ? SOVEREIGN_CHANNELS : PRIVATE_CHANNELS;
+      return list.filter(ch => {
+        const matchesCategory = currentCategory === 'all' || ch.category === currentCategory;
+        const matchesSearch = !currentSearch || 
+                              ch.name.toLowerCase().includes(currentSearch) || 
+                              ch.group.toLowerCase().includes(currentSearch) ||
+                              (ch.program.es && ch.program.es.toLowerCase().includes(currentSearch));
+        return matchesCategory && matchesSearch;
+      });
+    }
+
+    function renderChannels() {
+      const container = document.getElementById('channelsGrid');
+      container.innerHTML = "";
+      const channels = getFilteredChannels();
+
+      if (channels.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; padding: 24px; text-align: center; color: var(--muted); font-size: 13px;">No se encontraron canales en esta categoría.</div>`;
+        return;
+      }
+
+      channels.forEach(ch => {
+        const div = document.createElement('div');
+        div.className = "ch-card" + (ch.id === currentChannel.id ? " active" : "");
+        div.onclick = () => selectChannel(ch);
+        div.innerHTML = `
+          <div class="ch-card-info">
+            <div class="ch-card-name">${ch.name}</div>
+            <div class="ch-card-group">${ch.group} · ${ch.start} — ${ch.program.es.slice(0, 32)}...</div>
+          </div>
+          <span class="ch-card-play">▶</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function fetchLiveEpg(ch) {
+      try {
+        const query = encodeURIComponent(ch.name.split('(')[0].replace(/RTVE|CCMA|HD|FHD|UHD/gi, '').trim());
+        const res = await fetch(`/api/epg?channel=${query}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data && data.now && data.now.title) {
+          if (currentChannel.id !== ch.id) return;
+          ch.program.es = data.now.title;
+          if (data.now.desc) {
+            ch.desc.es = data.now.desc;
+          }
+          if (data.now.start) {
+            const startDate = new Date(data.now.start);
+            const sh = String(startDate.getHours()).padStart(2, '0');
+            const sm = String(startDate.getMinutes()).padStart(2, '0');
+            ch.start = `${sh}:${sm}`;
+            if (data.now.stop) {
+              const stopDate = new Date(data.now.stop);
+              const eh = String(stopDate.getHours()).padStart(2, '0');
+              const em = String(stopDate.getMinutes()).padStart(2, '0');
+              ch.end = `${eh}:${em}`;
+              const totalMin = Math.round((stopDate - startDate) / 60000);
+              const elapsedMin = Math.round((Date.now() - startDate) / 60000);
+              if (totalMin > 0) {
+                ch.durationMin = totalMin;
+                ch.startMinAgo = Math.max(0, Math.min(totalMin, elapsedMin));
+              }
+            }
+          }
+          if (data.next && data.next.title) {
+            let nextTime = "--:--";
+            let inMin = 30;
+            if (data.next.start) {
+              const nDate = new Date(data.next.start);
+              nextTime = `${String(nDate.getHours()).padStart(2, '0')}:${String(nDate.getMinutes()).padStart(2, '0')}`;
+              inMin = Math.max(0, Math.round((nDate - Date.now()) / 60000));
+            }
+            ch.upcoming = [
+              { time: nextTime, title: data.next.title, inMin: inMin }
+            ];
+          }
+          updateEpgDisplay();
+        }
+      } catch (err) {
+        console.warn("EPG live fetch error:", err);
+      }
+    }
+
+    function selectChannel(ch) {
+      currentChannel = ch;
+      document.getElementById('curChannelName').textContent = ch.name;
+      document.getElementById('badgeLiveText').textContent = "EN DIRECTO";
+      document.getElementById('badgeLiveText').style.color = "#FFF";
+
+      updateEpgDisplay();
+      renderAudioBox();
+
+      document.querySelectorAll('.ch-card').forEach(el => {
+        el.classList.toggle('active', el.textContent.includes(ch.name));
+      });
+
+      initPlayer(ch.url);
+      fetchLiveEpg(ch);
+    }
+
+    async function castToTv() {
+      const btn = document.getElementById('btnCastTv');
+      try {
+        if (btn) btn.innerHTML = "<span>📡</span> Conectando TV...";
+        const res = await fetch(`/api/tv/play_external?url=${encodeURIComponent(currentChannel.url)}`);
+        const data = await res.json();
+        if (data && data.status === 'external_play_started') {
+          if (btn) btn.innerHTML = "<span>✅</span> En TV (TiviMate)";
+          setTimeout(() => { if (btn) btn.innerHTML = "<span>📡</span> Enviar a TV"; }, 3500);
+        } else {
+          if (btn) btn.innerHTML = "<span>⚠️</span> TV no lista";
+          setTimeout(() => { if (btn) btn.innerHTML = "<span>📡</span> Enviar a TV"; }, 3000);
+        }
+      } catch (e) {
+        if (btn) btn.innerHTML = "<span>⚠️</span> Error Hub";
+        setTimeout(() => { if (btn) btn.innerHTML = "<span>📡</span> Enviar a TV"; }, 3000);
+      }
+    }
+
+    function toggleFullscreen() {
+      const video = document.getElementById('mainVideo');
+      if (!document.fullscreenElement) {
+        video.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    function toggleMute() {
+      const video = document.getElementById('mainVideo');
+      video.muted = !video.muted;
+    }
+
+    function togglePlayPause() {
+      const video = document.getElementById('mainVideo');
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+
+    function scrollToActiveChannel() {
+      const activeEl = document.querySelector('.ch-card.active');
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // CONTROL REMOTO SMART TV / TECLADO (D-PAD & ATAJOS ERGONÓMICOS)
+    window.addEventListener('keydown', (e) => {
+      if (e.target && e.target.tagName === 'INPUT') return;
+
+      const channels = getFilteredChannels();
+      const currentIdx = channels.findIndex(c => c.id === currentChannel.id);
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          if (currentIdx < channels.length - 1) {
+            selectChannel(channels[currentIdx + 1]);
+            scrollToActiveChannel();
+          }
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          if (currentIdx > 0) {
+            selectChannel(channels[currentIdx - 1]);
+            scrollToActiveChannel();
+          }
+          break;
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          toggleFullscreen();
+          break;
+        case 'm':
+        case 'M':
+          e.preventDefault();
+          toggleMute();
+          break;
+        case 'r':
+        case 'R':
+          e.preventDefault();
+          restartFromBeginning();
+          break;
+        case 't':
+        case 'T':
+          e.preventDefault();
+          castToTv();
+          break;
+        case ' ':
+          e.preventDefault();
+          togglePlayPause();
+          break;
+      }
+    });
+
+    // INICIALIZAR EN EL ARRANQUE
+    window.addEventListener('DOMContentLoaded', () => {
+      renderChannels();
+      selectChannel(SOVEREIGN_CHANNELS[0]);
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(err => {
+          console.warn("SW registration error:", err);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

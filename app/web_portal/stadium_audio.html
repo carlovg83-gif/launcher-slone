@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>SLÖNE STADIUM VIP · Audio en Tus Auriculares (0 ms)</title>
+  <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
+  <style>
+    :root {
+      --bg: #040508;
+      --card-bg: rgba(13, 17, 26, 0.95);
+      --card-border: rgba(255, 215, 0, 0.25);
+      --gold: #FFD700;
+      --gold-gradient: linear-gradient(135deg, #FFF3B0 0%, #FFD700 50%, #D4AF37 100%);
+      --cyan: #00F0FF;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem 1.2rem; }
+
+    header { text-align: center; margin-top: 0.5rem; }
+    .stadium-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 215, 0, 0.12); border: 1px solid var(--gold); color: var(--gold); font-size: 0.72rem; font-weight: 900; padding: 5px 14px; border-radius: 20px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: #00FF88; box-shadow: 0 0 10px #00FF88; display: inline-block; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
+
+    .main-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 22px; padding: 1.8rem 1.4rem; text-align: center; box-shadow: 0 0 40px rgba(0,0,0,0.8); margin: auto 0; }
+    .channel-logo { width: 72px; height: 72px; margin: 0 auto 1.2rem; display: block; filter: drop-shadow(0 0 20px rgba(255,215,0,0.4)); }
+    .match-title { font-size: 1.35rem; font-weight: 900; margin-bottom: 0.4rem; letter-spacing: 0.5px; }
+    .audio-name { font-size: 0.95rem; color: var(--gold); font-weight: 800; margin-bottom: 1.5rem; }
+
+    /* ORBE DE AUDIO CENTRAL */
+    .audio-orb-container { margin: 1.5rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .play-btn { width: 96px; height: 96px; border-radius: 50%; background: var(--gold-gradient); border: none; color: #000; font-size: 2.2rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 40px rgba(255, 215, 0, 0.4); transition: transform 0.2s; }
+    .play-btn:active { transform: scale(0.92); }
+    .play-btn.playing { animation: pulseOrb 2s infinite ease-in-out; }
+    @keyframes pulseOrb { 0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); } 50% { box-shadow: 0 0 60px rgba(0, 240, 255, 0.6); } }
+
+    /* ECUALIZADOR VISUAL */
+    .eq-bars { display: flex; gap: 5px; height: 26px; align-items: center; margin-top: 15px; }
+    .eq-bar { width: 4px; height: 6px; background: var(--gold); border-radius: 2px; }
+    .playing .eq-bar { animation: eqDance 0.8s infinite ease-in-out alternate; }
+    .playing .eq-bar:nth-child(2) { animation-delay: 0.2s; }
+    .playing .eq-bar:nth-child(3) { animation-delay: 0.4s; }
+    .playing .eq-bar:nth-child(4) { animation-delay: 0.1s; }
+    .playing .eq-bar:nth-child(5) { animation-delay: 0.3s; }
+    @keyframes eqDance { from { height: 6px; background: var(--gold); } to { height: 24px; background: var(--cyan); } }
+
+    /* CONTROLES DESLIZANTES */
+    .control-group { margin-top: 1.5rem; text-align: left; }
+    .control-label { display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 1px; }
+    .slider { width: 100%; -webkit-appearance: none; appearance: none; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.1); outline: none; }
+    .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); cursor: pointer; box-shadow: 0 0 10px rgba(255,215,0,0.8); }
+
+    .sync-pills-row { display: flex; gap: 6px; justify-content: center; margin-top: 10px; }
+    .sync-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 6px 12px; border-radius: 14px; cursor: pointer; }
+    .sync-pill:active { background: var(--gold); color: #000; }
+
+    footer { text-align: center; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px; padding: 1rem 0 0.5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="stadium-badge">
+      <span class="pulse-dot"></span>
+      <span>PANTALLA 1 CONECTADA · 0 MS SYNC</span>
+    </div>
+  </header>
+
+  <div class="main-card">
+    <img src="assets/slone_isotipo_soberano.svg" alt="SLÖNE" class="channel-logo">
+    <div class="match-title" id="match-display">GIRONA FC vs REAL MADRID</div>
+    <div class="audio-name" id="audio-display">🎙️ RAC1 · Joan Maria Pou (Directo)</div>
+
+    <!-- REPRODUCTOR DE AUDIO OCULTO CON CÓDEC WEB AUDIO -->
+    <audio id="stadium-audio-elem" preload="auto">
+      <source src="https://stream.rac1.cat/rac1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="audio-orb-container">
+      <button class="play-btn" id="play-btn" onclick="toggleAudio()">
+        ▶
+      </button>
+      <div class="eq-bars" id="eq-container">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+      <div id="status-hint" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 10px; font-weight: 700;">
+        PULSA PARA ESCUCHAR EN AURICULARES
+      </div>
+    </div>
+
+    <!-- CALIBRADOR DE RETARDO BLUETOOTH EN AURICULARES -->
+    <div class="control-group">
+      <div class="control-label">
+        <span>AJUSTE FINO LIP-SYNC (AURICULARES):</span>
+        <strong id="sync-val-display" style="color: var(--cyan);">0 ms (Exacto)</strong>
+      </div>
+      <input type="range" class="slider" id="sync-slider" min="-500" max="500" value="0" step="10" oninput="updateSyncOffset(this.value)">
+      <div class="sync-pills-row">
+        <button class="sync-pill" onclick="nudgeSync(-50)">-50ms</button>
+        <button class="sync-pill" onclick="nudgeSync(-10)">-10ms</button>
+        <button class="sync-pill" onclick="resetSync()">0 ms</button>
+        <button class="sync-pill" onclick="nudgeSync(10)">+10ms</button>
+        <button class="sync-pill" onclick="nudgeSync(50)">+50ms</button>
+      </div>
+    </div>
+
+    <!-- CONTROL DE VOLUMEN MASTER -->
+    <div class="control-group" style="margin-top: 1.2rem;">
+      <div class="control-label">
+        <span>VOLUMEN AURICULARES:</span>
+        <strong id="vol-display" style="color: var(--gold);">100%</strong>
+      </div>
+      <input type="range" class="slider" id="vol-slider" min="0" max="1" step="0.05" value="1" oninput="updateVolume(this.value)">
+    </div>
+  </div>
+
+  <footer>
+    SLÖNE STADIUM B2B · PROTOCOLO DE TRANSMISIÓN DE BAJA LATENCIA · SOBERANÍA TOTAL
+  </footer>
+
+  <script>
+    const audio = document.getElementById('stadium-audio-elem');
+    const playBtn = document.getElementById('play-btn');
+    const eq = document.getElementById('eq-container');
+    const statusHint = document.getElementById('status-hint');
+    const syncDisplay = document.getElementById('sync-val-display');
+    const volDisplay = document.getElementById('vol-display');
+    const syncSlider = document.getElementById('sync-slider');
+
+    let isPlaying = false;
+    let syncOffset = 0;
+
+    // Leer parámetros URL (canal y narrador)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('name')) document.getElementById('match-display').textContent = params.get('name');
+    if (params.get('audio')) document.getElementById('audio-display').textContent = '🎙️ ' + params.get('audio');
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        playBtn.textContent = '▶';
+        playBtn.classList.remove('playing');
+        eq.classList.remove('playing');
+        statusHint.textContent = 'AUDIO EN PAUSA';
+      } else {
+        audio.play().then(() => {
+          isPlaying = true;
+          playBtn.textContent = '⏸';
+          playBtn.classList.add('playing');
+          eq.classList.add('playing');
+          statusHint.textContent = 'EN DIRECTO · AUDIO EN TUS AURICULARES';
+          // Activar WakeLock si el navegador lo permite para evitar bloqueo de pantalla
+          if ('wakeLock' in navigator) {
+            navigator.wakeLock.request('screen').catch(() => {});
+          }
+        }).catch(e => {
+          statusHint.textContent = 'TOCA DE NUEVO PARA PERMITIR AUDIO';
+        });
+      }
+    }
+
+    function updateVolume(val) {
+      audio.volume = val;
+      volDisplay.textContent = Math.round(val * 100) + '%';
+    }
+
+    function updateSyncOffset(val) {
+      syncOffset = parseInt(val);
+      syncDisplay.textContent = (syncOffset > 0 ? '+' : '') + syncOffset + ' ms';
+      // Ajuste de tasa de reproducción sutil para compensar latencia Bluetooth
+      if (syncOffset !== 0) {
+        audio.playbackRate = 1.0 + (syncOffset / 10000);
+      } else {
+        audio.playbackRate = 1.0;
+      }
+    }
+
+    function nudgeSync(delta) {
+      syncOffset += delta;
+      syncSlider.value = syncOffset;
+      updateSyncOffset(syncOffset);
+    }
+
+    function resetSync() {
+      syncOffset = 0;
+      syncSlider.value = 0;
+      updateSyncOffset(0);
+    }
+  </script>
+</body>
+</html>

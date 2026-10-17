@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SLÖNE · BRAND IDENTITY ATELIER · PENTAGRAM / RAND STANDARD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #08090C;
+      --border: rgba(255, 255, 255, 0.1);
+      --white: #FFFFFF;
+      --neon: #E3FF00;
+      --gray: #64748B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: #FFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      padding: 40px 24px 100px 24px;
+      line-height: 1.6;
+    }
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 48px;
+    }
+    .label-kicker {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--neon);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    p.intro {
+      font-size: 17px;
+      color: #94A3B8;
+      max-width: 780px;
+    }
+
+    /* SECCIONES DE IDENTIDAD */
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 48px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 3px solid var(--neon);
+      padding-left: 12px;
+    }
+
+    /* GRID DE PROPUESTAS MAESTRAS */
+    .proposals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+    .prop-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+    .prop-card:hover {
+      border-color: rgba(227, 255, 0, 0.4);
+    }
+    .canvas-box {
+      background: #000;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      position: relative;
+    }
+    .canvas-box svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .prop-info {
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      flex: 1;
+    }
+    .prop-name {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .prop-logic {
+      font-size: 13px;
+      color: #94A3B8;
+      margin-bottom: 14px;
+    }
+    .prop-specs {
+      font-size: 11px;
+      color: #64748B;
+      font-family: monospace;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+    }
+
+    /* TIPOGRAFÍA A MEDIDA */
+    .wordmark-stage {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 48px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .wordmark-stage svg {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* TEST DE ESTRÉS / REDUCCIÓN */
+    .stress-test-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .stress-test-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stress-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .stress-scale {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--neon);
+      margin-top: 12px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="label-kicker">Estudio de Identidad Pura · Nivel Pentagram / Paul Rand</div>
+      <h1>SLÖNE · La Síntesis Suprema</h1>
+      <p class="intro">
+        Un logotipo de élite mundial <strong>no es un dibujo recargado ni un render de videojuego</strong>. Nike es un trazo. Apple es una silueta. Bluetooth es la unión geométrica de dos runas nórdicas. 
+        Aquí está la construcción matemática de los 3 conceptos esenciales de <strong>SLÖNE</strong>, reducidos a su pureza incontestable.
+      </p>
+    </header>
+
+    <!-- TIPOGRAFÍA A MEDIDA -->
+    <div class="section-title">01 · Tipografía Propietaria de Marca (Custom Wordmark)</div>
+    <p style="font-size: 13px; color: #94A3B8; margin-bottom: 16px;">
+      Diseñada vectorialmente letra a letra. Cero fuentes de sistema prefabricadas. La 'S' afilada, la 'L' arquitectónica, la 'Ö' con satélites calibrados de señal, y la 'N'/'E' de peso suizo rotundo.
+    </p>
+    <div class="wordmark-stage">
+      <img src="wordmark_custom.svg" alt="Tipografía Custom SLÖNE" style="max-width: 600px; width: 100%;">
+    </div>
+
+    <!-- LOS 3 SÍMBOLOS MAESTROS -->
+    <div class="section-title">02 · Las 3 Propuestas de Glifo Universal</div>
+    <div class="proposals-grid">
+
+      <!-- PROPUESTA A -->
+      <div class="prop-card">
+        <div class="canvas-box">
+          <img src="glyph_s_rune.svg" alt="Runa de Conectividad Soberana" style="width: 140px; height: 140px;">
+        </div>
+        <div class="prop-info">
+          <div class="prop-name">A · La Bindrune Soberana (Tipo Bluetooth)</div>
+          <div class="prop-logic">
+            El mástil vertical de transmisión inalámbrica con lazos angulares que trazan la <strong>'S'</strong> en un movimiento continuo y los satélites de la <strong>'Ö'</strong> en la cúspide.
+          </div>
+          <div class="prop-specs">
+            Construcción: Rejilla isométrica a 60° · Stroke: 14px · 1 trazo continuo
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPUESTA B -->
+      <div class="prop-card">
+        <div class="canvas-box">
+          <img src="glyph_o_resonance.svg" alt="Ö de Resonancia Cuántica" style="width: 140px; height: 140px;">
+        </div>
+        <div class="prop-info">
+          <div class="prop-name">B · La "Ö" de Resonancia Cuántica</div>
+          <div class="prop-logic">
+            Un toroide cerrado que actúa como puerto de enlace de frecuencia. La barra central representa el paso de señal limpia y los satélites superiores emiten la frecuencia sin intermediarios.
+          </div>
+          <div class="prop-specs">
+            Construcción: Proporción Áurea (1 : 1.618) · Geometría circular pura
+          </div>
+        </div>
+      </div>
+
+      <!-- PROPUESTA C -->
+      <div class="prop-card">
+        <div class="canvas-box">
+          <img src="glyph_pulse_ekg.svg" alt="Pulso Vital EKG" style="width: 160px; height: 140px;">
+        </div>
+        <div class="prop-info">
+          <div class="prop-name">C · El Pulso EKG / Onda Médica</div>
+          <div class="prop-logic">
+            La traducción vectorial de la frecuencia cardíaca y la transmisión en directo. Una línea viva que entra plana, genera el latido electromagnético de la 'S' y vuelve a estabilizarse a 60 FPS.
+          </div>
+          <div class="prop-specs">
+            Construcción: Frecuencia oscilatoria continua · Terminales redondeados
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TEST DE ESTRÉS DE TAMAÑO -->
+    <div class="section-title">03 · El Test de Reducción Extrema (Prueba de Autoridad)</div>
+    <p style="font-size: 13px; color: #94A3B8; margin-bottom: 16px;">
+      Si un símbolo no funciona a 16 píxeles en la barra de un televisor o grabado en la cabeza de un tornillo, está muerto. Así responde el glifo en escala decreciente:
+    </p>
+    <div class="stress-test-row">
+      <div class="stress-box">
+        <div style="width: 96px; height: 96px;">
+          <img src="glyph_s_rune.svg" style="width: 100%; height: 100%;">
+        </div>
+        <div class="stress-scale">96 × 96 PX (Icono App)</div>
+      </div>
+      <div class="stress-box">
+        <div style="width: 48px; height: 48px;">
+          <img src="glyph_s_rune.svg" style="width: 100%; height: 100%;">
+        </div>
+        <div class="stress-scale">48 × 48 PX (Cabecera TV)</div>
+      </div>
+      <div class="stress-box">
+        <div style="width: 24px; height: 24px;">
+          <img src="glyph_s_rune.svg" style="width: 100%; height: 100%;">
+        </div>
+        <div class="stress-scale">24 × 24 PX (Status Bar)</div>
+      </div>
+      <div class="stress-box">
+        <div style="width: 16px; height: 16px;">
+          <img src="glyph_s_rune.svg" style="width: 100%; height: 100%;">
+        </div>
+        <div class="stress-scale">16 × 16 PX (Favicon / Láser)</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

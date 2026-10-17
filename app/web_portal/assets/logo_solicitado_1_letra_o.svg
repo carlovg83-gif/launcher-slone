@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <!-- Fondo negro absoluto -->
+  <rect width="400" height="400" fill="#000000"/>
+  
+  <!-- Satélites gemelos diéresis de la Ö -->
+  <circle cx="156" cy="72" r="18" fill="#E3FF00"/>
+  <circle cx="244" cy="72" r="18" fill="#E3FF00"/>
+  
+  <!-- Anillo geométrico monumental de la Ö -->
+  <path d="M200,120 C133.7,120 80,173.7 80,240 C80,306.3 133.7,360 200,360 C266.3,360 320,306.3 320,240 C320,173.7 266.3,120 200,120 Z M200,166 C240.8,166 274,199.2 274,240 C274,280.8 240.8,314 200,314 C159.2,314 126,280.8 126,240 C126,199.2 159.2,166 200,166 Z" fill="#E3FF00"/>
+</svg>

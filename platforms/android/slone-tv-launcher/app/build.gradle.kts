@@ -15,10 +15,24 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("${project.rootDir}/../../../keystore/slone_release.keystore")
+            storePassword = System.getenv("SLONE_STORE_PASS") ?: "SloneSovereign2026!"
+            keyAlias = System.getenv("SLONE_KEY_ALIAS") ?: "slone_tv"
+            keyPassword = System.getenv("SLONE_KEY_PASS") ?: "SloneSovereign2026!"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -81,4 +95,9 @@ dependencies {
   implementation(libs.androidx.navigation3.ui)
   implementation(libs.androidx.navigation3.runtime)
   implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
+  // Media3 ExoPlayer (Reproducción Nativa Soberana)
+  implementation(libs.androidx.media3.exoplayer)
+  implementation(libs.androidx.media3.ui)
+  implementation(libs.androidx.media3.exoplayer.hls)
 }

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SLÖNE™ · EL DUELO DE IDENTIDAD · LOS DOS CAMINOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #000000;
+      --panel-bg: #07090E;
+      --card-bg: #0B0E17;
+      --border: rgba(255, 255, 255, 0.12);
+      --cyan: #00F0FF;
+      --neon: #E3FF00;
+      --white: #FFFFFF;
+      --active-brand: var(--neon);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      background: var(--bg);
+      color: #FFF;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* TOP BAR NAVEGACIÓN Y SELECTOR DE VISTA */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-id {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      background: var(--active-brand);
+      color: #000;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .main-title {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .view-mode-selector {
+      display: flex;
+      background: #111622;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .view-btn:hover { color: #FFF; }
+    .view-btn.active {
+      background: #1E293B;
+      color: #FFF;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .view-btn.btn-c1.active { color: #00F0FF; border-bottom: 2px solid #00F0FF; }
+    .view-btn.btn-c2.active { color: #E3FF00; border-bottom: 2px solid #E3FF00; }
+    .view-btn.btn-vs.active { color: #FFF; background: #334155; }
+
+    /* SELECTOR DE COLOR EN VIVO */
+    .color-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #111622;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+    .color-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.2s;
+    }
+    .color-dot:hover { transform: scale(1.2); }
+    .color-dot.active { border-color: #FFF; }
+
+    /* CONTENEDOR PRINCIPAL */
+    .arena-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 32px 24px 80px 24px;
+    }
+
+    /* PANTALLA DIVIDIDA (DUELO 50/50) */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 1000px) {
+      .split-grid { grid-template-columns: 1fr; }
+    }
+
+    /* COLUMNAS DE CAMINO */
+    .path-column {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .path-header {
+      padding: 20px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      border-top: 4px solid var(--border);
+    }
+    .path-1-col .path-header { border-top-color: #00F0FF; }
+    .path-2-col .path-header { border-top-color: #E3FF00; }
+    
+    .path-tag {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .path-1-col .path-tag { color: #00F0FF; }
+    .path-2-col .path-tag { color: #E3FF00; }
+    
+    .path-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .path-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    /* BLOQUES VISUALES */
+    .art-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+    .art-stage {
+      background: #000000;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      position: relative;
+    }
+    .art-stage img {
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+    }
+    .art-stage.stage-inverted {
+      background: #FFFFFF;
+    }
+    .art-stage.stage-inverted img {
+      filter: invert(1);
+    }
+
+    .art-footer {
+      padding: 16px 20px;
+      background: #0E131F;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .art-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #E2E8F0;
+    }
+    .art-sub {
+      font-size: 11px;
+      color: #64748B;
+    }
+
+    /* MOCKUPS EN CONTEXTO */
+    .context-pill-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 4px 0;
+    }
+    .context-mini-card {
+      background: #0E131F;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+    }
+    .context-mini-stage {
+      height: 90px;
+      background: #000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .context-mini-stage img {
+      max-height: 70px;
+      max-width: 90%;
+      object-fit: contain;
+    }
+
+    /* MATRIZ ANATÓMICA */
+    .anatomy-box {
+      background: #0A0D16;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 8px;
+    }
+    .anatomy-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #CBD5E1;
+      margin-bottom: 12px;
+    }
+    .anatomy-list {
+      list-style: none;
+      font-size: 13px;
+      color: #94A3B8;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .anatomy-list li strong { color: #FFF; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER FIJO CON CONTROLES -->
+  <header>
+    <div class="brand-id">
+      <span class="brand-badge" id="brand-badge">DUELO DE MARCA</span>
+      <span class="main-title">SLÖNE · LOS DOS CAMINOS MAESTROS</span>
+    </div>
+
+    <!-- SELECTOR DE VISTA -->
+    <div class="view-mode-selector">
+      <button class="view-btn btn-vs active" onclick="setView('vs', this)">DUELO 50 / 50 (CARA A CARA)</button>
+      <button class="view-btn btn-c1" onclick="setView('c1', this)">1. TRAZO GRAFITERO (AUTOR)</button>
+      <button class="view-btn btn-c2" onclick="setView('c2', this)">2. RUNA BLUETOOTH (TECNOLOGÍA)</button>
+    </div>
+
+    <!-- SELECTOR DE COLOR -->
+    <div class="color-picker">
+      <span style="font-size: 10px; font-weight: 800; color: #64748B;">COLOR:</span>
+      <div class="color-dot active" style="background: #E3FF00;" title="Neón Amarillo Eléctrico" onclick="changeColor('#E3FF00', this)"></div>
+      <div class="color-dot" style="background: #FFFFFF;" title="Blanco Óptico" onclick="changeColor('#FFFFFF', this)"></div>
+      <div class="color-dot" style="background: #00F0FF;" title="Cian Eléctrico" onclick="changeColor('#00F0FF', this)"></div>
+      <div class="color-dot" style="background: #E2E8F0;" title="Titanio / Platino" onclick="changeColor('#E2E8F0', this)"></div>
+    </div>
+  </header>
+
+  <div class="arena-container">
+
+    <div class="split-grid" id="mainGrid">
+
+      <!-- ================================================================ -->
+      <!-- COLUMNA 1: EL TRAZO DE AUTOR / GRAFITERO DE LUJO -->
+      <!-- ================================================================ -->
+      <div class="path-column path-1-col" id="col1">
+        
+        <div class="path-header">
+          <div class="path-tag">CAMINO 01 · LA MANO DEL ARTISTA</div>
+          <div class="path-title">El Trazo de Autor / Grafitero de Lujo</div>
+          <p class="path-desc">
+            Nacido directamente de tu bolígrafo y tu tarjeta manuscrita. No existe ninguna tipografía comercial en el mundo que tenga este corte. Es la firma del fundador llevada a la alta costura y al streetwear de élite (estilo <em>Stüssy, Balenciaga, Yohji Yamamoto</em>).
+          </p>
+        </div>
+
+        <!-- 1.1 BOCETO ORIGINAL VS DIGITALIZACIÓN -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_original_sketch_card.jpg" alt="Tarjeta original del fundador">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">La Tarjeta Física Manuscrita</div>
+              <div class="art-sub">El ADN primigenio: firma en pluma, runa central y tag inferior</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.2 LAS LETRAS SLÖNE EN CROMO / TINTA -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_graffiti_chrome_masterpiece_1792162281080.jpg" alt="Masterpiece Graffiti Chrome">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Tipografía de Autor en Cromo Líquido</div>
+              <div class="art-sub">Letras SLÖNE esculpidas: 'S' con corte diagonal, 'Ö' con diéresis de autor</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.3 VECTOR PLANO AISLADO (BLANCO PURO / POSITIVO) -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/ink_top_white.png" alt="Letras de slone en tinta blanca pura" style="max-height: 140px;">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Silueta Plana 100% Vectorial (Tinta Pura)</div>
+              <div class="art-sub">Extracción milimétrica sin artefactos para serigrafía y láser</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.4 EL SÍMBOLO CENTRAL DE TU TARJETA -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/ink_mid_white.png" alt="Símbolo central de la tarjeta" style="max-height: 180px;">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Tu Glifo / Isotipo del Bucle Infinito</div>
+              <div class="art-sub">El lazo en 8 sobre mástil vertical que dibujaste en el centro</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.5 ANATOMÍA TÉCNICA -->
+        <div class="anatomy-box">
+          <div class="anatomy-title">Anatomía del Camino 1</div>
+          <ul class="anatomy-list">
+            <li><strong>Trazo:</strong> Ángulos libres de 45° y 115°, remates en cuchilla caligráfica.</li>
+            <li><strong>Diéresis Ö:</strong> Puntos orgánicos nacidos del golpe de pluma sobre el papel.</li>
+            <li><strong>Impacto:</strong> Marca de culto, identidad callejera rebelde, valor de coleccionista.</li>
+            <li><strong>Aplicación Estrella:</strong> Merchandising, ropa deportiva pesada, bordado 3D, cabecera de autor.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- COLUMNA 2: LA RUNA DE CONECTIVIDAD PURA (BLUETOOTH / APPLE) -->
+      <!-- ================================================================ -->
+      <div class="path-column path-2-col" id="col2">
+        
+        <div class="path-header">
+          <div class="path-tag">CAMINO 02 · EL ESTÁNDAR SOBERANO</div>
+          <div class="path-title">La Runa de Conectividad (Tipo Bluetooth)</div>
+          <p class="path-desc">
+            Geometría monolítica cerrada construida para convertirse en un estándar universal de telecomunicaciones. Inspirada en la bindrune de Harald Blåtand (Bluetooth) y la síntesis de Apple, combinando la antena de emisión con la 'S' entrelazada y los nodos de la Ö.
+          </p>
+        </div>
+
+        <!-- 2.1 EL SÍMBOLO MONOLÍTICO DE CONECTIVIDAD -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_transmission_rune_pure_1792166006563.jpg" alt="Runa de transmisión Bluetooth">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">El Glifo de Conectividad Universal</div>
+              <div class="art-sub">Espina de antena con alas geométricas en 'S' y satélites gemelos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.2 EL EMBLEMA EN HARDWARE DE TITANIO -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_hardware_mockup_1792162286643.jpg" alt="Hardware de titanio SLÖNE Box y Mando">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Micro-Appliance y Mando a Distancia</div>
+              <div class="art-sub">El glifo como botón físico central y grabado láser en chasis negro</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.3 EL EMBLEMA EN RETRANSMISIÓN DE ESTADIO -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_stadium_broadcast_1792162284312.jpg" alt="Vallas publicitarias estadio SLÖNE">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Retransmisión Deportiva 360° en Estadio</div>
+              <div class="art-sub">Legibilidad instantánea a 100 metros en pantallas LED de Champions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.4 VARIANTE ALTERNATIVA: PULSO VITAL EKG -->
+        <div class="art-block">
+          <div class="art-stage">
+            <img src="/assets/arena/slone_heartbeat_stream_emblem_1792166019949.jpg" alt="Emblema de pulso vital">
+          </div>
+          <div class="art-footer">
+            <div>
+              <div class="art-label">Variante de Frecuencia / Onda Médica</div>
+              <div class="art-sub">Transmisión electromagnética continua en vivo (60 FPS cero latencia)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.5 ANATOMÍA TÉCNICA -->
+        <div class="anatomy-box">
+          <div class="anatomy-title">Anatomía del Camino 2</div>
+          <ul class="anatomy-list">
+            <li><strong>Geometría:</strong> Proporción áurea métrica, aristas milimétricas a 60° y 90°.</li>
+            <li><strong>Diéresis Ö:</strong> Dos satélites circulares calibrados a la misma distancia focal.</li>
+            <li><strong>Impacto:</strong> Reconocimiento como protocolo de red, chip de hardware o botón de Smart TV.</li>
+            <li><strong>Aplicación Estrella:</strong> Icono de app, mando a distancia, microchip, launcher de TV.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function setView(mode, btn) {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const col1 = document.getElementById('col1');
+      const col2 = document.getElementById('col2');
+      const grid = document.getElementById('mainGrid');
+
+      if (mode === 'vs') {
+        grid.style.gridTemplateColumns = '1fr 1fr';
+        col1.style.display = 'flex';
+        col2.style.display = 'flex';
+      } else if (mode === 'c1') {
+        grid.style.gridTemplateColumns = '1fr';
+        col1.style.display = 'flex';
+        col2.style.display = 'none';
+      } else if (mode === 'c2') {
+        grid.style.gridTemplateColumns = '1fr';
+        col1.style.display = 'none';
+        col2.style.display = 'flex';
+      }
+    }
+
+    function changeColor(color, dot) {
+      document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+      document.documentElement.style.setProperty('--active-brand', color);
+    }
+
+    // Atajos de teclado
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '1') setView('c1', document.querySelector('.btn-c1'));
+      if (e.key === '2') setView('c2', document.querySelector('.btn-c2'));
+      if (e.key === ' ' || e.key === 'v' || e.key === 'V') setView('vs', document.querySelector('.btn-vs'));
+    });
+  </script>
+</body>
+</html>

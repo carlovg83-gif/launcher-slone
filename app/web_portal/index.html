@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLÖNE CORP · Los 5 Motores Soberanos de Medios</title>
-  <meta name="description" content="SLÖNE CORP — El ecosistema de medios y streaming de ultra-alta fidelidad más avanzado del planeta. Decodificación 4K 60FPS local, sincronización multiaudio RAC1 en tiempo real, Multiview 4X y arquitectura Zero-Trust.">
+  <title>SLÖNE CÖRP · Los 5 Mötöres Söberanös de Mediös</title>
+  <meta name="description" content="SLÖNE CÖRP — El ecosistema de medios y streaming de ultra-alta fidelidad más avanzado del planeta. Decodificación 4K 60FPS local, sincronización multiaudio RAC1 en tiempo real, Multiview 4X y arquitectura Zerö-Trust.">
   <meta name="theme-color" content="#FFD700">
   <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
   <style>
@@ -70,30 +70,17 @@
       text-decoration: none;
     }
 
-    /* Logo SLÖNE con diéresis de corona estilizada */
-    .brand-crown-logo {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      font-size: 1.45rem;
-      font-weight: 900;
-      letter-spacing: 3.5px;
-      color: #FFFFFF;
+    /* Logotipo Vectorial de Lujo SL.1 / Ö */
+    .brand-luxury-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
     }
 
-    .o-crown-wrap {
-      position: relative;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .crown-diacritic {
-      font-size: 0.82rem;
-      color: var(--gold-primary);
-      filter: drop-shadow(0 0 6px var(--gold-glow));
-      line-height: 1;
-      margin-bottom: -2px;
+    .brand-luxury-logo:hover {
+      transform: scale(1.02);
+      opacity: 0.95;
     }
 
     .brand-tag-badge {
@@ -408,7 +395,7 @@
       color: var(--gold-primary);
     }
 
-    /* ── LOS 5 MOTORES SOBERANOS (GRID 5 MOTORES) ── */
+    /* ── LOS 5 MÖTÖRES SOBERANOS (GRID 5 MÖTÖRES) ── */
     .section-container {
       max-width: 1200px;
       margin: 0 auto 6.5rem;
@@ -975,45 +962,430 @@
       box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
     }
 
+    /* ── CONMUTADOR GENERACIONAL 3 A 99 AÑOS ── */
+    .profile-switcher-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 2.8rem;
+      flex-wrap: wrap;
+      max-width: 960px;
+    }
+
+    .profile-pill-btn {
+      background: rgba(13, 17, 26, 0.85);
+      border: 1px solid var(--card-border-subtle);
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+      padding: 10px 22px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-pill-btn:hover {
+      border-color: var(--gold-primary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .profile-pill-btn.active {
+      background: rgba(255, 215, 0, 0.16);
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+      box-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .broadcast-target-age {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--cyan-neon);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
     @media (max-width: 768px) {
       header { padding: 0.8rem 1.2rem; }
       nav { display: none; }
       .hero-title { font-size: 2.4rem; }
       .hero-lead { font-size: 1rem; }
       .presale-wrapper { padding: 2.5rem 1.5rem; }
+      .profile-switcher-wrap { gap: 8px; }
+      .profile-pill-btn { font-size: 0.78rem; padding: 8px 14px; }
     }
+  
+    /* ── SLÖNE VÖICE CÖNTROL & CAST ENGINE ── */
+    .btn-voice-cast {
+      background: rgba(13, 17, 26, 0.95);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.55rem 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.18);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-voice-cast:hover {
+      background: var(--gold-primary);
+      color: #000000;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-voice-cast .voice-mic-icon {
+      font-size: 1rem;
+      animation: micPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes micPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #FFD700); }
+    }
+
+    .floating-voice-pill {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1500;
+      background: rgba(8, 11, 18, 0.94);
+      border: 1.5px solid var(--gold-primary);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8), 0 0 20px rgba(255, 215, 0, 0.25);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .floating-voice-pill:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.45);
+    }
+
+    /* Modal Voice Box */
+    .voice-modal-box {
+      background: #070A11;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 24px;
+      max-width: 680px;
+      width: 100%;
+      padding: 2.2rem;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 215, 0, 0.2);
+      position: relative;
+    }
+
+    .voice-radar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 1.8rem 0;
+      position: relative;
+    }
+
+    .voice-orb-btn {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--gold-gradient);
+      border: none;
+      color: #000000;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 35px var(--gold-glow);
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 5;
+    }
+
+    .voice-orb-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+    }
+
+    .voice-orb-btn.listening {
+      background: linear-gradient(135deg, #00F0FF 0%, #0088FF 100%);
+      color: #FFFFFF;
+      animation: radarListen 1.5s infinite;
+    }
+
+    @keyframes radarListen {
+      0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+      70% { box-shadow: 0 0 0 35px rgba(0, 240, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+    }
+
+    .voice-waves-equalizer {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 30px;
+      margin-top: 15px;
+    }
+
+    .wave-bar {
+      width: 4px;
+      height: 8px;
+      background: var(--gold-primary);
+      border-radius: 4px;
+      transition: height 0.15s ease;
+    }
+
+    .wave-bar.active {
+      animation: waveDance 1s infinite ease-in-out;
+    }
+
+    @keyframes waveDance {
+      0%, 100% { height: 6px; background: var(--gold-primary); }
+      50% { height: 26px; background: var(--cyan-neon); }
+    }
+
+    .voice-transcript-card {
+      background: rgba(13, 17, 26, 0.85);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: center;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: var(--text-white);
+      margin-bottom: 1.2rem;
+    }
+
+    .voice-transcript-card.executing {
+      border-color: #00FF88;
+      background: rgba(0, 255, 136, 0.08);
+      color: #00FF88;
+    }
+
+    .voice-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .voice-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border-subtle);
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .voice-chip:hover {
+      border-color: var(--gold-primary);
+      color: #FFFFFF;
+      background: rgba(255, 215, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .lang-target-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border-subtle);
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .lang-select, .cast-target-select {
+      background: #080B11;
+      border: 1px solid var(--card-border);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+  
+    /* ── LIP-SYNC CALIBRATOR & STADIUM MODE ── */
+    .lip-sync-calibration-panel {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin: 1.4rem 0;
+    }
+
+    .sync-slider-main {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+    }
+
+    .sync-slider-main::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold-primary);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+      border: 2px solid #FFFFFF;
+    }
+
+    .sync-nudges-bar {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nudge-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nudge-btn:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .nudge-btn.reset {
+      border-color: var(--cyan-neon);
+      color: var(--cyan-neon);
+      background: rgba(0, 240, 255, 0.1);
+    }
+
+    .sync-presets-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      flex-wrap: wrap;
+    }
+
+    .sync-preset-chip {
+      background: transparent;
+      border: 1px dashed var(--card-border-subtle);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sync-preset-chip:hover {
+      border-color: var(--gold-primary);
+      color: #FFFFFF;
+      border-style: solid;
+      background: rgba(255, 215, 0, 0.08);
+    }
+
+    .btn-action-stadium {
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      padding: 0.85rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.18);
+      transition: all 0.25s ease;
+    }
+
+    .btn-action-stadium:hover {
+      background: var(--cyan-neon);
+      color: #000000;
+      box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- ── HEADER SOBERANO SLÖNE CORP ── -->
+  <!-- ── HEADER SOBERANO SLÖNE CÖRP ── -->
   <header>
     <a href="#" class="brand-container">
-      <div class="brand-crown-logo">
-        <span>SL</span>
-        <div class="o-crown-wrap">
-          <span class="crown-diacritic">👑</span>
-          <span>Ö</span>
-        </div>
-        <span>NE</span>
-      </div>
-      <span class="brand-tag-badge">CORP</span>
+      <img src="assets/slone_luxury_logo.svg" alt="SLÖNE CÖRP" class="brand-luxury-logo">
     </a>
 
     <nav>
-      <a href="#motores">Los 5 Motores</a>
-      <a href="showroom.html" target="_blank">Showroom Silicon Valley</a>
-      <a href="#arquitectura">Zero-Trust</a>
-      <a href="#preventa">Preventa Fundadores</a>
+      <a href="#mötöres">Los 5 Mötöres</a>
+      <a href="tv.html" target="_blank" style="color: var(--cyan-neon);">✦ SLÖNE TV & Guía EPG</a>
+      <a href="sync_lab.html" target="_blank" style="color: var(--accent);">✦ Barça vs RAC1 Sync</a>
+      <a href="showroom.html" target="_blank">Shöwrööm Silicön Valley</a>
+      <a href="identidad.html" target="_blank">Identidad & Símbolö Ö</a>
+      <a href="boceto_inspector.html" target="_blank" style="color: var(--gold-primary);">✦ Mesa de Luz Bocetö</a>
+      <a href="#arquitectura">Zerö-Trust</a>
+      <a href="#preventa">Preventa Fundadöres</a>
     </nav>
 
     <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="btn-voice-cast" onclick="openVoiceCastModal()" title="Pídeselo a SLÖ: Canales, radio, Smart TV y color">
+        <span class="voice-mic-icon">🎙️</span>
+        <span>SLÖ</span>
+      </button>
+
       <div id="header-license-pill" class="header-license-pill" style="display: none;" onclick="openActiveLicenseModal()">
         <span class="pulse-dot" style="background: #00FF88; box-shadow: 0 0 10px #00FF88; width: 8px; height: 8px;"></span>
         <span id="header-license-text">LICENCIA ACTIVA</span>
       </div>
       <a href="#preventa" class="btn-header-cta" id="header-cta-btn">
-        <span>✦ RESERVAR ACCESO</span>
+        <span>✦ RESERVAR ACCESÖ</span>
       </a>
     </div>
   </header>
@@ -1022,80 +1394,101 @@
   <section class="hero-section">
     <div class="hero-meta-pill">
       <span class="pulse-dot"></span>
-      <span>SEDE GIRONA · INFRAESTRUCTURA SOBERANA LOCAL · RED PRIVADA</span>
+      <span>✦ ECÖSISTEMA MULTIMEDIA GLÖBAL SOBERANO · DISEÑADO DE 3 A 99 AÑOS</span>
     </div>
 
     <h1 class="hero-title">
-      EL ECOSISTEMA DE MEDIOS Y<br>
-      <span class="hero-title-accent">STREAMING DEFINITIVO.</span>
+      EL ECÖSISTEMA DE MEDIÖS Y<br>
+      <span class="hero-title-accent">STREAMING SOBERANO DEFINITIVÖ.</span>
     </h1>
 
     <p class="hero-lead">
-      Decodificación nativa 4K 60FPS sin latencia, sincronización multiaudio de radio en directo con RAC1 y Cadena SER, y emisión directa a Smart TV y TiviMate. Cero telemetría externa. Cero intermediarios.
+      Diseñado para cada etapa de la vida en cualquier rincón del mundo: desde la protección infantil pura sin algoritmos adictivos (3 años) y el multitasking de eSpörts (Generación Z), hasta los grandes eventos deportivos mundiales en 4K y la máxima serenidad accesible para nuestros mayores (99 años). Cero telemetría externa. Cero intermediarios.
     </p>
+
+    <!-- Conmutador de Perfiles Transgeneracionales -->
+    <div class="profile-switcher-wrap">
+      <button class="profile-pill-btn active" id="pbtn-sports" onclick="switchProfile('global_sports')">
+        <span>🌍 Glöbal Spörts & Cinema (26-64)</span>
+      </button>
+      <button class="profile-pill-btn" id="pbtn-kids" onclick="switchProfile('kids')">
+        <span>👶 SLÖNE Kids Söberanö (3-12)</span>
+      </button>
+      <button class="profile-pill-btn" id="pbtn-nextgen" onclick="switchProfile('nextgen')">
+        <span>⚡ NextGen & eSpörts Matrix (13-25)</span>
+      </button>
+      <button class="profile-pill-btn" id="pbtn-senior" onclick="switchProfile('senior')">
+        <span>🛡️ Senior Sövereign / Serenidad (65-99)</span>
+      </button>
+    </div>
 
     <div class="hero-actions">
       <a href="#preventa" class="btn-gold-primary">
-        <span>👑 RESERVAR ACCESO FUNDADOR</span>
+        <span>RESERVAR ACCESÖ FUNDADOR</span>
       </a>
       <a href="showroom.html" target="_blank" class="btn-cyan-secondary">
-        <span>📺 VER SHOWROOM EN VIVO</span>
+        <span>📺 VER SHÖWRÖÖM EN VIVO</span>
       </a>
     </div>
 
-    <!-- ── TARJETA INTERACTIVA DE PARTIDO EN DIRECTO ── -->
+    <!-- ── TARJETA INTERACTIVA DE PARTIDO / EXPERIENCIA DINÁMICA ── -->
     <div class="live-broadcast-card">
       <div class="broadcast-top-bar">
         <div class="broadcast-status">
           <span class="pulse-dot"></span>
-          <span>EN DIRECTO · 4K UHD 60FPS · M+ LIGA DE CAMPEONES</span>
+          <span id="card-status-label">EN DIRECTO · 4K UHD 60FPS · MULTICAST GLÖBAL</span>
         </div>
-        <div class="broadcast-specs">
-          VA-API HEVC · 18.5 Mbps · Buffer: 0 ms
+        <div class="broadcast-specs" id="card-specs-label">
+          VA-API HEVC · 22.4 Mbps · Buffer: 0 ms · Lag: &lt; 80 ms
         </div>
       </div>
 
       <div class="broadcast-body">
-        <h2 class="match-headline">FC BARCELONA vs CHAMPIONS LEAGUE</h2>
+        <div class="broadcast-target-age" id="card-target-age">26 a 64 AÑOS · DEPORTE Y CINE SOBERANO GLÖBAL</div>
+        <h2 class="match-headline" id="card-headline">CHAMPIONS LEAGUE · FÓRMULA 1 · PREMIER LEAGUE · NBA</h2>
         <div class="match-meta-narrator">
           <span>📻 Narración sincronizada:</span>
-          <strong id="active-audio-label">Joan Maria Pou (RAC1 en català)</strong>
+          <strong id="active-audio-label">Joan Maria Pou (RAC1) / Martin Tyler (English)</strong>
         </div>
 
         <div class="audio-sync-selector">
-          <span style="font-size: 0.82rem; font-weight: 800; color: var(--gold-metallic);">SELECCIONAR CANAL DE AUDIO:</span>
-          <div class="audio-pills-group">
+          <span style="font-size: 0.82rem; font-weight: 800; color: var(--gold-metallic);" id="audio-selector-title">SELECCIONAR CANAL DE AUDIO / PISTA SOBERANA:</span>
+          <div class="audio-pills-group" id="audio-pills-container">
             <button class="audio-btn active" onclick="setAudioSource('RAC1 (Joan Maria Pou)')">🎙️ RAC1 (Català)</button>
             <button class="audio-btn" onclick="setAudioSource('Cadena SER (Carrusel)')">🎙️ SER (Castellano)</button>
-            <button class="audio-btn" onclick="setAudioSource('Catalunya Ràdio (TdP)')">🎙️ CatRàdio</button>
-            <button class="audio-btn" onclick="setAudioSource('Audio TV Original')">🔊 Pista TV Oficial</button>
+            <button class="audio-btn" onclick="setAudioSource('BBC Radiö 5 Live (English)')">🎙️ BBC Radiö (English)</button>
+            <button class="audio-btn" onclick="setAudioSource('RMC Sport (Français)')">🎙️ RMC (Français)</button>
+            <button class="audio-btn" onclick="setAudioSource('Pista Oficial UHD')">🔊 Pista TV Oficial</button>
           </div>
         </div>
 
         <div class="broadcast-actions">
+                    <button class="btn-action-stadium" onclick="toggleStadiumModal()">
+            <span>🏟️ MÖDÖ STADIUM (QR AURICULARES)</span>
+          </button>
           <button class="btn-action-cast" onclick="launchAdbCast()">
-            <span>📡 ENVIAR A SMART TV (192.168.1.135)</span>
+            <span id="cast-btn-text">📡 ENVIAR A SMART TV (192.168.1.135)</span>
           </button>
           <a href="launcher/index.html" class="btn-action-tivimate">
-            <span>⚡ ABRIR EN TIVIMATE</span>
+            <span>⚡ ABRIR EN TIVIMATE / BRAVE</span>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── SECCIÓN: LOS 5 MOTORES SOBERANOS ── -->
-  <section class="section-container" id="motores">
+  <!-- ── SECCIÓN: LOS 5 MÖTÖRES SOBERANOS ── -->
+  <section class="section-container" id="mötöres">
     <div class="section-eyebrow">ARQUITECTURA DE INGENIERÍA PURA</div>
-    <h2 class="section-heading">Los 5 Motores Soberanos de SLÖNE</h2>
+    <h2 class="section-heading">Los 5 Mötöres Söberanös de SLÖNE</h2>
     <p class="section-description">
       Diseñados para operar con aceleración por hardware en ThinkPad X390 y desplegar vídeo de ultra-baja latencia hacia Smart TV y dispositivos Android TV en red local.
     </p>
 
     <div class="engines-grid">
-      <!-- Motor 1 -->
+      <!-- Mötör 1 -->
       <div class="engine-card">
-        <div class="engine-number">MOTOR 01 · VÍDEO PIPELINE</div>
+        <div class="engine-number">MÖTÖR 01 · VÍDEO PIPELINE</div>
         <h3 class="engine-title">SLÖNE Ultra-Cast Engine</h3>
         <p class="engine-desc">
           Decodificación 4K a 60 FPS acelerada por hardware (Intel VA-API / QuickSync). Buffer adaptativo con cero congelaciones y emisión directa por LAN sin depender de la nube.
@@ -1107,10 +1500,10 @@
         </ul>
       </div>
 
-      <!-- Motor 2 -->
+      <!-- Mötör 2 -->
       <div class="engine-card">
-        <div class="engine-number">MOTOR 02 · SINCRONIZACIÓN</div>
-        <h3 class="engine-title">Radio-Sync Multilingual</h3>
+        <div class="engine-number">MÖTÖR 02 · SINCRONIZACIÓN</div>
+        <h3 class="engine-title">Radiö-Sync Multilingual</h3>
         <p class="engine-desc">
           Sincronizador milimétrico de audio en vivo. Ajusta automáticamente el desfase entre la señal de vídeo y la narración de radio (RAC1, Cadena SER) sin perder el sincronismo labial.
         </p>
@@ -1121,9 +1514,9 @@
         </ul>
       </div>
 
-      <!-- Motor 3 -->
+      <!-- Mötör 3 -->
       <div class="engine-card">
-        <div class="engine-number">MOTOR 03 · MULTIPANTALLA</div>
+        <div class="engine-number">MÖTÖR 03 · MULTIPANTALLA</div>
         <h3 class="engine-title">Quad-Multiview 4X Matrix</h3>
         <p class="engine-desc">
           Malla de 4 transmisiones simultáneas en pantalla completa con conmutador instantáneo de audio de un click. Sigue cuatro partidos o señales a la vez sin pérdida de fotogramas.
@@ -1135,10 +1528,10 @@
         </ul>
       </div>
 
-      <!-- Motor 4 -->
+      <!-- Mötör 4 -->
       <div class="engine-card">
-        <div class="engine-number">MOTOR 04 · PRIVACIDAD ABSOLUTA</div>
-        <h3 class="engine-title">Sovereign Vault & Zero-Trust</h3>
+        <div class="engine-number">MÖTÖR 04 · PRIVACIDAD ABSOLUTA</div>
+        <h3 class="engine-title">Sövereign Vault & Zerö-Trust</h3>
         <p class="engine-desc">
           Cifrado local AES-256-GCM y bóveda en Fedora 44. Cero telemetría externa hacia servidores de terceros. Tus listas, credenciales y hábitos de visionado jamás salen de tu casa.
         </p>
@@ -1149,10 +1542,10 @@
         </ul>
       </div>
 
-      <!-- Motor 5 -->
+      <!-- Mötör 5 -->
       <div class="engine-card">
-        <div class="engine-number">MOTOR 05 · INTELIGENCIA AUTÓNOMA</div>
-        <h3 class="engine-title">AI Cognitive Radar & Scheduler</h3>
+        <div class="engine-number">MÖTÖR 05 · INTELIGENCIA AUTÓNOMA</div>
+        <h3 class="engine-title">AI Cögnitive Radar & Scheduler</h3>
         <p class="engine-desc">
           Detección autónoma de eventos deportivos en directo y resolución automática de streams de máxima tasa de bits. Control inteligente por ADB para encender y sintonizar la TV.
         </p>
@@ -1169,15 +1562,15 @@
   <section class="section-container" id="preventa">
     <div class="presale-wrapper">
       <div class="presale-badge">PREVENTA OFICIAL DE LANZAMIENTO</div>
-      <h2 class="presale-title">Acceso Soberano Exclusivo</h2>
+      <h2 class="presale-title">Accesö Söberanö Exclusivö</h2>
       <p class="presale-lead">
-        Sé uno de los 50 propietarios fundadores en acceder a los 5 motores de SLÖNE CORP con licencia vitalicia inmutable y soporte directo con el equipo de ingeniería.
+        Sé uno de los 50 propietarios fundadöres en acceder a los 5 mötöres de SLÖNE CÖRP con licencia vitalicia inmutable y soporte directo con el equipo de ingeniería.
       </p>
 
       <div class="spots-counter-bar">
         <div class="counter-flex">
           <span style="color: var(--gold-primary);">PLAZAS ADJUDICADAS:</span>
-          <span><strong>38</strong> / 50 DISPONIBLES</span>
+          <span><strong>38</strong> / 50 DISPÖNIBLES</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill"></div>
@@ -1198,24 +1591,24 @@
       </div>
 
       <div class="pricing-cards-grid">
-        <!-- PLAN 1: QUAD-GLOBAL PRO -->
+        <!-- PLAN 1: QUAD-GLÖBAL PRO -->
         <div class="price-card">
-          <div class="price-card-tier">SLÖNE QUAD-GLOBAL PRO</div>
+          <div class="price-card-tier">SLÖNE QUAD-GLÖBAL PRO</div>
           <div class="price-amount">
             <span id="pro-price-val">59,99€</span>
             <span id="pro-cycle-val" style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">/ año</span>
           </div>
           <div class="price-sub" id="pro-sub-val">Equivale a 4,99€/mes · Licencia individual 2 pantallas</div>
           <ul class="price-features">
-            <li>Motor <strong>SLÖNE Quad-Multiview 4X Matrix</strong></li>
-            <li><strong>Dual-Audio Soberano</strong> milimétrico (RAC1, SER, COPE)</li>
+            <li>Mötör <strong>SLÖNE Quad-Multiview 4X Matrix</strong></li>
+            <li><strong>Dual-Audio Söberanö</strong> milimétrico (RAC1, SER, COPE)</li>
             <li>Silenciado instantáneo automático del vídeo original al alternar audio</li>
             <li>Casting nativo Xiaomi TV, Android TV y Smart TV</li>
             <li>Soporte de listas y actualización de canales en tiempo real</li>
             <li>2 dispositivos simultáneos en red local</li>
           </ul>
-          <button class="btn-cyan-secondary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Quad-Global Pro')">
-            ✦ ACTIVAR QUAD-GLOBAL PRO
+          <button class="btn-cyan-secondary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Quad-Glöbal Pro')">
+            ✦ ACTIVAR QUAD-GLÖBAL PRO
           </button>
         </div>
 
@@ -1240,23 +1633,23 @@
           </button>
         </div>
 
-        <!-- PLAN 3: FOUNDER LIFETIME PASS (FEATURED) -->
+        <!-- PLAN 3: FÖUNDER LIFETIME PASS (FEATURED) -->
         <div class="price-card featured">
-          <div class="price-card-tier">👑 FOUNDER LIFETIME PASS</div>
+          <div class="price-card-tier">FÖUNDER LIFETIME PASS</div>
           <div class="price-amount" style="color: var(--gold-primary);">
             249€ <span style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">/ pago único</span>
           </div>
           <div class="price-sub">Licencia vitalicia inmutable sin suscripciones ni cuotas jamás</div>
           <ul class="price-features">
-            <li><strong>Los 5 Motores Soberanos</strong> completos de por vida</li>
+            <li><strong>Los 5 Mötöres Söberanös</strong> completos de por vida</li>
             <li>Clave criptográfica asimétrica Ed25519 node-locked inmutable</li>
-            <li><strong>Zero-Trust Vault</strong> local y motor AI Cognitive Radar</li>
+            <li><strong>Zerö-Trust Vault</strong> local y motor AI Cögnitive Radar</li>
             <li>Dispositivos ilimitados en red local (LAN)</li>
             <li>Prioridad absoluta en todas las nuevas versiones</li>
             <li>Canal VIP directo con el CTO (SLO) y CEO</li>
           </ul>
-          <button class="btn-gold-primary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Founder Lifetime Pass')">
-            👑 OBTENER LICENCIA VITALICIA
+          <button class="btn-gold-primary" style="width: 100%; justify-content: center;" onclick="openBookingModal('Föunder Lifetime Pass')">
+            ÖBTENER LICENCIA VITALICIA
           </button>
         </div>
       </div>
@@ -1266,30 +1659,22 @@
   <!-- ── FOOTER DE ALTA GAMA ── -->
   <footer>
     <div class="footer-brand">
-      <div class="brand-crown-logo" style="font-size: 1.25rem;">
-        <span>SL</span>
-        <div class="o-crown-wrap">
-          <span class="crown-diacritic" style="font-size: 0.7rem;">👑</span>
-          <span>Ö</span>
-        </div>
-        <span>NE</span>
-      </div>
-      <span class="brand-tag-badge">CORP</span>
+      <img src="assets/slone_luxury_logo.svg" alt="SLÖNE CÖRP" style="height: 32px; width: auto; opacity: 0.9;">
     </div>
 
     <p class="footer-desc">
-      El motor de medios soberano diseñado para quienes exigen fidelidad absoluta, cero latencia y privacidad inquebrantable. Alojado y optimizado localmente en hardware ThinkPad X390 bajo Fedora 44 Linux.
+      El motor de medios söberanö diseñado para quienes exigen fidelidad absoluta, cero latencia y privacidad inquebrantable. Alojado y optimizado localmente en hardware ThinkPad X390 bajo Fedora 44 Linux.
     </p>
 
     <div class="footer-links">
-      <a href="showroom.html" target="_blank">Showroom de Diseño</a>
-      <a href="privacy.html">Privacidad Zero-Trust</a>
+      <a href="showroom.html" target="_blank">Shöwrööm de Diseño</a>
+      <a href="privacy.html">Privacidad Zerö-Trust</a>
       <a href="terms.html">Términos de Servicio</a>
-      <a href="#motores">Especificaciones de los 5 Motores</a>
+      <a href="#mötöres">Especificaciones de los 5 Mötöres</a>
     </div>
 
     <div class="footer-copy">
-      © 2026 SLÖNE CORP · SEDE GIRONA · TODOS LOS DERECHOS RESERVADOS
+      © 2026 SLÖNE CÖRP · SEDE GIRONA · TÖDÖS LOS DERECHOS RESERVADOS
     </div>
   </footer>
 
@@ -1300,14 +1685,9 @@
       
       <!-- VISTA 1: FORMULARIO DE CHECKOUT Y DATOS -->
       <div id="modal-checkout-form-view">
-        <div class="brand-crown-logo" style="font-size: 1.1rem; margin-bottom: 0.6rem;">
-          <span>SL</span>
-          <div class="o-crown-wrap">
-            <span class="crown-diacritic" style="font-size: 0.65rem;">👑</span>
-            <span>Ö</span>
-          </div>
-          <span>NE</span>
-          <span class="brand-tag-badge" style="margin-left: 8px;">CHECKOUT SOBERANO</span>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.8rem;">
+          <img src="assets/slone_luxury_logo.svg" alt="SLÖNE CÖRP" style="height: 28px; width: auto;">
+          <span class="brand-tag-badge">CHECKOUT SOBERANO</span>
         </div>
         
         <h3 class="modal-title" id="modal-title-text">Reserva y Activación</h3>
@@ -1333,7 +1713,7 @@
           </div>
 
           <div class="form-group">
-            <label>Método de Activación Soberana (0% Comisiones)</label>
+            <label>Método de Activación Söberana (0% Comisiones)</label>
             <div class="payment-method-selector">
               <button type="button" class="pay-method-pill active" onclick="selectPayMethod(this, 'card')">💳 Tarjeta / Stripe SSL</button>
               <button type="button" class="pay-method-pill" onclick="selectPayMethod(this, 'bizum')">⚡ Bizum / Transfer</button>
@@ -1349,9 +1729,11 @@
 
       <!-- VISTA 2: RESGUARDO DE LICENCIA EMITIDA Y ACTIVA -->
       <div id="modal-success-view" style="display: none; text-align: center;">
-        <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">👑</div>
+        <div style="margin-bottom: 1rem;">
+          <img src="assets/slone_symbol_logo.svg" alt="SL.1" style="width: 56px; height: 56px; border-radius: 16px; box-shadow: 0 8px 24px rgba(212,175,55,0.2);">
+        </div>
         <div class="brand-tag-badge" style="background: rgba(0, 255, 136, 0.15); border-color: #00FF88; color: #00FF88; margin-bottom: 0.8rem;">
-          FIRMA CRIPTOGRÁFICA VERIFICADA · BÓVEDA ZERO-TRUST
+          FIRMA CRIPTOGRÁFICA VERIFICADA · BÓVEDA ZERÖ-TRUST
         </div>
         <h3 class="modal-title" style="color: #FFFFFF;">¡Licencia Emitida y Activa!</h3>
         <p class="modal-text" style="margin-bottom: 1.2rem;">
@@ -1370,7 +1752,7 @@
 
         <div class="license-meta-table">
           <div class="meta-row"><span>Titular:</span><strong id="meta-owner">slone</strong></div>
-          <div class="meta-row"><span>Plan:</span><strong id="meta-plan">Quad-Global Pro</strong></div>
+          <div class="meta-row"><span>Plan:</span><strong id="meta-plan">Quad-Glöbal Pro</strong></div>
           <div class="meta-row"><span>Vigencia:</span><strong id="meta-validity" style="color: #00FF88;">ACTIVA · INMUTABLE</strong></div>
           <div class="meta-row"><span>Red Local:</span><strong>192.168.1.0/24 (ThinkPad X390)</strong></div>
         </div>
@@ -1380,7 +1762,7 @@
             ⬇️ DESCARGAR CERTIFICADO (.JSON)
           </button>
           <button type="button" class="btn-gold-primary" style="flex: 1; min-width: 180px; justify-content: center; font-size: 0.82rem;" onclick="closeBookingModal()">
-            ✓ ENTRAR AL ECOSISTEMA
+            ✓ ENTRAR AL ECÖSISTEMA
           </button>
         </div>
       </div>
@@ -1388,10 +1770,111 @@
     </div>
   </div>
 
+  <!-- ── MODAL SOBERANO SLÖ (PÍDESELO A SLÖ) ── -->
+  <div class="modal-backdrop" id="voice-cast-modal" style="display: none;">
+    <div class="voice-modal-box">
+      <button class="modal-close-btn" onclick="closeVoiceCastModal()">✕</button>
+
+      <!-- ENCABEZADO HUMANO Y SOBERANO SLÖ -->
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 1.2rem; padding-right: 30px;">
+        <img src="assets/slone_isotipo_soberano.svg" alt="SLÖ" style="height: 38px; width: 38px;">
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 900; letter-spacing: 1.5px; color: var(--gold-primary);">SLÖ</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Tu asistente soberano: Canales, radio 0 ms, color o tu pantalla</div>
+        </div>
+      </div>
+
+      <!-- BARRA DE CONFIGURACIÓN DE IDIOMA Y DISPOSITIVO -->
+      <div class="lang-target-bar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.76rem; color: var(--gold-primary); font-weight: 800;">IDIOMA:</span>
+          <select class="lang-select" id="voice-lang-select" onchange="changeVoiceLanguage(this.value)">
+            <option value="es-ES" selected>🇪🇸 Castellano (España)</option>
+            <option value="ca-ES">🏴󠁥󠁳󠁣󠁴󠁿 Català (Girona / BCN)</option>
+            <option value="en-US">🇺🇸 English (US)</option>
+            <option value="fr-FR">🇫🇷 Français</option>
+            <option value="de-DE">🇩🇪 Deutsch</option>
+            <option value="it-IT">🇮🇹 Italiano</option>
+          </select>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.76rem; color: var(--cyan-neon); font-weight: 800;">DESTINO:</span>
+          <select class="cast-target-select" id="cast-target-device" onchange="changeCastTarget(this.value)">
+            <option value="xiaomi_tv" selected>📺 Xiaomi TV Salón (192.168.1.135)</option>
+            <option value="this_thinkpad">💻 ThinkPad X390 (Este Equipo)</option>
+            <option value="all_devices">🌐 Toda la Red (Mesh 0 ms)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- VISUALIZADOR ORB RADIAL Y MICRÓFONO -->
+      <div class="voice-radar-container">
+        <button class="voice-orb-btn" id="voice-trigger-btn" onclick="toggleVoiceListening()" title="Haz clic para hablar con SLÖ">
+          🎙️
+        </button>
+        <div class="voice-waves-equalizer" id="voice-waves-eq">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        <div id="voice-state-hint" style="font-size: 0.82rem; color: var(--text-dim); margin-top: 8px; font-weight: 800; letter-spacing: 1.5px;">
+          PULSA Y HABLA CÖN SLÖ
+        </div>
+      </div>
+
+      <!-- TARJETA DE TRANSCRIPCIÓN Y CONFIRMACIÓN EN VIVO -->
+      <div class="voice-transcript-card" id="voice-transcript-box">
+        <span id="voice-transcript-text" style="color: var(--text-muted); font-style: italic;">
+          “Pon el Girona”, “Sincroniza RAC1”, “Pon la tele”, “Color cian”, “Modo senior”...
+        </span>
+      </div>
+
+      <!-- ENTRADA DE TEXTO ALTERNATIVA TIPO CHATBOT -->
+      <form onsubmit="handleVoiceFormSubmit(event)" style="display: flex; gap: 8px; margin-bottom: 1.2rem;">
+        <input type="text" id="voice-text-fallback" placeholder="O escribe a SLÖ: Girona, RAC1, oro, tele, preventa..." 
+               style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--card-border-subtle); color: #FFF; padding: 10px 14px; border-radius: 8px; font-size: 0.88rem;">
+        <button type="submit" class="btn-cyan-secondary" style="padding: 0 16px; font-size: 0.82rem; font-weight: 800;">
+          ENVIAR
+        </button>
+      </form>
+
+      <!-- MATRIZ DE CHIPS RÁPIDOS 1-TOUCH -->
+      <div style="font-size: 0.72rem; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; text-align: center; margin-bottom: 4px;">
+        ✦ ACCESOS RÁPIDOS DE 1 TOQUE
+      </div>
+      <div class="voice-chips-grid">
+        <button class="voice-chip" onclick="executeQuickVoiceAction('canal', 'girona', 'Girona FC 4K (LaLiga)')">⚽ Girona FC</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('canal', 'barca', 'Barça TV Oficial')">🔵 Barça TV</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('canal', 'f1', 'Fórmula 1 DAZN 4K')">🏎️ DAZN F1</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('radio', 'rac1', 'RAC1 Girona/BCN (0 ms)')">📻 Radio RAC1</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('radio', 'catradio', 'Catalunya Ràdio')">🎙️ Cat Ràdio</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('color', 'gold', 'Modo Oro Nórdico')">✨ Tema Oro</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('color', 'cyan', 'Modo Neón Cian')">💎 Tema Cian</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('perfil', 'senior', 'Senior 65-99')">🛡️ Modo Senior</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('perfil', 'kids', 'Kids 3-12')">👶 Modo Kids</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('menu', 'showroom', 'Shöwrööm')">🚀 Shöwrööm</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('menu', 'boceto', 'Mesa de Luz Boceto')">📐 Mesa de Luz</button>
+        <button class="voice-chip" onclick="executeQuickVoiceAction('cast', 'launcher', 'Proyectar TV')">📺 Enviar a TV</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE OMNIPRESENTE EN ESQUINA INFERIOR -->
+  <button class="floating-voice-pill" onclick="openVoiceCastModal()" title="Pídeselo a SLÖ">
+    <span class="pulse-dot" style="width: 8px; height: 8px; background: var(--cyan-neon); box-shadow: 0 0 10px var(--cyan-neon);"></span>
+    <span style="font-size: 1.15rem;">🎙️</span>
+    <span>SLÖ</span>
+  </button>
+
   <script>
-    // ── ESTADO GLOBAL DE FACTURACIÓN Y PLANES ──
+    // ── ESTADO GLÖBAL DE FACTURACIÓN Y PLANES ──
     let currentBillingCycle = 'anual';
-    let currentSelectedTier = 'Quad-Global Pro';
+    let currentSelectedTier = 'Quad-Glöbal Pro';
     let currentSelectedPrice = '59,99€ / año';
     let selectedPaymentMethod = 'card';
     let currentActiveLicense = null;
@@ -1444,7 +1927,7 @@
     function openBookingModal(tierName) {
       currentSelectedTier = tierName;
       let priceStr = '';
-      if (tierName === 'Quad-Global Pro') {
+      if (tierName === 'Quad-Glöbal Pro') {
         priceStr = (currentBillingCycle === 'anual') ? '59,99€ / año' : '7,99€ / mes';
       } else if (tierName === 'Hostelería & Bares') {
         priceStr = (currentBillingCycle === 'anual') ? '199€ / año' : '19,99€ / mes';
@@ -1457,7 +1940,7 @@
       document.getElementById('modal-checkout-form-view').style.display = 'block';
       document.getElementById('modal-success-view').style.display = 'none';
       document.getElementById('modal-title-text').textContent = 'Reserva y Activación';
-      document.getElementById('modal-tier-desc').textContent = 'Configurando licencia soberana para: ' + tierName;
+      document.getElementById('modal-tier-desc').textContent = 'Configurando licencia söberana para: ' + tierName;
       document.getElementById('summary-tier-name').textContent = tierName;
       document.getElementById('summary-tier-price').textContent = priceStr;
 
@@ -1471,7 +1954,7 @@
     function generateCryptographicKey(tier) {
       let prefix = 'PRO';
       if (tier.includes('Bares') || tier.includes('Hostelería')) prefix = 'BAR';
-      if (tier.includes('Lifetime') || tier.includes('Founder')) prefix = 'LIFE';
+      if (tier.includes('Lifetime') || tier.includes('Föunder')) prefix = 'LIFE';
 
       const hexChunk = () => Math.floor(0x1000 + Math.random() * 0xF000).toString(16).toUpperCase();
       return 'SLÖNE-' + prefix + '-2026-' + hexChunk() + '-' + hexChunk() + '-' + hexChunk();
@@ -1537,7 +2020,7 @@
           lbl.textContent = '📋 COPIAR CLAVE';
         }, 2500);
       }).catch(() => {
-        alert('Clave soberana:\n' + key);
+        alert('Clave söberana:\n' + key);
       });
     }
 
@@ -1557,7 +2040,7 @@
       const text = document.getElementById('header-license-text');
       if (pill && lic) {
         pill.style.display = 'inline-flex';
-        text.textContent = '👑 ACTIVA: ' + lic.key.split('-').slice(0, 2).join('-');
+        text.textContent = '● ACTIVA: ' + lic.key.split('-').slice(0, 2).join('-');
       }
     }
 
@@ -1582,7 +2065,102 @@
       document.getElementById('active-audio-label').textContent = sourceName;
       const btns = document.querySelectorAll('.audio-btn');
       btns.forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      if (event && event.target) event.target.classList.add('active');
+    }
+
+    const SLONE_PROFILES = {
+      global_sports: {
+        btnId: 'pbtn-sports',
+        targetAge: '26 a 64 AÑOS · DEPORTE Y CINE SOBERANO GLÖBAL',
+        status: 'EN DIRECTO · 4K UHD 60FPS · MULTICAST GLÖBAL',
+        specs: 'VA-API HEVC · 22.4 Mbps · Buffer: 0 ms · Lag: < 80 ms',
+        headline: 'CHAMPIONS LEAGUE · FÓRMULA 1 · PREMIER LEAGUE · NBA',
+        narrator: 'Joan Maria Pou (RAC1) / Martin Tyler (English)',
+        selectorTitle: 'SELECCIONAR CANAL DE AUDIO / PISTA SOBERANA:',
+        audioPills: [
+          { label: '🎙️ RAC1 (Català)', source: 'RAC1 (Joan Maria Pou)', active: true },
+          { label: '🎙️ SER (Castellano)', source: 'Cadena SER (Carrusel)' },
+          { label: '🎙️ BBC Radiö (English)', source: 'BBC Radiö 5 Live' },
+          { label: '🎙️ RMC (Français)', source: 'RMC Sport' },
+          { label: '🔊 Pista Oficial UHD', source: 'Audio TV Oficial' }
+        ],
+        castBtn: '📡 ENVIAR A SMART TV (192.168.1.135)'
+      },
+      kids: {
+        btnId: 'pbtn-kids',
+        targetAge: '3 a 12 AÑOS · PROTECCIÓN COGNITIVA ABSOLUTA · CERO RASTREO',
+        status: 'MÖDÖ PROTEGIDO · 0 ANUNCIOS · ENTORNO EDUCATIVO SEGURO',
+        specs: 'SANDBOX LOCAL · 0 BANNERS · SLEEP-TIMER SOBERANO',
+        headline: 'SLÖNE KIDS · ANIMACIÓN CLÁSICA Y DOCUMENTALES EDUCATIVOS',
+        narrator: 'Cuentacuentos en Castellano / Contes Clàssics en Català',
+        selectorTitle: 'SELECCIONAR CANAL DE AUDIO INFANTIL / IDIOMA:',
+        audioPills: [
+          { label: '🎨 Cuentos en Castellano', source: 'Narración Infantil en Castellano', active: true },
+          { label: '🧸 Contes en Català', source: 'Contes Infantils en Català' },
+          { label: '🇬🇧 English Storytelling', source: 'English Early Learning Audio' },
+          { label: '🌙 Música Relajante (Sleep)', source: 'Pista de Relajación Infantil' }
+        ],
+        castBtn: '🧸 EMITIR A TABLET / SMART TV INFANTIL'
+      },
+      nextgen: {
+        btnId: 'pbtn-nextgen',
+        targetAge: '13 a 25 AÑOS · MULTITASKING EXTREMO · ESPORTS & GAMING',
+        status: 'BAJA LATENCIA EXTREMA (<40ms) · 120 FPS READY · QUAD-VIEW',
+        specs: 'QUAD-CANVAS WEBGL · LATENCIA < 40 ms · 0 DROPPED FRAMES',
+        headline: 'QUAD-MULTIVIEW 4X · WORLDS ESPORTS · SIMRACING · TWITCH MATRIX',
+        narrator: 'Audio Mix: Comentaristas Oficiales + Discord LAN',
+        selectorTitle: 'SELECCIONAR CANAL DE AUDIO DE LA MATRIZ 4X:',
+        audioPills: [
+          { label: '⚡ Matriz 4X: Audio Principal', source: 'Multiview Audio Focal', active: true },
+          { label: '🎮 Pista Juego Inmersivo', source: 'Direct Game Feed 3D' },
+          { label: '🎙️ Streamers / Co-Cast', source: 'Canal de Comentaristas' },
+          { label: '🔊 Audio Binaural 3D', source: 'Pista Binaural Ultra-Low-Lag' }
+        ],
+        castBtn: '🚀 ENVIAR A MONITOR 120Hz / TV'
+      },
+      senior: {
+        btnId: 'pbtn-senior',
+        targetAge: '65 a 99 AÑOS · DIGNIDAD, MÁXIMA ACCESIBILIDAD Y SIMPLICIDAD',
+        status: 'MÖDÖ SERENIDAD · 0 CONTRASEÑAS · BOTÓN ÚNICO DIRECTO',
+        specs: 'ALTO CONTRASTE · VOICE-BOOST DINÁMICO (1.5-3.5 kHz) · SIN CORTES',
+        headline: 'SLÖNE SERENIDAD · TELEVISIÓN CLÁSICA Y RADIOS DE SIEMPRE',
+        narrator: 'Dynamic Voice Boost Activado (Diálogos y voces nítidas)',
+        selectorTitle: 'SELECCIONAR EMISIÓN O MÖDÖ DE VOZ CLARIFICADA:',
+        audioPills: [
+          { label: '🔊 Dynamic Voice Boost (Voz Clarificada)', source: 'Dynamic Voice Boost (1.5-3.5 kHz)', active: true },
+          { label: '📻 Radiö Clásica / RNE', source: 'Radiö Clásica RNE Directo' },
+          { label: '📻 Cadena Dial / SER', source: 'Cadena Dial / SER Directo' },
+          { label: '📺 Sonido Equilibrado', source: 'Pista TV Nivelada sin Estridencias' }
+        ],
+        castBtn: '📺 VER TELEVISIÓN CON 1 TOQUE'
+      }
+    };
+
+    function switchProfile(profileKey) {
+      const p = SLONE_PROFILES[profileKey];
+      if (!p) return;
+
+      document.querySelectorAll('.profile-pill-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(p.btnId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.getElementById('card-status-label').textContent = p.status;
+      document.getElementById('card-specs-label').textContent = p.specs;
+      document.getElementById('card-target-age').textContent = p.targetAge;
+      document.getElementById('card-headline').textContent = p.headline;
+      document.getElementById('active-audio-label').textContent = p.narrator;
+      document.getElementById('audio-selector-title').textContent = p.selectorTitle;
+      document.getElementById('cast-btn-text').textContent = p.castBtn;
+
+      const container = document.getElementById('audio-pills-container');
+      container.innerHTML = '';
+      p.audioPills.forEach(pill => {
+        const btn = document.createElement('button');
+        btn.className = 'audio-btn' + (pill.active ? ' active' : '');
+        btn.textContent = pill.label;
+        btn.onclick = () => setAudioSource(pill.source);
+        container.appendChild(btn);
+      });
     }
 
     function launchAdbCast() {
@@ -1606,6 +2184,359 @@
         }
       } catch (e) {}
     });
+  
+    // ══════════════════════════════════════════════════════════════════════
+    // SLÖNE SÖVEREIGN VÖICE & CAST ENGINE (ASISTENTE MULTI-IDIOMA)
+    // ══════════════════════════════════════════════════════════════════════
+    let voiceRecognition = null;
+    let isVoiceListening = false;
+    let currentVoiceLang = 'es-ES';
+    let currentCastTarget = 'xiaomi_tv';
+
+    function initSpeechEngine() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRec) {
+        console.warn('SpeechRecognition no soportado de forma nativa en este navegador.');
+        return null;
+      }
+      const rec = new SpeechRec();
+      rec.continuous = false;
+      rec.interimResults = true;
+      rec.lang = currentVoiceLang;
+
+      rec.onstart = () => {
+        isVoiceListening = true;
+        const btn = document.getElementById('voice-trigger-btn');
+        if (btn) btn.classList.add('listening');
+        document.querySelectorAll('.wave-bar').forEach(wb => wb.classList.add('active'));
+        document.getElementById('voice-state-hint').textContent = 'ESCUCHANDO EN VIVO... DI TU COMANDO';
+        document.getElementById('voice-transcript-text').textContent = 'Escuchando...';
+      };
+
+      rec.onresult = (evt) => {
+        let interim = '';
+        let final = '';
+        for (let i = evt.resultIndex; i < evt.results.length; ++i) {
+          if (evt.results[i].isFinal) {
+            final += evt.results[i][0].transcript;
+          } else {
+            interim += evt.results[i][0].transcript;
+          }
+        }
+        const text = final || interim;
+        if (text) {
+          document.getElementById('voice-transcript-text').textContent = '“' + text + '”';
+        }
+        if (final) {
+          processVoiceCommand(final.trim());
+        }
+      };
+
+      rec.onerror = (err) => {
+        console.warn('Error en SpeechRecognition:', err);
+        stopVoiceListening();
+        document.getElementById('voice-state-hint').textContent = 'MICRÓFONO EN ESPERA (PUEDES ESCRIBIR ABAJO)';
+      };
+
+      rec.onend = () => {
+        stopVoiceListening();
+      };
+
+      return rec;
+    }
+
+    function openVoiceCastModal() {
+      document.getElementById('voice-cast-modal').style.display = 'flex';
+      const input = document.getElementById('voice-text-fallback');
+      if (input) input.focus();
+    }
+
+    function closeVoiceCastModal() {
+      stopVoiceListening();
+      document.getElementById('voice-cast-modal').style.display = 'none';
+    }
+
+    function toggleVoiceListening() {
+      if (isVoiceListening) {
+        stopVoiceListening();
+      } else {
+        startVoiceListening();
+      }
+    }
+
+    function startVoiceListening() {
+      if (!voiceRecognition) {
+        voiceRecognition = initSpeechEngine();
+      }
+      if (voiceRecognition) {
+        try {
+          voiceRecognition.lang = currentVoiceLang;
+          voiceRecognition.start();
+        } catch (e) {
+          voiceRecognition.stop();
+        }
+      } else {
+        alert('El reconocimiento por voz nativo requiere permisos de micrófono o Chrome/Brave.');
+      }
+    }
+
+    function stopVoiceListening() {
+      isVoiceListening = false;
+      const btn = document.getElementById('voice-trigger-btn');
+      if (btn) btn.classList.remove('listening');
+      document.querySelectorAll('.wave-bar').forEach(wb => wb.classList.remove('active'));
+      document.getElementById('voice-state-hint').textContent = 'PULSA EL MICRÓFONO O DI TU COMANDO';
+      if (voiceRecognition) {
+        try { voiceRecognition.stop(); } catch (e) {}
+      }
+    }
+
+    function changeVoiceLanguage(lang) {
+      currentVoiceLang = lang;
+      if (voiceRecognition) {
+        voiceRecognition.lang = lang;
+      }
+      speakFeedback(lang.startsWith('ca') ? 'Idioma català activat' : 'Idioma cambiado');
+    }
+
+    function changeCastTarget(target) {
+      currentCastTarget = target;
+      speakFeedback('Emisor configurado');
+    }
+
+    function handleVoiceFormSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('voice-text-fallback');
+      if (input && input.value.trim()) {
+        processVoiceCommand(input.value.trim());
+        input.value = '';
+      }
+    }
+
+    function processVoiceCommand(cmd) {
+      const q = cmd.toLowerCase().trim();
+      const tBox = document.getElementById('voice-transcript-box');
+      tBox.classList.add('executing');
+
+      // 1. Detección de Canal / Fútbol / Deporte
+      if (q.includes('girona') || q.includes('girona fc')) {
+        executeQuickVoiceAction('canal', 'girona', 'Girona FC 4K (LaLiga)');
+      } else if (q.includes('barça') || q.includes('barca') || q.includes('barcelona')) {
+        executeQuickVoiceAction('canal', 'barca', 'Barça TV Oficial');
+      } else if (q.includes('f1') || q.includes('fórmula') || q.includes('formula') || q.includes('dazn')) {
+        executeQuickVoiceAction('canal', 'f1', 'Fórmula 1 DAZN 4K');
+      } else if (q.includes('cine') || q.includes('película') || q.includes('pelicula')) {
+        executeQuickVoiceAction('canal', 'cine', 'SLÖNE Cinema 4K');
+      }
+      // 2. Detección de Radio / Audio Sync
+      else if (q.includes('rac1') || q.includes('rac 1')) {
+        executeQuickVoiceAction('radio', 'rac1', 'Radio RAC1 (0 ms Sync)');
+      } else if (q.includes('catalunya') || q.includes('cat radio')) {
+        executeQuickVoiceAction('radio', 'catradio', 'Catalunya Ràdio');
+      } else if (q.includes('ser') || q.includes('cadena ser')) {
+        executeQuickVoiceAction('radio', 'cadenaser', 'Cadena SER');
+      }
+      // 3. Detección de Color / Temas
+      else if (q.includes('oro') || q.includes('dorado') || q.includes('gold')) {
+        executeQuickVoiceAction('color', 'gold', 'Modo Oro Nórdico Activado');
+      } else if (q.includes('cian') || q.includes('cyan') || q.includes('azul') || q.includes('neon')) {
+        executeQuickVoiceAction('color', 'cyan', 'Modo Neón Cian Activado');
+      }
+      // 4. Detección de Perfiles Generacionales
+      else if (q.includes('senior') || q.includes('abuelo') || q.includes('abuelos') || q.includes('mayor')) {
+        executeQuickVoiceAction('perfil', 'senior', 'Perfil Senior Serenidad (65-99 años)');
+      } else if (q.includes('kid') || q.includes('niño') || q.includes('infantil') || q.includes('hijo')) {
+        executeQuickVoiceAction('perfil', 'kids', 'Perfil SLÖNE Kids Söberanö (3-12 años)');
+      } else if (q.includes('nextgen') || q.includes('joven') || q.includes('esport')) {
+        executeQuickVoiceAction('perfil', 'nextgen', 'Perfil NextGen Matrix (13-25 años)');
+      }
+      // 5. Detección de Menús / Secciones
+      else if (q.includes('showroom') || q.includes('silicon')) {
+        executeQuickVoiceAction('menu', 'showroom', 'Abriendo Shöwrööm Silicon Valley');
+      } else if (q.includes('boceto') || q.includes('mesa') || q.includes('dibujo') || q.includes('luz')) {
+        executeQuickVoiceAction('menu', 'boceto', 'Abriendo Mesa de Luz del Boceto');
+      } else if (q.includes('preventa') || q.includes('reserva') || q.includes('precio') || q.includes('licencia')) {
+        executeQuickVoiceAction('menu', 'preventa', 'Navegando a Preventa Fundadöres');
+      } else if (q.includes('motor') || q.includes('motores')) {
+        executeQuickVoiceAction('menu', 'motores', 'Navegando a Los 5 Mötöres');
+      }
+      // 6. Cast Smart TV y Control ADB Remoto
+      else if (q.includes('tv') || q.includes('tele') || q.includes('cast') || q.includes('salon')) {
+        executeQuickVoiceAction('cast', q, 'Emisión enviada a Smart TV Salón');
+      } else {
+        // Ejecución genérica
+        executeQuickVoiceAction('generic', q, 'Buscando: ' + q);
+      }
+    }
+
+    function executeQuickVoiceAction(type, value, title) {
+      const tText = document.getElementById('voice-transcript-text');
+      const tBox = document.getElementById('voice-transcript-box');
+      tBox.classList.add('executing');
+      tText.innerHTML = '✦ <strong>Ejecutando:</strong> ' + title;
+
+      speakFeedback(title);
+
+      // Si el destino es la Xiaomi TV:
+      if (currentCastTarget === 'xiaomi_tv') {
+        fetch('/api/tv/voice_command?q=' + encodeURIComponent(value))
+          .then(r => r.json())
+          .then(data => {
+            console.log('Comando enviado a TV Hub:', data);
+          })
+          .catch(e => console.warn('Error enviando a TV:', e));
+      }
+
+      // Ejecución local según el tipo
+      if (type === 'color') {
+        if (value === 'gold') {
+          document.documentElement.style.setProperty('--gold-primary', '#FFD700');
+          document.documentElement.style.setProperty('--cyan-neon', '#FFDF00');
+        } else if (value === 'cyan') {
+          document.documentElement.style.setProperty('--gold-primary', '#00F0FF');
+          document.documentElement.style.setProperty('--cyan-neon', '#00F0FF');
+        }
+      } else if (type === 'perfil') {
+        if (typeof switchProfile === 'function') switchProfile(value);
+      } else if (type === 'menu') {
+        if (value === 'showroom') window.open('showroom.html', '_blank');
+        else if (value === 'boceto') window.open('boceto_inspector.html', '_blank');
+        else if (value === 'preventa') {
+          closeVoiceCastModal();
+          const target = document.getElementById('preventa');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        } else if (value === 'motores') {
+          closeVoiceCastModal();
+          const target = document.getElementById('mötöres');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (type === 'radio') {
+        setAudioSource(value);
+      } else if (type === 'canal') {
+        // Activar canal en el reproductor de cabecera
+        const headline = document.getElementById('card-headline');
+        if (headline) headline.textContent = title;
+      }
+
+      setTimeout(() => {
+        tBox.classList.remove('executing');
+      }, 3500);
+    }
+
+    function speakFeedback(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = currentVoiceLang;
+        utter.rate = 1.05;
+        utter.pitch = 1.0;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+  
+    // ══════════════════════════════════════════════════════════════════════
+    // SLÖNE LIP-SYNC ENGINE & STADIUM MODAL LOGIC
+    // ══════════════════════════════════════════════════════════════════════
+    let currentLipSyncMs = 0;
+
+    function handleMainSyncSlider(val) {
+      currentLipSyncMs = parseInt(val);
+      updateSyncDisplays();
+    }
+
+    function nudgeMainSync(delta) {
+      currentLipSyncMs += delta;
+      if (currentLipSyncMs > 5000) currentLipSyncMs = 5000;
+      if (currentLipSyncMs < -5000) currentLipSyncMs = -5000;
+      const slider = document.getElementById('main-sync-slider');
+      if (slider) slider.value = currentLipSyncMs;
+      updateSyncDisplays();
+    }
+
+    function resetMainSync() {
+      currentLipSyncMs = 0;
+      const slider = document.getElementById('main-sync-slider');
+      if (slider) slider.value = 0;
+      updateSyncDisplays();
+    }
+
+    function applySyncPreset(ms, label) {
+      currentLipSyncMs = ms;
+      const slider = document.getElementById('main-sync-slider');
+      if (slider) slider.value = ms;
+      updateSyncDisplays();
+      if (typeof speakFeedback === 'function') {
+        speakFeedback('Preset aplicado: ' + label);
+      }
+    }
+
+    function updateSyncDisplays() {
+      const msDisplay = document.getElementById('sync-ms-display');
+      const badge = document.getElementById('sync-engine-badge');
+      const secVal = (currentLipSyncMs / 1000).toFixed(3);
+      const sign = currentLipSyncMs > 0 ? '+' : '';
+      
+      if (msDisplay) {
+        msDisplay.textContent = sign + secVal + ' s (' + (currentLipSyncMs > 0 ? '+' : '') + currentLipSyncMs + ' ms)';
+      }
+
+      if (badge) {
+        if (currentLipSyncMs === 0) {
+          badge.textContent = '0 MS LOCK';
+          badge.style.color = '#00FF88';
+          badge.style.borderColor = '#00FF88';
+          badge.style.background = 'rgba(0, 255, 136, 0.15)';
+        } else {
+          badge.textContent = (currentLipSyncMs > 0 ? 'RETARDO ' : 'ADELANTO ') + Math.abs(currentLipSyncMs) + 'MS';
+          badge.style.color = 'var(--cyan-neon)';
+          badge.style.borderColor = 'var(--cyan-neon)';
+          badge.style.background = 'rgba(0, 240, 255, 0.15)';
+        }
+      }
+    }
+
+    function toggleStadiumModal() {
+      const modal = document.getElementById('stadium-qr-modal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeStadiumModal() {
+      const modal = document.getElementById('stadium-qr-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
   </script>
+
+  <!-- ── MODAL STADIUM QR AUDIO PASS ── -->
+  <div class="modal-backdrop" id="stadium-qr-modal" style="display: none;">
+    <div class="modal-box" style="text-align: center; max-width: 460px;">
+      <button class="modal-close-btn" onclick="closeStadiumModal()">✕</button>
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(0, 240, 255, 0.12); border: 1px solid var(--cyan-neon); color: var(--cyan-neon); border-radius: 20px; font-size: 0.74rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;">
+        ✦ HOSTELERÍA & ESTADIO B2B · AUDIO VIP
+      </div>
+      <h3 style="font-size: 1.35rem; font-weight: 900; margin-bottom: 0.4rem; color: #FFF;">AUDIO EN TUS AURICULARES</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Apunta con la cámara de tu móvil a este código para escuchar el audio de esta pantalla en directo sin ruidos ni cortes:
+      </p>
+
+      <div style="background: #040508; border: 2px solid var(--gold-primary); border-radius: 16px; padding: 1.2rem; display: inline-block; box-shadow: 0 0 35px rgba(255, 215, 0, 0.25); margin-bottom: 1.2rem;">
+        <img src="assets/stadium_qr_luxury.png" alt="QR Stadium SLÖNE" style="width: 220px; height: 220px; display: block; border-radius: 8px;">
+      </div>
+
+      <div style="font-size: 0.82rem; color: var(--gold-primary); font-weight: 800; margin-bottom: 0.5rem; font-family: monospace;">
+        http://192.168.1.145:8765/stadium_audio.html
+      </div>
+      <div style="font-size: 0.74rem; color: var(--text-dim);">
+        Lip-sync 0.000 ms · Compatible con iPhone, Android y auriculares Bluetooth
+      </div>
+      <div style="margin-top: 1.4rem;">
+        <a href="stadium_audio.html" target="_blank" class="btn-cyan-secondary" style="display: inline-block; text-decoration: none; padding: 8px 18px; font-size: 0.82rem; font-weight: 800;">
+          PROBAR EN ESTE EQUIPO ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

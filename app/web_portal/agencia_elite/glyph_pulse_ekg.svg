@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Rejilla guía -->
+  <line x1="10" y1="110" x2="190" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  
+  <!-- Trazo continuo de pulso electromagnético que forma la 'S' -->
+  <path d="M16,110 L52,110 L68,64 L84,156 L100,34 L116,138 L132,110 L184,110" 
+        fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        
+  <!-- Satélites gemelos de señal -->
+  <circle cx="86" cy="22" r="7.5" fill="#E3FF00"/>
+  <circle cx="114" cy="22" r="7.5" fill="#E3FF00"/>
+</svg>

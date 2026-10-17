@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE SYNC™ · Laboratorio Acústico (Real Betis vs FC Barcelona · RAC1 Català)</title>
+  <meta name="theme-color" content="#E3FF00">
+  <link rel="icon" href="assets/slone_o_gold.png" type="image/png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.12/hls.min.js"></script>
+  <style>
+    :root {
+      --bg: #05070B;
+      --card: #0D121D;
+      --card-inner: #131A29;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #E3FF00;
+      --cyan: #00F0FF;
+      --green: #00E676;
+      --red: #FF3366;
+      --barca-blue: #004D98;
+      --barca-red: #A50044;
+      --gold-glow: rgba(227, 255, 0, 0.25);
+      --text: #FFFFFF;
+      --muted: #8E98A8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+    header {
+      background: rgba(13, 18, 29, 0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { height: 32px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+    .brand-title h1 { font-size: 15px; font-weight: 900; color: #FFF; letter-spacing: 0.5px; }
+    .brand-title p { font-size: 11px; color: var(--muted); }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-back-tv {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #FFF;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-back-tv:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    main {
+      flex: 1;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* MATCH BANNER */
+    .match-banner {
+      background: linear-gradient(135deg, rgba(0, 77, 152, 0.4), rgba(165, 0, 68, 0.4));
+      border: 1px solid rgba(227, 255, 0, 0.2);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .match-info-main { display: flex; align-items: center; gap: 16px; }
+    .match-badge-live {
+      background: var(--red);
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .match-names { font-size: 18px; font-weight: 900; color: #FFF; letter-spacing: 0.5px; }
+    .match-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    .sync-status-pill {
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyan);
+      border-radius: 10px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+    .sync-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+
+    /* LAYOUT DE PRUEBA: VÍDEO + CONSOLA DE SINCRONIZACIÓN */
+    .sync-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 1024px) { .sync-grid { grid-template-columns: 1fr; } }
+
+    /* COLUMNA DE VÍDEO */
+    .video-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-wrap {
+      position: relative;
+      background: #000;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    video { width: 100%; height: 100%; object-fit: contain; }
+
+    .video-overlay-tags {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .video-tag {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #FFF;
+    }
+    .tag-audio-state { background: rgba(227, 255, 0, 0.2); color: var(--accent); border-color: var(--accent); }
+
+    .video-footer {
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-inner);
+      border-top: 1px solid var(--border);
+    }
+    .stream-selector { display: flex; gap: 8px; align-items: center; }
+    .stream-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .stream-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    /* COLUMNA CONSOLA ACÚSTICA SLÖNE SYNC */
+    .console-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .console-section-title {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* SELECTOR DE RADIOS EN DIRECTO */
+    .radio-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .radio-pill {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      color: #FFF;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 140px;
+      justify-content: center;
+    }
+    .radio-pill:hover { border-color: var(--accent); }
+    .radio-pill.active {
+      background: linear-gradient(135deg, #A50044, #004D98);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(227, 255, 0, 0.3);
+      color: #FFF;
+    }
+
+    /* VISUALIZADOR DE ESPECTRO AUDIO REAL */
+    .spectrum-container {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .spectrum-header { display: flex; justify-content: space-between; font-size: 10px; font-weight: 800; color: var(--muted); }
+    canvas#audioWaveCanvas { width: 100%; height: 50px; display: block; }
+
+    /* MOTOR SLIDER SLÖNE SYNC */
+    .delay-master-box {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .delay-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .delay-title { font-size: 13px; font-weight: 900; color: #FFF; }
+    .delay-number {
+      font-size: 24px;
+      font-family: monospace;
+      font-weight: 900;
+      color: var(--accent);
+      text-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    input[type=range].sync-slider {
+      width: 100%;
+      height: 10px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* BOTONES DE AJUSTE RÁPIDO */
+    .nudge-row { display: flex; gap: 6px; justify-content: space-between; flex-wrap: wrap; }
+    .nudge-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .nudge-btn:hover { background: rgba(227,255,0,0.15); border-color: var(--accent); color: var(--accent); }
+    .nudge-btn.preset { background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); color: var(--cyan); }
+
+    /* ASISTENTE DE CALIBRACIÓN DE TOQUE DE BALÓN */
+    .calibrator-card {
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px dashed rgba(0, 240, 255, 0.3);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .calibrator-title { font-size: 11px; font-weight: 800; color: var(--cyan); text-transform: uppercase; }
+    .calibrator-buttons { display: flex; gap: 8px; }
+    .cal-btn {
+      flex: 1;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid var(--cyan);
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .cal-btn:hover { background: var(--cyan); color: #000; }
+    .cal-btn:active { transform: scale(0.96); }
+    .cal-btn small { font-size: 9px; opacity: 0.8; }
+    .cal-result { font-size: 11px; color: var(--accent); font-weight: 800; text-align: center; min-height: 16px; }
+
+    /* EXPLICACIÓN DIDÁCTICA */
+    .tech-card {
+      background: var(--card-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 12px;
+      color: #9AA5B8;
+      line-height: 1.6;
+    }
+    .tech-card strong { color: #FFF; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="tv.html" class="brand">
+      <img src="assets/slone_luxury_logo.svg" alt="SLÖNE" onerror="this.src='assets/slone_isotipo_soberano.svg'">
+      <div class="brand-title">
+        <h1>SLÖNE SYNC™ · BANCO DE PRUEBAS ACÚSTICO</h1>
+        <p>SINCRONIZACIÓN MILIMÉTRICA: FC BARCELONA EN DIRECTO + RAC1 EN CATALÀ</p>
+      </div>
+    </a>
+
+    <div class="nav-actions">
+      <a href="tv.html" class="btn-back-tv">
+        <span>📺</span> Ir a SLÖNE TV Completo
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- BANNER DEL PARTIDO DE HOY -->
+    <div class="match-banner">
+      <div class="match-info-main">
+        <div class="match-badge-live">
+          <span>●</span> DIRECTO HOY
+        </div>
+        <div>
+          <div class="match-names">⚽ REAL BETIS vs FC BARCELONA</div>
+          <div class="match-sub">LALIGA EA SPORTS · JORNADA 9 · Estadio Benito Villamarín · 18:30 CEST</div>
+        </div>
+      </div>
+
+      <div class="sync-status-pill">
+        <span class="sync-status-dot"></span>
+        <span id="syncStatusText">SLÖNE SYNC ACTIVO (+18.50s)</span>
+      </div>
+    </div>
+
+    <!-- REJILLA DE PRUEBA -->
+    <div class="sync-grid">
+
+      <!-- COLUMNA 1: VÍDEO CONMUTABLE (FÚTBOL / TDT / MUESTRA) -->
+      <div class="video-card">
+        <div class="video-wrap">
+          <video id="syncVideo" controls playsinline autoplay muted></video>
+          
+          <div class="video-overlay-tags">
+            <span class="video-tag">VÍDEO PASSTHROUGH (0% CPU)</span>
+            <span class="video-tag tag-audio-state" id="audioStateTag">🎙️ RAC1 CATALÀ SINCRONIZADA</span>
+          </div>
+        </div>
+
+        <div class="video-footer">
+          <div class="stream-selector">
+            <span style="font-size: 11px; font-weight: 800; color: var(--muted);">Canal Vídeo:</span>
+            <button class="stream-btn active" onclick="switchVideoStream('dazn_laliga', this)">DAZN LaLiga (Betis-Barça)</button>
+            <button class="stream-btn" onclick="switchVideoStream('esport3', this)">Esport3 (Prèvia CAT)</button>
+            <button class="stream-btn" onclick="switchVideoStream('tdp', this)">Teledeporte HD</button>
+          </div>
+
+          <button class="stream-btn" onclick="toggleVideoSound()" id="btnToggleVideoSound" title="Comparar con el audio original de TV">
+            🔊 Escuchar Audio TV
+          </button>
+        </div>
+      </div>
+
+      <!-- COLUMNA 2: CONSOLA ACÚSTICA SLÖNE SYNC -->
+      <div class="console-card">
+
+        <!-- 1. SELECTOR DE EMISORA DE RADIO EN DIRECTO -->
+        <div class="console-section-title">
+          <span>1. Emisora de Radio en Directo (Català / Deportes)</span>
+        </div>
+
+        <div class="radio-pills">
+          <button class="radio-pill active" onclick="selectRadioStation('rac1', this)">
+            <span>🔴</span>
+            <span>RAC1 (Joan Maria Pou)</span>
+          </button>
+          <button class="radio-pill" onclick="selectRadioStation('rac_mes_1', this)">
+            <span>📻</span>
+            <span>RAC+1 (Emisión Especial)</span>
+          </button>
+          <button class="radio-pill" onclick="selectRadioStation('ser', this)">
+            <span>🎙️</span>
+            <span>Cadena SER (Carrusel)</span>
+          </button>
+          <button class="radio-pill" onclick="selectRadioStation('cope', this)">
+            <span>⚡</span>
+            <span>Cadena COPE</span>
+          </button>
+        </div>
+
+        <!-- 2. ESPECTROGRAMA DE AUDIO EN TIEMPO REAL (CONFIRMA RECEPCIÓN CRISTALINA) -->
+        <div class="spectrum-container">
+          <div class="spectrum-header">
+            <span>SEÑAL EN TIEMPO REAL: RAC1 STREAM EN DIRECTO</span>
+            <span id="spectrumDbText" style="color: var(--accent); font-family: monospace;">-18 dB RMS</span>
+          </div>
+          <canvas id="audioWaveCanvas"></canvas>
+        </div>
+
+        <!-- 3. CONTROL MAESTRO DE RETARDO SLÖNE SYNC -->
+        <div class="delay-master-box">
+          <div class="delay-header">
+            <div>
+              <div class="delay-title">Retardo Acústico Aplicado (Anti-Spoiler)</div>
+              <div style="font-size: 11px; color: var(--muted); margin-top: 2px;">Compensa el lag de la imagen IPTV sobre la radio</div>
+            </div>
+            <div class="delay-number" id="delayValText">+18.50s</div>
+          </div>
+
+          <input type="range" class="sync-slider" id="delaySlider" min="0" max="45" step="0.05" value="18.5" oninput="onDelayChange(this.value)">
+
+          <!-- BOTONES DE AJUSTE RÁPIDO Y PRESETS -->
+          <div class="nudge-row">
+            <button class="nudge-btn" onclick="nudgeDelay(-2.0)">-2.0s</button>
+            <button class="nudge-btn" onclick="nudgeDelay(-0.5)">-0.5s</button>
+            <button class="nudge-btn" onclick="nudgeDelay(-0.1)">-0.1s</button>
+            <button class="nudge-btn preset" onclick="setExactDelay(0.0)">0.0s (FM)</button>
+            <button class="nudge-btn preset" onclick="setExactDelay(18.5)">+18.5s (IPTV)</button>
+            <button class="nudge-btn" onclick="nudgeDelay(+0.1)">+0.1s</button>
+            <button class="nudge-btn" onclick="nudgeDelay(+0.5)">+0.5s</button>
+            <button class="nudge-btn" onclick="nudgeDelay(+2.0)">+2.0s</button>
+          </div>
+        </div>
+
+        <!-- 4. ASISTENTE RÁPIDO DE CALIBRACIÓN DE GOLPE DE BALÓN / SILBATO -->
+        <div class="calibrator-card">
+          <div class="calibrator-title">⚡ Calibrador Asistido en 2 Clics ("Toque de Balón")</div>
+          <div style="font-size: 11px; color: var(--muted);">Si no conoces el retardo exacto de tu stream, sincroniza mirando el partido:</div>
+          
+          <div class="calibrator-buttons">
+            <button class="cal-btn" onclick="markVisualHit()">
+              <span>👁️ 1. ¡VISTO EL TOQUE!</span>
+              <small>Pulsa al ver chutar el balón o silbar al árbitro</small>
+            </button>
+            <button class="cal-btn" onclick="markAudioHit()">
+              <span>👂 2. ¡OÍDO EN RADIO!</span>
+              <small>Pulsa al oír la narración del chute o silbato</small>
+            </button>
+          </div>
+
+          <div class="cal-result" id="calResultText">Pulsa "VISTO EL TOQUE" cuando ocurra una jugada clara.</div>
+        </div>
+
+        <!-- 5. FUNDAMENTO ARQUITECTÓNICO -->
+        <div class="tech-card">
+          <strong>¿Por qué funciona esto a la perfección?</strong><br>
+          La señal de TV OTT/IPTV siempre lleva entre <strong>15 y 30 segundos de retraso</strong> por la codificación y fragmentación HLS. La radio por Internet solo tarda <strong>3 a 5 segundos</strong> (y la FM 0 segundos). Sin SLÖNE, la radio siempre te hace 'spoiler'. Nuestro motor desacopla el audio, inyecta la radio en memoria y la retrasa exactamente mediante <strong>Web Audio API <code>DelayNode</code></strong> con precisión de 50 milisegundos.
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // FUENTES DE RADIO
+    const RADIO_URLS = {
+      rac1: "https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_1.mp3",
+      rac_mes_1: "https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_MES_1.mp3",
+      ser: "https://23543.live.streamtheworld.com/CADENASER.mp3",
+      cope: "https://flucast09-h-cloud.flumotion.com/cope/net1.mp3"
+    };
+
+    // FUENTES DE VÍDEO
+    const VIDEO_URLS = {
+      dazn_laliga: "http://398607.solanaflix.com/live/TV-76173252/624816943106/112675.ts",
+      esport3: "https://directes-tv-cat.3catdirectes.cat/live-origin/esport3-hls/master.m3u8",
+      tdp: "https://rtvelivestream.rtve.es/rtvesec/tdp/tdp_main.m3u8"
+    };
+
+    let audioCtx = null;
+    let delayNode = null;
+    let analyserNode = null;
+    let radioAudio = null;
+    let currentRadioKey = 'rac1';
+    let currentDelay = 18.5; // Preset inicial óptimo para IPTV OTT
+    let hls = null;
+    let isTvAudioActive = false;
+
+    // MARCADORES PARA EL CALIBRADOR ASISTIDO
+    let visualMarkTime = null;
+    let audioMarkTime = null;
+
+    // INICIALIZACIÓN
+    window.addEventListener('DOMContentLoaded', () => {
+      initVideoStream(VIDEO_URLS.esport3); // Arrancar con Esport3 abierta
+      initWebAudio(RADIO_URLS.rac1);
+      drawSpectrum();
+    });
+
+    function initVideoStream(url) {
+      const video = document.getElementById('syncVideo');
+      if (hls) {
+        hls.destroy();
+      }
+
+      if (Hls.isSupported() && url.includes('.m3u8')) {
+        hls = new Hls({ enableWorker: true, lowLatencyMode: false, maxBufferLength: 30 });
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play().catch(() => {});
+        });
+      } else {
+        video.src = url;
+        video.play().catch(() => {});
+      }
+    }
+
+    function switchVideoStream(key, btn) {
+      document.querySelectorAll('.stream-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      initVideoStream(VIDEO_URLS[key]);
+    }
+
+    function toggleVideoSound() {
+      const video = document.getElementById('syncVideo');
+      const btn = document.getElementById('btnToggleVideoSound');
+      const tag = document.getElementById('audioStateTag');
+
+      isTvAudioActive = !isTvAudioActive;
+      if (isTvAudioActive) {
+        video.muted = false;
+        if (radioAudio) radioAudio.muted = true;
+        btn.textContent = "🎙️ Volver a RAC1 Català";
+        btn.style.background = "var(--cyan)";
+        btn.style.color = "#000";
+        tag.textContent = "🔊 AUDIO ORIGINAL TV";
+        tag.className = "video-tag";
+      } else {
+        video.muted = true;
+        if (radioAudio) radioAudio.muted = false;
+        btn.textContent = "🔊 Escuchar Audio TV";
+        btn.style.background = "";
+        btn.style.color = "";
+        tag.textContent = "🎙️ RAC1 CATALÀ SINCRONIZADA";
+        tag.className = "video-tag tag-audio-state";
+      }
+    }
+
+    // MOTOR WEB AUDIO CON DELAYNODE Y ANALIZADOR
+    function initWebAudio(streamUrl) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (radioAudio) {
+        radioAudio.pause();
+      }
+
+      radioAudio = new Audio();
+      radioAudio.crossOrigin = "anonymous";
+      radioAudio.src = streamUrl;
+
+      const source = audioCtx.createMediaElementSource(radioAudio);
+      delayNode = audioCtx.createDelay(60.0); // Buffer acústico de hasta 60 segundos
+      delayNode.delayTime.setValueAtTime(currentDelay, audioCtx.currentTime);
+
+      analyserNode = audioCtx.createAnalyser();
+      analyserNode.fftSize = 128;
+
+      source.connect(delayNode);
+      delayNode.connect(analyserNode);
+      analyserNode.connect(audioCtx.destination);
+
+      radioAudio.play().catch(e => {
+        console.warn("Auto-play blocked, waiting for user click:", e);
+      });
+    }
+
+    function selectRadioStation(key, btn) {
+      currentRadioKey = key;
+      document.querySelectorAll('.radio-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (RADIO_URLS[key]) {
+        initWebAudio(RADIO_URLS[key]);
+      }
+    }
+
+    function onDelayChange(val) {
+      currentDelay = parseFloat(val);
+      updateDelayDisplay();
+    }
+
+    function nudgeDelay(delta) {
+      currentDelay = Math.max(0, Math.min(45, currentDelay + delta));
+      document.getElementById('delaySlider').value = currentDelay;
+      updateDelayDisplay();
+    }
+
+    function setExactDelay(sec) {
+      currentDelay = sec;
+      document.getElementById('delaySlider').value = currentDelay;
+      updateDelayDisplay();
+    }
+
+    function updateDelayDisplay() {
+      const formatted = `+${currentDelay.toFixed(2)}s`;
+      document.getElementById('delayValText').textContent = formatted;
+      document.getElementById('syncStatusText').textContent = `SLÖNE SYNC ACTIVO (${formatted})`;
+
+      if (delayNode && audioCtx) {
+        delayNode.delayTime.setValueAtTime(currentDelay, audioCtx.currentTime);
+      }
+    }
+
+    // CALIBRADOR ASISTIDO EN 2 CLICS
+    function markVisualHit() {
+      visualMarkTime = Date.now();
+      document.getElementById('calResultText').innerHTML = "⏱️ Toque visual registrado. <strong>¡Ahora pulsa 'OÍDO EN RADIO' cuando lo diga Joan Maria Pou!</strong>";
+    }
+
+    function markAudioHit() {
+      if (!visualMarkTime) {
+        document.getElementById('calResultText').textContent = "⚠️ Primero debes pulsar 'VISTO EL TOQUE' cuando veas la jugada en la imagen.";
+        return;
+      }
+      audioMarkTime = Date.now();
+      const diffSec = (audioMarkTime - visualMarkTime) / 1000;
+      
+      // Si el audio sonó después que la imagen (diffSec > 0), el audio iba con retraso
+      // Si la imagen va con retraso (lo habitual en IPTV), visualMarkTime es posterior a cuando la radio lo cantó
+      let recommendedDelay = currentDelay + diffSec;
+      if (recommendedDelay < 0) recommendedDelay = 0;
+      if (recommendedDelay > 45) recommendedDelay = 45;
+
+      setExactDelay(parseFloat(recommendedDelay.toFixed(2)));
+      document.getElementById('calResultText').innerHTML = `✅ ¡Sincronizado! Retardo corregido a <strong>+${recommendedDelay.toFixed(2)}s</strong>.`;
+      visualMarkTime = null;
+      audioMarkTime = null;
+    }
+
+    // DIBUJO DEL ESPECTRO DE AUDIO DE RAC1
+    function drawSpectrum() {
+      const canvas = document.getElementById('audioWaveCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = 50;
+
+      const bufferLength = analyserNode ? analyserNode.frequencyBinCount : 64;
+      const dataArray = new Uint8Array(bufferLength);
+
+      function render() {
+        requestAnimationFrame(render);
+        if (analyserNode) {
+          analyserNode.getByteFrequencyData(dataArray);
+        }
+
+        ctx.fillStyle = '#05070B';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const barWidth = (canvas.width / bufferLength) * 1.5;
+        let x = 0;
+
+        let total = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          const barHeight = (dataArray[i] / 255) * canvas.height;
+          total += dataArray[i];
+
+          // Gradiente Barça / Neón
+          const r = 227;
+          const g = Math.min(255, 100 + dataArray[i]);
+          const b = 0;
+
+          ctx.fillStyle = `rgb(${r},${g},${b})`;
+          ctx.fillRect(x, canvas.height - barHeight, barWidth - 1, barHeight);
+          x += barWidth;
+        }
+
+        // dB display aproximado
+        const avg = total / bufferLength;
+        const db = Math.round((avg / 255) * 40 - 40);
+        const dbEl = document.getElementById('spectrumDbText');
+        if (dbEl && avg > 2) {
+          dbEl.textContent = `${db} dB RMS · ACTIVO`;
+        } else if (dbEl) {
+          dbEl.textContent = `PULSA EN LA PANTALLA PARA ACTIVAR`;
+        }
+      }
+
+      render();
+    }
+  </script>
+</body>
+</html>

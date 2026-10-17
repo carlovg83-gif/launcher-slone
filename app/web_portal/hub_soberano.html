@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLÖNE · CENTRO DE CONTROL SOBERANO & UNIFICADO</title>
+  <style>
+    :root {
+      --bg: #030508;
+      --card-bg: #080C14;
+      --border: rgba(0, 240, 255, 0.18);
+      --border-hover: #00F0FF;
+      --cyan: #00F0FF;
+      --cyan-glow: rgba(0, 240, 255, 0.35);
+      --emerald: #10B981;
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+      padding: 32px 24px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1240px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* CABECERA MAESTRA */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-logo-img {
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px var(--cyan-glow));
+    }
+
+    .brand-titles h1 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .brand-titles p {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .status-pill {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    /* GRID PRINCIPAL DE MÓDULOS */
+    .grid-hub {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .grid-hub { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #FFF;
+    }
+
+    .badge-card {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+    }
+
+    .badge-cyan { background: rgba(0, 240, 255, 0.12); color: var(--cyan); border: 1px solid rgba(0,240,255,0.3); }
+
+    /* TELEMETRÍA THINKPAD EN VIVO */
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--font-mono);
+    }
+
+    .metric-big {
+      font-size: 32px;
+      font-weight: 900;
+      color: #FFF;
+    }
+
+    .metric-unit {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--emerald);
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+
+    /* BOTONES DE ACCIÓN RÁPIDA */
+    .btn-action {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-action:hover {
+      background: var(--cyan);
+      color: #000;
+      box-shadow: 0 0 18px var(--cyan-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFF;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFF;
+      box-shadow: none;
+    }
+
+    /* LISTA DE ACCIONES / ESTADOS */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .item-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* PANEL INFERIOR DE IDENTIDAD Y MANIFIESTO */
+    .manifesto-panel {
+      background: #05070D;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .manifesto-img {
+      max-height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px var(--cyan-glow));
+    }
+
+    .manifesto-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .manifesto-text h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #FFF;
+    }
+
+    .manifesto-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="brand-box">
+        <img src="/assets/ink_top_white.png" alt="SLÖNE" class="brand-logo-img">
+        <div class="brand-titles">
+          <h1>Sovereign Hub</h1>
+          <p>Ecosistema Centralizado · ThinkPad X390 · Fedora 44</p>
+        </div>
+      </div>
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span>MODO AUTÓNOMO ACTIVO · ZERO-TRUST</span>
+      </div>
+    </header>
+
+    <!-- GRID DE MÓDULOS -->
+    <div class="grid-hub">
+
+      <!-- 1. HARDWARE CENTINELA (PORT 7331) -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Centinela ThinkPad</span>
+          <span class="badge-card badge-cyan">:7331 SSE</span>
+        </div>
+        <div class="metric-row">
+          <div>
+            <span class="metric-big" id="cpu-temp">--</span>
+            <span class="metric-unit">°C Temp</span>
+          </div>
+          <div>
+            <span class="metric-big" id="cpu-load">--</span>
+            <span class="metric-unit">% CPU</span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="temp-bar" style="width: 50%;"></div>
+        </div>
+        <div class="item-list">
+          <div class="item-entry">
+            <span>Memoria RAM:</span>
+            <strong id="ram-info" style="font-family: var(--font-mono);">-- / -- MB</strong>
+          </div>
+          <div class="item-entry">
+            <span>Batería BAT0:</span>
+            <strong id="bat-info" style="font-family: var(--font-mono);">--%</strong>
+          </div>
+        </div>
+        <a href="http://127.0.0.1:7331" target="_blank" class="btn-action">Abrir Sentinel Dashboard ↗</a>
+      </div>
+
+      <!-- 2. SMART TV & REPRODUCTOR (PORT 8765) -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Smart TV Hub</span>
+          <span class="badge-card badge-cyan">:8765 ADB</span>
+        </div>
+        <div class="item-list">
+          <div class="item-entry">
+            <span>Xiaomi TV LAN:</span>
+            <strong style="color: var(--emerald);">192.168.1.135:5555</strong>
+          </div>
+          <div class="item-entry">
+            <span>Android TV Release:</span>
+            <strong>v1.0.0 (5.8 MB)</strong>
+          </div>
+          <div class="item-entry">
+            <span>Linux Native Player:</span>
+            <strong>GTK4 + GStreamer OK</strong>
+          </div>
+          <div class="item-entry">
+            <span>Lista M3U Maestra:</span>
+            <strong>/playlist.m3u</strong>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: auto;">
+          <a href="/launcher/" target="_blank" class="btn-action" style="flex: 1;">Launcher TV ↗</a>
+          <button onclick="launchOnTV()" class="btn-action btn-secondary" style="flex: 1;">Proyectar TV 📺</button>
+        </div>
+      </div>
+
+      <!-- 3. GOBERNANZA & ESTRATEGIA -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Dirección Ejecutiva</span>
+          <span class="badge-card">NIVEL 6</span>
+        </div>
+        <div class="item-list">
+          <div class="item-entry">
+            <span>Modelo Financiero:</span>
+            <strong style="color: var(--emerald);">Coste Cero (Freemium)</strong>
+          </div>
+          <div class="item-entry">
+            <span>Locutores Incógnito:</span>
+            <strong>Convocatoria Activa</strong>
+          </div>
+          <div class="item-entry">
+            <span>Micro-Appliance ARM:</span>
+            <strong>BOM 38,50 € (Pasivo)</strong>
+          </div>
+          <div class="item-entry">
+            <span>Bóveda Criptográfica:</span>
+            <strong style="color: var(--emerald);">RSA-2048 Blindado</strong>
+          </div>
+        </div>
+        <a href="/tus_letras_originales.html" target="_blank" class="btn-action btn-secondary">Ver Identidad de Autor ↗</a>
+      </div>
+
+    </div>
+
+    <!-- PANEL INFERIOR: IDENTIDAD REAL DEL FUNDADOR -->
+    <div class="manifesto-panel">
+      <img src="/assets/ink_mid_white.png" alt="Runa Soberana" class="manifesto-img">
+      <div class="manifesto-text">
+        <h3>Autenticidad Absoluta: El Trazo del Autor</h3>
+        <p>
+          SLÖNE no utiliza plantillas ni logotipos sintéticos de inteligencia artificial. La marca y el glifo nacen de la tinta original del fundador slone (artista y grafitero), simbolizando la frecuencia continua, la soberanía sobre el contenido y el blindaje frente al rastreo publicitario.
+        </p>
+      </div>
+      <div>
+        <a href="/hardware.html" target="_blank" class="btn-action btn-secondary" style="white-space: nowrap;">Visor Hardware ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Conexión SSE con Sentinel en tiempo real
+    const evt = new EventSource('http://127.0.0.1:7331/events');
+    evt.onmessage = function(e) {
+      try {
+        const payload = JSON.parse(e.data);
+        if (payload.telemetry && payload.telemetry.metrics) {
+          const m = payload.telemetry.metrics;
+          document.getElementById('cpu-temp').textContent = m.cpuTempC;
+          document.getElementById('cpu-load').textContent = m.cpuUsagePercent;
+          document.getElementById('ram-info').textContent = `${m.memory.usedMb} / ${m.memory.totalMb} MB`;
+          document.getElementById('bat-info').textContent = `${m.battery.capacity}% (${m.battery.status})`;
+
+          const bar = document.getElementById('temp-bar');
+          bar.style.width = Math.min(100, m.cpuTempC) + '%';
+          if (m.cpuTempC > 80) bar.style.background = 'var(--rose)';
+          else if (m.cpuTempC > 68) bar.style.background = 'var(--amber)';
+          else bar.style.background = 'var(--emerald)';
+        }
+      } catch (err) {
+        console.error("Error parseando SSE Sentinel", err);
+      }
+    };
+
+    async function launchOnTV() {
+      try {
+        const res = await fetch('/api/tv/open_launcher');
+        const data = await res.json();
+        alert("Comando enviado a Xiaomi TV (192.168.1.135): " + data.status);
+      } catch (err) {
+        alert("Error al comunicar con la TV: " + err);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ Sin dependencias externas: solo stdlib (urllib, gzip, xml.etree).
 """
 
 import gzip
+import re
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -92,8 +93,19 @@ class EpgManager:
             if not cid:
                 continue
             dn = ch.find("display-name")
-            if dn is not None and (dn.text or "").strip():
-                self._name_index.setdefault(normalize_name(dn.text), cid)
+            display_text = dn.text if dn is not None and dn.text else ""
+            norm_dn = normalize_name(display_text)
+            norm_cid = normalize_name(cid)
+            if norm_dn:
+                self._name_index.setdefault(norm_dn, cid)
+                clean_dn = re.sub(r'(tv|hd|geo|es|cat|uhd)$', '', norm_dn)
+                if clean_dn:
+                    self._name_index.setdefault(clean_dn, cid)
+            if norm_cid:
+                self._name_index.setdefault(norm_cid, cid)
+                clean_cid = re.sub(r'(tv|hd|geo|es|cat|uhd)$', '', norm_cid)
+                if clean_cid:
+                    self._name_index.setdefault(clean_cid, cid)
 
         for prog in root.findall("programme"):
             cid = prog.get("channel")
@@ -132,8 +144,23 @@ class EpgManager:
     def _resolve_id(self, tvg_id: str, name: str) -> Optional[str]:
         if tvg_id and tvg_id in self.programmes:
             return tvg_id
+        if tvg_id:
+            norm_tvg = normalize_name(tvg_id)
+            if norm_tvg in self._name_index:
+                return self._name_index[norm_tvg]
+            clean_tvg = re.sub(r'(tv|hd|geo|es|cat|uhd)$', '', norm_tvg)
+            if clean_tvg in self._name_index:
+                return self._name_index[clean_tvg]
         if name:
-            return self._name_index.get(normalize_name(name))
+            norm_name = normalize_name(name)
+            if norm_name in self._name_index:
+                return self._name_index[norm_name]
+            clean_name = re.sub(r'(tv|hd|geo|es|cat|uhd)$', '', norm_name)
+            if clean_name in self._name_index:
+                return self._name_index[clean_name]
+            for k, cid in self._name_index.items():
+                if len(k) >= 3 and (k in norm_name or norm_name in k):
+                    return cid
         return None
 
     def now_next(self, tvg_id: str = "", name: str = "") -> Tuple[Optional[dict], Optional[dict]]:
@@ -147,18 +174,22 @@ class EpgManager:
         now = datetime.now(timezone.utc)
         current = None
         nxt = None
-        for p in progs:
+        for i, p in enumerate(progs):
             if p["start"] <= now and (p["stop"] is None or now < p["stop"]):
                 current = p
+                nxt = progs[i + 1] if i + 1 < len(progs) else None
                 break
             if p["start"] > now:
                 nxt = p
+                if i > 0 and progs[i - 1].get("stop") and (now - progs[i - 1]["stop"]).total_seconds() < 10800:
+                    current = progs[i - 1]
                 break
-        ref = current["start"] if current else now
-        for p in progs:
-            if p["start"] > ref:
-                nxt = p
-                break
+
+        if not current and not nxt and progs:
+            last_p = progs[-1]
+            if last_p.get("stop") and (now - last_p["stop"]).total_seconds() < 28800:
+                current = last_p
+
         return (current, nxt)
 
     def has_data(self) -> bool:
